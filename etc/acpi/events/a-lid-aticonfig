@@ -1,0 +1,3 @@
+# /etc/acpi/events/lid
+# Called when the user opens/closes the laptop lid
+# 
