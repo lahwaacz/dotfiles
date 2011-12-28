@@ -8,19 +8,20 @@ These are config files to set up a system the way I like it.
   git clone git://github.com/lahwaacz/archlinux-dotfiles.git
   cd archlinux-dotfiles
 
-And now copy the files anywhere you like, mostly inside ~.
+And now copy the files anywhere you like, HOME stands for ~.
 
 
 == Environment
 
 === Software
 
-I'm running on Archlinux, but it will work on any Linux distribution
-as well. I primarily use zsh, but I've included some older bash 
-files as well. As a desktop environment I use LXDE with Openbox.
+My OS is Archlinux, but it will most likely work on any Linux 
+distribution. I primarily use zsh, but I've included some older
+bash files as well. As a desktop environment I use LXDE with
+Openbox.
 
 
 === Hardware
 
 I'm running on laptop Asus M51Va, which has some specific configurations,
-like ACPI, multimedia keys, so I've also included these files.
+like ACPI, multimedia keys etc., so I've also included these files.

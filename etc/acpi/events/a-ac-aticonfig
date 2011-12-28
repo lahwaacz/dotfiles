@@ -1,3 +1,2 @@
-# /etc/acpi/events/ac
-# Called when the user connects ac power to us
-# 
+# this file is used to prevent package manager from placing here anything
+# I want /etc/ati-powermode.sh disabled because setting power modes doesn't work on my ATI Mobility Radeon HD3650
