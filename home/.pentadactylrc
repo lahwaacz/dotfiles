@@ -1,6 +1,5 @@
 "hg6700
 
-map gl :tabopen google<Space>
 map gm :tabopen https://mail.google.com/mail/#inbox<CR>
 map d :tabclose<CR>
 map <A-F> g;b

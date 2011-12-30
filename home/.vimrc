@@ -35,7 +35,11 @@ set termencoding=utf-8  " use utf-8 everywhere
 set history=1000        " Number of command lines stored in the history tables.
 set undolevels=1000     " Number of levels of undo
 
-set title               " Set the title in the console.
+" Set console title and reset it when exiting
+if &term != "builtin_gui"
+    let &titleold=getcwd()
+    set title
+endif
 
 syntax on               " Syntax highlighting on.
 
@@ -66,3 +70,4 @@ inoremap {<CR> {<CR>}<Esc>O<BS><Tab>
 
 " Make jj exit insert mode (since it's almost never typed normally).
 imap jj <Esc>:w<CR>
+imap kk <Esc>:w<CR>

@@ -3,20 +3,23 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 DIRSTACKSIZE=100
-setopt HIST_IGNORE_SPACE    # commands with at least one space get ignored
-setopt INC_APPEND_HISTORY   # share history between sessions
-setopt HIST_IGNORE_ALL_DUPS # ignore history dups
-setopt AUTO_PUSHD           # use automated directory stack
+setopt INC_APPEND_HISTORY   # append command to history file once executed
+setopt HIST_IGNORE_ALL_DUPS # Ignore duplicates in history
+setopt HIST_IGNORE_SPACE    # Prevent record in history entry if preceding them with at least one space
+setopt AUTO_PUSHD           # auto directory pushd that you can get dirs list by cd -[tab]
 setopt PUSHD_IGNORE_DUPS    # ignore directory stack dups
 
-
 ## stuff
-setopt AUTOCD       # autocd into dirs
-setopt EXTENDEDGLOB # use extended globbing
-setopt CORRECTALL   # use autocorrection for commands and args
-setopt NOBEEP       # avoid "beep"ing
-setopt prompt_subst # Enables additional prompt extentions
-stty stop ""        # disable <ctrl-s> and <ctrl-q>
+setopt NOFLOWCONTROL    # Nobody needs flow control anymore. Troublesome feature.
+setopt COMPLETE_IN_WORD # allow tab completion in the middle of a word
+setopt AUTO_RESUME      # Resume jobs after typing it's name
+setopt CHECK_JOBS       # Dont quit console if processes are running
+setopt AUTOCD           # autocd into dirs
+setopt EXTENDEDGLOB     # use extended globbing
+setopt CORRECTALL       # use autocorrection for commands and args
+setopt NOBEEP           # avoid "beep"ing
+setopt PROMPT_SUBST     # Enables additional prompt extentions
+stty stop ""            # disable <ctrl-s> and <ctrl-q>
 
 
 ## colors
@@ -32,14 +35,58 @@ if [ -f ~/.dircolors ]; then
 fi
 
 
-## autocompletion
+## completion
+fpath=(~/.zsh/completion $fpath) 
+autoload -U ~/.zsh/completion/*(:t)
 autoload -U compinit
 compinit
-zstyle ':completion:*' menu select # menu driven autocomplete
+zstyle ':completion:*' menu select
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.cache/zsh
 zstyle ':completion:*' accept-exact '*(N)'
 setopt completealiases
+
+### If you want zsh's completion to pick up new commands in $path automatically
+### comment out the next line and un-comment the following 5 lines
+#zstyle ':completion:::::' completer _complete _approximate
+_force_rehash() {
+  (( CURRENT == 1 )) && rehash
+  return 1 # Because we didn't really complete anything
+}
+zstyle ':completion:::::' completer _force_rehash _complete _approximate
+
+zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:manuals.(^1*)' insert-sections true
+
+# colorful listings
+zmodload -i zsh/complist
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' special-dirs true
+
+# formatting and messages
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format '%B- %d -%b'
+zstyle ':completion:*:corrections' format '%B- %d - (errors: %e)%b'
+zstyle ':completion:*:messages' format '%B- %d -%b'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*' group-name ''
+
+# match uppercase from lowercase
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+zstyle ':completion:*:cd:*' ignored-patterns '(*/)#lost+found'
+zstyle ':completion:*:*:*:users' ignored-patterns \
+    bin daemon mail ftp http nobody dbus avahi usbmux sagemath lxdm ntp
+zstyle ':completion:*:*:*:hosts' ignored-patterns \
+    github.com localhost localhost.localdomain
+
+zstyle ':completion:*:ssh:*' group-order users hosts
+zstyle ':completion:*:scp:*' group-order all-files users hosts
+
+# on processes completion complete all user processes
+zstyle ':completion:*:processes' command 'ps -au$USER'
 
 
 ## prompt setting
@@ -199,25 +246,25 @@ setprompt
 
 ## key bindings (vim mode)
 bindkey -v
-bindkey "\e[7~" beginning-of-line
-bindkey "\e[8~" end-of-line
-bindkey "\e[5~" beginning-of-history
-bindkey "\e[6~" end-of-history
-bindkey "\e[3~" delete-char
-bindkey "\e[2~" quoted-insert
+bindkey "\e[1~" beginning-of-line # Home
+bindkey "\e[2~" quoted-insert # Ins
+bindkey "\e[3~" delete-char # Del
+bindkey "\e[4~" end-of-line # End
+bindkey "\e[5~" beginning-of-history # PageUp
+bindkey "\e[6~" end-of-history # PageDown
 bindkey "\e[5C" forward-word
-bindkey "\eOc" emacs-forward-word
 bindkey "\e[5D" backward-word
-bindkey "\eOd" emacs-backward-word
-bindkey "\ee[C" forward-word
-bindkey "\ee[D" backward-word
-bindkey "\^H" backward-delete-word
+bindkey "\e\e[C" forward-word
+bindkey "\e\e[D" backward-word
+bindkey "\e[Z" reverse-menu-complete # Shift+Tab
+bindkey "^?" backward-delete-char # Backspace
+bindkey "^D" delete-char-or-list # Delete
 
-# completion in the middle of a line
-bindkey '^i' expand-or-complete-prefix
-bindkey '^R' history-incremental-search-backward
-bindkey '\e[A' history-beginning-search-backward
-bindkey '\e[B' history-beginning-search-forward
+bindkey "^[[A" history-search-backward # Up Arrow
+bindkey "^[[B" history-search-forward # Down Arrow
+
+bindkey '^i' expand-or-complete-prefix # Attempt shell expansion on the current word up to cursor. If that fails, attempt completion.
+bindkey '^R' history-incremental-search-backward # Search backward incrementally for a specified string.
 
 
 ## source ~.zsh_aliases
