@@ -3,9 +3,9 @@
 export DISPLAY=":0.0"
 export XAUTHORITY="/home/lahwaacz/.Xauthority"
 
-VOLUME=`amixer get Master,0 | grep -i left: | awk '{$0=substr($0,27,5); a=index($0,"%"); if (a>3) $0=substr($0,2,4); $0=int($0); print $0}'`
+VOLUME=`amixer get Master | grep 'Mono: Playback' | awk '{$0=substr($0,22,5); a=index($0,"%"); if (a>3) $0=substr($0,2,4); $0=int($0); print $0}'`
 
-amixer get Master,0 |grep -i left: |grep -F [on] >/dev/null
+amixer get Master,0 |grep 'Mono: Playback' |grep -F [on] >/dev/null
 if [ "$?" -ne 0 ]; then
     COLOUR="red"
     VOLUME="0"
