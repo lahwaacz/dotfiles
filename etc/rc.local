@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# /etc/rc.local: Local multi-user startup script.
+#
+
+(sleep 60 && echo -n 25 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold) &
+
+# disable bluetooth
+hciconfig hci0 down
+
+# run sysctl
+sysctl -p
+
+# ati low powermode
+echo low > /sys/class/drm/card0/device/power_profile
