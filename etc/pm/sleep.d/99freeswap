@@ -1,0 +1,20 @@
+#!/bin/sh
+#
+# 99freeswap: unload swap after hibernation
+
+case "$1" in
+    hibernate|suspend)
+        ;;
+    thaw)
+        mem=`free|grep Mem:|awk '{print $4}'`
+        swap=`free|grep Swap:|awk '{print $3}'`
+        if [[ $mem -gt $swap ]]; then
+            swapoff -a
+            swapon -a
+        fi
+        ;;
+    resume)
+        ;;
+    *) exit $NA
+        ;;
+esac

@@ -1,0 +1,13 @@
+# 
+# /etc/fstab: static file system information
+#
+# <file system>        <dir>         <type>    <options>          <dump> <pass>
+devpts                 /dev/pts      devpts    defaults            0      0
+shm                    /dev/shm      tmpfs     nodev,nosuid,noatime        0      0
+
+UUID=   /               ext4    defaults,relatime,errors=remount-ro 0       1
+UUID=   /home           ext4    defaults,noatime        0       2
+UUID=   /media/data           ext4    defaults,noatime        0       2
+
+tmpfs    /tmp    tmpfs   nodev,nosuid,noatime,size=2G,mode=1777 0 0
+/swapfile   swap    swap    defaults        0       0 
