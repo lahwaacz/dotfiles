@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# 99freeswap: unload swap after hibernation
+# 40emptyswap: release swap after hibernation
 
 case "$1" in
     hibernate|suspend)
