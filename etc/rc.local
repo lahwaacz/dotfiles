@@ -13,3 +13,6 @@ sysctl -p
 
 # ati low powermode
 echo low > /sys/class/drm/card0/device/power_profile
+
+# load custom keymap
+loadkeys /usr/local/share/kbd/keymaps/personal.map
