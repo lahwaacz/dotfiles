@@ -1,0 +1,15 @@
+#
+# These things are run when an Openbox X Session is started.
+#
+
+# disable touchpad when mouse detected
+if [ -e /dev/input/mouse0 -a -e /dev/input/mouse1 ]; then
+    synclient TouchpadOff=1
+fi
+
+# load user defined keymap
+if [ -f $HOME/.Xmodmap ]; then
+    xmodmap $HOME/.Xmodmap
+fi
+
+echo executed > /tmp/openbox.log
