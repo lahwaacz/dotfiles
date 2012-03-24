@@ -1,2 +1,2 @@
-@~/bin/touchpad_startup.sh
-@feh --bg-tile /media/data/Image/Fraktály/mandelbrot-3.png
+@spacefm --desktop
+@~/.config/openbox/autostart
