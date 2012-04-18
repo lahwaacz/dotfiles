@@ -19,6 +19,7 @@ case "$1" in
                 ;;
             LID)
                 /etc/acpi/actions/lid_toggle.sh
+                /etc/acpi/actions/lock_screen.sh
                 ;;
             VOLUP|VOLDN|MUTE)
                 /etc/acpi/actions/osd_volume.sh
