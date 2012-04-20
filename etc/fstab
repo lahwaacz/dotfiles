@@ -6,8 +6,8 @@ devpts                 /dev/pts      devpts    defaults            0      0
 shm                    /dev/shm      tmpfs     nodev,nosuid,noatime        0      0
 
 UUID=1f9e98ce-6481-4d0f-a044-d8513ce92f3f /               ext4    defaults,relatime,errors=remount-ro 0       1
-UUID=f1cd1aee-043e-4649-b873-c0f7ba0407b1 /home           ext4    defaults,noatime        0       2
-UUID=fd1f616c-17dd-4ed9-bc6d-78005ffba874 /media/data           ext4    defaults,noatime        0       2
+UUID=f1cd1aee-043e-4649-b873-c0f7ba0407b1 /home           ext4    defaults,nodev,nosuid,noatime        0       2
+UUID=fd1f616c-17dd-4ed9-bc6d-78005ffba874 /media/data           ext4    defaults,nodev,nosuid,noatime        0       2
 
 tmpfs    /tmp    tmpfs   nodev,nosuid,noatime,size=2G,mode=1777 0 0
 /swapfile   swap    swap    defaults        0       0 
