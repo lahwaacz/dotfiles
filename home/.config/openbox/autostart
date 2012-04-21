@@ -11,5 +11,3 @@ fi
 if [ -f $HOME/.Xmodmap ]; then
     xmodmap $HOME/.Xmodmap
 fi
-
-echo executed > /tmp/openbox.log
