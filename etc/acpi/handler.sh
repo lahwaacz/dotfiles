@@ -37,8 +37,8 @@ case "$1" in
                 oblogout
                 ;;
             LID)
-                /etc/acpi/actions/lid_toggle.sh
                 lxlock
+                /etc/acpi/actions/lid_toggle.sh
                 ;;
             VOLUP|VOLDN|MUTE)
                 /etc/acpi/actions/osd_volume.sh
