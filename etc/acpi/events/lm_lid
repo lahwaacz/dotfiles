@@ -1,1 +1,2 @@
-# this file is used to prevent package manager from placing here anything
+event=button[ /]lid
+action=/etc/acpi/actions/lm_lid.sh %e

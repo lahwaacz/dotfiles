@@ -1,8 +1,5 @@
 #!/bin/sh
 
-export DISPLAY=":0.0"
-export XAUTHORITY="/home/lahwaacz/.Xauthority"
-
 VOLUME=`amixer get Master | grep 'Mono: Playback' | awk '{$vol=substr($4,2); i=index($vol,"%"); $vol=substr($vol,1,i-1); print $vol}'`
 
 amixer get Master,0 |grep 'Mono: Playback' |grep -F [on] >/dev/null

@@ -1,8 +1,5 @@
 #!/bin/sh
 
-export DISPLAY=":0.0"
-export XAUTHORITY="/home/lahwaacz/.Xauthority"
-
 LCD=`acpi -V | grep LCD | awk '{$0=substr($0,16,2); print $0}'`
 PERCENT=$(( (15-$LCD)*100/15 ))
 

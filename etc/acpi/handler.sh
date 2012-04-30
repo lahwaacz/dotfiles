@@ -1,5 +1,24 @@
 #!/bin/sh
 
+DBUS=$(ps aux | grep 'dbus-launch' | grep -v root)
+if [[ ! -z $DBUS ]];then
+    USER=$(echo $DBUS | awk '{print $1}')
+    USERHOME=$(getent passwd $USER | cut -d: -f6)
+    export XAUTHORITY="$USERHOME/.Xauthority"
+    for x in /tmp/.X11-unix/*; do
+        DISPLAYNUM=$(echo $x | sed s#/tmp/.X11-unix/X##)
+        if [[ -f "$XAUTHORITY" ]]; then
+            export DISPLAY=":$DISPLAYNUM"
+        fi
+    done
+else
+    USER=lahwaacz
+    USERHOME=/home/$USER
+    export XAUTHORITY="$USERHOME/.Xauthority"
+    export DISPLAY=":0"
+fi
+export HOME=$USERHOME   # required by oblogout
+
 case "$1" in
     hotkey)
         case "$2" in
@@ -15,17 +34,17 @@ case "$1" in
     button*)
         case "$2" in
             PBTN)
-                /etc/acpi/actions/power_button.sh
+                oblogout
                 ;;
             LID)
                 /etc/acpi/actions/lid_toggle.sh
-                /etc/acpi/actions/lock_screen.sh
+                lxlock
                 ;;
             VOLUP|VOLDN|MUTE)
                 /etc/acpi/actions/osd_volume.sh
                 ;;
             SCRNLCK)
-                /etc/acpi/actions/lock_screen.sh
+                lxlock
                 ;;
             *)
                 logger "ATKD handler - undefined action (arguments: $@)"
