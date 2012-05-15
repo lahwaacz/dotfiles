@@ -1,0 +1,17 @@
+#!/bin/bash
+
+LCD_BRIGHTNESS_LEVEL_AC=${LCD_BRIGHTNESS_LEVEL_AC:-15}
+LCD_BRIGHTNESS_LEVEL_BAT=${LCD_BRIGHTNESS_LEVEL_BAT:-1}
+
+set_brightness() {
+    echo "$1" > /sys/class/backlight/acpi_video0/brightness
+}
+
+case $1 in
+    true) set_brightness $LCD_BRIGHTNESS_LEVEL_BAT ;;
+    false) set_brightness $LCD_BRIGHTNESS_LEVEL_AC ;;
+    help) help;;
+    *) exit $NA
+esac
+
+exit 0

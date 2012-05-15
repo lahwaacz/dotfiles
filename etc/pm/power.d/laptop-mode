@@ -1,0 +1,91 @@
+#!/bin/sh
+
+. "${PM_FUNCTIONS}"
+
+VM="/proc/sys/vm"
+vmfiles="laptop_mode dirty_ratio dirty_background_ratio 
+         dirty_writeback_centisecs"
+
+LAPTOP_MODE=${LAPTOP_MODE:-5}
+LAPTOP_DIRTY_RATIO=${LAPTOP_DIRTY_RATIO:-60}
+LAPTOP_DIRTY_BG_RATIO=${LAPTOP_DIRTY_BG_RATIO:-40}
+LAPTOP_DIRTY_WRITEBACK=${LAPTOP_DIRTY_WRITEBACK:-60000}
+
+help() {
+    cat <<EOF
+--------
+$0: Laptop mode tuning parameters.
+This hook controls how agressive the system is at trying to avoid
+writing to disk.  The longer the disk is idle, the more power you can save.
+
+This hook is only active on battery power, and it restores these values
+to kernel defaults when on AC power.
+
+It has 4 tuneable parameters: 
+LAPTOP_MODE = value for laptop_mode on battery.
+Defaults to 5, which enables laptop mode and forces the system to wait 
+5 seconds whenever something asks to write to disk to flush out as much
+data as we can.
+
+LAPTOP_DIRTY_RATIO = the ratio of dirty memory to all memory that 
+processes start doing their own writeout.  
+Defaults to 60, which means that the kernel will not start forcing process
+to write out file information that has been changed but not saved until 60%
+of usable system memory is filled with dirty information.
+
+LAPTOP_DIRTY_BG_RATIO = The ratio of dirty memory to all memory that 
+pdflush will wake up and start writing to disk.  
+Defaults to 40, which means that the kernel will wake up a helper process
+to try and write out dirty memory once 40% of usable system memory is dirty.
+
+LAPTOP_DIRTY_WRITEBACK = The number of centiseconds between periodic
+wakeups of the pdflush daemons.  
+Defaults to 60000 (10 minutes), which menas that the kernel will flush dirty
+memory every 10 minutes if dirty memory never hits 40% of system memory.
+
+EOF
+}
+
+[ -w $VM/laptop_mode -a -w $VM/dirty_ratio ] || exit $NA
+
+read_values() {
+    for f in $vmfiles; do
+	[ -r "$VM/$f" ] && cat "$VM/$f" || echo 0
+    done
+}
+
+write_values() {
+    for f in $vmfiles; do
+	[ -w "$VM/$f" ] && echo $1 > "$VM/$f"
+	shift
+    done
+}
+
+laptop_mode_ac() {
+    # disable laptop mode, set vm parameters back to sane defaults
+    if state_exists laptop_mode_default; then
+	write_values $(restorestate laptop_mode_default)
+    else
+	write_values 0 10 5 1500
+    fi	
+    echo "Laptop mode disabled."
+}
+
+laptop_mode_battery() {
+    # enable laptop mode, set vm parameters to buffer as many writes as 
+    # possible.
+    state_exists laptop_mode_default || \
+	read_values | savestate laptop_mode_default
+    write_values "$LAPTOP_MODE" "$LAPTOP_DIRTY_RATIO" \
+	"$LAPTOP_DIRTY_BG_RATIO" "$LAPTOP_DIRTY_WRITEBACK"
+    echo "Laptop mode enabled."
+}
+
+case $1 in
+    true) laptop_mode_battery ;;
+    false) laptop_mode_ac ;;
+    help) help;;
+    *) exit $NA ;;
+esac
+
+exit 0

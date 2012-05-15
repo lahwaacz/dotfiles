@@ -1,0 +1,48 @@
+#! /bin/sh
+
+
+DPMS_STANDBY_AC=${DPMS_STANDBY_AC:-600}
+DPMS_SUSPEND_AC=${DPMS_SUSPEND_AC:-600}
+DPMS_OFF_AC=${DPMS_OFF_AC:-600}
+DPMS_STANDBY_BAT=${DPMS_STANDBY_BAT:-300}
+DPMS_SUSPEND_BAT=${DPMS_SUSPEND_BAT:-300}
+DPMS_OFF_BAT=${DPMS_OFF_BAT:-300}
+
+
+DBUS=$(ps aux | grep 'dbus-launch' | grep -v root)
+if [[ ! -z $DBUS ]];then
+    USER=$(echo $DBUS | awk '{print $1}')
+    USERHOME=$(getent passwd $USER | cut -d: -f6)
+    export XAUTHORITY="$USERHOME/.Xauthority"
+    for x in /tmp/.X11-unix/*; do
+        DISPLAYNUM=$(echo $x | sed s#/tmp/.X11-unix/X##)
+        if [[ -f "$XAUTHORITY" ]]; then
+            export DISPLAY=":$DISPLAYNUM"
+        fi
+    done
+fi
+
+
+dpms_bat() {
+    STANDBY=$DPMS_STANDBY_BAT
+    SUSPEND=$DPMS_SUSPEND_BAT
+    OFF=$DPMS_OFF_BAT
+    su $USER -c "xset dpms $STANDBY $SUSPEND $OFF"
+}
+
+dpms_ac() {
+    STANDBY=$DPMS_STANDBY_AC
+    SUSPEND=$DPMS_SUSPEND_AC
+    OFF=$DPMS_OFF_AC
+    su $USER -c "xset dpms $STANDBY $SUSPEND $OFF"
+}
+
+
+case $1 in
+    true) dpms_bat ;;
+    false) dpms_ac ;;
+    help) help;;
+    *) exit $NA
+esac
+
+exit 0

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+CPUFREQ_GOVERNOR_AC=${CPUFREQ_GOVERNOR_AC:-ondemand}
+CPUFREQ_GOVERNOR_BAT=${CPUFREQ_GOVERNOR_BAT:-powersave}
+
+cpucount=`cat /proc/cpuinfo | grep processor | wc -l`
+
+set_governor() {
+    for (( i=0; i<$cpucount; i++ )); do
+        cpufreq-set -c $i -g $1
+    done
+}
+
+case $1 in
+    true) set_governor $CPUFREQ_GOVERNOR_BAT ;;
+    false) set_governor $CPUFREQ_GOVERNOR_AC ;;
+    help) help;;
+    *) exit $NA
+esac
+
+exit 0
