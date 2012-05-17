@@ -1,0 +1,26 @@
+#!/bin/sh
+
+. "${PM_FUNCTIONS}"
+
+command_exists ethtool || exit $NA
+
+set_wol_status() {
+    for d in "/sys/class/net/"*; do
+	[ -e "$d/wireless" ] && continue
+	[ -h "$d/device/driver" ] || continue
+	printf "Setting Wake On Lan for %s to %s..." "${d##*/}" "$1"
+	case $1 in
+	    disable) ethtool -s "${d##*/}" wol d>/dev/null 2>&1;;
+	    enable) ethtool -s "${d##*/}" wol g>/dev/null 2>&1;;
+	esac
+	[ "$?" -eq 0 ] && echo Done. || echo Failed.
+    done
+}
+
+case $1 in
+    true) set_wol_status disable;;
+    false) set_wol_status enable;;
+    *) exit $NA;;
+esac
+
+exit 0

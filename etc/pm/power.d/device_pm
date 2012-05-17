@@ -1,0 +1,21 @@
+#!/bin/sh
+
+device_pm() {
+    for dpcontrol in /sys/bus/{pci,spi,i2c}/devices/*/power/control; do
+        [ -w "$dpcontrol" ] || continue
+        echo $1 > "$dpcontrol"
+    done
+}
+
+case "$1" in
+    true)
+        echo "**device power management ON"
+        device_pm auto
+        ;;
+    false)
+        echo "**device power management OFF"
+        device_pm on
+        ;;
+esac
+
+exit 0

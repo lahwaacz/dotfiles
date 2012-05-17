@@ -32,7 +32,7 @@ SLEEP_MODULE="uswsusp"
 SUSPEND_MODULES="uhci_hcd ohci_hcd ehci_hcd"
 
 # If you want to keep hooks from running, add their names  here.
-# HOOK_BLACKLIST=""
+HOOK_BLACKLIST="00logging 11netcfg"
 
 # If you want to unconditionally add parameters to the commandline,
 # add them here.
@@ -48,8 +48,6 @@ SUSPEND_MODULES="uhci_hcd ohci_hcd ehci_hcd"
 
 ########################################################################
 ### configuration for pm-utils power hooks
-
-HOOK_BLACKLIST="hal-cd-polling sched-powersave xfs_buffer"
 
 ## journal-commit hook
 
@@ -121,3 +119,19 @@ DPMS_OFF_AC=600
 DPMS_STANDBY_BAT=150
 DPMS_SUSPEND_BAT=150
 DPMS_OFF_BAT=150
+
+
+## harddrive hook
+# hdparm -S, -W, -B, -M options
+# Default values on AC
+DRIVE_SPINDOWN_VALUE_AC=0
+DRIVE_WRITE_CACHE_AC=1 
+DRIVE_POWER_MGMT_AC=128
+DRIVE_ACOUSTIC_MGMT_AC=0
+
+# Default values on battery
+DRIVE_SPINDOWN_VALUE_BAT=6
+DRIVE_WRITE_CACHE_BAT=0 
+DRIVE_POWER_MGMT_BAT=1
+DRIVE_ACOUSTIC_MGMT_BAT=128
+

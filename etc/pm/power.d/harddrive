@@ -1,0 +1,95 @@
+#!/bin/sh
+
+[ -x /sbin/hdparm ] || exit $NA
+
+# Default values on AC
+DRIVE_SPINDOWN_VALUE_AC="${DRIVE_SPINDOWN_VALUE_AC:-0}"
+DRIVE_WRITE_CACHE_AC="${DRIVE_WRITE_CACHE_AC:-1}" 
+DRIVE_POWER_MGMT_AC="${DRIVE_POWER_MGMT_AC:-254}"
+DRIVE_ACOUSTIC_MGMT_AC="${DRIVE_ACOUSTIC_MGMT_AC:-0}"
+
+# Default values on battery
+DRIVE_SPINDOWN_VALUE_BAT="${DRIVE_SPINDOWN_VALUE_BAT:-6}"
+DRIVE_WRITE_CACHE_BAT="${DRIVE_WRITE_CACHE_BAT:-0}" 
+DRIVE_POWER_MGMT_BAT="${DRIVE_POWER_MGMT_BAT:-1}"
+DRIVE_ACOUSTIC_MGMT_BAT="${DRIVE_ACOUSTIC_MGMT_BAT:-254}"
+
+# Default devices to operate on
+DRIVE_LIST="/dev/[hs]d[a-z]"
+
+help() {
+cat <<EOF
+--------
+$0: Control hard drive spindown, write caching, 
+    power management and acoustic management.
+
+This hook has 8 tuneable parameters:
+DRIVE_SPINDOWN_VALUE_AC = time until a drive will spin down on AC
+Defaults to 0, which disables drive spindown.
+DRIVE_SPINDOWN_VALUE_BAT = time until a drive will spin down on battery
+Defaults to 6, which will spin the drive down after 30 seconds of inactivity.
+
+See the -S option on the hdparm manpage for more information.
+
+DRIVE_WRITE_CACHE_AC = Whether the drive caches writes on AC
+Defaults to 1, which means that the drive will cache writes internally.
+DRIVE_WRITE_CACHE_BAT = Whether the drive caches writes on battery.
+Defaults to 0 which means that the drive will not cache writes internally.
+
+See the -W option on the hdparm man page for more information.
+
+DRIVE_POWER_MGMT_AC = Drive Advanced Power Management value on AC
+Defaults to 254 for max performance.
+DRIVE_POWER_MGMT_BAT = Drive Advanced Power Management value on battery
+Defaults to 1 for max power savings.
+
+See the -B option on the hdparm man page
+
+Drive acoustic management:
+DRIVE_ACOUSTIC_MGMT_AC = Drive Acoustic Management value on AC
+Defaults to 254 for max head speed.
+DRIVE_ACOUSTIC_MGMT_BAT = Drive Acoustic Management value on battery
+Defaults to 128 for max quietness.
+
+See the -M option on the hdparm man page. 
+
+Drives to manage:
+DRIVE_LIST = the list of hard drives to manage.
+Defaults to "/dev/[hs]d[a-z]", which will manage up to the first 25 drives.
+
+EOF
+}
+
+harddrive_ac () {
+    for dev in $DRIVE_LIST; do
+	# disable write caching, do not spin down the drive, disable APM 
+	# and acoustic management, and sync everything to drive.
+	printf "Disabling hard drive power management for %s..." "$dev"
+	hdparm -W $DRIVE_WRITE_CACHE_AC \
+	    -S $DRIVE_SPINDOWN_VALUE_AC \
+	    -B $DRIVE_POWER_MGMT_AC \
+	    -M $DRIVE_ACOUSTIC_MGMT_AC $dev >/dev/null 2>&1 \
+	    && echo Done. || echo Failed.
+    done
+}
+
+harddrive_battery() {
+    for dev in $DRIVE_LIST; do
+	# disable write caching, enable acoustic management
+	printf "Enabling power management for %s..." "$dev"
+	hdparm -W $DRIVE_WRITE_CACHE_BAT \
+	    -S $DRIVE_SPINDOWN_VALUE_BAT \
+	    -B $DRIVE_POWER_MGMT_BAT \
+	    -M $DRIVE_ACOUSTIC_MGMT_BAT -F $dev >/dev/null 2>&1 \
+	    && echo Done. || echo Failed.
+    done
+}
+
+case $1 in
+    true) harddrive_battery ;;
+    false) harddrive_ac ;;
+    help) help;;
+    *) exit $NA ;;
+esac
+
+exit 0
