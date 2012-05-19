@@ -37,14 +37,14 @@ case "$1" in
                 oblogout
                 ;;
             LID)
-                lxlock
+                su $USER -c lxlock
                 /etc/acpi/actions/lid_toggle.sh
                 ;;
             VOLUP|VOLDN|MUTE)
                 /etc/acpi/actions/osd_volume.sh
                 ;;
             SCRNLCK)
-                lxlock
+                su $USER -c lxlock
                 ;;
             *)
                 logger "ATKD handler - undefined action (arguments: $@)"
