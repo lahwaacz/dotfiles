@@ -46,6 +46,14 @@ case "$1" in
             SCRNLCK)
                 su $USER -c lxlock
                 ;;
+            WLAN)
+                /etc/acpi/actions/wireless-switch.sh
+                if [ -f /var/run/wpa_supplicant_*.pid ]; then
+                    rc.d stop net-auto-wireless
+                else
+                    rc.d start net-auto-wireless
+                fi
+                ;;
             *)
                 logger "ATKD handler - undefined action (arguments: $@)"
                 ;;
