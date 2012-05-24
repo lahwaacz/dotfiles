@@ -3,16 +3,26 @@
 # /etc/rc.local: Local multi-user startup script.
 #
 
-(sleep 60 && echo -n 25 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold) &
+# The default value as of kernel version 3.0 is 95. This means that the ondemand governor
+# currently increases the clock rate if a core reaches 95% utilization.
+(sleep 20 && echo -n 25 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold) &
 
-# disable bluetooth
-hciconfig hci0 down
-
-# run sysctl
-sysctl -p
+# Having sampling_down_factor set to 1 makes no changes from existing behavior, but having 
+# sampling_down_factor set to a value greater than 1 (e.g. 100) causes it to act as a multiplier
+# for the scheduling interval for re-evaluating load when the CPU is at its highest clock
+# frequency due to high load. This improves performance by reducing the overhead of load 
+# evaluation and helping the CPU stay at its highest clock frequency when it is truly busy,
+# rather than shifting back and forth in speed. This tunable has no effect on behavior at lower 
+# frequencies/lower CPU loads.
+(sleep 20 && echo -n 10 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor) &
 
 # ati low powermode
 echo low > /sys/class/drm/card0/device/power_profile
 
 # load custom keymap
 loadkeys /usr/local/share/kbd/keymaps/personal.map
+
+(sleep 20 && echo 1500 > /proc/sys/vm/dirty_writeback_centisecs) &
+
+# turn off bluetooth led
+echo 0 > /sys/devices/platform/asus_laptop/bluetooth
