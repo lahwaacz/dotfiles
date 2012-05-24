@@ -2,12 +2,24 @@
 # These things are run when an Openbox X Session is started.
 #
 
+# start lxpanel
+lxpanel --profile openbox &
+
+# start spacefm in desktop mode
+spacefm --desktop &
+
+# load user defined keymap
+if [ -f $HOME/.Xmodmap ]; then
+    sleep 1 && xmodmap $HOME/.Xmodmap
+fi
+
 # disable touchpad when mouse detected
 if [ -e /dev/input/mouse0 -a -e /dev/input/mouse1 ]; then
     synclient TouchpadOff=1
 fi
 
-# load user defined keymap
-if [ -f $HOME/.Xmodmap ]; then
-    xmodmap $HOME/.Xmodmap
-fi
+
+## autostart applications
+ptbatterysystemtray &
+volti &
+pidgin &
