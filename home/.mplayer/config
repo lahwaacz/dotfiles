@@ -1,3 +1,5 @@
 # Write your default config options here!
 
+ao=alsa
 vo=xv
+sub-fuzziness=1 # load subtitles named like something.eng.srt
