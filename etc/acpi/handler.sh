@@ -37,14 +37,14 @@ case "$1" in
                 oblogout
                 ;;
             LID)
-                su $USER -c lxlock
+                su $USER -c "xlock -mode blank"
                 /etc/acpi/actions/lid_toggle.sh
                 ;;
             VOLUP|VOLDN|MUTE)
                 /etc/acpi/actions/osd_volume.sh
                 ;;
             SCRNLCK)
-                su $USER -c lxlock
+                su $USER -c "xlock -mode blank"
                 ;;
             WLAN)
                 /etc/acpi/actions/wireless-switch.sh

@@ -768,10 +768,19 @@
     <application name="transmission-qt">
         <maximized>true</maximized>
     </application>
+    <application name="tk">
+        <maximized>true</maximized>
+    </application>
     <application name="Pidgin">
         <position>
             <x>-0</x>
             <y>-0</y>
+        </position>
+    </application>
+    <application name="qemu-system-x86_64">
+        <position>
+            <x>0</x>
+            <y>0</y>
         </position>
     </application>
     <application type="dialog">

@@ -22,7 +22,7 @@ fi
 
 case "$1" in
     hibernate|suspend)
-        su $USER -c lxlock
+        su $USER -c "xlock -mode blank"
         ;;
     thaw|resume)
         ;;

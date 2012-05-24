@@ -1,5 +1,3 @@
-! Swap CapsLock and Tabulator - my tab key is broken :-)
-remove Lock = Caps_Lock
-keysym Tab = Caps_Lock
-keysym Caps_Lock = Tab
-add Lock = Caps_Lock
+clear Lock
+keycode  23 = Caps_Lock NoSymbol Caps_Lock
+keycode  66 = Tab NoSymbol Tab
