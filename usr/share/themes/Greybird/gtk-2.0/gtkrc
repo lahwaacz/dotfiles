@@ -157,11 +157,10 @@ style "murrine-default"
 		trough_border_shades = { 0.9, 0.7 }	}
 }
 
-### RESIZE GRIP PIXMAP Proof of concept ###
-
 style "resize-grip" #= "murrine-default"
 {
-	engine "pixmap"	{
+	engine "pixmap"
+	{
 		image {
 			function	= RESIZE_GRIP
 			recolorable	= FALSE
@@ -399,7 +398,8 @@ style "murrine-progressbar"
 	bg[NORMAL]   = shade (1.05, @bg_color)
 	bg[SELECTED]	= mix (0.4, @bg_color, shade (0.9, @selected_bg_color))
 
-	engine "murrine" {
+	engine "murrine"
+	{
 		gradient_shades = {1.15,1.05,1.0,0.95}
 		trough_shades	= {0.95, 1.15}
 		trough_border_shades	= { 0.8, 0.7 }
@@ -423,7 +423,8 @@ style "murrine-scrollbar" {
 	bg[PRELIGHT]	= shade (0.55, @bg_color)
 	bg[INSENSITIVE]	= shade (0.75, @bg_color)
 	
-	engine "murrine" {
+	engine "murrine"
+	{
 		#arrowstyle	= 0
 		colorize_scrollbar = TRUE
 		roundness	= 10
@@ -531,7 +532,8 @@ style "murrine-radiocheck"
 style "murrine-toolbar" = "murrine-default"
 {
 	bg[NORMAL] = @bg_color
-	engine "murrine" {
+	engine "murrine"
+	{
 		contrast			= 1.13
 		toolbarstyle			= 1
 		lightborder_shade		= 1.0
@@ -543,7 +545,8 @@ style "xfce-header"
 {
 	bg[NORMAL]	 = shade (0.9, @bg_color)
 	base[NORMAL]	 = shade (1.18, @bg_color)
-	engine "murrine" {
+	engine "murrine"
+	{
 		textstyle	= 1
 	}
 }
@@ -566,6 +569,25 @@ style "tabwin" = "murrine-dark"
 	{
 		focusstyle = 0
 	}
+}
+
+style "xfdesktop-icon-view" {
+    font_name = "bold"
+    XfdesktopIconView::label-alpha = 0
+    XfdesktopIconView::selected-label-alpha = 60
+    XfdesktopIconView::shadow-color = shade (1.05, @panel_bg)
+    XfdesktopIconView::selected-shadow-color = @panel_bg
+    XfdesktopIconView::shadow-x-offset = -1
+    XfdesktopIconView::selected-shadow-x-offset = -1
+    XfdesktopIconView::shadow-y-offset = -1
+    XfdesktopIconView::selected-shadow-y-offset = -1
+    fg[NORMAL] = shade (0.92, @selected_fg_color)
+    fg[ACTIVE] = @selected_fg_color
+    engine "murrine"
+    {
+	textstyle = 3
+	text_shade = 0.05
+    }
 }
 
 style "murrine-calendar" = "murrine-dark"
@@ -663,7 +685,8 @@ widget_class "*GnmSimpleCanvas*"		style "murrine-treeview-header" # Gnumeric tre
 # Xfce specific theming
 widget_class "*XfceHeading*"			style "xfce-header"
 widget_class "*XfceDesktop*"			style "xfdesktop-windowlist"
-widget "xfwm4-tabwin*" style "tabwin"
+widget "xfwm4-tabwin*"				style "tabwin"
+widget_class "*XfdesktopIconView*"		style "xfdesktop-icon-view"
 
 # Workarounds for Evolution
 widget_class "*.ETable.ECanvas"    style "murrine-treeview-header"

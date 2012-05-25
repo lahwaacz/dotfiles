@@ -22,7 +22,7 @@ fi
 
 case "$1" in
     hibernate|suspend)
-        su $USER -c "xlock -mode blank"
+        su $USER -c "/usr/local/bin/lock-screen.sh"
         ;;
     thaw|resume)
         ;;

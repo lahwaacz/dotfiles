@@ -11,11 +11,6 @@ if [[ ! -z $DBUS ]];then
             export DISPLAY=":$DISPLAYNUM"
         fi
     done
-else
-    USER=lahwaacz
-    USERHOME=/home/$USER
-    export XAUTHORITY="$USERHOME/.Xauthority"
-    export DISPLAY=":0"
 fi
 export HOME=$USERHOME   # required by oblogout
 
@@ -37,14 +32,13 @@ case "$1" in
                 oblogout
                 ;;
             LID)
-                su $USER -c "xlock -mode blank"
                 /etc/acpi/actions/lid_toggle.sh
                 ;;
             VOLUP|VOLDN|MUTE)
                 /etc/acpi/actions/osd_volume.sh
                 ;;
             SCRNLCK)
-                su $USER -c "xlock -mode blank"
+                su $USER -c "lock-screen.sh"
                 ;;
             WLAN)
                 /etc/acpi/actions/wireless-switch.sh
