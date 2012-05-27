@@ -1,7 +1,7 @@
 GRUB_DEFAULT=0
 GRUB_TIMEOUT=5
 GRUB_DISTRIBUTOR="Arch Linux"
-GRUB_CMDLINE_LINUX_DEFAULT="pcie_aspm=force radeon.modeset=1 resume=UUID=1f9e98ce-6481-4d0f-a044-d8513ce92f3f resume_offset=2914304"
+GRUB_CMDLINE_LINUX_DEFAULT="init=/sbin/e4rat-lite-preload pcie_aspm=force radeon.modeset=1 resume=UUID=5c71af88-7f2a-46d7-9cdd-42530a22ec3e resume_offset=886784"
 GRUB_CMDLINE_LINUX=""
 
 # Preload both GPT and MBR modules so that they are not missed
