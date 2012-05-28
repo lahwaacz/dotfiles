@@ -1,0 +1,32 @@
+#compdef fmount.py
+
+_fmount() { 
+    local curcontext="$curcontext" state line
+    typeset -A opt_args
+
+    _arguments \
+        '1: :->options'\
+        '2: :->path'
+
+    case $state in
+        options)
+            _arguments '1:Options:(mount umount)'
+            ;;
+        path)
+            case $words[2] in
+                mount)
+                    _description aliases expl "aliases"
+                    compadd "$expl[@]" `fmount.py --print-aliases`
+                    _description files expl "local files"
+                    _files "$expl[@]" -W `pwd` -g `fmount.py --print-archive-extensions`
+                    ;;
+                umount)
+                    _description aliases expl "aliases"
+                    compadd "$expl[@]" "all"
+                    _description files expl "local files"
+                    _files "$expl[@]" -W ~/mnt -g "(*/)"
+            esac 
+    esac 
+}
+
+_fmount "$@"
