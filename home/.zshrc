@@ -25,11 +25,6 @@ stty stop ""            # disable <ctrl-s> and <ctrl-q>
 ## colors
 autoload colors
 colors
-for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
-    eval $COLOR='$fg_no_bold[${(L)COLOR}]'
-    eval BOLD_$COLOR='$fg_bold[${(L)COLOR}]'
-done
-eval RESET='$reset_color'
 if [ -f ~/.dircolors ]; then
     eval `dircolors ~/.dircolors`
 fi
@@ -149,7 +144,7 @@ function precmd {
     local PWDSIZE=${#${(%):-%~}}
 
     if [[ "$PROMPTSIZE + $PWDSIZE" -gt $TERMWIDTH ]]; then
-    (( PR_PWDLEN = $TERMWIDTH - $PROMPTSIZE ))
+        (( PR_PWDLEN = $TERMWIDTH - $PROMPTSIZE ))
     fi
 
     # now let's change the color of the path if it's not writable
@@ -174,24 +169,19 @@ function precmd {
     fi
 
     # I want to know my battery percentage when running on battery power
+    PR_BATTERY=""
     if which acpi &> /dev/null; then
-        local BATTSTATE="$(acpi -b)"
-        if [[ $BATTSTATE[-1] == \% ]]; then
-            local BATTPRCNT="${BATTSTATE[(w)-1][1,-2]}"
-            local BATTTIME=""
-        else
-            local BATTPRCNT="${BATTSTATE[(w)-3][1,-3]}"
-            local BATTTIME=" ($BATTSTATE[(w)-2])"
-        fi
-        PR_BATTERY=" B:${BATTPRCNT}%%${BATTTIME}"
-        if [[ "${BATTPRCNT}" -lt 15 ]]; then
-            PR_BATTERY="${PR_BOLD_RED}${PR_BATTERY}"
-        elif [[ "${BATTPRCNT}" -lt 50 ]]; then
-            PR_BATTERY="${PR_BOLD_YELLOW}${PR_BATTERY}"
-        elif [[ "${BATTPRCNT}" -lt 100 ]]; then
-            PR_BATTERY="${PR_BATTERY}"
-        else
-            PR_BATTERY=""
+        local BATT_STATE="$(acpi -b)"
+        if [[ $BATT_STATE[(w)3] == "Discharging," ]]; then
+            local BATT_PERCENT="${BATT_STATE[(w)-3][1,-3]}"
+            local BATT_TIME="$BATT_STATE[(w)-2]"
+            local BATT_COLOR=${PR_BOLD_BLUE}
+            if [[ "${BATT_PERCENT}" -lt 15 ]]; then
+                BATT_COLOR=${PR_BOLD_RED}
+            elif [[ "${BATT_PERCENT}" -lt 50 ]]; then
+                BATT_COLOR=${PR_BOLD_YELLOW}
+            fi
+            PR_BATTERY="${BATT_COLOR} B:${BATT_PERCENT}%% (${BATT_TIME})"
         fi
     fi
 }
@@ -271,3 +261,27 @@ bindkey '^R' history-incremental-search-backward # Search backward incrementally
 if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
 fi
+
+## other
+export EDITOR=vim   # required by yaourt
+
+## colored man pages
+man() {
+    env \
+    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+    LESS_TERMCAP_md=$(printf "\e[1;31m") \
+    LESS_TERMCAP_me=$(printf "\e[0m") \
+    LESS_TERMCAP_se=$(printf "\e[0m") \
+    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+    LESS_TERMCAP_ue=$(printf "\e[0m") \
+    LESS_TERMCAP_us=$(printf "\e[1;32m") \
+    man "$@"
+}
+
+## lock all sessions when inactive for 300 seconds if in tty
+export TMOUT=300
+function TRAPALRM() { 
+    if [[ $(tty) != *pts* ]]; then
+        vlock
+    fi
+}

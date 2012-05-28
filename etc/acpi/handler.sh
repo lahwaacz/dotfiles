@@ -38,7 +38,8 @@ case "$1" in
                 /etc/acpi/actions/osd_volume.sh
                 ;;
             SCRNLCK)
-                su $USER -c "lock-screen.sh"
+                /usr/local/bin/lock-tmux-console-clients.sh
+                su $USER -c "lock-X-session.sh"
                 ;;
             WLAN)
                 /etc/acpi/actions/wireless-switch.sh
