@@ -83,6 +83,27 @@ zstyle ':completion:*:scp:*' group-order all-files users hosts
 # on processes completion complete all user processes
 zstyle ':completion:*:processes' command 'ps -au$USER'
 
+# complete words from tmux pane
+# http://blog.plenz.com/2012-01/zsh-complete-words-from-tmux-pane.html
+_tmux_pane_words() {
+    local expl
+    local -a w
+    if [[ -z "$TMUX_PANE" ]]; then
+        _message "not running inside tmux!"
+        return 1
+    fi
+    w=( ${(u)=$(tmux capture-pane \; show-buffer \; delete-buffer)} )
+    _wanted values expl 'words from current tmux pane' compadd -a w
+}
+
+zle -C tmux-pane-words-prefix   complete-word _generic
+zle -C tmux-pane-words-anywhere complete-word _generic
+bindkey '^Xt' tmux-pane-words-prefix
+bindkey '^X^X' tmux-pane-words-anywhere
+zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' completer _tmux_pane_words
+zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' ignore-line current
+zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=* m:{A-Za-z}={a-zA-Z}'
+
 
 ## prompt setting
 function precmd {
@@ -262,8 +283,10 @@ if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
 fi
 
+
 ## other
 export EDITOR=vim   # required by yaourt
+
 
 ## colored man pages
 man() {
@@ -278,6 +301,7 @@ man() {
     man "$@"
 }
 
+
 ## lock all sessions when inactive for 300 seconds if in tty
 export TMOUT=300
 function TRAPALRM() { 
@@ -285,3 +309,11 @@ function TRAPALRM() {
         vlock
     fi
 }
+
+
+## userul funcions
+# h -- grep history
+h() {
+    fc -l 0 -1 | sed -n "/$1/s/^ */!/p" | tail -n ${2:-10}
+}
+alias h=' h'

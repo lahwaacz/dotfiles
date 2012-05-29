@@ -32,17 +32,18 @@ case "$1" in
                 oblogout
                 ;;
             LID)
-                /etc/acpi/actions/lid_toggle.sh
+                /usr/local/bin/lock-tmux-console-clients.sh
+                su $USER -c "/usr/local/bin/lock-X-session.sh"
+                /etc/acpi/actions/toggle_dpms.sh
                 ;;
             VOLUP|VOLDN|MUTE)
                 /etc/acpi/actions/osd_volume.sh
                 ;;
             SCRNLCK)
                 /usr/local/bin/lock-tmux-console-clients.sh
-                su $USER -c "lock-X-session.sh"
+                su $USER -c "/usr/local/bin/lock-X-session.sh"
                 ;;
             WLAN)
-                /etc/acpi/actions/wireless-switch.sh
                 if [ -f /var/run/wpa_supplicant_*.pid ]; then
                     rc.d stop net-auto-wireless
                 else

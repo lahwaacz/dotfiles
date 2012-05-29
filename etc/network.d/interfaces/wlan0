@@ -1,0 +1,5 @@
+RFKILL='hard'
+RFKILL_NAME='phy0'
+DHCLIENT='yes'
+POST_UP='rc.d start dropboxd; echo 1 > /sys/devices/platform/asus_laptop/wlan'
+PRE_DOWN='rc.d stop dropboxd; echo 0 > /sys/devices/platform/asus_laptop/wlan'
