@@ -1,0 +1,13 @@
+# complete words from tmux pane
+# http://blog.plenz.com/2012-01/zsh-complete-words-from-tmux-pane.html
+
+_tmux_pane_words() {
+    local expl
+    local -a w
+    if [[ -z "$TMUX_PANE" ]]; then
+        _message "not running inside tmux!"
+        return 1
+    fi
+    w=( ${(u)=$(tmux capture-pane \; show-buffer \; delete-buffer)} )
+    _wanted values expl 'words from current tmux pane' compadd -a w
+}

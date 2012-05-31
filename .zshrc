@@ -1,5 +1,5 @@
 ## history and directory stack config
-HISTFILE=~/.zsh_history
+HISTFILE=$XDG_CONFIG_HOME/zsh/history
 HISTSIZE=100000
 SAVEHIST=100000
 DIRSTACKSIZE=100
@@ -31,8 +31,8 @@ fi
 
 
 ## completion
-fpath=(~/.zsh/completion $fpath) 
-autoload -U ~/.zsh/completion/*(:t)
+fpath=($XDG_CONFIG_HOME/zsh/completion $fpath) 
+autoload -U $XDG_CONFIG_HOME/zsh/completion/*(:t)
 autoload -U compinit
 compinit
 zstyle ':completion:*' menu select
@@ -278,9 +278,9 @@ bindkey '^i' expand-or-complete-prefix # Attempt shell expansion on the current 
 bindkey '^R' history-incremental-search-backward # Search backward incrementally for a specified string.
 
 
-## source ~.zsh_aliases
-if [ -f ~/.zsh_aliases ]; then
-    . ~/.zsh_aliases
+## source some aliases
+if [ -f $XDG_CONFIG_HOME/zsh/aliases ]; then
+    . $XDG_CONFIG_HOME/zsh/aliases
 fi
 
 
@@ -314,6 +314,13 @@ function TRAPALRM() {
 ## userul funcions
 # h -- grep history
 h() {
-    fc -l 0 -1 | sed -n "/$1/s/^ */!/p" | tail -n ${2:-10}
+    fc -l 0 -1 | sed -n "/$1/s/^ */!/p" | tail -n 30
 }
 alias h=' h'
+
+
+## fortune message
+if [[ $(setopt | grep login) == "login" ]]; then
+    fortune ferengi_rules_of_acquisition
+    echo
+fi

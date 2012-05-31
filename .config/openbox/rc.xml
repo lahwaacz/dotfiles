@@ -266,48 +266,20 @@
         <desktop>yes</desktop>
       </action>
     </keybind>
-    <!-- Keybindings for running applications -->
-    <keybind key="W-e">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>PCManFM</name>
-        </startupnotify>
-        <command>pcmanfm</command>
-      </action>
-    </keybind>
-    <!--keybindings for LXPanel -->
-    <keybind key="W-r">
-      <action name="Execute">
-        <command>lxpanelctl run</command>
-      </action>
-    </keybind>
-    <keybind key="A-F2">
-      <action name="Execute">
-        <command>lxpanelctl run</command>
-      </action>
-    </keybind>
-    <keybind key="C-Escape">
-      <action name="Execute">
-        <command>lxpanelctl menu</command>
-      </action>
-    </keybind>
-    <keybind key="F11">
-      <action name="ToggleFullscreen"/>
-    </keybind>
-    <!-- Launch Task Manager with Ctrl+Alt+Del -->
-    <keybind key="A-C-Delete">
-      <action name="Execute">
-        <command>lxtask</command>
-      </action>
-    </keybind>
+    <!-- printscreen -->
     <keybind key="Print">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
           <name>ScreenShot</name>
         </startupnotify>
-        <command>bash -c "xwd | convert - /media/data/Bordýlek/screenshot-$(date +%s).png"</command>
+        <command>bash -c "xwd -root | convert - /home/lahwaacz/Bordýlek/screenshot-$(date +%Y-%m-%d@%H:%M:%S).png"</command>
+      </action>
+    </keybind>
+    <!-- show root menu -->
+    <keybind key="A-C-q">
+      <action name="ShowMenu">
+        <menu>root-menu</menu>
       </action>
     </keybind>
   </keyboard>
