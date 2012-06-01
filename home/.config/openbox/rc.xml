@@ -37,7 +37,7 @@
     <primaryMonitor/>
   </placement>
   <theme>
-    <name>Mikachu</name>
+    <name>Onyx-black</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -633,7 +633,8 @@
     <manageDesktops>yes</manageDesktops>
     <!-- show the manage desktops section in the client-list-(combined-)menu -->
   </menu>
-  <applications><!--
+  <applications>
+    <!--
   # this is an example with comments through out. use these to make your
   # own rules, but without the comments of course.
 
@@ -705,58 +706,58 @@
   # end of the example
 -->
     <application name="lxterminal">
-        <maximized>true</maximized>
+      <maximized>true</maximized>
     </application>
     <application name="pcmanfm">
-        <maximized>true</maximized>
+      <maximized>true</maximized>
     </application>
     <application name="chromium">
-        <maximized>true</maximized>
+      <maximized>true</maximized>
     </application>
     <application name="speedcrunch">
-        <maximized>true</maximized>
+      <maximized>true</maximized>
     </application>
     <application name="easytag">
-        <maximized>true</maximized>
+      <maximized>true</maximized>
     </application>
     <application name="vlc">
-        <maximized>true</maximized>
+      <maximized>true</maximized>
     </application>
     <application name="clementine">
-        <maximized>true</maximized>
+      <maximized>true</maximized>
     </application>
     <application name="evince">
-        <maximized>true</maximized>
+      <maximized>true</maximized>
     </application>
     <application name="Eclipse">
-        <maximized>true</maximized>
+      <maximized>true</maximized>
     </application>
     <application name="inkscape">
-        <maximized>true</maximized>
+      <maximized>true</maximized>
     </application>
     <application name="gvim">
-        <maximized>true</maximized>
+      <maximized>true</maximized>
     </application>
     <application name="transmission-qt">
-        <maximized>true</maximized>
+      <maximized>true</maximized>
     </application>
     <application name="tk">
-        <maximized>true</maximized>
+      <maximized>true</maximized>
     </application>
     <application name="Pidgin">
-        <position>
-            <x>-0</x>
-            <y>-0</y>
-        </position>
+      <position>
+        <x>-0</x>
+        <y>-0</y>
+      </position>
     </application>
     <application name="qemu-system-x86_64">
-        <position>
-            <x>0</x>
-            <y>0</y>
-        </position>
+      <position>
+        <x>0</x>
+        <y>0</y>
+      </position>
     </application>
     <application type="dialog">
-        <maximized>false</maximized>
+      <maximized>false</maximized>
     </application>
   </applications>
 </openbox_config>

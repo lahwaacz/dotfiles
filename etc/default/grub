@@ -1,5 +1,5 @@
 GRUB_DEFAULT=0
-GRUB_TIMEOUT=5
+GRUB_TIMEOUT=3
 GRUB_DISTRIBUTOR="Arch Linux"
 GRUB_CMDLINE_LINUX_DEFAULT="init=/sbin/e4rat-lite-preload pcie_aspm=force radeon.modeset=1 resume=UUID=5c71af88-7f2a-46d7-9cdd-42530a22ec3e resume_offset=886784"
 GRUB_CMDLINE_LINUX=""

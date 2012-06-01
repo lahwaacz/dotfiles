@@ -3,11 +3,10 @@
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://openbox.org/">
   <menu id="root-menu" label="Applications">
+    <item label="Web Browser" icon="/usr/share/pixmaps/firefox.png"><action name="Execute"><execute>firefox</execute></action></item>
     <item label="File Manager" icon="/usr/share/pixmaps/spacefm.png"><action name="Execute"><execute>spacefm</execute></action></item>
     <item label="Terminal" icon="/usr/share/pixmaps/lxterminal.png"><action name="Execute"><execute>lxterminal</execute></action></item>
     <item label="Editor" icon="/usr/share/pixmaps/gvim.png"><action name="Execute"><execute>gvim</execute></action></item>
-    <item label="Web Browser" icon="/usr/share/pixmaps/firefox.png"><action name="Execute"><execute>firefox</execute></action></item>
-    <item label="Run command" icon="/home/lahwaacz/.local/share/icons/system-run.png"><action name="Execute"><execute>gmrun</execute></action></item>
     <item label="Instant messaging" icon="/usr/share/icons/hicolor/24x24/apps/pidgin.png"><action name="Execute"><execute>pidgin</execute></action></item>
   <separator label="Applications"/>
   <menu id="Accessories" icon="/home/lahwaacz/.local/share/icons/applications-utilities.png" label="Accessories">
@@ -94,7 +93,6 @@
     <item label="IcedTea Web Control Panel" icon="/usr/share/pixmaps/javaws.png"><action name="Execute"><execute>/usr/lib/jvm/java-7-openjdk/bin/itweb-settings</execute></action></item>
     <item label="Monitor Settings" icon="/home/lahwaacz/.local/share/icons/display.png"><action name="Execute"><execute>lxrandr</execute></action></item>
     <item label="Openbox Configuration Manager" icon="/usr/share/pixmaps/obconf.png"><action name="Execute"><execute>obconf</execute></action></item>
-    <item label="Panel tint2" icon="/usr/share/pixmaps/tint2conf.png"><action name="Execute"><execute>tint2conf</execute></action></item>
     <item label="Privilege granting" icon="/usr/share/pixmaps/gksu.png"><action name="Execute"><execute>gksu-properties</execute></action></item>
     <item label="Qt Config " icon="/usr/share/icons/hicolor/64x64/apps/qtlogo.png"><action name="Execute"><execute>/usr/bin/qtconfig</execute></action></item>
   </menu>
@@ -105,23 +103,6 @@
     <item label="urxvt (client)" icon=""><action name="Execute"><execute>urxvtc</execute></action></item>
     <item label="urxvt (tabbed)" icon=""><action name="Execute"><execute>urxvt-tabbed</execute></action></item>
     <item label="urxvt" icon=""><action name="Execute"><execute>urxvt</execute></action></item>
-  </menu>
-  <separator />
-  <menu id="Openbox Settings" label="Openbox Settings">
-    <item label="Reconfigure Openbox"><action name="Reconfigure" /></item>
-    <item label="Openbox Configuration Manager"><action name="Execute"><execute>obconf</execute></action></item>
-    <item label="Configure autostarted apps"><action name="Execute"><execute>gvim /home/lahwaacz/.config/openbox/autostart</execute></action></item>
-    <item label="Edit rc.xml"><action name="Execute"><execute>gvim /home/lahwaacz/.config/openbox/rc.xml</execute></action></item>
-    <separator />
-    <item label="Generate a pipe menu"><action name="Execute"><execute>/usr/bin/obmenu-generator -p</execute></action></item>
-    <item label="Generate a static menu"><action name="Execute"><execute>/usr/bin/obmenu-generator -s</execute></action></item>
-    <item label="Generate a pipe menu with icons"><action name="Execute"><execute>/usr/bin/obmenu-generator -p -i</execute></action></item>
-    <item label="Generate a static menu with icons"><action name="Execute"><execute>/usr/bin/obmenu-generator -s -i</execute></action></item>
-    <separator />
-    <item label="Edit menu.xml"><action name="Execute"><execute>gvim /home/lahwaacz/.config/openbox/menu.xml</execute></action></item>
-    <item label="Edit configuration file"><action name="Execute"><execute>gvim /home/lahwaacz/.config/obmenu-generator/configuration.pl</execute></action></item>
-    <separator />
-    <item label="Regenerate configuration file"><action name="Execute"><execute>/usr/bin/obmenu-generator -r</execute></action></item>
   </menu>
   </menu>
 </openbox_menu>
