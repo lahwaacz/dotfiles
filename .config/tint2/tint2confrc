@@ -1,7 +1,0 @@
-#---------------------------------------------
-# TINT2CONF CONFIG FILE
-default_theme = /home/lahwaacz/.config/tint2/default.tint2rc
-cmd_property = python2 /usr/bin/tintwizard.py
-width = 884
-height = 350
-
