@@ -104,6 +104,11 @@ zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' completer _tmux_pane_wo
 zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' ignore-line current
 zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=* m:{A-Za-z}={a-zA-Z}'
 
+# Compile zcompdump, if modified, to increase startup speed.
+if [ "$HOME/.zcompdump" -nt "$HOME/.zcompdump.zwc" -o ! -e "$HOME/.zcompdump.zwc" ]; then
+    zcompile "$HOME/.zcompdump"
+fi
+
 
 ## prompt setting
 function precmd {
