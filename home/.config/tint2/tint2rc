@@ -54,7 +54,6 @@ launcher_item_app = /usr/share/applications/lxterminal.desktop
 launcher_item_app = /usr/share/applications/spacefm.desktop
 launcher_item_app = /usr/share/applications/eclipse.desktop
 launcher_item_app = /usr/share/applications/speedcrunch.desktop
-launcher_item_app = /usr/share/applications/clementine.desktop
 
 # Taskbar
 taskbar_mode = single_desktop
@@ -90,7 +89,7 @@ font_shadow = 0
 
 # System Tray
 systray = 1
-systray_padding = 0 0 1
+systray_padding = 0 2 1
 systray_sort = right2left
 systray_background_id = 0
 systray_icon_size = 0

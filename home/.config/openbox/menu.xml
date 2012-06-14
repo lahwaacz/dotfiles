@@ -26,7 +26,6 @@
     <item label="CMake" icon="/usr/share/pixmaps/CMakeSetup32.png"><action name="Execute"><execute>cmake-gui</execute></action></item>
     <item label="DreamPie" icon="/usr/share/pixmaps/dreampie.png"><action name="Execute"><execute>dreampie</execute></action></item>
     <item label="Eclipse" icon="/usr/share/icons/hicolor/48x48/apps/eclipse.png"><action name="Execute"><execute>eclipse</execute></action></item>
-    <item label="OpenJDK Monitoring &amp; Management Console" icon="/usr/share/icons/hicolor/24x24/apps/java.png"><action name="Execute"><execute>/usr/bin/jconsole</execute></action></item>
     <item label="OpenJDK Policy Tool" icon="/usr/share/icons/hicolor/24x24/apps/java.png"><action name="Execute"><execute>/usr/bin/policytool</execute></action></item>
     <item label="Qt Assistant" icon="/usr/share/icons/hicolor/32x32/apps/assistant.png"><action name="Execute"><execute>/usr/bin/assistant</execute></action></item>
     <item label="Qt Demo" icon="/usr/share/icons/hicolor/64x64/apps/qtlogo.png"><action name="Execute"><execute>/usr/bin/qtdemo</execute></action></item>
@@ -56,11 +55,14 @@
   </menu>
   <menu id="Multimedia" icon="/home/lahwaacz/.local/share/icons/applications-multimedia.png" label="Multimedia">
     <item label="Avidemux (qt)" icon="/usr/share/pixmaps/avidemux.png"><action name="Execute"><execute>avidemux2_qt4</execute></action></item>
+    <item label="DeaDBeeF" icon="/usr/share/icons/hicolor/36x36/apps/deadbeef.png"><action name="Execute"><execute>deadbeef</execute></action></item>
     <item label="EasyTAG" icon="/usr/share/pixmaps/EasyTAG_icon.xpm"><action name="Execute"><execute>easytag</execute></action></item>
+    <item label="Gaupol" icon="/usr/share/icons/hicolor/24x24/apps/gaupol.png"><action name="Execute"><execute>gaupol</execute></action></item>
     <item label="HandBrake" icon="/usr/share/icons/hicolor/128x128/apps/hb-icon.png"><action name="Execute"><execute>ghb</execute></action></item>
+    <item label="MusicBrainz Picard" icon="/usr/share/icons/hicolor/128x128/apps/picard.png"><action name="Execute"><execute>picard</execute></action></item>
     <item label="QT V4L2 test Utility" icon="/usr/share/icons/hicolor/64x64/apps/qv4l2.png"><action name="Execute"><execute>qv4l2</execute></action></item>
+    <item label="Sonata" icon="/usr/share/pixmaps/sonata.png"><action name="Execute"><execute>sonata</execute></action></item>
     <item label="SubDownloader" icon="/usr/share/pixmaps/subdownloader.png"><action name="Execute"><execute>subdownloader</execute></action></item>
-    <item label="Subtitle Editor" icon="/usr/share/icons/hicolor/24x24/apps/subtitleeditor.png"><action name="Execute"><execute>subtitleeditor</execute></action></item>
     <item label="VLC media player" icon="/usr/share/pixmaps/vlc.png"><action name="Execute"><execute>/usr/bin/vlc</execute></action></item>
     <item label="Volti" icon="/home/lahwaacz/.local/share/icons/multimedia-volume-control.png"><action name="Execute"><execute>volti</execute></action></item>
   </menu>
@@ -85,7 +87,6 @@
     <item label="LibreOffice Impress" icon="/usr/share/icons/hicolor/128x128/apps/libreoffice-impress.png"><action name="Execute"><execute>libreoffice --impress</execute></action></item>
     <item label="LibreOffice Writer" icon="/usr/share/icons/hicolor/128x128/apps/libreoffice-writer.png"><action name="Execute"><execute>libreoffice --writer</execute></action></item>
     <item label="Texmaker" icon="/usr/share/pixmaps/texmaker.png"><action name="Execute"><execute>texmaker</execute></action></item>
-    <item label="Xournal" icon="/home/lahwaacz/.local/share/icons/xournal.png"><action name="Execute"><execute>xournal</execute></action></item>
   </menu>
   <separator/>
   <menu id="Settings" icon="/home/lahwaacz/.local/share/icons/applications-settings.png" label="Settings">
@@ -98,8 +99,10 @@
   </menu>
   <menu id="System" icon="/home/lahwaacz/.local/share/icons/applications-system.png" label="System">
     <item label="AQEMU" icon="/usr/share/pixmaps/aqemu_48x48.png"><action name="Execute"><execute>aqemu</execute></action></item>
+    <item label="dconf Editor" icon="/usr/share/icons/hicolor/64x64/apps/dconf-editor.png"><action name="Execute"><execute>dconf-editor</execute></action></item>
     <item label="GParted" icon="/usr/share/icons/hicolor/24x24/apps/gparted.png"><action name="Execute"><execute>gparted-pkexec</execute></action></item>
-    <item label="Manage Printing" icon="/home/lahwaacz/.local/share/icons/cups.png"><action name="Execute"><execute>/usr/bin/xdg-open http://localhost:631/</execute></action></item>
+    <item label="Manage Printing" icon="/usr/share/icons/hicolor/64x64/apps/cups.png"><action name="Execute"><execute>/usr/bin/xdg-open http://localhost:631/</execute></action></item>
+    <item label="SpaceFM" icon="/usr/share/pixmaps/spacefm.png"><action name="Execute"><execute>spacefm</execute></action></item>
     <item label="urxvt (client)" icon=""><action name="Execute"><execute>urxvtc</execute></action></item>
     <item label="urxvt (tabbed)" icon=""><action name="Execute"><execute>urxvt-tabbed</execute></action></item>
     <item label="urxvt" icon=""><action name="Execute"><execute>urxvt</execute></action></item>
