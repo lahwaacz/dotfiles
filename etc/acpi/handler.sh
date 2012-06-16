@@ -37,7 +37,7 @@ case "$1" in
                 /etc/acpi/actions/toggle_dpms.sh
                 ;;
             VOLUP|VOLDN|MUTE)
-                /etc/acpi/actions/osd_volume.sh
+                /etc/acpi/actions/osd_volume.sh "$2"
                 ;;
             SCRNLCK)
                 /usr/local/bin/lock-tmux-console-clients.sh

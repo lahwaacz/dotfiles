@@ -17,3 +17,4 @@ fi
 ## autostart applications
 volti &
 pidgin &
+lxterminal -e tmx main &

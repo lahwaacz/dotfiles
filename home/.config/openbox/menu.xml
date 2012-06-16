@@ -56,7 +56,6 @@
   <menu id="Multimedia" icon="/home/lahwaacz/.local/share/icons/applications-multimedia.png" label="Multimedia">
     <item label="Avidemux (qt)" icon="/usr/share/pixmaps/avidemux.png"><action name="Execute"><execute>avidemux2_qt4</execute></action></item>
     <item label="DeaDBeeF" icon="/usr/share/icons/hicolor/36x36/apps/deadbeef.png"><action name="Execute"><execute>deadbeef</execute></action></item>
-    <item label="EasyTAG" icon="/usr/share/pixmaps/EasyTAG_icon.xpm"><action name="Execute"><execute>easytag</execute></action></item>
     <item label="Gaupol" icon="/usr/share/icons/hicolor/24x24/apps/gaupol.png"><action name="Execute"><execute>gaupol</execute></action></item>
     <item label="HandBrake" icon="/usr/share/icons/hicolor/128x128/apps/hb-icon.png"><action name="Execute"><execute>ghb</execute></action></item>
     <item label="MusicBrainz Picard" icon="/usr/share/icons/hicolor/128x128/apps/picard.png"><action name="Execute"><execute>picard</execute></action></item>

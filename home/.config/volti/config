@@ -1,0 +1,28 @@
+[card-0]
+control = Master
+mask_control = 1023
+mask_lock = 63
+
+[global]
+mixer_show_values = 1
+scale_increment = 6.0
+card_index = 0
+icon_theme = Default
+scale_show_value = 1
+mixer = alsamixer
+show_tooltip = 1
+notify_position = 1
+keys = 0
+toggle = mute
+mixer_internal = 1
+notify_body = {volume}
+	{card}
+	{mixer}
+keys_backend = xlib
+run_in_terminal = 1
+notify_timeout = 3.0
+show_notify = 0
+
+[card-1]
+mask_lock = 0
+
