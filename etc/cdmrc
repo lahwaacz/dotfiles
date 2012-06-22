@@ -49,7 +49,7 @@ locktty=no
 # unless you explicitly check for [ -t 0 ] or that every login shell
 # is also interactive. However, we're sending stdout and stderr to
 # /dev/null, so you won't see the complaints.
-loginshell=no
+loginshell=yes
 
 # The use of consolekit has recently become manditory with hal. However,
 # some users might prefer not using either one. If you don't want to

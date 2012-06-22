@@ -9,5 +9,5 @@
 127.0.0.1   data.asusntb.lan
 127.0.0.1   mpd.asusntb.lan
 127.0.0.1   pwdhash.asusntb.lan
-127.0.0.1   sagedoc.asusntb.lan
+127.0.0.1   doc.asusntb.lan  sage.doc.asusntb.lan  python.doc.asusntb.lan  qt.doc.asusntb.lan
 # End of file

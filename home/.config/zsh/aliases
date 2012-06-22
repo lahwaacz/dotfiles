@@ -29,7 +29,7 @@ alias ps='ps aux'
 alias rsp='ssh root@10.0.0.1 -t /root/tmux-startup.sh'
 alias pacman='pacman-color'
 
-alias youtube-dl='youtube-dl -c -o "/media/data/Bordýlek/%(title)s.%(ext)s"'
+alias youtube-dl='youtube-dl -c -o "/media/data/stuff/%(title)s.%(ext)s"'
 alias wgetr='wget --random-wait -r -k -p -e robots=off -U mozilla -t 3 -l 1'
 alias g++='g++ -Wall'
 alias make='make -j2'

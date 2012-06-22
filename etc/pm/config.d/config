@@ -32,7 +32,7 @@ SLEEP_MODULE="uswsusp"
 SUSPEND_MODULES="uhci_hcd ohci_hcd ehci_hcd"
 
 # If you want to keep hooks from running, add their names  here.
-HOOK_BLACKLIST="00logging 11netcfg"
+HOOK_BLACKLIST="00logging"
 
 # If you want to unconditionally add parameters to the commandline,
 # add them here.

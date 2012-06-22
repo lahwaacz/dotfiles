@@ -19,10 +19,18 @@
 # ati low powermode
 echo low > /sys/class/drm/card0/device/power_profile
 
+(sleep 20 && echo 1500 > /proc/sys/vm/dirty_writeback_centisecs) &
+
+# turn off bluetooth and wifi led
+echo 0 > /sys/devices/platform/asus_laptop/bluetooth
+echo 0 > /sys/devices/platform/asus_laptop/wlan
+
+
+######################################
+## console stuff
+
 # load custom keymap
 loadkeys /usr/local/share/kbd/keymaps/personal.map
 
-(sleep 20 && echo 1500 > /proc/sys/vm/dirty_writeback_centisecs) &
-
-# turn off bluetooth led
-echo 0 > /sys/devices/platform/asus_laptop/bluetooth
+# turn off monitor after 1 minute
+setterm -blank 1 -powersave powerdown

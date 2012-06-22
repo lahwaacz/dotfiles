@@ -136,7 +136,7 @@ cs_CZ.UTF-8 UTF-8
 #en_CA ISO-8859-1  
 #en_DK.UTF-8 UTF-8  
 #en_DK ISO-8859-1  
-#en_GB.UTF-8 UTF-8  
+en_GB.UTF-8 UTF-8  
 #en_GB ISO-8859-1  
 #en_HK.UTF-8 UTF-8  
 #en_HK ISO-8859-1  
@@ -151,7 +151,7 @@ cs_CZ.UTF-8 UTF-8
 #en_PH ISO-8859-1  
 #en_SG.UTF-8 UTF-8  
 #en_SG ISO-8859-1  
-en_US.UTF-8 UTF-8  
+#en_US.UTF-8 UTF-8  
 #en_US ISO-8859-1  
 #en_ZA.UTF-8 UTF-8  
 #en_ZA ISO-8859-1  
