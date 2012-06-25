@@ -708,22 +708,13 @@
     <application name="lxterminal">
       <maximized>true</maximized>
     </application>
-    <application name="pcmanfm">
-      <maximized>true</maximized>
-    </application>
     <application name="chromium">
       <maximized>true</maximized>
     </application>
     <application name="speedcrunch">
       <maximized>true</maximized>
     </application>
-    <application name="easytag">
-      <maximized>true</maximized>
-    </application>
     <application name="vlc">
-      <maximized>true</maximized>
-    </application>
-    <application name="clementine">
       <maximized>true</maximized>
     </application>
     <application name="evince">
@@ -749,6 +740,15 @@
     </application>
     <application name="gimp">
       <maximized>true</maximized>
+    </application>
+    <application name="qstardict">
+      <maximized>true</maximized>
+    </application>
+    <application name="mplayer2">
+      <position>
+        <x>center</x>
+        <y>center</y>
+      </position>
     </application>
     <application name="Pidgin">
       <position>

@@ -17,9 +17,9 @@
     <item label="Image Viewer" icon="/usr/share/pixmaps/gpicview.png"><action name="Execute"><execute>gpicview</execute></action></item>
     <item label="LXTerminal" icon="/usr/share/pixmaps/lxterminal.png"><action name="Execute"><execute>lxterminal</execute></action></item>
     <item label="moserial Terminal" icon="/usr/share/icons/hicolor/48x48/apps/moserial.png"><action name="Execute"><execute>moserial</execute></action></item>
+    <item label="QStarDict" icon="/usr/share/pixmaps/qstardict.png"><action name="Execute"><execute>qstardict</execute></action></item>
     <item label="SpaceFM File Search" icon="/usr/share/pixmaps/spacefm-find.png"><action name="Execute"><execute>spacefm --find-files</execute></action></item>
     <item label="SpaceFM" icon="/usr/share/pixmaps/spacefm.png"><action name="Execute"><execute>spacefm</execute></action></item>
-    <item label="StarDict" icon="/usr/share/pixmaps/stardict.png"><action name="Execute"><execute>stardict</execute></action></item>
     <item label="Vi IMproved" icon="/usr/share/pixmaps/gvim.png"><action name="Execute"><execute>gvim -f</execute></action></item>
   </menu>
   <menu id="Development" icon="/home/lahwaacz/.local/share/icons/applications-development.png" label="Development">
@@ -37,7 +37,7 @@
     <item label="SAGE" icon="/opt/sage/data/extcode/notebook/images/sageicon.png"><action name="Execute"><execute>lxterminal -e /opt/sage/sage -notebook</execute></action></item>
     <item label="SciDAVis" icon="/usr/share/icons/hicolor/64x64/apps/scidavis.png"><action name="Execute"><execute>scidavis</execute></action></item>
     <item label="SpeedCrunch" icon="/usr/share/pixmaps/speedcrunch.png"><action name="Execute"><execute>speedcrunch</execute></action></item>
-    <item label="Stellarium nightsky renderer" icon="/usr/share/pixmaps/stellarium.png"><action name="Execute"><execute>stellarium</execute></action></item>
+    <item label="Stellarium nightsky renderer" icon="/usr/share/pixmaps/stellarium.xpm"><action name="Execute"><execute>stellarium</execute></action></item>
   </menu>
   <menu id="Games" icon="/home/lahwaacz/.local/share/icons/applications-games.png" label="Games">
     <item label="Fillets-NG" icon="/usr/share/pixmaps/fillets-ng.png"><action name="Execute"><execute>fillets</execute></action></item>
