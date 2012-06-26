@@ -27,7 +27,7 @@
   <placement>
     <policy>Smart</policy>
     <!-- 'Smart' or 'UnderMouse' -->
-    <center>yes</center>
+    <center>no</center>
     <!-- whether to place windows in the center of the free area found or
        the top left corner -->
     <monitor>Any</monitor>
@@ -723,9 +723,6 @@
     <application name="Eclipse">
       <maximized>true</maximized>
     </application>
-    <application name="inkscape">
-      <maximized>true</maximized>
-    </application>
     <application name="gvim">
       <maximized>true</maximized>
     </application>
@@ -744,7 +741,7 @@
     <application name="qstardict">
       <maximized>true</maximized>
     </application>
-    <application name="mplayer2">
+    <application class="mplayer2">
       <position>
         <x>center</x>
         <y>center</y>
