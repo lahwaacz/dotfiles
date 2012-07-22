@@ -55,6 +55,22 @@ case "$1" in
                 ;;
         esac
         ;;
+    cd*)
+        case "$2" in
+            CDPLAY)
+                mpc toggle
+                ;;
+            CDSTOP)
+                mpc stop
+                ;;
+            CDPREV)
+                mpc prev
+                ;;
+            CDNEXT)
+                mpc next
+                ;;
+        esac
+        ;;
     video*)
         case "$2" in
             BRTUP|BRTDN)
