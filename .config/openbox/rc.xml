@@ -741,6 +741,9 @@
     <application name="qstardict">
       <maximized>true</maximized>
     </application>
+    <application name="mirage">
+      <maximized>true</maximized>
+    </application>
     <application class="mplayer2">
       <position>
         <x>center</x>
@@ -750,7 +753,7 @@
     <application name="Pidgin">
       <position>
         <x>-0</x>
-        <y>-0</y>
+        <y>0</y>
       </position>
     </application>
     <application name="qemu-system-x86_64">
@@ -761,6 +764,13 @@
     </application>
     <application type="dialog">
       <maximized>false</maximized>
+    </application>
+    <application name="qalendar">
+      <skip_taskbar>true</skip_taskbar>
+      <position>
+        <x>-0</x>
+        <y>-0</y>
+      </position>
     </application>
   </applications>
 </openbox_config>
