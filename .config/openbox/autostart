@@ -16,5 +16,7 @@ fi
 
 ## autostart applications
 volti &
+urxvt -e tmx main &
+
 pidgin &
-lxterminal -e tmx main &
+qstardict &

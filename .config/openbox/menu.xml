@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://openbox.org/">
   <menu id="root-menu" label="Applications">
     <item label="Web Browser" icon="/usr/share/icons/hicolor/64x64/apps/chromium.png"><action name="Execute"><execute>chromium</execute></action></item>
-    <item label="File Manager" icon="/usr/share/pixmaps/spacefm.png"><action name="Execute"><execute>spacefm</execute></action></item>
+    <item label="File Manager" icon="/usr/share/icons/hicolor/48x48/apps/spacefm.png"><action name="Execute"><execute>spacefm</execute></action></item>
     <item label="Terminal" icon="/usr/share/pixmaps/lxterminal.png"><action name="Execute"><execute>lxterminal</execute></action></item>
     <item label="Editor" icon="/usr/share/pixmaps/gvim.png"><action name="Execute"><execute>gvim</execute></action></item>
     <item label="Instant messaging" icon="/usr/share/icons/hicolor/24x24/apps/pidgin.png"><action name="Execute"><execute>pidgin</execute></action></item>
@@ -16,8 +16,8 @@
     <item label="LXTerminal" icon="/usr/share/pixmaps/lxterminal.png"><action name="Execute"><execute>lxterminal</execute></action></item>
     <item label="moserial Terminal" icon="/usr/share/icons/hicolor/48x48/apps/moserial.png"><action name="Execute"><execute>moserial</execute></action></item>
     <item label="QStarDict" icon="/usr/share/pixmaps/qstardict.png"><action name="Execute"><execute>qstardict</execute></action></item>
-    <item label="SpaceFM File Search" icon="/usr/share/pixmaps/spacefm-find.png"><action name="Execute"><execute>spacefm --find-files</execute></action></item>
-    <item label="SpaceFM" icon="/usr/share/pixmaps/spacefm.png"><action name="Execute"><execute>spacefm</execute></action></item>
+    <item label="SpaceFM File Search" icon="/usr/share/icons/hicolor/48x48/apps/spacefm-find.png"><action name="Execute"><execute>spacefm --find-files</execute></action></item>
+    <item label="SpaceFM" icon="/usr/share/icons/hicolor/48x48/apps/spacefm.png"><action name="Execute"><execute>spacefm</execute></action></item>
     <item label="Vi IMproved" icon="/usr/share/pixmaps/gvim.png"><action name="Execute"><execute>gvim -f</execute></action></item>
   </menu>
   <menu id="Development" icon="/home/lahwaacz/.local/share/icons/applications-development.png" label="Development">
@@ -71,7 +71,6 @@
     <item label="FreeRapid Downloader" icon="/usr/share/pixmaps/freerapid.png"><action name="Execute"><execute>freerapid</execute></action></item>
     <item label="Pidgin Internet Messenger" icon="/usr/share/icons/hicolor/24x24/apps/pidgin.png"><action name="Execute"><execute>pidgin</execute></action></item>
     <item label="Qtransmission Bittorrent Client" icon="/usr/share/pixmaps/transmission-qt.png"><action name="Execute"><execute>transmission-qt</execute></action></item>
-    <item label="Tor-Browser (en-US)" icon="/usr/share/pixmaps/tor-browser-en.png"><action name="Execute"><execute>/usr/bin/tor-browser-en</execute></action></item>
   </menu>
   <menu id="Office" icon="/home/lahwaacz/.local/share/icons/applications-office.png" label="Office">
     <item label="Document Viewer" icon="/usr/share/icons/hicolor/24x24/apps/evince.png"><action name="Execute"><execute>evince</execute></action></item>
@@ -103,7 +102,7 @@
     <item label="dconf Editor" icon="/usr/share/icons/hicolor/64x64/apps/dconf-editor.png"><action name="Execute"><execute>dconf-editor</execute></action></item>
     <item label="GParted" icon="/usr/share/icons/hicolor/24x24/apps/gparted.png"><action name="Execute"><execute>gparted-pkexec</execute></action></item>
     <item label="Manage Printing" icon="/usr/share/icons/hicolor/64x64/apps/cups.png"><action name="Execute"><execute>/usr/bin/xdg-open http://localhost:631/</execute></action></item>
-    <item label="SpaceFM" icon="/usr/share/pixmaps/spacefm.png"><action name="Execute"><execute>spacefm</execute></action></item>
+    <item label="SpaceFM" icon="/usr/share/icons/hicolor/48x48/apps/spacefm.png"><action name="Execute"><execute>spacefm</execute></action></item>
     <item label="urxvt (client)" icon=""><action name="Execute"><execute>urxvtc</execute></action></item>
     <item label="urxvt (tabbed)" icon=""><action name="Execute"><execute>urxvt-tabbed</execute></action></item>
     <item label="urxvt" icon=""><action name="Execute"><execute>urxvt</execute></action></item>

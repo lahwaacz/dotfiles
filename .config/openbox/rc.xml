@@ -705,7 +705,7 @@
 
   # end of the example
 -->
-    <application name="lxterminal">
+    <application name="urxvt">
       <maximized>true</maximized>
     </application>
     <application name="chromium">
