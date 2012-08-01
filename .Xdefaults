@@ -1,0 +1,8 @@
+URxvt.geometry: 179x52
+URxvt.scrollBar: false
+URxvt.foreground: gray
+URxvt.background: black
+URxvt.font: xft:monospace:pixelsize=14
+URxvt.iconFile: /home/lahwaacz/.local/share/icons/terminal.png
+URxvt.buffered: true
+URxvt.cursorBlink: true
