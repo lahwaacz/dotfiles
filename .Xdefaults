@@ -6,3 +6,4 @@ URxvt.font: xft:monospace:pixelsize=14
 URxvt.iconFile: /home/lahwaacz/.local/share/icons/terminal.png
 URxvt.buffered: true
 URxvt.cursorBlink: true
+URxvt.iso14755: false

@@ -325,7 +325,16 @@ alias h=' h'
 
 
 ## fortune message
-if [[ $(setopt | grep login) == "login" ]]; then
-    fortune ferengi_rules_of_acquisition
-    echo
+#if [[ $(setopt | grep login) == "login" ]]; then
+#    fortune ferengi_rules_of_acquisition
+#    echo
+#fi
+
+
+## if first argument is "eval", evaluate next arguments as shell command and don't exit
+# usage: zsh -is eval 'your shell command here'
+if [[ $1 == eval ]]
+then
+    "$@"
+set --
 fi
