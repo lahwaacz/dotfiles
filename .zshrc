@@ -291,6 +291,7 @@ fi
 
 ## other
 export EDITOR=vim   # required by yaourt
+export COLORFGBG=default,default,default    # I think tmux sets this wrong
 
 
 ## colored man pages

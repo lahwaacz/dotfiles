@@ -42,7 +42,9 @@ if &term != "builtin_gui"
 endif
 
 syntax on               " Syntax highlighting on.
-set t_Co=256
+filetype on             " filetype detection
+au BufNewFile,BufRead *.log set filetype=messages       " syntax highlighting in all *.log files
+" set t_Co=256            " usually not needed
 
 set splitright          " Open new vertical split windows to the right of the current one, not the left.
 set splitbelow          " See above description. Opens new windows below, not above.
