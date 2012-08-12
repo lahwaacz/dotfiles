@@ -22,7 +22,7 @@ our $SCHEMA = [
     #            COMMAND               LABEL                ICON
     {item => ['chromium',           'Web Browser',       'chromium']},
     {item => ['spacefm',            'File Manager',      'spacefm']},
-    {item => [$CONFIG->{terminal},  'Terminal',          'lxterminal']},
+    {item => [$CONFIG->{terminal},  'Terminal',          'urxvt']},
     {item => [$CONFIG->{editor},    'Editor',            'gvim']},
     {item => ['pidgin',             'Instant messaging', 'pidgin']},
     #{item => [$items{run_command}, 'Run command',       'system-run']},
