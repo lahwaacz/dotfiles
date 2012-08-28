@@ -282,6 +282,12 @@
         <menu>root-menu</menu>
       </action>
     </keybind>
+    <!-- power button -->
+    <keybind key="XF86PowerOff">
+      <action name="Execute">
+        <command>oblogout</command>
+      </action>
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>8</dragThreshold>
@@ -714,7 +720,7 @@
     <application name="speedcrunch">
       <maximized>true</maximized>
     </application>
-    <application name="vlc">
+    <application name="smplayer">
       <maximized>true</maximized>
     </application>
     <application name="evince">
