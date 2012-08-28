@@ -4,28 +4,35 @@ _fmount() {
     local curcontext="$curcontext" state line
     typeset -A opt_args
 
-    _arguments \
-        '1: :->options'\
-        '2: :->path'
+    _arguments -C -s \
+        '(- :)-h[show help message]' \
+        '(- :)-a[print aliases from config file]' \
+        '(- :)-e[print supported file extensions]' \
+        '(- :)-p[print supported URL protocols]' \
+        '(-h -a -e -p)-u[umount]: :->umount' \
+        '(-h -a -e -p)-o[mount options]:mount options' \
+        '(-h -a -e -p -u): :->mount' && return 0
 
     case $state in
-        options)
-            _arguments '1:Options:(mount umount)'
+        mount)
+            _description aliases expl "aliases"
+            compadd "$expl[@]" `fmount.py -a 2>&1 | awk '{print $1}' | tr "\n" " "`
+
+            _description files expl "local files"
+            _files "$expl[@]" -W `pwd` -g "*.(#i)(7z|bz|bz2|bzip|bzip2|gz|gzi|gzip|iso|rar|tar|taz|tbz|tbz2|tg|tgz|tlzma|tz|tzl|xz|zip)(-.)"
+
+            _description url expl "URL"
+            _fmount_urls "$expl[@]"
+            return 0
             ;;
-        path)
-            case $words[2] in
-                mount)
-                    _description aliases expl "aliases"
-                    compadd "$expl[@]" `fmount.py --print-aliases`
-                    _description files expl "local files"
-                    _files "$expl[@]" -W `pwd` -g `fmount.py --print-archive-extensions`
-                    ;;
-                umount)
-                    _description aliases expl "aliases"
-                    compadd "$expl[@]" "all"
-                    _description files expl "local files"
-                    _files "$expl[@]" -W ~/mnt -g "(*/)"
-            esac 
+        umount)
+            _description aliases expl "aliases"
+            compadd "$expl[@]" "all"
+
+            _description files expl "local files"
+            _files "$expl[@]" -W $(cat ~/.config/fmount.conf | grep "MainPath" | awk '{print $3}') -g "(*/)"
+            return 0
+            ;;
     esac 
 }
 
