@@ -7,11 +7,11 @@ tmux new-session -d -s "$1"
 tmux move-window -s "$1":1 -t "$1":10
  
 # 1 - todo list
-tmux new-window -t "$1":1 -n todo   'zsh -is eval "vim ~/Dropbox/todo"'
+tmux new-window -t "$1":1 -n todo   'zsh -is eval "vim ~/Dropbox/Notes/todo"'
 # 2 - git
 tmux new-window -t "$1":2 -n git    'zsh -is eval "cd ~/git-lahwaacz/archlinux-dotfiles"'
 # 3 - Star Trek
-tmux new-window -t "$1":3 -n VOY    'zsh -is eval "cd /media/data/Filmy-NEW/Star.Trek.VOY/Season\ 2"'
+tmux new-window -t "$1":3 -n VOY    'zsh -is eval "cd ~/Filmy-NEW/Star.Trek.VOY/Season\ 5"'
 # 4 - empty shell
 tmux new-window -t "$1":4
 

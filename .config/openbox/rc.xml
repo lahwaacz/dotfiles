@@ -756,7 +756,7 @@
         <y>center</y>
       </position>
     </application>
-    <application name="Pidgin">
+    <application name="gajim">
       <position>
         <x>-0</x>
         <y>0</y>

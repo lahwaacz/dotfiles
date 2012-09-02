@@ -53,7 +53,7 @@ launcher_item_app = /usr/share/applications/urxvt.desktop
 launcher_item_app = /usr/share/applications/spacefm.desktop
 launcher_item_app = /usr/share/applications/eclipse.desktop
 launcher_item_app = /usr/share/applications/speedcrunch.desktop
-launcher_item_app = /usr/share/applications/gmpc.desktop
+launcher_item_app = /usr/share/applications/Pythagora.desktop
 
 # Taskbar
 taskbar_mode = single_desktop
