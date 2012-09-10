@@ -3,18 +3,17 @@
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://openbox.org/">
   <menu id="root-menu" label="Applications">
-    <item label="Web Browser" icon="/usr/share/icons/hicolor/64x64/apps/chromium.png"><action name="Execute"><execute>chromium</execute></action></item>
+    <item label="Web Browser" icon="/usr/share/icons/hicolor/16x16/apps/chromium.png"><action name="Execute"><execute>chromium</execute></action></item>
     <item label="File Manager" icon="/usr/share/icons/hicolor/48x48/apps/spacefm.png"><action name="Execute"><execute>spacefm</execute></action></item>
     <item label="Terminal" icon=""><action name="Execute"><execute>urxvt</execute></action></item>
     <item label="Editor" icon="/usr/share/pixmaps/gvim.png"><action name="Execute"><execute>gvim</execute></action></item>
-    <item label="Instant messaging" icon="/usr/share/icons/hicolor/24x24/apps/pidgin.png"><action name="Execute"><execute>pidgin</execute></action></item>
+    <item label="Instant messaging" icon=""><action name="Execute"><execute>pidgin</execute></action></item>
   <separator label="Applications"/>
   <menu id="Accessories" icon="/home/lahwaacz/.local/share/icons/applications-utilities.png" label="Accessories">
     <item label="Convert to utf-8" icon="/home/lahwaacz/.local/share/icons/text.png"><action name="Execute"><execute>urxvt -e '/home/lahwaacz/bin/convertToUtf8.py'</execute></action></item>
     <item label="FuseMounter" icon="/home/lahwaacz/.local/share/icons/archive.png"><action name="Execute"><execute>/home/lahwaacz/bin/fmount.py -X mount</execute></action></item>
     <item label="FuseUnmounter" icon="/home/lahwaacz/.local/share/icons/archive.png"><action name="Execute"><execute>/home/lahwaacz/bin/fmount.py -X umount</execute></action></item>
     <item label="Image Viewer" icon="/usr/share/pixmaps/gpicview.png"><action name="Execute"><execute>gpicview</execute></action></item>
-    <item label="NotifyOSD Configuration" icon="/usr/share/notifyosdconf/not.png"><action name="Execute"><execute>notifyconf</execute></action></item>
     <item label="QStarDict" icon="/usr/share/pixmaps/qstardict.png"><action name="Execute"><execute>qstardict</execute></action></item>
     <item label="SpaceFM File Search" icon="/usr/share/icons/hicolor/48x48/apps/spacefm-find.png"><action name="Execute"><execute>spacefm --find-files</execute></action></item>
     <item label="SpaceFM" icon="/usr/share/icons/hicolor/48x48/apps/spacefm.png"><action name="Execute"><execute>spacefm</execute></action></item>
@@ -22,82 +21,82 @@
   </menu>
   <menu id="Development" icon="/home/lahwaacz/.local/share/icons/applications-development.png" label="Development">
     <item label="CMake" icon="/usr/share/pixmaps/CMakeSetup32.png"><action name="Execute"><execute>cmake-gui</execute></action></item>
-    <item label="Eclipse" icon="/usr/share/icons/hicolor/48x48/apps/eclipse.png"><action name="Execute"><execute>eclipse</execute></action></item>
-    <item label="OpenJDK Policy Tool" icon="/usr/share/icons/hicolor/24x24/apps/java.png"><action name="Execute"><execute>/usr/bin/policytool</execute></action></item>
+    <item label="Eclipse" icon="/usr/share/icons/hicolor/16x16/apps/eclipse.png"><action name="Execute"><execute>eclipse</execute></action></item>
+    <item label="OpenJDK Policy Tool" icon="/usr/share/icons/hicolor/16x16/apps/java.png"><action name="Execute"><execute>/usr/bin/policytool</execute></action></item>
     <item label="Qt Assistant" icon="/usr/share/icons/hicolor/32x32/apps/assistant.png"><action name="Execute"><execute>/usr/bin/assistant</execute></action></item>
     <item label="Qt Demo" icon="/usr/share/icons/hicolor/64x64/apps/qtlogo.png"><action name="Execute"><execute>/usr/bin/qtdemo</execute></action></item>
     <item label="Qt Designer" icon="/usr/share/icons/hicolor/128x128/apps/designer.png"><action name="Execute"><execute>/usr/bin/designer</execute></action></item>
-    <item label="Qt Linguist" icon="/usr/share/icons/hicolor/64x64/apps/linguist.png"><action name="Execute"><execute>/usr/bin/linguist</execute></action></item>
+    <item label="Qt Linguist" icon="/usr/share/icons/hicolor/16x16/apps/linguist.png"><action name="Execute"><execute>/usr/bin/linguist</execute></action></item>
   </menu>
   <menu id="Education" icon="/home/lahwaacz/.local/share/icons/applications-science.png" label="Education">
-    <item label="GeoGebra" icon="/usr/share/icons/hicolor/36x36/apps/geogebra.png"><action name="Execute"><execute>geogebra</execute></action></item>
-    <item label="SciDAVis" icon="/usr/share/icons/hicolor/64x64/apps/scidavis.png"><action name="Execute"><execute>scidavis</execute></action></item>
+    <item label="GeoGebra" icon="/usr/share/icons/hicolor/96x96/apps/geogebra.png"><action name="Execute"><execute>geogebra</execute></action></item>
+    <item label="SciDAVis" icon="/usr/share/icons/hicolor/16x16/apps/scidavis.png"><action name="Execute"><execute>scidavis</execute></action></item>
     <item label="SpeedCrunch" icon="/usr/share/pixmaps/speedcrunch.png"><action name="Execute"><execute>speedcrunch</execute></action></item>
-    <item label="Stellarium nightsky renderer" icon="/usr/share/pixmaps/stellarium.xpm"><action name="Execute"><execute>stellarium</execute></action></item>
+    <item label="Stellarium nightsky renderer" icon="/usr/share/pixmaps/stellarium.png"><action name="Execute"><execute>stellarium</execute></action></item>
   </menu>
   <menu id="Games" icon="/home/lahwaacz/.local/share/icons/applications-games.png" label="Games">
     <item label="Fillets-NG" icon="/usr/share/pixmaps/fillets-ng.png"><action name="Execute"><execute>fillets</execute></action></item>
   </menu>
   <menu id="Graphics" icon="/home/lahwaacz/.local/share/icons/applications-graphics.png" label="Graphics">
     <item label="DjView4" icon="/usr/share/pixmaps/djvulibre-djview4.png"><action name="Execute"><execute>djview4</execute></action></item>
-    <item label="Document Viewer" icon="/usr/share/icons/hicolor/24x24/apps/evince.png"><action name="Execute"><execute>evince</execute></action></item>
-    <item label="GNU Image Manipulation Program" icon="/usr/share/icons/hicolor/24x24/apps/gimp.png"><action name="Execute"><execute>gimp-2.8</execute></action></item>
+    <item label="GNU Image Manipulation Program" icon="/usr/share/icons/hicolor/16x16/apps/gimp.png"><action name="Execute"><execute>gimp-2.8</execute></action></item>
     <item label="Image Viewer" icon="/usr/share/pixmaps/gpicview.png"><action name="Execute"><execute>gpicview</execute></action></item>
-    <item label="Inkscape" icon="/usr/share/icons/hicolor/24x24/apps/inkscape.png"><action name="Execute"><execute>inkscape</execute></action></item>
+    <item label="Inkscape" icon="/usr/share/icons/hicolor/16x16/apps/inkscape.png"><action name="Execute"><execute>inkscape</execute></action></item>
+    <item label="LibreOffice Draw" icon="/usr/share/icons/hicolor/16x16/apps/libreoffice-draw.png"><action name="Execute"><execute>libreoffice --draw</execute></action></item>
     <item label="PosteRazor" icon="/usr/share/icons/posterazor.png"><action name="Execute"><execute>posterazor</execute></action></item>
     <item label="Scan Tailor" icon="/home/lahwaacz/.local/share/icons/scantailor.png"><action name="Execute"><execute>scantailor</execute></action></item>
   </menu>
   <menu id="Multimedia" icon="/home/lahwaacz/.local/share/icons/applications-multimedia.png" label="Multimedia">
+    <item label="Audacity" icon="/usr/share/pixmaps/audacity.xpm"><action name="Execute"><execute>audacity</execute></action></item>
     <item label="avidemux (QT)" icon="/usr/share/pixmaps/avidemux.png"><action name="Execute"><execute>avidemux2_qt4</execute></action></item>
-    <item label="Gaupol" icon="/usr/share/icons/hicolor/24x24/apps/gaupol.png"><action name="Execute"><execute>gaupol</execute></action></item>
-    <item label="Gnome Music Player Client" icon="/usr/share/icons/hicolor/64x64/apps/gmpc.png"><action name="Execute"><execute>gmpc</execute></action></item>
+    <item label="Gaupol" icon="/usr/share/icons/hicolor/16x16/apps/gaupol.png"><action name="Execute"><execute>gaupol</execute></action></item>
     <item label="HandBrake" icon="/usr/share/icons/hicolor/128x128/apps/hb-icon.png"><action name="Execute"><execute>ghb</execute></action></item>
     <item label="MPlayer" icon=""><action name="Execute"><execute>mplayer</execute></action></item>
-    <item label="MusicBrainz Picard" icon="/usr/share/icons/hicolor/128x128/apps/picard.png"><action name="Execute"><execute>picard</execute></action></item>
-    <item label="QT V4L2 test Utility" icon="/usr/share/icons/hicolor/64x64/apps/qv4l2.png"><action name="Execute"><execute>qv4l2</execute></action></item>
+    <item label="MusicBrainz Picard" icon="/usr/share/icons/hicolor/16x16/apps/picard.png"><action name="Execute"><execute>picard</execute></action></item>
+    <item label="puddletag" icon="/usr/share/pixmaps/puddletag.png"><action name="Execute"><execute>puddletag</execute></action></item>
+    <item label="Pythagora" icon="/usr/share/Pythagora/icons/Pythagora.png"><action name="Execute"><execute>pythagora</execute></action></item>
+    <item label="QT V4L2 test Utility" icon="/usr/share/icons/hicolor/16x16/apps/qv4l2.png"><action name="Execute"><execute>qv4l2</execute></action></item>
     <item label="qt-recordMyDesktop" icon="/usr/share/pixmaps/qt-recordmydesktop.png"><action name="Execute"><execute>qt-recordMyDesktop</execute></action></item>
-    <item label="SMPlayer" icon="/usr/share/icons/hicolor/64x64/apps/smplayer.png"><action name="Execute"><execute>smplayer</execute></action></item>
+    <item label="SMPlayer" icon="/usr/share/icons/hicolor/16x16/apps/smplayer.png"><action name="Execute"><execute>smplayer</execute></action></item>
     <item label="SubDownloader" icon="/usr/share/pixmaps/subdownloader.png"><action name="Execute"><execute>subdownloader</execute></action></item>
     <item label="Volti" icon="/home/lahwaacz/.local/share/icons/multimedia-volume-control.png"><action name="Execute"><execute>volti</execute></action></item>
   </menu>
   <menu id="Network" icon="/home/lahwaacz/.local/share/icons/applications-internet.png" label="Network">
-    <item label="Chromium" icon="/usr/share/icons/hicolor/64x64/apps/chromium.png"><action name="Execute"><execute>chromium</execute></action></item>
+    <item label="Chromium" icon="/usr/share/icons/hicolor/16x16/apps/chromium.png"><action name="Execute"><execute>chromium</execute></action></item>
     <item label="Dropbox" icon="/usr/share/pixmaps/dropbox.png"><action name="Execute"><execute>dropboxd</execute></action></item>
+    <item label="dwb" icon="/usr/share/pixmaps/dwb.png"><action name="Execute"><execute>dwb</execute></action></item>
     <item label="ELinks" icon="/home/lahwaacz/.local/share/icons/html.png"><action name="Execute"><execute>urxvt -e '/usr/bin/elinks'</execute></action></item>
     <item label="Esmska" icon="/usr/share/pixmaps/esmska.png"><action name="Execute"><execute>esmska</execute></action></item>
-    <item label="Firefox" icon="/usr/share/icons/hicolor/24x24/apps/firefox.png"><action name="Execute"><execute>firefox</execute></action></item>
     <item label="FreeRapid Downloader" icon="/usr/share/pixmaps/freerapid.png"><action name="Execute"><execute>freerapid</execute></action></item>
-    <item label="Pidgin Internet Messenger" icon="/usr/share/icons/hicolor/24x24/apps/pidgin.png"><action name="Execute"><execute>pidgin</execute></action></item>
+    <item label="Psi+" icon="/usr/share/icons/hicolor/16x16/apps/psi-plus.png"><action name="Execute"><execute>psi-plus</execute></action></item>
     <item label="Qtransmission Bittorrent Client" icon="/usr/share/pixmaps/transmission-qt.png"><action name="Execute"><execute>transmission-qt</execute></action></item>
     <item label="Tor-Browser (en-US)" icon="/usr/share/pixmaps/tor-browser-en.png"><action name="Execute"><execute>/usr/bin/tor-browser-en</execute></action></item>
   </menu>
   <menu id="Office" icon="/home/lahwaacz/.local/share/icons/applications-office.png" label="Office">
-    <item label="Document Viewer" icon="/usr/share/icons/hicolor/24x24/apps/evince.png"><action name="Execute"><execute>evince</execute></action></item>
     <item label="JabRef" icon="/usr/share/pixmaps/jabref.png"><action name="Execute"><execute>jabref</execute></action></item>
-    <item label="LibreOffice Base" icon="/usr/share/icons/hicolor/128x128/apps/libreoffice-base.png"><action name="Execute"><execute>libreoffice --base</execute></action></item>
-    <item label="LibreOffice Calc" icon="/usr/share/icons/hicolor/128x128/apps/libreoffice-calc.png"><action name="Execute"><execute>libreoffice --calc</execute></action></item>
-    <item label="LibreOffice Draw" icon="/usr/share/icons/hicolor/128x128/apps/libreoffice-draw.png"><action name="Execute"><execute>libreoffice --draw</execute></action></item>
-    <item label="LibreOffice Impress" icon="/usr/share/icons/hicolor/128x128/apps/libreoffice-impress.png"><action name="Execute"><execute>libreoffice --impress</execute></action></item>
-    <item label="LibreOffice Writer" icon="/usr/share/icons/hicolor/128x128/apps/libreoffice-writer.png"><action name="Execute"><execute>libreoffice --writer</execute></action></item>
-    <item label="LibreOffice" icon="/usr/share/icons/hicolor/128x128/apps/libreoffice-startcenter.png"><action name="Execute"><execute>libreoffice</execute></action></item>
+    <item label="LibreOffice Base" icon="/usr/share/icons/hicolor/16x16/apps/libreoffice-base.png"><action name="Execute"><execute>libreoffice --base</execute></action></item>
+    <item label="LibreOffice Calc" icon="/usr/share/icons/hicolor/16x16/apps/libreoffice-calc.png"><action name="Execute"><execute>libreoffice --calc</execute></action></item>
+    <item label="LibreOffice Draw" icon="/usr/share/icons/hicolor/16x16/apps/libreoffice-draw.png"><action name="Execute"><execute>libreoffice --draw</execute></action></item>
+    <item label="LibreOffice Impress" icon="/usr/share/icons/hicolor/16x16/apps/libreoffice-impress.png"><action name="Execute"><execute>libreoffice --impress</execute></action></item>
+    <item label="LibreOffice Writer" icon="/usr/share/icons/hicolor/16x16/apps/libreoffice-writer.png"><action name="Execute"><execute>libreoffice --writer</execute></action></item>
+    <item label="LibreOffice" icon="/usr/share/icons/hicolor/16x16/apps/libreoffice-startcenter.png"><action name="Execute"><execute>libreoffice</execute></action></item>
+    <item label="qpdfview" icon="/usr/share/qpdfview/qpdfview.svg"><action name="Execute"><execute>qpdfview --unique</execute></action></item>
     <item label="Texmaker" icon="/usr/share/pixmaps/texmaker.png"><action name="Execute"><execute>texmaker</execute></action></item>
   </menu>
   <menu id="Science" icon="/home/lahwaacz/.local/share/icons/applications-science.png" label="Science">
     <item label="Fractal Miner" icon=""><action name="Execute"><execute>fractal-miner</execute></action></item>
     <item label="SAGE" icon="/opt/sage/data/extcode/notebook/images/sageicon.png"><action name="Execute"><execute>urxvt -e '/opt/sage/sage -notebook'</execute></action></item>
-    <item label="Stellarium nightsky renderer" icon="/usr/share/pixmaps/stellarium.xpm"><action name="Execute"><execute>stellarium</execute></action></item>
+    <item label="Stellarium nightsky renderer" icon="/usr/share/pixmaps/stellarium.png"><action name="Execute"><execute>stellarium</execute></action></item>
   </menu>
   <separator/>
   <menu id="Settings" icon="/home/lahwaacz/.local/share/icons/applications-settings.png" label="Settings">
-    <item label="Customize Look and Feel" icon="/home/lahwaacz/.local/share/icons/preferences-desktop-theme.png"><action name="Execute"><execute>lxappearance</execute></action></item>
     <item label="IcedTea Web Control Panel" icon="/usr/share/pixmaps/javaws.png"><action name="Execute"><execute>/usr/lib/jvm/java-7-openjdk/bin/itweb-settings</execute></action></item>
     <item label="Monitor Settings" icon="/home/lahwaacz/.local/share/icons/display.png"><action name="Execute"><execute>lxrandr</execute></action></item>
     <item label="Openbox Configuration Manager" icon="/usr/share/pixmaps/obconf.png"><action name="Execute"><execute>obconf</execute></action></item>
   </menu>
   <menu id="System" icon="/home/lahwaacz/.local/share/icons/applications-system.png" label="System">
     <item label="AQEMU" icon="/usr/share/pixmaps/aqemu_48x48.png"><action name="Execute"><execute>aqemu</execute></action></item>
-    <item label="dconf Editor" icon="/usr/share/icons/hicolor/64x64/apps/dconf-editor.png"><action name="Execute"><execute>dconf-editor</execute></action></item>
-    <item label="GParted" icon="/usr/share/icons/hicolor/24x24/apps/gparted.png"><action name="Execute"><execute>gparted-pkexec</execute></action></item>
+    <item label="GParted" icon="/usr/share/icons/hicolor/16x16/apps/gparted.png"><action name="Execute"><execute>gparted-pkexec</execute></action></item>
     <item label="SpaceFM" icon="/usr/share/icons/hicolor/48x48/apps/spacefm.png"><action name="Execute"><execute>spacefm</execute></action></item>
     <item label="urxvt (client)" icon="/home/lahwaacz/.local/share/icons/terminal.png"><action name="Execute"><execute>urxvtc</execute></action></item>
     <item label="urxvt (tabbed)" icon="/home/lahwaacz/.local/share/icons/terminal.png"><action name="Execute"><execute>urxvt-tabbed</execute></action></item>
