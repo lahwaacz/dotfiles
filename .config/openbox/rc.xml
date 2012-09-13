@@ -317,6 +317,47 @@
       <command>oblogout</command>
     </action>
   </keybind>
+
+  <!-- multimedia keys -->
+  <keybind key="XF86AudioPlay">
+    <action name="Execute">
+      <command>mpc toggle</command>
+    </action>
+  </keybind>
+  <keybind key="XF86AudioStop">
+    <action name="Execute">
+      <command>mpc stop</command>
+    </action>
+  </keybind>
+  <keybind key="XF86AudioPrev">
+    <action name="Execute">
+      <command>mpc prev</command>
+    </action>
+  </keybind>
+  <keybind key="XF86AudioNext">
+    <action name="Execute">
+      <command>mpc next</command>
+    </action>
+  </keybind>
+  
+  <!-- touchpad toggle -->
+  <keybind key="XF86WWW">
+    <action name="Execute">
+      <command>/etc/acpi/actions/toggle_touchpad.sh</command>
+    </action>
+  </keybind>
+
+  <!-- monitor brightness -->
+  <keybind key="XF86MonBrightnessDown">
+    <action name="Execute">
+      <command>/home/lahwaacz/bin/display-brightness-notify.py</command>
+    </action>
+  </keybind>
+  <keybind key="XF86MonBrightnessUp">
+    <action name="Execute">
+      <command>/home/lahwaacz/bin/display-brightness-notify.py</command>
+    </action>
+  </keybind>
 </keyboard>
 
 <mouse>
