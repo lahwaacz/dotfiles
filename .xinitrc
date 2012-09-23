@@ -27,4 +27,4 @@ xset -b
 # export umask
 umask 0077
 
-exec $1
+exec openbox-session
