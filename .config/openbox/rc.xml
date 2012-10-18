@@ -343,7 +343,7 @@
   <!-- touchpad toggle -->
   <keybind key="XF86WWW">
     <action name="Execute">
-      <command>/etc/acpi/actions/toggle_touchpad.sh</command>
+      <command>/home/lahwaacz/bin/toggle-touchpad.sh</command>
     </action>
   </keybind>
 
@@ -812,6 +812,9 @@
     <maximized>false</maximized>
   </application>
   <application class="psi">
+    <maximized>false</maximized>
+  </application>
+  <application class="Vidalia">
     <maximized>false</maximized>
   </application>
 </applications>
