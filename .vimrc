@@ -74,3 +74,9 @@ inoremap {<CR> {<CR>}<Esc>O<BS><Tab>
 " Make jj exit insert mode (since it's almost never typed normally).
 imap jj <Esc>:w<CR>
 imap kk <Esc>:w<CR>
+
+" Temporarily disable search highlight until next search
+"nnoremap <esc> :noh<return><esc>
+
+" Automatic hard-wrapping for *.tex files
+autocmd FileType tex    set textwidth=120
