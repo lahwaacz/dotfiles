@@ -80,3 +80,22 @@ imap kk <Esc>:w<CR>
 
 " Automatic hard-wrapping for *.tex files
 autocmd FileType tex    set textwidth=120
+
+" LaTeX compiler (use my custom Makefile actually)
+function MakeLaTeX()
+    :w
+    :make
+endfunction
+autocmd FileType tex    set makeprg=make\ -j2\ pdf\ nocolor=1
+autocmd FileType tex    map <C-m> :call MakeLaTeX()<CR>
+
+" Comment out a range of lines (default settings)
+map - :s/^/\#/<CR>:nohlsearch<CR>
+
+" Comment out a range of lines (per-language settings)
+autocmd FileType tex    map - :s/^/\%/<CR>:nohlsearch<CR>
+autocmd FileType vim    map - :s/^/\"/<CR>:nohlsearch<CR>
+autocmd FileType c,cpp  map - :s/^/\/\//<CR>:nohlsearch<CR>
+
+" Clear all comment markers (one rule for all languages)
+map _ :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR>:nohlsearch<CR>
