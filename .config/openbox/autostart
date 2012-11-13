@@ -18,5 +18,5 @@ fi
 volti &
 urxvt -e tmx main &
 
-psi-plus &
+kadu &
 qstardict &
