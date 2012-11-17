@@ -8,7 +8,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # no autocorrection
-alias sudo='nocorrect sudo'
+alias sudo='sudo '
 
 alias yaourt='nocorrect yaourt'
 alias mv='nocorrect mv -i'
