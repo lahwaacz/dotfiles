@@ -1,3 +1,10 @@
+## colors
+autoload colors
+colors
+if [ -f ~/.dircolors ]; then
+    eval `dircolors ~/.dircolors`
+fi
+
 source ~/.config/zsh/opts
 source ~/.config/zsh/completion
 source ~/.config/zsh/prompt
@@ -17,13 +24,6 @@ if [[ $1 == eval ]]
 then
     "$@"
 set --
-fi
-
-## colors
-autoload colors
-colors
-if [ -f ~/.dircolors ]; then
-    eval `dircolors ~/.dircolors`
 fi
 
 
