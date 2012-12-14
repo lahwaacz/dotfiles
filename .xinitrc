@@ -16,6 +16,11 @@ if [ -x /usr/bin/numlockx ]; then
     numlockx on
 fi
 
+# disable touchpad when mouse detected
+if [ $(ls /dev/input | grep mouse | wc -l) -gt 1 ]; then
+    synclient TouchpadOff=1
+fi
+
 # turn off beep
 xset -b
 
