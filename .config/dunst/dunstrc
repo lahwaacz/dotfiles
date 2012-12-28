@@ -1,4 +1,5 @@
 [global]
+#    font = -*-profont-*-*-*-*-16-*-*-*-*-*-*-*
     font = Monospace-12
 
     # The format of the message. Possible variables are:
@@ -27,7 +28,7 @@
 
     # show age of message if message is older than show_age_threshold seconds.
     # set to -1 to disable
-    show_age_threshold = 30;
+    show_age_threshold = 60;
 
     # split long notifications into multiple lines
     word_wrap = yes
@@ -51,7 +52,7 @@
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
     # Set to 0 to disable.
-    idle_threshold = 120
+    idle_threshold = 180
 
     # Which monitor should the notifications be displayed on.
     monitor = 0
@@ -100,8 +101,7 @@
     close_all = ctrl+shift+space
 
     # redisplay last message(s)
-    # On the US keyboard layout 'grave' is normally above TAB and left of '1'.
-    history = ctrl+arrowup
+    history = ctrl+Up
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
