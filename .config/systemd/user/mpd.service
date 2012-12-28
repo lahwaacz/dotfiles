@@ -1,0 +1,9 @@
+[Unit]
+Description=Music Player Daemon
+
+[Service]
+ExecStart=/usr/bin/mpd --no-daemon /home/lahwaacz/.config/mpd/mpd.conf
+
+[Install]
+WantedBy=console.target
+WantedBy=graphical.target

@@ -1,0 +1,5 @@
+[Unit]
+Description=Console target
+
+[Install]
+Alias=default.target

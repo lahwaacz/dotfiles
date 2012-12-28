@@ -1,0 +1,12 @@
+[Unit]
+Description=MPD notifications using libnotify
+After=mpd.service
+Requires=mpd.service
+
+[Service]
+ExecStartPre=/usr/bin/sleep 5
+ExecStart=/home/lahwaacz/bin/mpd-notify
+
+[Install]
+WantedBy=console.target
+WantedBy=graphical.target

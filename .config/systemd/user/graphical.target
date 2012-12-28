@@ -1,0 +1,4 @@
+[Unit]
+Description=Xinitrc Stuff
+After=xorg.target
+BindsTo=xorg.target

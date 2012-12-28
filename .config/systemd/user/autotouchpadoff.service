@@ -1,0 +1,14 @@
+[Unit]
+Description=Disable touchpad when mouse detected
+After=xorg.target
+Requires=xorg.target
+ConditionPathExists=/dev/input/mouse0
+ConditionPathExists=/dev/input/mouse1
+
+[Service]
+Type=oneshot
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/synclient TouchpadOff=1
+
+[Install]
+WantedBy=graphical.target

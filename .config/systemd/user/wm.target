@@ -1,0 +1,11 @@
+[Unit]
+Description=Window manager target
+Wants=xorg.target
+Requires=xorg.target
+Wants=graphical.target
+Requires=dbus.socket
+AllowIsolate=true
+BindsTo=spectrwm.service
+
+[Install]
+Alias=default.target
