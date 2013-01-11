@@ -2,7 +2,8 @@
 Description=Music Player Daemon
 
 [Service]
-ExecStart=/usr/bin/mpd --no-daemon /home/lahwaacz/.config/mpd/mpd.conf
+UMask=0077
+ExecStart=/usr/bin/mpd --no-daemon %h/.config/mpd/mpd.conf
 
 [Install]
 WantedBy=console.target

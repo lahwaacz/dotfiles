@@ -2,18 +2,20 @@
 Description=spectrwm
 After=xorg.target
 Requires=xorg.target
+Requires=dbus.socket
 Before=graphical.target
 
 [Service]
-# for GTK styles in Qt
-Environment=GTK2_RC_FILES=/home/lahwaacz/.gtkrc-2.0
-
-Environment=PATH=/home/lahwaacz/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-Environment=DISPLAY=:0
 UMask=0077
+# for GTK styles in Qt
+Environment=GTK2_RC_FILES=%h/.gtkrc-2.0
+
+Environment=PATH=%h/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/vendor_perl:/usr/bin/core_perl
+Environment=DISPLAY=:0
 ExecStart=/usr/bin/spectrwm
+ExecStartPost=/usr/bin/setxkbmap cz
 Restart=always
-RestartSec=10
+CPUShares=2048
 
 [Install]
 WantedBy=wm.target

@@ -28,4 +28,13 @@ xset -b
 # export umask
 umask 0077
 
+# systemd user session
+#systemd --user --unit=graphical.target &
+
+# init external monitor
+/home/lahwaacz/bin/initscreen.sh
+xrandr --output LVDS --off
+
+setxkbmap cz    # just in case...
+
 exec $1

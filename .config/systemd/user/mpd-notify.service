@@ -4,9 +4,11 @@ After=mpd.service
 Requires=mpd.service
 
 [Service]
-ExecStartPre=/usr/bin/sleep 5
+Environment=DISPLAY=:0
+ExecStartPre=/usr/bin/sleep 2
 ExecStart=/home/lahwaacz/bin/mpd-notify
+Restart=always
+RestartSec=30s
 
 [Install]
-WantedBy=console.target
 WantedBy=graphical.target

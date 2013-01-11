@@ -1,0 +1,7 @@
+[Unit]
+Description=rmshit
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/vendor_perl/rmshit -c
+UMask=0077

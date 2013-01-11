@@ -1,8 +1,10 @@
 ## colors
 autoload colors
 colors
-if [ -f ~/.dircolors ]; then
-    eval `dircolors ~/.dircolors`
+if [[ "$TERM" =~ ".*256color.*" && -f ~/.dircolors.256colors ]]; then
+    eval $(dircolors ~/.dircolors.256colors)
+elif [ -f ~/.dircolors ]; then
+    eval $(dircolors ~/.dircolors)
 fi
 
 source ~/.config/zsh/opts
@@ -20,14 +22,12 @@ fi
 
 ## if first argument is "eval", evaluate next arguments as shell command and don't exit
 # usage: zsh -is eval 'your shell command here'
-if [[ $1 == eval ]]
-then
+if [[ $1 == eval ]]; then
     "$@"
-set --
+    set --
 fi
 
 
 ## environment variables
-export EDITOR=vim   # required by yaourt
 export PACMAN=pacman-color  # all pacman wrappers should run pacman-color instead of pacman
 export COLORFGBG=default,default,default    # I think tmux sets this wrong

@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily Timer
+
+[Timer]
+OnStartupSec=1h
+OnUnitActiveSec=1d
+Unit=timer-daily.target
+
+[Install]
+WantedBy=console.target
+WantedBy=graphical.target

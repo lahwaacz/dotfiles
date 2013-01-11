@@ -1,0 +1,11 @@
+[Unit]
+Description=Weekly Timer
+
+[Timer]
+OnStartupSec=1h
+OnUnitActiveSec=7d
+Unit=timer-weekly.target
+
+[Install]
+WantedBy=console.target
+WantedBy=graphical.target

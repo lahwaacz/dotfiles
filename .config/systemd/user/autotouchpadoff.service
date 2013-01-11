@@ -11,4 +11,4 @@ Environment=DISPLAY=:0
 ExecStart=/usr/bin/synclient TouchpadOff=1
 
 [Install]
-WantedBy=graphical.target
+WantedBy=wm.target

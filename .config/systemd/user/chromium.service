@@ -1,0 +1,15 @@
+[Unit]
+Description=Chromium web browser
+After=xorg.target
+Requires=xorg.target
+After=network.target
+
+[Service]
+UMask=0077
+Environment=DISPLAY=:0
+EnvironmentFile=/etc/chromium/default
+ExecStart=/usr/lib/chromium/chromium $CHROMIUM_FLAGS
+KillSignal=SIGINT
+
+[Install]
+WantedBy=graphical.target
