@@ -42,9 +42,12 @@ zstyle ':completion:*' group-name ''
 # match uppercase from lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
+# match accented characters
+#zstyle ':completion:*' matcher-list 'm:{scrzyaieou}={ščřžýáíéóú}'
+
 zstyle ':completion:*:cd:*' ignored-patterns '(*/)#lost+found'
 zstyle ':completion:*:*:*:users' ignored-patterns \
-    bin daemon mail ftp http nobody dbus avahi usbmux sagemath lxdm ntp
+    bin daemon mail ftp http uuidd dbus nobody avahi mpd git polkitd dnsmasq sagemath rtkit
 zstyle ':completion:*:*:*:hosts' ignored-patterns \
     github.com localhost localhost.localdomain
 

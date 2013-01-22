@@ -4,11 +4,12 @@ After=network.target
 
 [Service]
 UMask=0077
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/dbus/user_bus_socket
 Environment=DISPLAY=:0
 ExecStart=/usr/bin/dropboxd
 KillSignal=SIGINT
 Restart=always
-RestartSec=5
+
 Nice=15
 IOSchedulingClass=2
 IOSchedulingPriority=7

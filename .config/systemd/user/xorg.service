@@ -14,6 +14,8 @@
 [Unit]
 Description=Xorg server launch helper
 Before=xorg.target
+Requires=dbus.socket
+After=dbus.socket
 
 [Service]
 UMask=0077

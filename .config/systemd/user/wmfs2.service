@@ -1,21 +1,22 @@
 [Unit]
-Description=spectrwm
+Description=WMFS2
 After=xorg.target
 Requires=xorg.target
-Requires=dbus.socket
 Before=graphical.target
 
 [Service]
 UMask=0077
-# for GTK styles in Qt
-Environment=GTK2_RC_FILES=%h/.gtkrc-2.0
-
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/dbus/user_bus_socket
 Environment=PATH=%h/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/vendor_perl:/usr/bin/core_perl
 Environment=DISPLAY=:0
-ExecStart=/usr/bin/spectrwm
-ExecStartPost=/usr/bin/setxkbmap cz
+ExecStart=/usr/bin/wmfs
+ExecStop=/usr/bin/wmfs -c quit
+ExecReload=/usr/bin/wmfs -c reload
 Restart=always
 CPUShares=2048
+
+# for GTK styles in Qt
+Environment=GTK2_RC_FILES=%h/.gtkrc-2.0
 
 [Install]
 WantedBy=wm.target

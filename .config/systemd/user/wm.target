@@ -5,7 +5,7 @@ Requires=xorg.target
 Wants=graphical.target
 Requires=dbus.socket
 AllowIsolate=true
-BindsTo=spectrwm.service
+BindsTo=wmfs2.service
 
 [Install]
 Alias=default.target

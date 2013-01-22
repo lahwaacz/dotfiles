@@ -4,11 +4,11 @@ After=mpd.service
 Requires=mpd.service
 
 [Service]
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/dbus/user_bus_socket
 Environment=DISPLAY=:0
-ExecStartPre=/usr/bin/sleep 2
+#ExecStartPre=/usr/bin/sleep 2
 ExecStart=/home/lahwaacz/bin/mpd-notify
 Restart=always
-RestartSec=30s
 
 [Install]
 WantedBy=graphical.target

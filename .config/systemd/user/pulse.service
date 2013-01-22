@@ -1,14 +1,15 @@
 [Unit]
-Description=twmn daemon
-After=xorg.target
-Requires=xorg.target
+Description=Pulse Audio Server
+Requires=dbus.socket
 
 [Service]
 UMask=0077
 Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/dbus/user_bus_socket
 Environment=DISPLAY=:0
-ExecStart=/usr/bin/twmnd
-Restart=always
+RemainAfterExit=yes
+ExecStart=/usr/bin/pulseaudio --start
+ExecStop=/usr/bin/pulseaudio --kill
 
 [Install]
 WantedBy=graphical.target
+WantedBy=console.target

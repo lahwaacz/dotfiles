@@ -1,0 +1,10 @@
+[Unit]
+Description=Things that used to be in ~/.xinitrc
+After=xorg.service
+
+[Service]
+Type=oneshot
+Environment=DISPLAY=:0
+ExecStart=/home/lahwaacz/bin/initscreen.sh
+ExecStart=/usr/bin/setxkbmap cz
+ExecStart=/usr/bin/numlockx on

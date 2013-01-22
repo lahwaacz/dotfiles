@@ -4,6 +4,7 @@ Description=Urxvt Daemon
 [Service]
 UMask=0077
 ExecStart=/usr/bin/urxvtd
+TimeoutStopSec=20
 
 [Install]
 WantedBy=graphical.target

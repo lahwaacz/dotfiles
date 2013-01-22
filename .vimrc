@@ -35,16 +35,19 @@ set termencoding=utf-8  " use utf-8 everywhere
 set history=1000        " Number of command lines stored in the history tables.
 set undolevels=1000     " Number of levels of undo
 
-" Set console title and reset it when exiting
-if &term != "builtin_gui"
-    let &titleold=getcwd()
-    set title
-endif
-
 syntax on               " Syntax highlighting on.
-filetype on             " filetype detection
+filetype plugin indent on             " filetype detection
 au BufNewFile,BufRead *.log set filetype=messages       " syntax highlighting in all *.log files
-" set t_Co=256            " usually not needed
+"set t_Co=256            " usually not needed
+
+" colorscheme
+let g:solarized_termcolors=256
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+colorscheme solarized
 
 set splitright          " Open new vertical split windows to the right of the current one, not the left.
 set splitbelow          " See above description. Opens new windows below, not above.

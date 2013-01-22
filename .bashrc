@@ -13,8 +13,8 @@ HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=100000
-HISTFILESIZE=100000
+HISTSIZE=1000000
+HISTFILESIZE=1000000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -39,9 +39,14 @@ xterm*|rxvt*)
     ;;
 esac
 
+if [[ "$TERM" =~ ".*256color.*" && -f ~/.dircolors.256colors ]]; then
+    eval $(dircolors ~/.dircolors.256colors)
+elif [ -f ~/.dircolors ]; then
+    eval $(dircolors ~/.dircolors)
+fi
+
 # enable color support of ls and also add handy aliases
 if [ -x /bin/dircolors ]; then
-    #test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -54,12 +59,13 @@ alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
 
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
-fi
-
-if [ -f ~/.dircolors ]; then
-    eval `dircolors ~/.dircolors`
 fi
 
 man() {
@@ -73,3 +79,5 @@ man() {
 		LESS_TERMCAP_us=$(printf "\e[0;36m") \
 			man "$@"
 }
+
+export EDITOR=vim

@@ -33,7 +33,6 @@ umask 0077
 
 # init external monitor
 /home/lahwaacz/bin/initscreen.sh
-xrandr --output LVDS --off
 
 setxkbmap cz    # just in case...
 

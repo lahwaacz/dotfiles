@@ -37,43 +37,9 @@ alias h=' h'
 #fi
 
 
-## cd with bookmarks and auto-completion
-ZSH_BOOKMARKS="$XDG_CONFIG_HOME/zsh/cdbookmarks"
-
-function cdb() {
-    local index
-    local entry
-    index=0
-    for entry in $(echo "$1" | tr '/' '\n'); do
-        if [[ $index == "0" ]]; then
-            local CD
-            CD=$(egrep "^$entry\\s" "$ZSH_BOOKMARKS" | sed "s#^$entry\\s\+##")
-            if [ -z "$CD" ]; then
-                echo "$0: no such bookmark: $entry"
-                break
-            else
-                cd "$CD"
-            fi
-        else
-            cd "$entry"
-            if [ "$?" -ne "0" ]; then
-                break
-            fi
-        fi
-        let "index++"
-    done
-}
-
-function _cdb() {
-    reply=(`cat "$ZSH_BOOKMARKS" | sed -e 's#^\(.*\)\s.*$#\1#g'`)
-}
-
-compctl -K _cdb cdb
-
-
 ## simple notes taking utility
 function n() {
-    ${EDITOR:-vi} $HOME/.notes/"$*"
+    ${EDITOR:-vim} $HOME/.notes/"$*"
 }
 
 function nls() {

@@ -1,5 +1,7 @@
 [Unit]
 Description=Music Player Daemon
+Wants=pulse.service
+After=pulse.service
 
 [Service]
 UMask=0077

@@ -1,5 +1,11 @@
 # Write your default config options here!
 
-ao=alsa
+ao=pulse
 vo=xv
+
 sub-fuzziness=1 # load subtitles named like something.eng.srt
+subfont-autoscale=1 # autoscale proportionally to movie height
+subfont-text-scale=6
+slang=eng,en
+
+joystick=0

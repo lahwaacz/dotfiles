@@ -1,12 +1,13 @@
 URxvt.geometry: 179x52
 URxvt.scrollBar: false
-URxvt.foreground: gray
-URxvt.background: black
 URxvt.font: xft:Monospace-9
-URxvt.iconFile: /home/lahwaacz/.local/share/icons/terminal.png
 URxvt.buffered: true
 URxvt.cursorBlink: true
 URxvt.iso14755: false
 URxvt.saveLines: 32767
 URxvt.urlLauncher: chromium
+
+URxvt.foreground: gray
+!URxvt.background: #1c1c1c
+URxvt.background: black
 URxvt.color12: #2B65EC

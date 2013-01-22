@@ -7,12 +7,11 @@ elif [ -f ~/.dircolors ]; then
     eval $(dircolors ~/.dircolors)
 fi
 
-source ~/.config/zsh/opts
-source ~/.config/zsh/completion
-source ~/.config/zsh/prompt
-source ~/.config/zsh/keybind
-source ~/.config/zsh/functions
-source ~/.config/zsh/aliases
+
+## load modules
+for config_file (~/.config/zsh/*.zsh) source $config_file
+source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 
 ## Compile zcompdump, if modified, to increase startup speed.
 if [ "$HOME/.zcompdump" -nt "$HOME/.zcompdump.zwc" -o ! -e "$HOME/.zcompdump.zwc" ]; then
@@ -31,3 +30,4 @@ fi
 ## environment variables
 export PACMAN=pacman-color  # all pacman wrappers should run pacman-color instead of pacman
 export COLORFGBG=default,default,default    # I think tmux sets this wrong
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/dbus/user_bus_socket   # temporal fix until systemd sets this automatically (or until this is the default path for dbus)
