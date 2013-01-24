@@ -1,1 +1,1 @@
-umask 077
+umask 0077

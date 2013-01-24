@@ -12,6 +12,7 @@ Environment=DISPLAY=:0
 ExecStart=/usr/bin/wmfs
 ExecStop=/usr/bin/wmfs -c quit
 ExecReload=/usr/bin/wmfs -c reload
+KillMode=process
 Restart=always
 CPUShares=2048
 

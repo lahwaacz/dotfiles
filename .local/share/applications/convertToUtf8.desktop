@@ -2,7 +2,7 @@
 Name=Convert to utf-8
 Exec=/home/lahwaacz/bin/convertToUtf8.py %F
 Icon=text
-Terminal=false
+Terminal=true
 Type=Application
 Categories=Utility;
 MimeType=application/x-subrip

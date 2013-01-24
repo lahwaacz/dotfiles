@@ -6,4 +6,4 @@ Icon=archive
 Terminal=false
 Type=Application
 Categories=Utility;
-MimeType=application/zip;application/x-tar;application/x-bzip2;application-x-rar;application/x-iso9660-image;
+MimeType=application/zip;application/x-tar;application/x-bzip2;application/x-iso9660-image;
