@@ -43,3 +43,4 @@ alias powernow='sudo powernow'
 alias powerup='sudo powerup'
 
 alias qpdfview='qpdfview --unique'
+alias cal='cal -m'
