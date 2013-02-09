@@ -31,4 +31,3 @@ fi
 export PACMAN=pacman-color  # all pacman wrappers should run pacman-color instead of pacman
 export COLORFGBG=default,default,default    # I think tmux sets this wrong
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/dbus/user_bus_socket   # temporal fix until systemd sets this automatically (or until this is the default path for dbus)
-export LC_ALL=en_GB.UTF-8

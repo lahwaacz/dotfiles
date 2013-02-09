@@ -6,5 +6,5 @@ After=xorg.service
 Type=oneshot
 Environment=DISPLAY=:0
 ExecStart=/home/lahwaacz/bin/initscreen.sh
-ExecStart=/usr/bin/setxkbmap cz
+#ExecStart=/usr/bin/setxkbmap cz
 ExecStart=/usr/bin/numlockx on

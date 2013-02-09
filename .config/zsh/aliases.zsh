@@ -38,7 +38,6 @@ alias g++='g++ -Wall'
 alias make='make -j2'
 
 alias powerdown='sudo powerdown'
-alias powerdown-auto='sudo powerdown-auto'
 alias powernow='sudo powernow'
 alias powerup='sudo powerup'
 

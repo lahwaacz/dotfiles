@@ -102,3 +102,9 @@ autocmd FileType c,cpp  map - :s/^/\/\//<CR>:nohlsearch<CR>
 
 " Clear all comment markers (one rule for all languages)
 map _ :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR>:nohlsearch<CR>
+
+" Removes trailing whitespace
+function TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
+map <F2> :call TrimWhiteSpace()<CR>

@@ -190,6 +190,11 @@
     ignore_tag = false
   [/rule]
 
+  [rule]
+    instance = "sudoku.py"
+    free = true
+  [/rule]
+
 [/rules]
 
 [launchers]
