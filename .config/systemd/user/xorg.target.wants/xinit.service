@@ -5,6 +5,15 @@ After=xorg.service
 [Service]
 Type=oneshot
 Environment=DISPLAY=:0
+
+# screen init script (using xrandr)
 ExecStart=/home/lahwaacz/bin/initscreen.sh
-#ExecStart=/usr/bin/setxkbmap cz
+
+# turn on numlock
 ExecStart=/usr/bin/numlockx on
+
+# turn off bell
+ExecStart=/usr/bin/xset -b
+
+# key repeat delay and rate
+ExecStart=/usr/bin/xset r rate 500 35

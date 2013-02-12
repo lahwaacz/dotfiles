@@ -1,7 +1,5 @@
 [Unit]
 Description=Chromium web browser
-After=xorg.target
-Requires=xorg.target
 After=network.target
 
 [Service]

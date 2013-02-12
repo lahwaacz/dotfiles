@@ -3,5 +3,5 @@ Description=Backup kmlinux files
 
 [Service]
 Type=oneshot
-ExecStart=/home/lahwaacz/bin/backup-wordpress-kmlinux.sh --quiet
+ExecStart=/home/lahwaacz/bin/backup-wordpress-kmlinux.sh -q
 UMask=0077

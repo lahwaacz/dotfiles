@@ -1,0 +1,13 @@
+[Unit]
+Description=WMFS2 statusbar
+After=wmfs.service
+Requisite=wmfs.service
+
+[Service]
+UMask=0077
+Environment=DISPLAY=:0
+ExecStart=/home/lahwaacz/bin/wmfs-statusbar
+Restart=always
+
+[Install]
+WantedBy=graphical.target

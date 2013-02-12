@@ -3,9 +3,10 @@ Description=Window manager target
 Wants=xorg.target
 Requires=xorg.target
 Wants=graphical.target
+Before=graphical.target
 Requires=dbus.socket
 AllowIsolate=true
-BindsTo=wmfs2.service
+BindsTo=wmfs.service
 
 [Install]
 Alias=default.target

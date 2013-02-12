@@ -1,7 +1,5 @@
 [Unit]
 Description=twmn daemon
-After=xorg.target
-Requires=xorg.target
 
 [Service]
 UMask=0077

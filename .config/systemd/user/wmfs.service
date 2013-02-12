@@ -1,8 +1,5 @@
 [Unit]
 Description=WMFS2
-After=xorg.target
-Requires=xorg.target
-Before=graphical.target
 
 [Service]
 UMask=0077
