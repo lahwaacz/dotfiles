@@ -4,61 +4,7 @@
 
 # vim: set tabstop=2:softtabstop=2:shiftwidth=2:expandtab
 
-# Possible file inclusion:
-# @include "file"
-
-# Multi theme section
-[themes]
-
-  [theme]
-     # No name mean default
-     # name = "default"
-
-     font = "fixed"
-
-     # Bars
-     bars_width = 20
-     bars_fg = "#AABBAA"
-     bars_bg = "#223322"
-
-     # Element tags
-     tags_normal_fg = "#AABBAA"
-     tags_normal_bg = "#223322"
-     # tags_normal_statusline = ""
-
-     tags_sel_fg    = "#223322"
-     tags_sel_bg    = "#AABBAA"
-     # tags_sel_statusline = ""
-
-     tags_occupied_fg = "#AABBAA"
-     tags_occupied_bg = "#445544"
-     tags_occupied_statusline = "\R[0;0;100;1;#AABBAA]"
-
-     tags_urgent_fg    = "#223322"
-     tags_urgent_bg    = "#CC5544"
-     # tags_urgent_statusline = ""
-
-     tags_border_color = "#112211"
-     tags_border_width = 1
-
-     # Frame / Client
-     client_normal_fg = "#AABBAA"
-     client_normal_bg = "#223322"
-#     client_normal_statusline = "\s[3;9;#121212;x] \s[2;8;#ff0000;x](1;client_close)"
-
-     client_sel_fg = "#223322"
-     client_sel_bg = "#AABBAA"
-#     client_sel_statusline = "\s[3;9;#121212;x] \s[2;8;#ff0000;x](1;client_close)"
-
-     # client_free_statusline = ""
-
-     frame_bg = "#555555"
-     client_titlebar_width = 1
-     client_border_width = 1
-
-   [/theme]
-
-[/themes]
+@include "~/.config/wmfs/themes"
 
 [bars]
 
@@ -79,7 +25,7 @@
      position = 0
      screen = 0
      elements = "tlsy"   # element order in bar
-     theme = "default"
+     theme = "grayblue"
   [/bar]
 
 # [bar]
@@ -142,7 +88,7 @@
   # Give focus to new created client (default = false)
   autofocus = true
 
-  theme = "default"
+  theme = "grayblue"
   key_modifier = "Super"
 
   # Focus type:
@@ -191,8 +137,8 @@
   [/rule]
 
   [rule]
-    instance = "sudoku.py"
-    free = true
+    instance = "Pidgin"
+    tag = 10
   [/rule]
 
 [/rules]

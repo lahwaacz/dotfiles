@@ -1,6 +1,7 @@
 URxvt.scrollBar: false
 URxvt.cursorBlink: true
 URxvt.saveLines: 32767
+URxvt.urgentOnBell: true
 
 ! disable the stupid ctrl+shift 'feature'
 URxvt.iso14755: false
