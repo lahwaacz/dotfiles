@@ -4,7 +4,6 @@ Requires=dbus.socket
 
 [Service]
 UMask=0077
-Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/dbus/user_bus_socket
 Environment=DISPLAY=:0
 RemainAfterExit=yes
 ExecStart=/usr/bin/pulseaudio --start

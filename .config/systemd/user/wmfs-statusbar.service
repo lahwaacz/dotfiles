@@ -6,7 +6,7 @@ Requisite=wmfs.service
 [Service]
 UMask=0077
 Environment=DISPLAY=:0
-ExecStart=/home/lahwaacz/bin/wmfs-statusbar
+ExecStart=/home/lahwaacz/bin/wmfs-statusbar -c %h/.config/wmfs/statusbar.conf
 Restart=always
 
 [Install]

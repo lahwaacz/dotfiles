@@ -3,8 +3,6 @@ Description=WMFS2
 
 [Service]
 UMask=0077
-Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/dbus/user_bus_socket
-Environment=PATH=%h/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/vendor_perl:/usr/bin/core_perl
 Environment=DISPLAY=:0
 ExecStart=/usr/bin/wmfs
 ExecStop=/usr/bin/wmfs -c quit
