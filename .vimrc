@@ -59,6 +59,7 @@ set wildmode=longest,list               " File and directory matching mode.
 set nrformats=hex                       " Allow incrementing and decrementing numbers that start with 0 using <c-a> and <c-x>
 
 set clipboard=unnamedplus,autoselect    " Use + register (X Window clipboard) as unnamed register"
+set viminfo='20,<1000,s10,h             " large registers
 
 set ttyfast
 

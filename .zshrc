@@ -8,6 +8,11 @@ elif [ -f ~/.dircolors ]; then
 fi
 
 
+## custom functions
+fpath=( ~/.config/zsh/functions "${fpath[@]}" )
+autoload -U ~/.config/zsh/functions/*(:t)
+
+
 ## load modules
 for config_file (~/.config/zsh/*.zsh) source $config_file
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -31,3 +36,10 @@ fi
 export PACMAN=pacman-color  # all pacman wrappers should run pacman-color instead of pacman
 export COLORFGBG=default,default,default    # I think tmux sets this wrong
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/dbus/user_bus_socket   # temporal fix until systemd sets this automatically (or until this is the default path for dbus)
+
+# gpg-agent sockets
+if [ -f /run/user/1000/gpg-agent-info ]; then
+    source /run/user/1000/gpg-agent-info
+    export GPG_AGENT_INFO
+    export SSH_AUTH_SOCK
+fi

@@ -1,0 +1,17 @@
+[Unit]
+Description=Start offlineimap as a daemon
+
+[Service]
+UMask=0077
+Type=simple
+ExecStart=/usr/bin/offlineimap -u Quiet
+Restart=always
+
+# gpg-agent socket
+EnvironmentFile=/run/user/1000/gpg-agent-info
+# display for pinentry
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=console.target
+WantedBy=graphical.target

@@ -1,0 +1,37 @@
+[general]
+accounts = Gmail
+maxsyncaccounts = 1
+pythonfile = ~/.offlineimap/offlineimap-helpers.py
+
+[Account Gmail]
+localrepository = Gmail-local
+remoterepository = Gmail-remote
+status_backend = sqlite
+# Minutes between syncs
+autorefresh = 5
+# Number of quick-syncs between autorefreshes. Quick-syncs do not update if the
+# only changes were to IMAP flags
+quick = 10
+
+[Repository Gmail-local]
+type = Maildir
+localfolders = ~/Maildir/Gmail
+nametrans = nt_local
+
+[Repository Gmail-remote]
+type = Gmail
+remoteuser = kuba.klinkovsky@gmail.com
+remotepasseval = mailpasswd("~/.mutt/password-gmail.gpg")
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+holdconnectionopen = yes
+keepalive = 60
+nametrans = nt_remote
+folderfilter = checkExclude
+
+[mbnames]
+enabled = yes
+filename = ~/.mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"

@@ -299,14 +299,16 @@
   [key] mod = {} key = "XF86AudioStop" func = "spawn" cmd = "mpc -q stop" [/key]
   [key] mod = {} key = "XF86AudioPrev" func = "spawn" cmd = "mpc -q prev" [/key]
   [key] mod = {} key = "XF86AudioNext" func = "spawn" cmd = "mpc -q next" [/key]
-  [key] mod = {"Control", "Alt"} key = "Up"    func = "spawn" cmd = "mpc -q toggle" [/key]
-  [key] mod = {"Control", "Alt"} key = "Down"  func = "spawn" cmd = "mpc -q stop" [/key]
+  [key] mod = {"Control", "Alt"} key = "Up"    func = "spawn" cmd = "mpc -q stop" [/key]
+  [key] mod = {"Control", "Alt"} key = "Down"  func = "spawn" cmd = "mpc -q toggle" [/key]
   [key] mod = {"Control", "Alt"} key = "Left"  func = "spawn" cmd = "mpc -q prev" [/key]
   [key] mod = {"Control", "Alt"} key = "Right" func = "spawn" cmd = "mpc -q next" [/key]
 
   [key] mod = {} key = "XF86MonBrightnessUp" func = "spawn" cmd = "display-brightness-notify.py" [/key]
   [key] mod = {} key = "XF86MonBrightnessDown" func = "spawn" cmd = "display-brightness-notify.py" [/key]
 
-  [key] mod = {} key = "XF86ScreenSaver" func = "spawn" cmd = "slimlock" [/key]
+  [key] mod = {} key = "XF86ScreenSaver" func = "spawn" cmd = "sflock" [/key]
+
+  [key] mod = {} key = "XF86WWW" func = "spawn" cmd = "toggle-touchpad.sh" [/key]
 
 [/keys]

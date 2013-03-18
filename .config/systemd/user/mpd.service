@@ -1,7 +1,7 @@
 [Unit]
 Description=Music Player Daemon
-Wants=pulse.service
-After=pulse.service
+After=sound.target
+Wants=mpd-notify.service
 
 [Service]
 UMask=0077

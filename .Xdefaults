@@ -2,20 +2,21 @@ URxvt.scrollBar: false
 URxvt.cursorBlink: true
 URxvt.saveLines: 32767
 URxvt.urgentOnBell: true
+URxvt.secondaryScroll: false
 
 ! disable the stupid ctrl+shift 'feature'
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
 ! font setting
-URxvt.font: xft:Monospace-9
+URxvt.font: xft:Monospace-12
 !URxvt.font: -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-1
 URxvt.buffered: true
 
 !! my default (high contrast, for laptop)
 URxvt.foreground: gray
 URxvt.background: black
-URxvt.color12: #2B65EC
+*color12: #2B65EC
 
 !!! copied from gentoo wiki (low contrast, for external monitor)
 !*background: #0f0f0f
@@ -55,7 +56,7 @@ URxvt.perl-ext:             default,url-select,clipboard
 URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.url-select.autocopy:  true
 URxvt.url-select.button:    2
-URxvt.url-select.launcher:  chromium
+URxvt.url-select.launcher:  dwb
 URxvt.url-select.underline: true
 
 ! clipboard (part of urxvt-perls package)

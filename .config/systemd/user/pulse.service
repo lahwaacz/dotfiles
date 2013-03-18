@@ -1,10 +1,10 @@
 [Unit]
-Description=Pulse Audio Server
-Requires=dbus.socket
+Description=PulseAudio Sound System
+Before=sound.target
 
 [Service]
 UMask=0077
-Environment=DISPLAY=:0
+BusName=org.pulseaudio.Server
 RemainAfterExit=yes
 ExecStart=/usr/bin/pulseaudio --start
 ExecStop=/usr/bin/pulseaudio --kill

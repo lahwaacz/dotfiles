@@ -2,8 +2,7 @@
 Description=Weekly Timer
 
 [Timer]
-OnStartupSec=1h
-OnUnitActiveSec=7d
+OnCalendar=Sun *-*-* 21:00:00
 Unit=timer-weekly.target
 
 [Install]

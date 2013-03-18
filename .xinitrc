@@ -34,6 +34,6 @@ umask 0077
 # init external monitor
 /home/lahwaacz/bin/initscreen.sh
 
-setxkbmap cz    # just in case...
+#setxkbmap cz    # just in case...
 
 exec $1

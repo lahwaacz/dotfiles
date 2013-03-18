@@ -9,3 +9,5 @@ subfont-text-scale=6
 slang=eng,en
 
 joystick=0
+
+volume=-1   # phonon

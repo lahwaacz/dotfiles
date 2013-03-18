@@ -1,0 +1,13 @@
+[Unit]
+Description=gpg-agent daemon
+
+[Service]
+UMask=0077
+Type=forking
+ExecStart=/usr/bin/gpg-agent --daemon --quiet
+Restart=always
+TimeoutSec=5
+
+[Install]
+WantedBy=console.target
+WantedBy=graphical.target

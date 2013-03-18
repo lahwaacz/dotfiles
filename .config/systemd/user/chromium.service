@@ -6,8 +6,9 @@ After=network.target
 UMask=0077
 Environment=DISPLAY=:0
 EnvironmentFile=/etc/chromium/default
-ExecStart=/usr/lib/chromium/chromium $CHROMIUM_FLAGS --disk-cache-dir=/tmp/lahwaacz-chromium-cache --disk-cache-size=104857600 --log-level=2
+ExecStart=/usr/lib/chromium/chromium $CHROMIUM_FLAGS --disk-cache-dir=/tmp/lahwaacz-chromium-cache --disk-cache-size=104857600
 KillSignal=SIGINT
+StandardOutput=null
 
 [Install]
 WantedBy=graphical.target

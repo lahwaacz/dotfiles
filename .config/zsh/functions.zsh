@@ -15,12 +15,12 @@ man() {
 
 
 ## lock all sessions when inactive for 300 seconds if in tty
-export TMOUT=300
-function TRAPALRM() { 
-    if [[ $(tty) != *pts* ]]; then
-        vlock
-    fi
-}
+#export TMOUT=300
+#function TRAPALRM() { 
+#    if [[ $(tty) != *pts* ]]; then
+#        vlock
+#    fi
+#}
 
 
 ## h -- grep history
