@@ -6,6 +6,6 @@ email: kuba.klinkovsky@gmail.com
 passwordeval: gpg --use-agent --quiet --batch -d ~/.mutt/password-gmail.gpg
 
 # optional
-cache_filename: ~/.goobook_cache
+cache_filename: ~/.cache/goobook_cache
 cache_expiry_hours: 24
 filter_groupless_contacts: no

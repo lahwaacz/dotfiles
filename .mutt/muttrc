@@ -23,6 +23,7 @@ set pipe_decode              # strip headers and eval mimes when piping
 set thorough_search          # strip headers and eval mimes before searching
 set sleep_time=0
 set send_charset="us-ascii:utf-8"   # charset priority
+set auto_tag                 # apply functions in index menu only to tagged messages (if any)
 
 # --- smtp server
 set my_gmail_password   = `gpg --quiet --batch --use-agent --decrypt --output - ~/.mutt/password-gmail.gpg`

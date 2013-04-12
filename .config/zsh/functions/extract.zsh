@@ -7,7 +7,8 @@ function extract() {
     local remove_archive
     local success
     local fname
-    local dirname
+    local basename
+    local extension
 
     if (( $# == 0 )); then
         echo "Usage: extract [-option] [file ...]"
@@ -15,14 +16,13 @@ function extract() {
         echo Options:
         echo "    -r, --remove    Remove archive."
         echo
-        echo "Report bugs to <sorin.ionescu@gmail.com>."
     fi
 
-    remove_archive=1
-    if [[ "$1" == "-r" || "$1" == "--remove" ]]; then
-        remove_archive=0 
-        shift
-    fi
+    remove_archive=0
+#    if [[ "$1" == "-r" || "$1" == "--remove" ]]; then
+#        remove_archive=1
+#        shift
+#    fi
 
     while (( $# > 0 )); do
         if [[ ! -f "$1" ]]; then
@@ -32,41 +32,54 @@ function extract() {
         fi
 
         success=0
-        fname=${$1:t}
-        dirname=${$1:h}
+        fname="$1"
+        extension=${fname:e}
 
-        case "$fname" in
-            (*.tar.gz|*.tgz)
-            (*.tar.bz2|*.tbz|*.tbz2)
-            (*.tar.xz|*.txz)
-            (*.tar.lzma|*.tlz)
-            (*.tar)
-                tar xvf "$1" -C "$dirname" ;;
-            (*.gz|*.Z)
-                gzip -dvc "$1" > "${$1:r}" ;;
-            (*.bz2)
-                bzip2 -dkv "$1" ;;
-            (*.xz|*.lzma)
-                xz -dkv "$1" ;;
-            (*.zip)
-                unzip "$1" -d "$dirname" ;;
-            (*.rar)
-                unrar x "$1" ;;
-            (*.7z)
-                7za x "$1" -o"$dirname" ;;
-            (*) 
-                echo "extract: '$1' cannot be extracted" 1>&2
-                success=1 
-                ;; 
-        esac
+        # remove extension from basename
+        basename=${fname:r:t}
 
-        (( success = $success > 0 ? $success : $? ))
-        (( $success == 0 )) && (( $remove_archive == 0 )) && rm "$1"
-        shift
+        # hack to recognize .tar.gz etc as extension
+        if [[ "${basename:e}" == "tar" ]]; then
+            extension="${basename:e}.$extension"
+            basename=${basename:r:t}
+        fi
+
+        case "$extension" in
+            (tar.gz|tgz|tar.bz2|tbz|tbz2|tar.xz|txz|tar.lzma|tlz|tar)
+                mkdir "$basename"
+                tar xvf "$fname" -C "$basename"
+                ;;
+            (gz|Z)
+                gzip -dvc "$fname" > "$basename"
+                ;;
+            (bz2)
+                bzip2 -dkv "$fname"
+                ;;
+            (xz|lzma)
+                xz -dkv "$fname"
+                ;;
+            (zip)
+                unzip "$fname" -d "$basename"
+                ;;
+            (rar)
+                unrar x "$fname"
+                ;;
+            (7z)
+                7za x "$fname" -o"$basename"
+                ;;
+            (*)
+                echo "extract: '$fname' cannot be extracted" 1>&2
+                ;;
+        esac 
+
+        (( success = $success > 0 ? $success : $? ))
+        (( $success == 0 )) && (( $remove_archive == 1 )) && rm -f "$fname"
+
+        shift
     done
 }
 
 alias x=extract
-extract "$@"
+#extract "$@"
 
 # TODO: unrar into $dirname

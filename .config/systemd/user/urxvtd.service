@@ -6,6 +6,9 @@ UMask=0077
 Environment=DISPLAY=:0
 ExecStart=/usr/bin/urxvtd
 TimeoutStopSec=10
+KillMode=process
+Restart=always
+MemoryLimit=3G
 
 [Install]
 WantedBy=graphical.target

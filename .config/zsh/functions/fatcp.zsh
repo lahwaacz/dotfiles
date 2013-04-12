@@ -35,14 +35,14 @@
 # Simple (stupid) alternative:
 # find -type f -name '*.pat' -print0  | tar -c -f - --null --files-from - | tar -C /path/to/dest -v -x -f - --show-transformed --transform 's/?/_/g'
 
-if [[ ARGC -ne 2 ]] then
-    echo "Usage: $0 <srcpat> <dest>"
-    return 1
-fi
-
 autoload zargs zmv
 
 fatcp() {
+    if [[ ARGC -ne 2 ]] then
+        echo "Usage: $0 <srcpat> <dest>"
+        return 1
+    fi
+
     local src="$1"
     local dest="$2"
 
@@ -53,6 +53,6 @@ fatcp() {
     zmv -C -Q -v -o -pu $src/'(**/)(*)(.)' $dest/${src:t}/'${1//[$replace]/_}${2//[$replace]/_}'
 }
 
-fatcp "$@"
+#fatcp "$@"
 
 # TODO: globbing fails on files, works only with directories

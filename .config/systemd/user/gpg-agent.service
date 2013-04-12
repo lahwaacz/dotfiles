@@ -8,6 +8,8 @@ ExecStart=/usr/bin/gpg-agent --daemon --quiet
 Restart=always
 TimeoutSec=5
 
+Environment=DISPLAY=:0
+
 [Install]
 WantedBy=console.target
 WantedBy=graphical.target

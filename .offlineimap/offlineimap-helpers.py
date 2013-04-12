@@ -2,9 +2,9 @@ import os
 import subprocess
 
 def mailpasswd(path):
-    args = ["gpg", "--use-agent", "--quiet", "--batch", "-d", os.path.expanduser(path)]
+    cmd = "gpg --quiet --batch --use-agent --decrypt --output - " + os.path.expanduser(path)
     try:
-        return subprocess.check_output(args).strip()
+        return subprocess.check_output(cmd, shell=True).strip()
     except subprocess.CalledProcessError:
         return ""
 

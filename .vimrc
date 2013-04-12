@@ -49,6 +49,9 @@ else
 endif
 colorscheme solarized
 
+" gvim specific
+set guifont=Monospace\ 9
+
 set splitright          " Open new vertical split windows to the right of the current one, not the left.
 set splitbelow          " See above description. Opens new windows below, not above.
 
@@ -82,16 +85,11 @@ imap kk <Esc>:w<CR>
 " Temporarily disable search highlight until next search
 "nnoremap <esc> :noh<return><esc>
 
-" Automatic hard-wrapping for *.tex files
-autocmd FileType tex    set textwidth=120
+" I use custom Makefile for LaTeX (and gnuplot)
+autocmd FileType tex,gnuplot    set makeprg=make\ -j2\ pdf\ nocolor=1
 
-" LaTeX compiler (use my custom Makefile actually)
-function MakeLaTeX()
-    :w
-    :make
-endfunction
-autocmd FileType tex    set makeprg=make\ -j2\ pdf\ nocolor=1
-autocmd FileType tex    map <C-m> :call MakeLaTeX()<CR>
+" map Ctrl+m to :make
+map <C-m> :w<CR>:make<CR>
 
 " Comment out a range of lines (default settings)
 map - :s/^/\#/<CR>:nohlsearch<CR>
@@ -109,3 +107,10 @@ function TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
 map <F2> :call TrimWhiteSpace()<CR>
+
+" Automatic hard-wrapping for *.tex files
+autocmd FileType tex set textwidth=110
+
+" Highlight first column after 'textwidth'
+autocmd FileType tex set colorcolumn=+1
+autocmd FileType tex highlight ColorColumn ctermbg=darkgrey guibg=lightgrey

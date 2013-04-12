@@ -6,8 +6,5 @@ UMask=0077
 Environment=DISPLAY=:0
 ExecStart=/usr/bin/qpdfview --unique
 
-# for GTK styles in Qt
-Environment=GTK2_RC_FILES=%h/.gtkrc-2.0
-
 [Install]
 WantedBy=graphical.target

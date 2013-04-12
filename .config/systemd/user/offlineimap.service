@@ -1,5 +1,7 @@
 [Unit]
 Description=Start offlineimap as a daemon
+Wants=gpg-agent.service
+After=gpg-agent.service
 
 [Service]
 UMask=0077
