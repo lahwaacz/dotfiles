@@ -1,5 +1,5 @@
 [Unit]
-Description=Start offlineimap as a daemon
+Description=IMAP/Maildir synchronization tool
 Wants=gpg-agent.service
 After=gpg-agent.service
 

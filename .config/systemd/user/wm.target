@@ -1,7 +1,5 @@
 [Unit]
 Description=Window manager target
-Wants=xorg.target
-Requires=xorg.target
 Wants=graphical.target
 Before=graphical.target
 Requires=dbus.socket

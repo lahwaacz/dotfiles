@@ -141,6 +141,12 @@
     tag = 10
   [/rule]
 
+  [rule]
+    instance = "pinentry"
+    free     = true
+    ignore_tag = true
+  [/rule]
+
 [/rules]
 
 [launchers]
@@ -225,7 +231,7 @@
   [key] mod = {"Super"} key = "k"  func = "screen_next" [/key]
   [key] mod = {"Super"} key = "j" func = "screen_prev" [/key]
 
-  [key] mod = {"Super"} key = "q" func = "client_close" [/key]
+  [key] mod = {"Super", "Shift"} key = "q" func = "client_close" [/key]
 
   # Focus next / prev client and next / prev tabbed client
   [key] mod = { "Alt" }            key = "Tab" func = "client_focus_next" [/key]

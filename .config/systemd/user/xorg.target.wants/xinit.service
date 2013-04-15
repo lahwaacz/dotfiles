@@ -1,6 +1,7 @@
 [Unit]
 Description=Things that used to be in ~/.xinitrc
 After=xorg.service
+Before=wm.target
 
 [Service]
 Type=oneshot
