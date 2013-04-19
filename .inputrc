@@ -1,0 +1,10 @@
+# list ambiguous results on single tab press
+set show-all-if-ambiguous on
+
+set show-all-if-unmodified on
+
+# character denoting file's type appended to filename (like ls -F)
+set visible-stats on
+
+# case-insensitive completion
+set completion-ignore-case on

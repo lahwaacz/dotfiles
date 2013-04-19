@@ -38,7 +38,7 @@ set undolevels=1000     " Number of levels of undo
 syntax on               " Syntax highlighting on.
 filetype plugin indent on             " filetype detection
 au BufNewFile,BufRead *.log set filetype=messages       " syntax highlighting in all *.log files
-"set t_Co=256            " usually not needed
+set t_Co=256            " usually not needed
 
 " colorscheme
 let g:solarized_termcolors=256

@@ -2,6 +2,7 @@
 accounts = Gmail
 maxsyncaccounts = 1
 pythonfile = ~/.offlineimap/offlineimap-helpers.py
+fsync = False
 
 [Account Gmail]
 localrepository = Gmail-local

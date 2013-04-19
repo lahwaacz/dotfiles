@@ -1,7 +1,8 @@
 ## colors
 autoload colors
 colors
-if [[ "$TERM" =~ ".*256color.*" && -f ~/.dircolors.256colors ]]; then
+#if [[ "$TERM" =~ ".*256color.*" && -f ~/.dircolors.256colors ]]; then
+if [[ "$TERM" != "linux" && -f ~/.dircolors.256colors ]]; then
     eval $(dircolors ~/.dircolors.256colors)
 elif [ -f ~/.dircolors ]; then
     eval $(dircolors ~/.dircolors)

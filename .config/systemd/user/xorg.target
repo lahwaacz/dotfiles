@@ -10,3 +10,6 @@
 [Unit]
 Description=The basic Xorg server
 BindsTo=xorg.service
+
+# stop xorg when wm.target exits
+#PartOf=wm.target

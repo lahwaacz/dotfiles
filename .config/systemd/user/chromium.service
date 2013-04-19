@@ -5,8 +5,7 @@ After=network.target
 [Service]
 UMask=0077
 Environment=DISPLAY=:0
-EnvironmentFile=/etc/chromium/default
-ExecStart=/usr/lib/chromium/chromium $CHROMIUM_FLAGS
+ExecStart=/usr/bin/chromium
 KillSignal=SIGINT
 StandardOutput=null
 
