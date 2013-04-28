@@ -9,7 +9,7 @@ Type=simple
 ExecStart=/usr/bin/offlineimap -u Quiet
 Restart=always
 
-# gpg-agent socket
+# gpg-agent socket - load explicitly, in case the agent was restarted, systemd has the old path
 EnvironmentFile=/run/user/1000/gpg-agent-info
 # display for pinentry
 Environment=DISPLAY=:0
