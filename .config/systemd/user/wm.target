@@ -4,7 +4,7 @@ Wants=graphical.target
 Before=graphical.target
 Requires=dbus.socket
 AllowIsolate=true
-BindsTo=wmfs.service
+BindsTo=i3.service
 
 [Install]
 Alias=default.target

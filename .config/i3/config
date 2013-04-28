@@ -1,0 +1,212 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod1
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below. ISO 10646 = Unicode
+font -misc-fixed-medium-r-normal--10-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, if you need a lot of unicode glyphs or
+# right-to-left text rendering, you should instead use pango for rendering and
+# chose a FreeType font, such as:
+# font pango:DejaVu Sans Mono 10
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# reload configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session)
+bindsym $mod+Shift+r restart
+
+# exit i3
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec i3-msg exit
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu
+bindsym $mod+d exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+n split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+p focus parent
+
+# focus the child container
+bindsym $mod+c focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+bindsym $mod+F1 workspace 11
+bindsym $mod+F2 workspace 12
+bindsym $mod+F3 workspace 13
+bindsym $mod+F4 workspace 14
+bindsym $mod+F5 workspace 15
+bindsym $mod+F6 workspace 16
+bindsym $mod+F7 workspace 17
+bindsym $mod+F8 workspace 18
+bindsym $mod+F9 workspace 19
+bindsym $mod+F10 workspace 20
+bindsym $mod+F11 workspace 21
+bindsym $mod+F12 workspace 22
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+F1 move container to workspace 11
+bindsym $mod+Shift+F2 move container to workspace 12
+bindsym $mod+Shift+F3 move container to workspace 13
+bindsym $mod+Shift+F4 move container to workspace 14
+bindsym $mod+Shift+F5 move container to workspace 15
+bindsym $mod+Shift+F6 move container to workspace 16
+bindsym $mod+Shift+F7 move container to workspace 17
+bindsym $mod+Shift+F8 move container to workspace 18
+bindsym $mod+Shift+F9 move container to workspace 19
+bindsym $mod+Shift+F10 move container to workspace 20
+bindsym $mod+Shift+F11 move container to workspace 21
+bindsym $mod+Shift+F12 move container to workspace 22
+
+bindsym $mod+i workspace next_on_output
+bindsym $mod+u workspace prev_on_output
+bindsym $mod+a workspace back_and_forth
+
+# resize window
+mode "resize" {
+    bindsym h       resize grow   left  5 px
+    bindsym Shift+h resize shrink left  5 px
+
+    bindsym j       resize grow   down  5 px
+    bindsym Shift+j resize shrink down  5 px
+
+    bindsym k       resize grow   up    5 px
+    bindsym Shift+k resize shrink up    5 px
+
+    bindsym l       resize grow   right 5 px
+    bindsym Shift+l resize shrink right 5 px
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# multimedia keys
+bindsym XF86AudioRaiseVolume  exec pactl set-sink-mute 1 0 && pactl set-sink-volume 1 -- '+5%'
+bindsym XF86AudioLowerVolume  exec pactl set-sink-mute 1 0 && pactl set-sink-volume 1 -- '-5%'
+bindsym XF86AudioMute         exec pactl set-sink-mute 1 1
+
+bindsym XF86AudioPlay         exec mpc -q toggle
+bindsym XF86AudioStop         exec mpc -q stop
+bindsym XF86AudioPrev         exec mpc -q prev
+bindsym XF86AudioNext         exec mpc -q next
+bindsym $mod+Ctrl+Down        exec mpc -q toggle
+bindsym $mod+Ctrl+Up          exec mpc -q stop
+bindsym $mod+Ctrl+Left        exec mpc -q prev
+bindsym $mod+Ctrl+Right       exec mpc -q next
+
+bindsym XF86MonBrightnessUp   exec display-brightness-notify.py
+bindsym XF86MonBrightnessDown exec display-brightness-notify.py
+
+bindsym XF86ScreenSaver       exec sxlock
+bindsym XF86WWW               exec toggle-touchpad.sh
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    status_command ~/bin/i3status -c ~/.config/i3/i3status.conf
+    mode dock
+    position top
+    colors {
+        background "#111111"
+        statusline "#dddddd"
+        separator  "#888888"
+    }
+}
+
+#hide_edge_borders both
+new_window 1pixel
+workspace_auto_back_and_forth yes
+
+# assign windows to workspaces
+assign [instance="dwb"] 1
+assign [instance="chromium"] 1
+assign [instance="qpdfview"] 1
+assign [instance="Pidgin"] 11
+
+# per-window settings
+for_window [instance="xv"] floating enable
+
+# autostart applications
+exec pidgin
+exec --no-startup-id i3-msg 'workspace 15; exec tinyterm -k -e "journalctl -f -n 100"; workspace 1;

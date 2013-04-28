@@ -1,0 +1,14 @@
+[Unit]
+Description=i3-wm
+After=xorg.target
+Requires=xorg.target
+
+[Service]
+UMask=0077
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/i3
+ExecStop=/usr/bin/i3-msg exit
+ExecReload=/usr/bin/i3-msg reload
+KillMode=process
+Restart=on-failure
+CPUShares=2048
