@@ -1,0 +1,22 @@
+# vim:fenc=utf-8:nu:ai:si:et:ts=2:sw=2:ft=muttrc
+
+#########################
+# FJFI specific options
+#########################
+
+#color status     brightwhite   blue
+#color indicator  brightwhite   blue        
+
+set from      = "klinkjak@fjfi.cvut.cz"
+#set mbox      = "+FJFI/archive"
+set record    = "+FJFI/sent"
+set postponed = "+FJFI/drafts"
+
+macro index D "<save-message>+FJFI/trash<enter>"    "move message to the trash"
+macro index S "<save-message>+FJFI/spam<enter>"     "mark message as spam"
+
+# --- smtp server
+set my_fjfi_password   = `gpg --quiet --batch --use-agent --decrypt --output - ~/.mutt/password-fjfi.gpg`
+set smtp_url            = "smtp://klinkjak:$my_fjfi_password@smtp.fjfi.cvut.cz:587/"
+set ssl_force_tls       = yes
+set ssl_starttls        = yes

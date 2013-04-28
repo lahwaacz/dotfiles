@@ -1,8 +1,19 @@
+# vim: ft=dosini
+
 [general]
-accounts = Gmail
+accounts = Gmail, FJFI
 maxsyncaccounts = 1
 pythonfile = ~/.offlineimap/offlineimap-helpers.py
 fsync = False
+
+[mbnames]
+enabled = yes
+filename = ~/.mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"
+
 
 [Account Gmail]
 localrepository = Gmail-local
@@ -13,26 +24,51 @@ autorefresh = 5
 # Number of quick-syncs between autorefreshes. Quick-syncs do not update if the
 # only changes were to IMAP flags
 quick = 10
+# count new emails of all accounts (for display in statusbar)
+postsynchook = find ~/Maildir/*/*/new/ -type f | wc -l > /dev/shm/new-mails-count
 
 [Repository Gmail-local]
 type = Maildir
 localfolders = ~/Maildir/Gmail
-nametrans = nt_local
+nametrans = nt_local(mapping_gmail)
 
 [Repository Gmail-remote]
 type = Gmail
 remoteuser = kuba.klinkovsky@gmail.com
 remotepasseval = mailpasswd("~/.mutt/password-gmail.gpg")
+ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 holdconnectionopen = yes
 keepalive = 60
-nametrans = nt_remote
-folderfilter = checkExclude
+nametrans = nt_remote(mapping_gmail)
+folderfilter = exclude(mapping_gmail)
 
-[mbnames]
-enabled = yes
-filename = ~/.mutt/mailboxes
-header = "mailboxes "
-peritem = "+%(accountname)s/%(foldername)s"
-sep = " "
-footer = "\n"
+
+[Account FJFI]
+localrepository = FJFI-local
+remoterepository = FJFI-remote
+status_backend = sqlite
+# Minutes between syncs
+autorefresh = 5
+# Number of quick-syncs between autorefreshes. Quick-syncs do not update if the
+# only changes were to IMAP flags
+quick = 10
+# count new emails of all accounts (for display in statusbar)
+postsynchook = find ~/Maildir/*/*/new/ -type f | wc -l > /dev/shm/new-mails-count
+
+[Repository FJFI-local]
+type = Maildir
+localfolders = ~/Maildir/FJFI
+nametrans = nt_local(mapping_fjfi)
+
+[Repository FJFI-remote]
+type = IMAP
+remotehost = imap.fjfi.cvut.cz
+remoteuser = klinkjak
+remotepasseval = mailpasswd("~/.mutt/password-fjfi.gpg")
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+holdconnectionopen = yes
+keepalive = 60
+nametrans = nt_remote(mapping_fjfi)
+folderfilter = exclude(mapping_fjfi)

@@ -1,0 +1,22 @@
+# vim:fenc=utf-8:nu:ai:si:et:ts=2:sw=2:ft=muttrc
+
+#########################
+# Gmail specific options
+#########################
+
+#color status     brightwhite   green
+#color indicator  brightwhite   green        
+
+set from      = "kuba.klinkovsky@gmail.com"
+#set mbox      = "+Gmail/archive"
+unset record                    # don't save sent mail, gmail does it itself
+set postponed = "+Gmail/drafts"
+
+macro index D "<save-message>+Gmail/trash<enter>"   "move message to the trash"
+macro index S "<save-message>+Gmail/spam<enter>"    "mark message as spam"
+
+# --- smtp server
+set my_gmail_password   = `gpg --quiet --batch --use-agent --decrypt --output - ~/.mutt/password-gmail.gpg`
+set smtp_url            = "smtp://kuba.klinkovsky:$my_gmail_password@smtp.gmail.com:587/"
+set ssl_force_tls       = yes
+set ssl_starttls        = yes

@@ -73,6 +73,7 @@ set pgp_list_secring_command="gpg --no-verbose --batch --quiet --with-colons --l
 # fetch keys
 # set pgp_getkeys_command="pkspxycwrap %r"
 
+set pgp_use_gpg_agent = yes 
 set pgp_autosign=yes
 set pgp_sign_as=BCF056C5
 set pgp_timeout=1800

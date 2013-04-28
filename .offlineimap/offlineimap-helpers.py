@@ -1,6 +1,8 @@
 import os
 import subprocess
 
+""" Use gpg to decrypt password.
+"""
 def mailpasswd(path):
     cmd = "gpg --quiet --batch --use-agent --decrypt --output - " + os.path.expanduser(path)
     try:
@@ -9,66 +11,50 @@ def mailpasswd(path):
         return ""
 
 
+# mapping for nametrans
+# dictionary of strings {<remote>: <local>, ...} shape, where <remote> is mapped to <local>
+
+mapping_gmail = {
+    'INBOX'                : 'INBOX',
+    '[Gmail]/Drafts'       : 'drafts',
+    '[Gmail]/Sent Mail'    : 'sent',
+    '[Gmail]/Bin'          : 'trash',
+    '[Gmail]/Spam'         : 'spam',
+    'arch'                 : 'arch',
+    'aur-general'          : 'aur-general',
+}
+
+mapping_fjfi = {
+    'INBOX'                : 'INBOX',
+    'Drafts'               : 'drafts',
+    'Sent Items'           : 'sent',
+    'Deleted Items'        : 'trash',
+    'Junk E-Mail'          : 'spam',
+}
 
 
-import re
-
-mapping = { 'INBOX':                'INBOX'
-          , '[Gmail]/Drafts':       'drafts'
-          , '[Gmail]/Sent Mail':    'sent_mail'
-          , '[Gmail]/Spam':         'spam'
-          , '[Gmail]/Bin':          'trash'
-          }
-
-r_mapping = { val: key for key, val in mapping.items() }
-
-def nt_remote(folder):
-    try:
-        return mapping[folder]
-    except:
-#        return re.sub(' ', '_', folder).lower()
-        return folder
-
-def nt_local(folder):
-    try:
-        return r_mapping[folder]
-    except:
-#        return re.sub('_', ' ', folder).capitalize()
-        return folder
-
-# folderfilter = exclude(['Label', 'Label', ... ])
-def exclude(excludes):
+def nt_remote(mapping):
     def inner(folder):
         try:
-            excludes.index(folder)
-            return False
+            return mapping[folder]
         except:
-            return True
-
+            return folder
     return inner
 
-def checkExclude(folder):
-    if folder in mapping.keys():
-        return True
+def nt_local(mapping):
+    r_mapping = dict(zip(mapping.values(), mapping.keys()))
+    def inner(folder):
+        try:
+            return r_mapping[folder]
+        except:
+            return folder
+    return inner
 
-    if folder.startswith('[Gmail]'):
+
+# return False if folder not in mapping.keys()
+def exclude(mapping):
+    def inner(folder):
+        if folder in mapping.keys():
+            return True
         return False
-
-    return True
-
-
-
-
-prioritized = ["INBOX", "klinkjak"]
-# compares x and y, compares according to priority
-def cmpMailBoxes(x, y):
-    for prefix in prioritized:
-        xsw = x.startswith(prefix)
-        ysw = y.startswith(prefix)
-        if xsw and ysw:
-            return cmp(x, y)
-        elif xsw:
-            return -1
-        elif ysw:
-            return +1
-    return cmp(x, y)
+    return inner
