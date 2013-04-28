@@ -167,10 +167,11 @@
 
 [keys]
 
-  [key] mod = {"Super"} key = "Return" func = "spawn" cmd = "urxvtc || urxvt" [/key]
+  [key] mod = {"Super"} key = "Return" func = "spawn" cmd = "tinyterm" [/key]
 
   [key] mod = {"Control", "Alt"} key = "q" func = "quit" [/key]
   [key] mod = {"Control", "Alt"} key = "r" func = "reload" [/key]
+  [key] mod = {"Control", "Alt"} key = "i" func = "spawn" cmd = "initscreen.sh" [/key]
 
   # Tag manipulation
   [key] mod = {"Super"} key = "plus"    func = "tag_set" cmd = "0"  [/key]
@@ -313,7 +314,7 @@
   [key] mod = {} key = "XF86MonBrightnessUp" func = "spawn" cmd = "display-brightness-notify.py" [/key]
   [key] mod = {} key = "XF86MonBrightnessDown" func = "spawn" cmd = "display-brightness-notify.py" [/key]
 
-  [key] mod = {} key = "XF86ScreenSaver" func = "spawn" cmd = "sflock" [/key]
+  [key] mod = {} key = "XF86ScreenSaver" func = "spawn" cmd = "sxlock" [/key]
 
   [key] mod = {} key = "XF86WWW" func = "spawn" cmd = "toggle-touchpad.sh" [/key]
 

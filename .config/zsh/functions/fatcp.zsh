@@ -43,14 +43,15 @@ fatcp() {
         return 1
     fi
 
-    local src="$1"
-    local dest="$2"
-
     local replace='<>|;:!?"*\+'
     replace=${(q)replace}
 
-    zmv -C -Q -v -p mkdir -o -p $src/'(**/)(/)' $dest/${src:t}/'${1//[$replace]/_}'
-    zmv -C -Q -v -o -pu $src/'(**/)(*)(.)' $dest/${src:t}/'${1//[$replace]/_}${2//[$replace]/_}'
+    local src="$1"
+    local dest="$2"
+    local tail=${src:t}
+
+    zmv -C -Q -v -p mkdir -o -p $src/'(**/)(/)' $dest/${tail//[$replace]/_}/'${1//[$replace]/_}'
+    zmv -C -Q -v -o -pu $src/'(**/)(*)(.)' $dest/${tail//[$replace]/_}/'${1//[$replace]/_}${2//[$replace]/_}'
 }
 
 #fatcp "$@"

@@ -1,3 +1,4 @@
+*.dpi: 96
 URxvt.scrollBar: false
 URxvt.cursorBlink: true
 URxvt.saveLines: 32767
@@ -9,7 +10,7 @@ URxvt.iso14755: false
 URxvt.iso14755_52: false
 
 ! font setting
-URxvt.font: xft:Monospace-12
+URxvt.font: xft:monospace-12
 !URxvt.font: -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-1
 URxvt.buffered: true
 

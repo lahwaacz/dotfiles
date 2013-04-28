@@ -32,7 +32,7 @@ function extract() {
         fi
 
         success=0
-        fname="$1"
+        fname=$(realpath "$1")
         extension=${fname:e}
 
         # remove extension from basename
@@ -62,7 +62,10 @@ function extract() {
                 unzip "$fname" -d "$basename"
                 ;;
             (rar)
-                unrar x "$fname"
+                mkdir "$basename"
+                pushd "$basename"
+                    unrar e "$fname"
+                popd
                 ;;
             (7z)
                 7za x "$fname" -o"$basename"
@@ -81,5 +84,3 @@ function extract() {
 
 alias x=extract
 #extract "$@"
-
-# TODO: unrar into $dirname
