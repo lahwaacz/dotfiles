@@ -27,7 +27,8 @@ setopt NUMERIC_GLOB_SORT    # Sort the filenames numerically rather than lexicog
 
 ## input/output 
 unsetopt FLOW_CONTROL       # Nobody needs flow control anymore. Troublesome feature.
-setopt CORRECT_ALL           # use autocorrection for commands and args
+setopt correct              # use autocorrection for commands
+setopt no_correctall        # don't correct filenames
 
 ## other
 unsetopt BEEP               # avoid "beep"ing

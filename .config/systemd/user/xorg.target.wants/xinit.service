@@ -8,7 +8,7 @@ Type=oneshot
 Environment=DISPLAY=:0
 
 # screen init script (using xrandr)
-ExecStart=/home/lahwaacz/bin/initscreen.sh
+ExecStart=/home/lahwaacz/Scripts/initscreen.sh
 
 # turn on numlock
 ExecStart=/usr/bin/numlockx on

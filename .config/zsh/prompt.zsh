@@ -100,6 +100,17 @@ function precmd {
             PR_BATTERY="${BATT_COLOR} B:${BATT_PERCENT}%% (${BATT_TIME})"
         fi
     fi
+
+    # Window title
+    case $TERM in
+        termite|*xterm*|rxvt|rxvt-unicode|rxvt-256color|rxvt-unicode-256color|(dt|k|E)term)
+            print -Pn "\e]0;[%n@%M][%~]%#\a"
+            ;;
+        screen|screen-256color)
+            print -Pn "\e]83;title \"$1\"\a" 
+            print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~]\a" 
+            ;; 
+    esac
 }
 
 # If I am using vi keys, I want to know what mode I'm currently using.
@@ -149,3 +160,17 @@ ${PR_BOLD_WHITE} %_ ${PR_BOLD_BLACK}>${PR_GREEN}>\
 ${PR_BOLD_GREEN}>%{${reset_color}%} '
 }
 setprompt
+
+
+preexec () {
+    # Window title
+    case $TERM in
+        termite|*xterm*|rxvt|rxvt-unicode|rxvt-256color|rxvt-unicode-256color|(dt|k|E)term)
+            print -Pn "\e]0;[%n@%M][%~]%# ($1)\a"
+            ;;
+        screen|screen-256color)
+            print -Pn "\e]83;title \"$1\"\a" 
+            print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~] ($1)\a" 
+            ;; 
+    esac
+}

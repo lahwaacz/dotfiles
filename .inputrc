@@ -1,6 +1,7 @@
-# list ambiguous results on single tab press
-set show-all-if-ambiguous on
+$include /etc/inputrc
 
+# TAB completion
+set show-all-if-ambiguous on
 set show-all-if-unmodified on
 
 # character denoting file's type appended to filename (like ls -F)
@@ -8,3 +9,26 @@ set visible-stats on
 
 # case-insensitive completion
 set completion-ignore-case on
+
+
+# for vi mode
+set editing-mode vi
+$if mode=vi
+
+set keymap vi-command
+# these are for vi-command mode
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\ep": yank-last-arg
+"\en": yank-nth-arg
+Control-l: clear-screen
+
+set keymap vi-insert
+# these are for vi-insert mode
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\ep": yank-last-arg
+"\en": yank-nth-arg
+Control-l: clear-screen 
+
+$endif

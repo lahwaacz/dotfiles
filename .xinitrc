@@ -32,4 +32,5 @@ umask 0077
 
 #setxkbmap cz    # just in case...
 
-exec $1
+#exec $1
+exec i3 -c ~/.i3.conf

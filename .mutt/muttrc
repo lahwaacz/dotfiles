@@ -121,17 +121,17 @@ bind compose p          pgp-menu
 bind attach <return>    view-mailcap
 
 # --- macros
-macro index \Cr "<tag-prefix><clear-flag>N" "mark tagged messages as read"
-macro index \Cs "<pipe-message>cat > ~/"    "save message as" 
-macro index B   "<limit>~b "                "search message bodies"
+macro index \Cr "<tag-prefix><clear-flag>N"                    "mark tagged messages as read"
+macro index \Cs "<pipe-message>cat > ~/"                       "save message as" 
+macro index B   "<limit>~b "                                   "search message bodies"
 
-macro index,pager <F11> "<shell-escape>less /usr/share/doc/mutt/manual.txt<enter>" "Show Mutt documentation"
-macro index,pager <F12> ":toggle help<enter>:set ?help<enter>" "toggle help status line"
-macro index,pager <F5> ":source ~/.mutt/muttrc\n" "Reload the muttrc"
+macro index,pager <F1> "<shell-escape>less /usr/share/doc/mutt/manual.txt<enter>" "Show Mutt documentation"
+macro index,pager <F2> ":toggle help<enter>:set ?help<enter>"  "toggle help status line"
+macro index,pager <F5> ":source ~/.mutt/muttrc\n"              "Reload the muttrc"
 
-macro compose \Cg "Fgpg --clearsign\ny"
-macro compose \Cp "Fgpg --clearsign\ny^T^Uapplication/pgp; format=text; x-action=sign\n"
-macro compose Y pfy "send mail without pgp"
+macro compose \Cg    "Fgpg --clearsign\ny"
+macro compose \Cp    "Fgpg --clearsign\ny^T^Uapplication/pgp; format=text; x-action=sign\n"
+macro compose Y pfy  "send mail without pgp"
 
 # --- address book
 set query_command       = "~/Scripts/abook-autoexport --mutt-query '%s' 2>/dev/null"
@@ -141,18 +141,21 @@ macro index A      "!~/Scripts/abook-autoexport\n:source ~/.mutt/alias\n"       
 macro index \Ca    "|~/Scripts/abook-autoexport --add-email-quiet\n:source ~/.mutt/alias\n" "Create new alias from the actual message"
 
 # --- misc
-#set print_command    = /usr/bin/enscript      # print with enscript
-set read_inc=5       # display download progress every 5K
+#set print_command       = /usr/bin/enscript                      # print with enscript
+set read_inc=5                                                   # display download progress every 5K
 set sleep_time=0
-set send_charset="us-ascii:utf-8"   # charset priority
-set auto_tag                 # apply functions in index menu only to tagged messages (if any)
+set send_charset="us-ascii:utf-8"                                # charset priority
+set auto_tag                                                     # apply functions in index menu only to tagged messages (if any)
+
+# quick-sync ~/Mail immediately with offlineimap
+macro index Z   "<shell-escape>/usr/bin/offlineimap -q -o -u TTYUI<enter>" "sync IMAP"
 
 # --- sidebar
-set sidebar_visible     = yes   # set sidebar visible
-set sidebar_width       = 20    # width of sidebar in chars
-set sidebar_format      = "%B%?F? [%F]?%* %?N?%N/?%4S"  # format string for sidebar
+set sidebar_visible     = yes                                    # set sidebar visible
+set sidebar_width       = 20                                     # width of sidebar in chars
+set sidebar_format      = "%B%?F? [%F]?%* %?N?%N/?%4S"           # format string for sidebar
 set sidebar_sort        = yes
 
-bind index,pager \CP sidebar-prev   # Ctrl-n to select next folder
-bind index,pager \CN sidebar-next   # Ctrl-p to select previous folder
-bind index,pager \CO sidebar-open   # Ctrl-o to open selected folder
+bind index,pager \CP sidebar-prev                                # Ctrl-n to select next folder
+bind index,pager \CN sidebar-next                                # Ctrl-p to select previous folder
+bind index,pager \CO sidebar-open                                # Ctrl-o to open selected folder

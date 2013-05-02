@@ -1,70 +1,85 @@
+syntax on
+filetype plugin on
+filetype indent on
+
 set nocompatible
+set ttyfast
 
 " Tabs, Spaces and Indentation.
-set expandtab           " Use spaces for tabs.
-set tabstop=4           " Number of spaces to use for tabs.
-set shiftwidth=4        " Number of spaces to autoindent.
-set softtabstop=4       " Number of spaces for a tab.
-set autoindent          " Set autoindenting on.
-set smartindent         " Automatically insert another level of indent when needed. 
-retab
+set expandtab                           " use spaces for tabs
+set tabstop=4                           " number of spaces to use for tabs
+set shiftwidth=4                        " number of spaces to autoindent
+set softtabstop=4                       " number of spaces for a tab
+set autoindent                          " set autoindenting on
+set smartindent                         " automatically insert another level of indent when needed
+set backspace=indent,eol,start          " more flexible backspace
+retab                                   " spaces instead of tabs
 
 " Backup.
-set nobackup            " Don't backup files.
+set nobackup                            " don't backup files
 set nowritebackup
 set noswapfile
 
 " Searching.
-set hlsearch            " Highlight search terms
-set incsearch           " Show search matches as you type
-set ignorecase          " Ignore case when searching
-set smartcase           " Make searches case sensitive only if they contain uppercase stuff
-
-" Various.
-set ruler               " Show the cursor position.
-set scrolloff=5         " Show 5 lines above/below the cursor when scrolling.
-set number              " Line numbers on.
-set showcmd             " Shows the command in the last line of the screen.
-set autoread            " Read files when they've been changed outside of Vim.
+set hlsearch                            " highlight search terms
+set incsearch                           " show search matches as you type
+set ignorecase                          " ignore case when searching
+set smartcase                           " make searches case sensitive only if they contain uppercase stuff
 
 " Encoding.
-set encoding=utf-8      " use utf-8 everywhere
-set fileencoding=utf-8  " use utf-8 everywhere
-set termencoding=utf-8  " use utf-8 everywhere
+set encoding=utf-8                      " use utf-8 everywhere
+set fileencoding=utf-8                  " use utf-8 everywhere
+set termencoding=utf-8                  " use utf-8 everywhere
 
-set history=1000        " Number of command lines stored in the history tables.
-set undolevels=1000     " Number of levels of undo
+" Various.
+set ruler                               " show the cursor position.
+set scrolloff=5                         " show 5 lines above/below the cursor when scrolling.
+set number                              " line numbers on.
+set showcmd                             " shows the command in the last line of the screen.
+set autoread                            " read files when they've been changed outside of Vim.
+set showmatch                           " matching brackets & the like
 
-syntax on               " Syntax highlighting on.
-filetype plugin indent on             " filetype detection
-au BufNewFile,BufRead *.log set filetype=messages       " syntax highlighting in all *.log files
-set t_Co=256            " usually not needed
+set history=500                         " number of command lines stored in the history tables.
+set undolevels=500                      " number of levels of undo
+
+set splitright                          " open new vertical split windows to the right of the current one, not the left.
+set splitbelow                          " see above description. Opens new windows below, not above.
+set wildmode=longest,list               " file and directory matching mode.
+set nrformats=hex                       " allow incrementing and decrementing numbers that start with 0 using <c-a> and <c-x>
+set clipboard=unnamedplus,autoselect    " use + register (X Window clipboard) as unnamed register"
+set viminfo='20,<1000,s10,h             " large registers (for copying between sessions)
+
+set guifont=Monospace\ 9                " font in gvim
+
 
 " colorscheme
-let g:solarized_termcolors=256
-if has('gui_running')
-    set background=light
+if &t_Co < 256
+    colorscheme desert                  " colorscheme for the 8 color linux term
 else
-    set background=dark
+    let g:solarized_termcolors=256
+    if has('gui_running')
+        set background=light
+    else
+        set background=dark
+    endif
+    colorscheme solarized
 endif
-colorscheme solarized
 
-" gvim specific
-set guifont=Monospace\ 9
 
-set splitright          " Open new vertical split windows to the right of the current one, not the left.
-set splitbelow          " See above description. Opens new windows below, not above.
+" Map keys to toggle functions
+function! MapToggle(key, opt)
+    let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
+    exec 'nnoremap '.a:key.' '.cmd
+    exec 'inoremap '.a:key." \<C-O>".cmd
+endfunction
+command! -nargs=+ MapToggle call MapToggle(<f-args>)
 
-set backspace=indent,eol,start          " More flexible backspace.
-
-set wildmode=longest,list               " File and directory matching mode.
-
-set nrformats=hex                       " Allow incrementing and decrementing numbers that start with 0 using <c-a> and <c-x>
-
-set clipboard=unnamedplus,autoselect    " Use + register (X Window clipboard) as unnamed register"
-set viminfo='20,<1000,s10,h             " large registers
-
-set ttyfast
+" Keys & functions
+MapToggle <F4> number
+MapToggle <F5> spell
+MapToggle <F6> paste
+MapToggle <F7> hlsearch
+MapToggle <F8> wrap
 
 " Map keys to navigate tabs
 map <C-h> :tabprevious<CR>
@@ -75,6 +90,9 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
+" space bar un-highligts search
+:noremap <silent> <Space> :silent noh<Bar>echo<CR>
+
 " Make a curly brace automatically insert an indented line
 inoremap {<CR> {<CR>}<Esc>O<BS><Tab>
 
@@ -82,22 +100,18 @@ inoremap {<CR> {<CR>}<Esc>O<BS><Tab>
 imap jj <Esc>:w<CR>
 imap kk <Esc>:w<CR>
 
-" Temporarily disable search highlight until next search
-"nnoremap <esc> :noh<return><esc>
-
-" I use custom Makefile for LaTeX (and gnuplot)
-autocmd FileType tex,gnuplot    set makeprg=make\ -j2\ pdf\ nocolor=1
-
 " map Ctrl+m to :make
 map <C-m> :w<CR>:make<CR>
 
 " Comment out a range of lines (default settings)
 map - :s/^/\#/<CR>:nohlsearch<CR>
 
+
 " Comment out a range of lines (per-language settings)
 autocmd FileType tex    map - :s/^/\%/<CR>:nohlsearch<CR>
 autocmd FileType vim    map - :s/^/\"/<CR>:nohlsearch<CR>
 autocmd FileType c,cpp  map - :s/^/\/\//<CR>:nohlsearch<CR>
+autocmd FileType lua    map - :s/^/--/<CR>:nohlsearch<CR>
 
 " Clear all comment markers (one rule for all languages)
 map _ :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR>:nohlsearch<CR>
@@ -107,6 +121,9 @@ function TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
 map <F2> :call TrimWhiteSpace()<CR>
+
+" I use custom Makefile for LaTeX (and gnuplot)
+autocmd FileType tex,gnuplot    set makeprg=make\ -j2\ pdf\ nocolor=1
 
 " Automatic hard-wrapping for *.tex files
 autocmd FileType tex set textwidth=110

@@ -143,17 +143,17 @@ bindsym $mod+a workspace back_and_forth
 
 # resize window
 mode "resize" {
-    bindsym h       resize grow   left  5 px
-    bindsym Shift+h resize shrink left  5 px
+    bindsym h       resize grow   left  2 px
+    bindsym Shift+h resize shrink left  2 px
 
-    bindsym j       resize grow   down  5 px
-    bindsym Shift+j resize shrink down  5 px
+    bindsym j       resize grow   down  2 px
+    bindsym Shift+j resize shrink down  2 px
 
-    bindsym k       resize grow   up    5 px
-    bindsym Shift+k resize shrink up    5 px
+    bindsym k       resize grow   up    2 px
+    bindsym Shift+k resize shrink up    2 px
 
-    bindsym l       resize grow   right 5 px
-    bindsym Shift+l resize shrink right 5 px
+    bindsym l       resize grow   right 2 px
+    bindsym Shift+l resize shrink right 2 px
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -208,5 +208,9 @@ assign [instance="Pidgin"] 11
 for_window [instance="xv"] floating enable
 
 # autostart applications
+exec setxkbmap cz
+exec_always initscreen.sh
 exec pidgin
 exec --no-startup-id i3-msg 'workspace 15; exec tinyterm -k -e "journalctl -f -n 100"; workspace 1;
+
+bindsym $mod+t exec env > /tmp/i3-env

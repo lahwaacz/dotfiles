@@ -26,6 +26,8 @@ autorefresh = 5
 quick = 10
 # count new emails of all accounts (for display in statusbar)
 postsynchook = find ~/Maildir/*/*/new/ -type f | wc -l > /dev/shm/new-mails-count
+# run imapfilter
+presynchook = imapfilter -c ~/.imapfilter/config-gmail.lua
 
 [Repository Gmail-local]
 type = Maildir

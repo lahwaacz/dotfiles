@@ -1,7 +1,7 @@
 umask 0077
 
 # export other directories to PATH
-PATH=$PATH:$HOME/bin:$HOME/Scripts
+PATH=$HOME/bin:$HOME/Scripts:$PATH
 
 # autostart systemd default session on tty1
 if [[ "$(tty)" == '/dev/tty1' ]]; then
