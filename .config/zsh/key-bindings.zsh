@@ -1,24 +1,51 @@
 #!/bin/zsh
 
-## key bindings (vim mode)
+# load keydefinitions using zkbd
+autoload zkbd
+function zkbd_file() {
+    local zkbd_path="${HOME}/.config/zsh/zkbd"
+    [[ -f ${zkbd_path}/${TERM}-${VENDOR}-${OSTYPE} ]] && printf '%s' "${zkbd_path}/${TERM}-${VENDOR}-${OSTYPE}" && return 0
+    [[ -f ${zkbd_path}/${TERM}-${DISPLAY}          ]] && printf '%s' "${zkbd_path}/${TERM}-${DISPLAY}"          && return 0
+    return 1
+}
+
+[[ ! -d ~/.zkbd ]] && mkdir ~/.zkbd
+keyfile=$(zkbd_file)
+ret=$?
+if [[ ${ret} -ne 0 ]]; then
+    zkbd
+    keyfile=$(zkbd_file)
+    ret=$?
+fi
+if [[ ${ret} -eq 0 ]] ; then
+    source "${keyfile}"
+else
+    printf 'Failed to setup keys using zkbd.\n'
+fi
+unfunction zkbd_file; unset keyfile ret
+
+
+# key bindings (vim mode)
 bindkey -v
-bindkey "\e[1~" beginning-of-line # Home
-bindkey "\e[2~" quoted-insert # Ins
-bindkey "\e[3~" delete-char # Del
-bindkey "\e[4~" end-of-line # End
-bindkey "\e[5~" beginning-of-history # PageUp
-bindkey "\e[6~" end-of-history # PageDown
-bindkey "\e[5C" forward-word
-bindkey "\e[5D" backward-word
-bindkey "\e\e[C" forward-word
-bindkey "\e\e[D" backward-word
+
+# use the vi navigation keys in menu completion
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
 bindkey "\e[Z" reverse-menu-complete # Shift+Tab
-bindkey "^?" backward-delete-char # Backspace
-bindkey "^D" delete-char-or-list # Delete
+bindkey '^i' expand-or-complete-prefix # attempt shell expansion/completion on the current word up to cursor
 
-bindkey "^[[A" history-search-backward # Up Arrow
-bindkey "^[[B" history-search-forward # Down Arrow
-
-bindkey '^i' expand-or-complete-prefix # Attempt shell expansion on the current word up to cursor. If that fails, attempt completion.
-bindkey '^R' history-incremental-search-backward # Search backward incrementally for a specified string.
-
+# special keys
+[[ -n "${key[Home]}"      ]] && bindkey "${key[Home]}"      beginning-of-line
+[[ -n "${key[End]}"       ]] && bindkey "${key[End]}"       end-of-line
+[[ -n "${key[PageUp]}"    ]] && bindkey "${key[PageUp]}"    beginning-of-history
+[[ -n "${key[PageDown]}"  ]] && bindkey "${key[PageDown]}"  end-of-history
+[[ -n "${key[Insert]}"    ]] && bindkey "${key[Insert]}"    quoted-insert
+[[ -n "${key[Delete]}"    ]] && bindkey "${key[Delete]}"    delete-char-or-list
+[[ -n "${key[Backspace]}" ]] && bindkey "${key[Backspace]}" backward-delete-char
+[[ -n "${key[Up]}"        ]] && bindkey "${key[Up]}"        history-search-backward
+[[ -n "${key[Down]}"      ]] && bindkey "${key[Down]}"      history-search-forward
+[[ -n "${key[Left]}"      ]] && bindkey "${key[Left]}"      backward-char
+[[ -n "${key[Right]}"     ]] && bindkey "${key[Right]}"     forward-char
