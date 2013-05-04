@@ -43,5 +43,4 @@ alias qpdfview='qpdfview --unique'
 alias cal='cal -m'
 alias less='less -j4aR'
 
-# reset new mails count
-alias mutt='echo 0 > /dev/shm/new-mails-count && mutt'
+alias mutt='echo 0 > /dev/shm/new-mails-count; pushd -q ~/stuff; mutt; popd -q'

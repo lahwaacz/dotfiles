@@ -175,8 +175,8 @@ bindsym $mod+Ctrl+Up          exec mpc -q stop
 bindsym $mod+Ctrl+Left        exec mpc -q prev
 bindsym $mod+Ctrl+Right       exec mpc -q next
 
-bindsym XF86MonBrightnessUp   exec display-brightness-notify.py
-bindsym XF86MonBrightnessDown exec display-brightness-notify.py
+bindsym XF86MonBrightnessUp   exec notify-brightness.sh
+bindsym XF86MonBrightnessDown exec notify-brightness.sh
 
 bindsym XF86ScreenSaver       exec sxlock
 bindsym XF86WWW               exec toggle-touchpad.sh

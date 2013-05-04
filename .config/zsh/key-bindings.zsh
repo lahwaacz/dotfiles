@@ -3,13 +3,13 @@
 # load keydefinitions using zkbd
 autoload zkbd
 function zkbd_file() {
-    local zkbd_path="${HOME}/.config/zsh/zkbd"
-    [[ -f ${zkbd_path}/${TERM}-${VENDOR}-${OSTYPE} ]] && printf '%s' "${zkbd_path}/${TERM}-${VENDOR}-${OSTYPE}" && return 0
-    [[ -f ${zkbd_path}/${TERM}-${DISPLAY}          ]] && printf '%s' "${zkbd_path}/${TERM}-${DISPLAY}"          && return 0
+    local zkbd_path="$HOME/.zkbd"
+    [[ ! -d "$zkbd_path" ]] && mkdir -p "$zkbd_path"
+    [[ -f "$zkbd_path/$TERM-$VENDOR-$OSTYPE" ]] && printf '%s' "$zkbd_path/$TERM-$VENDOR-$OSTYPE" && return 0
+    [[ -f "$zkbd_path/$TERM-$DISPLAY"          ]] && printf '%s' "$zkbd_path/$TERM-$DISPLAY"          && return 0
     return 1
 }
 
-[[ ! -d ~/.zkbd ]] && mkdir ~/.zkbd
 keyfile=$(zkbd_file)
 ret=$?
 if [[ ${ret} -ne 0 ]]; then
@@ -18,7 +18,7 @@ if [[ ${ret} -ne 0 ]]; then
     ret=$?
 fi
 if [[ ${ret} -eq 0 ]] ; then
-    source "${keyfile}"
+    source "$keyfile"
 else
     printf 'Failed to setup keys using zkbd.\n'
 fi

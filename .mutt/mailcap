@@ -1,7 +1,7 @@
 message/rfc822; less %s; edit=${EDITOR-vi} %s; compose=${EDITOR-vi} %s; needsterminal;
 text/html; dwb %s; test=test -n "$DISPLAY"; needsterminal;
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
-image/*; dwb %s
+image/*; dwb %s; test=test -n "$DISPLAY"; needsterminal;
 audio/*; mplayer %s
 video/*; mplayer %s
 text/*; vim %s
