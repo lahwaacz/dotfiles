@@ -42,5 +42,3 @@ alias powerup='sudo powerup'
 alias qpdfview='qpdfview --unique'
 alias cal='cal -m'
 alias less='less -j4aR'
-
-alias mutt='echo 0 > /dev/shm/new-mails-count; pushd -q ~/stuff; mutt; popd -q'

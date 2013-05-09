@@ -7,6 +7,7 @@ After=gpg-agent.service
 UMask=0077
 Type=simple
 ExecStart=/usr/bin/offlineimap -u Quiet
+KillSignal=SIGUSR2
 Restart=always
 
 # gpg-agent socket - load explicitly, in case the agent was restarted, systemd has the old path
