@@ -1,0 +1,24 @@
+[user]
+    name = Jakub Klinkovský
+    email = kuba.klinkovsky@gmail.com
+
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+    grep = auto
+
+[push]
+    default = simple
+
+[log]
+    decorate = full
+
+[merge]
+    tool = vimdiff
+    log = true
+
+[alias]
+    last = show --stat HEAD
+    countcommits = shortlog -sn --no-merges
