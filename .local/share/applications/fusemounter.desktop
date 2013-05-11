@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=FuseMounter
-Comment=Mount archive using FuseMounter.py
-Exec=/home/lahwaacz/bin/fmount.py -X mount %F -o uid=1000,gid=1000
-Icon=archive
-Terminal=false
-Type=Application
-Categories=Utility;
-MimeType=application/zip;application/x-tar;application/x-bzip2;application/x-iso9660-image;
