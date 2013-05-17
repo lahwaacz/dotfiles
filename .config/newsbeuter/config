@@ -1,0 +1,26 @@
+auto-reload true
+reload-threads 2    # number of connections
+reload-time 30      # inverval between auto-reloads in minutes
+always-display-description true
+
+save-path ~/stuff
+browser dwb %u
+
+download-full-page yes      # download urls on empty feeds
+
+bind-key ^R reload-all
+unbind-key ^E edit-flags
+bind-key ^S edit-flags
+
+# vim-like navigation
+bind-key j down
+bind-key k up
+bind-key h left
+bind-key l right
+bind-key m toggle-show-read-feeds
+
+color   background   default default
+#color   listnormal   blue    default bold
+#color   listfocus    green   default bold
+color   info         white   black   dim
+color   article      white   default
