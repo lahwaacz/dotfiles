@@ -11,4 +11,3 @@ ExecStop=/usr/bin/i3-msg exit
 ExecReload=/usr/bin/i3-msg reload
 KillMode=process
 Restart=on-failure
-CPUShares=2048
