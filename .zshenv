@@ -3,8 +3,11 @@
 [ "$XDG_CONFIG_HOME" ] || export XDG_CONFIG_HOME="$HOME/.config"
 [ "$XDG_DATA_HOME" ] || export XDG_DATA_HOME="$HOME/.local/share"
 
-export COLORFGBG=default,default,default    # I think tmux sets this wrong
-export SYSTEMD_PAGER="less -j4aR"
+# default applications
+export TERMINAL=tinyterm
+export BROWSER=dwb
+export EDITOR=vim
+export PAGER="less -j4aRi"
 
 # for GTK styles in Qt
 export GTK2_RC_FILES=$HOME/.gtkrc-2.0
@@ -19,9 +22,3 @@ fi
 # socket paths
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/dbus/user_bus_socket   # temporal fix until systemd sets this automatically (or until this is the default path for dbus)
 #export RXVT_SOCKET=$XDG_RUNTIME_DIR/urxvtd-socket
-
-# default applications
-export TERMINAL=tinyterm
-export BROWSER=dwb
-export EDITOR=vim
-export PAGER="less -j4aR"

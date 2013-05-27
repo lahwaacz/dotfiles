@@ -2,13 +2,11 @@ alias grep='nocorrect grep --color=auto'
 alias fgrep='nocorrect fgrep --color=auto'
 alias egrep='nocorrect egrep --color=auto'
 
-alias ls='ls --color=auto -F'
-alias ll='ls -lah'
-alias la='ls -A'
-alias l='ls -CF'
-
-# no autocorrection
-#alias sudo='sudo '
+# global aliases (expanded in sudo session etc.)
+alias -g ls='ls --color=auto -F'
+alias -g ll='ls -lah'
+alias -g la='ls -A'
+alias -g l='ls -CF'
 
 alias mv='nocorrect mv -i'
 alias cp='nocorrect cp -i --preserve=all'
@@ -18,8 +16,8 @@ alias mkdir='nocorrect mkdir'
 
 alias rm='rm -i'
 
-alias vi='vim'
 alias vim='nocorrect vim'
+alias vi='vim'
 
 alias du='du -h'
 alias df='df -h'
@@ -41,4 +39,4 @@ alias powerup='sudo powerup'
 
 alias qpdfview='qpdfview --unique'
 alias cal='cal -m'
-alias less='less -j4aR'
+alias less='less -j4aRi'

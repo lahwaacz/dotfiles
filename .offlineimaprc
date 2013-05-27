@@ -2,7 +2,7 @@
 
 [general]
 accounts = Gmail, FJFI
-maxsyncaccounts = 1
+maxsyncaccounts = 2
 pythonfile = ~/.offlineimap/offlineimap-helpers.py
 fsync = False
 
