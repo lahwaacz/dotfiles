@@ -2,8 +2,6 @@
 Description=MPD notifications using libnotify
 After=mpd.service
 Requires=mpd.service
-After=twmnd.service
-Requires=twmnd.service
 Requires=dbus.socket
 
 [Service]
