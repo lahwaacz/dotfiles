@@ -1,5 +1,5 @@
 [Unit]
-Description=MPD notifications using libnotify
+Description=MPD notifications
 After=mpd.service
 Requires=mpd.service
 Requires=dbus.socket

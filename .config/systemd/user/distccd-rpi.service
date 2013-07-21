@@ -1,0 +1,15 @@
+[Unit]
+Description=A distributed C/C++ cross compiler for RaspberryPi (armv6h)
+Documentation=man:distccd(1)
+After=network.target
+
+[Service]
+Environment=PATH=%h/x-tools6h/arm-unknown-linux-gnueabi/bin:${PATH}
+ExecStart=/usr/bin/distccd --no-detach --daemon --log-file /tmp/distcc-rpi.log error --allow 10.0.0.0/24
+
+Nice=15
+IOSchedulingClass=2
+IOSchedulingPriority=7
+
+[Install]
+WantedBy=multi-user.target

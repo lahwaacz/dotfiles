@@ -1,0 +1,12 @@
+[Unit]
+Description=Backup my config files
+
+[Service]
+Type=oneshot
+ExecStart=/home/lahwaacz/Scripts/backup-configs.sh
+UMask=0077
+
+Nice=19
+IOSchedulingClass=2
+IOSchedulingPriority=7
+
