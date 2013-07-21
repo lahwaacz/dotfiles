@@ -32,8 +32,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu
+# launchers
 bindsym $mod+d exec dmenu_launch
+bindsym $mod+b exec interrobang
 
 # change focus
 bindsym $mod+h focus left
@@ -133,6 +134,30 @@ bindsym $mod+Shift+F10 move container to workspace 20
 bindsym $mod+Shift+F11 move container to workspace 21
 bindsym $mod+Shift+F12 move container to workspace 22
 
+# default assignment (when more outputs available)
+workspace 1 output HDMI-0
+workspace 2 output HDMI-0
+workspace 3 output HDMI-0
+workspace 4 output HDMI-0
+workspace 5 output HDMI-0
+workspace 6 output HDMI-0
+workspace 7 output HDMI-0
+workspace 8 output HDMI-0
+workspace 9 output HDMI-0
+workspace 10 output HDMI-0
+workspace 11 output HDMI-0
+workspace 12 output HDMI-0
+workspace 13 output HDMI-0
+workspace 14 output HDMI-0
+workspace 15 output LVDS
+workspace 16 output LVDS
+workspace 17 output LVDS
+workspace 18 output LVDS
+workspace 19 output LVDS
+workspace 20 output LVDS
+workspace 21 output LVDS
+workspace 22 output LVDS
+
 bindsym $mod+i workspace next_on_output
 bindsym $mod+u workspace prev_on_output
 bindsym $mod+a workspace back_and_forth
@@ -181,9 +206,10 @@ bindsym Print                 exec screenshot.sh full
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    status_command ~/bin/i3status -c ~/.config/i3/i3status.conf
+    status_command i3status -c ~/.config/i3/i3status.conf
     mode dock
     position top
+    tray_output primary
     colors {
         background "#111111"
         statusline "#dddddd"
@@ -200,6 +226,8 @@ assign [instance="dwb"] 1
 assign [instance="chromium"] 1
 assign [instance="qpdfview"] 1
 assign [instance="Pidgin"] 11
+assign [class="TinyTerm" instance="journalctl"] 15
+assign [class="qemu-system-i386"] 22
 
 # per-window settings
 for_window [instance="xv"] floating enable
@@ -207,7 +235,6 @@ for_window [instance="xv"] floating enable
 # autostart applications
 exec setxkbmap cz
 exec_always initscreen.sh
-exec pidgin
-exec --no-startup-id i3-msg 'workspace 15; exec tinyterm -k -e "journalctl -f -n 100"; workspace 1;
-
-workspace 15 output LVDS
+exec count-unread-mails.sh
+#exec pidgin
+exec tinyterm -n journalctl -k -e "journalctl -f -n 100"

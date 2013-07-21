@@ -1,0 +1,11 @@
+[Unit]
+Description=Container for TinyTerm processes
+
+[Service]
+UMask=0077
+Environment=DISPLAY=:0
+ExecStart=/home/lahwaacz/Scripts/tinyterm-wrapper --daemon
+Restart=on-failure
+
+[Install]
+WantedBy=graphical.target

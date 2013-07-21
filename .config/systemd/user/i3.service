@@ -7,7 +7,8 @@ Requires=xorg.target
 UMask=0077
 Environment=DISPLAY=:0
 ExecStart=/usr/bin/i3
-ExecStop=/usr/bin/i3-msg exit
 ExecReload=/usr/bin/i3-msg reload
-KillMode=process
-Restart=on-failure
+Restart=always
+
+# FIXME: with i3, this leaves running processes after running 'systemctl --user exit' and also when i3 fails and is restarted, some windows are lost (though process is still running)
+#KillMode=process
