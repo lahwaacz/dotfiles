@@ -11,18 +11,8 @@ function extract() {
     local extension
 
     if (( $# == 0 )); then
-        echo "Usage: extract [-option] [file ...]"
-        echo
-        echo Options:
-        echo "    -r, --remove    Remove archive."
-        echo
+        echo "Usage: $0 file [file ...]"
     fi
-
-    remove_archive=0
-#    if [[ "$1" == "-r" || "$1" == "--remove" ]]; then
-#        remove_archive=1
-#        shift
-#    fi
 
     while (( $# > 0 )); do
         if [[ ! -f "$1" ]]; then
@@ -44,13 +34,16 @@ function extract() {
             basename=${basename:r:t}
         fi
 
+        # split \.part[0-9]* from $basename
+        basename=${basename%\.part[0-9]*}
+
         case "$extension" in
             (tar.gz|tgz|tar.bz2|tbz|tbz2|tar.xz|txz|tar.lzma|tlz|tar)
                 mkdir "$basename"
                 tar xvf "$fname" -C "$basename"
                 ;;
             (gz|Z)
-                gzip -dvc "$fname" > "$basename"
+                gzip -dkv "$fname"
                 ;;
             (bz2)
                 bzip2 -dkv "$fname"
@@ -63,20 +56,40 @@ function extract() {
                 ;;
             (rar)
                 mkdir "$basename"
-                pushd "$basename"
+                pushd -q "$basename"
                     unrar e "$fname"
-                popd
+                popd -q
                 ;;
             (7z)
                 7za x "$fname" -o"$basename"
                 ;;
             (*)
                 echo "extract: '$fname' cannot be extracted" 1>&2
+                success=1
                 ;;
         esac 
 
         (( success = $success > 0 ? $success : $? ))
-        (( $success == 0 )) && (( $remove_archive == 1 )) && rm -f "$fname"
+
+        # if destination directory contains only one file/dir, move it to cwd
+        if (( $success == 0 )); then
+            count=$(find "$basename" -maxdepth 1 -mindepth 1 | wc -l)
+
+            if [[ $count == 1 ]]; then
+                name=$(basename $(find "$basename" -maxdepth 1 -mindepth 1))
+
+                # can't move ./foo/foo into ./foo
+                if [[ "$basename" == "$name" ]]; then
+                    tmp="$name.tmp"
+                else
+                    tmp="$name"
+                fi
+
+                mv "$basename/$name" "$tmp"
+                rmdir "$basename"
+                mv "$tmp" "$name"
+            fi
+        fi
 
         shift
     done

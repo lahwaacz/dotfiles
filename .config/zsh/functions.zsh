@@ -51,8 +51,8 @@ function n() {
 }
 
 function nls() {
-    find $HOME/.notes/ -print0 | sort -z | xargs -0 ls -d --color=always | sed "1n; s|$HOME/.notes/|    ./|g; s|\./.*/|    ./|g; s|\./||g"
-    # sed: skip first line; replace top-level directory with './'; replace '\./.*/' with '    ./'; delete all occurences of '\./'
+    find $HOME/.notes/ -print0 | sort -z | xargs -0 ls -d --color=always | sed "1n; s|$HOME/.notes/|    ./|g; s|\./.*/[^$]|    ./|g; s|\./||g"
+    # sed: skip first line; replace top-level directory with './'; replace '\./.*/[^$]' with '    ./'; delete all occurences of '\./'
 }
 
 function _n() {
