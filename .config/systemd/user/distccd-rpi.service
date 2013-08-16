@@ -12,4 +12,5 @@ IOSchedulingClass=2
 IOSchedulingPriority=7
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=graphical.target
+WantedBy=console.target
