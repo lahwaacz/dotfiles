@@ -9,11 +9,6 @@ elif [ -f ~/.dircolors ]; then
 fi
 
 
-## custom functions
-fpath=( ~/.config/zsh/functions "${fpath[@]}" )
-source ~/.config/zsh/functions/*.zsh
-
-
 ## load modules
 for config_file (~/.config/zsh/*.zsh) source $config_file
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -31,5 +26,3 @@ if [[ $1 == eval ]]; then
     "$@"
     set --
 fi
-
-

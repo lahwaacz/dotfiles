@@ -10,7 +10,7 @@ setopt HIST_IGNORE_ALL_DUPS # Ignore duplicates in history
 setopt HIST_IGNORE_SPACE    # Prevent record in history entry if preceding them with at least one space
 
 ## changing directories
-DIRSTACKSIZE=20
+DIRSTACKSIZE=10
 
 setopt AUTOCD               # autocd into dirs
 setopt AUTO_PUSHD           # Make cd push the old directory onto the directory stack. You can get dirs list by cd -[tab]

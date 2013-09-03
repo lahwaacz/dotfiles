@@ -1,25 +1,25 @@
 #!/bin/zsh
 
 ## colored man pages
-man() {
+function man() {
     env \
-    LESS_TERMCAP_mb=$'\e[01;31m' \
-    LESS_TERMCAP_md=$'\e[01;31m' \
-    LESS_TERMCAP_me=$'\e[0m' \
-    LESS_TERMCAP_se=$'\e[0m' \
-    LESS_TERMCAP_so=$'\e[01;44;33m' \
-    LESS_TERMCAP_ue=$'\e[0m' \
-    LESS_TERMCAP_us=$'\e[01;32m' \
-    man "$@"
+        LESS_TERMCAP_mb=$'\e[01;31m' \
+        LESS_TERMCAP_md=$'\e[01;31m' \
+        LESS_TERMCAP_me=$'\e[0m' \
+        LESS_TERMCAP_se=$'\e[0m' \
+        LESS_TERMCAP_so=$'\e[01;44;33m' \
+        LESS_TERMCAP_ue=$'\e[0m' \
+        LESS_TERMCAP_us=$'\e[01;32m' \
+            man "$@"
 }
 
 
 ## Print man pages 
-manp() { man -t "$@" | lpr -pPrinter; }
+function manp() { man -t "$@" | lpr -pPrinter; }
 
 
 ## Create pdf of man page - requires ghostscript and mimeinfo
-manpdf() { man -t "$@" | ps2pdf - /tmp/manpdf_$1.pdf && xdg-open /tmp/manpdf_$1.pdf ;}
+function manpdf() { man -t "$@" | ps2pdf - /tmp/manpdf_$1.pdf && xdg-open /tmp/manpdf_$1.pdf ;}
 
 
 ## lock all sessions when inactive for 300 seconds if in tty
@@ -32,7 +32,7 @@ manpdf() { man -t "$@" | ps2pdf - /tmp/manpdf_$1.pdf && xdg-open /tmp/manpdf_$1.
 
 
 ## h -- grep history
-h() {
+function h() {
     fc -l 0 -1 | sed -n "/$1/s/^ */!/p" | tail -n 50
 }
 alias h=' h'
@@ -65,7 +65,7 @@ compdef _n n
 
 
 ## frequently used pacman commands
-orphans() {
+function orphans() {
     if [[ ! -n $(pacman -Qdt) ]]; then 
         echo "no orphans to remove"
     else 
