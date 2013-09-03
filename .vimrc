@@ -5,7 +5,7 @@ filetype indent on
 set nocompatible
 set ttyfast
 
-" Tabs, Spaces and Indentation.
+" Tabs, Spaces and Indentation
 set expandtab                           " use spaces for tabs
 set tabstop=4                           " number of spaces to use for tabs
 set shiftwidth=4                        " number of spaces to autoindent
@@ -15,36 +15,36 @@ set smartindent                         " automatically insert another level of 
 set backspace=indent,eol,start          " more flexible backspace
 retab                                   " spaces instead of tabs
 
-" Backup.
+" Backup
 set nobackup                            " don't backup files
 set nowritebackup
 set noswapfile
 
-" Searching.
+" Searching
 set hlsearch                            " highlight search terms
 set incsearch                           " show search matches as you type
 set ignorecase                          " ignore case when searching
 set smartcase                           " make searches case sensitive only if they contain uppercase stuff
 
-" Encoding.
+" Encoding
 set encoding=utf-8                      " use utf-8 everywhere
 set fileencoding=utf-8                  " use utf-8 everywhere
 set termencoding=utf-8                  " use utf-8 everywhere
 
-" Various.
-set ruler                               " show the cursor position.
-set scrolloff=5                         " show 5 lines above/below the cursor when scrolling.
-set number                              " line numbers on.
-set showcmd                             " shows the command in the last line of the screen.
-set autoread                            " read files when they've been changed outside of Vim.
+" Various
+set ruler                               " show the cursor position
+set scrolloff=5                         " show 5 lines above/below the cursor when scrolling
+set number                              " show numbers
+set showcmd                             " shows the command in the last line of the screen
+set autoread                            " read files when they've been changed outside of Vim
 set showmatch                           " matching brackets & the like
 
-set history=500                         " number of command lines stored in the history tables.
+set history=500                         " number of command lines stored in the history tables
 set undolevels=500                      " number of levels of undo
 
-set splitright                          " open new vertical split windows to the right of the current one, not the left.
-set splitbelow                          " see above description. Opens new windows below, not above.
-set wildmode=longest,list               " file and directory matching mode.
+set splitright                          " open new vertical split windows to the right of the current one, not the left
+set splitbelow                          " same as above - opens new windows below, not above
+set wildmode=longest,list               " file and directory matching mode
 set nrformats=hex                       " allow incrementing and decrementing numbers that start with 0 using <c-a> and <c-x>
 set clipboard=unnamedplus,autoselect    " use + register (X Window clipboard) as unnamed register"
 set viminfo='20,<1000,s10,h             " large registers (for copying between sessions)
@@ -85,7 +85,7 @@ MapToggle <F8> wrap
 map <C-h> :tabprevious<CR>
 map <C-l> :tabnext<CR>
 
-" Map F1 to Esc instead of the stupid help crap.
+" Map F1 to Esc instead of the stupid help crap
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
@@ -96,7 +96,7 @@ vnoremap <F1> <ESC>
 " Make a curly brace automatically insert an indented line
 inoremap {<CR> {<CR>}<Esc>O<BS><Tab>
 
-" Make jj exit insert mode (since it's almost never typed normally).
+" Make jj exit insert mode (since it's almost never typed normally)
 imap jj <Esc>:w<CR>
 imap kk <Esc>:w<CR>
 
@@ -106,6 +106,11 @@ map <C-m> :w<CR>:make<CR>
 " Comment out a range of lines (default settings)
 map - :s/^/\#/<CR>:nohlsearch<CR>
 
+
+" automatic absolute/relative numbers toggling
+"set relativenumber
+"autocmd InsertEnter * :set number
+"autocmd InsertLeave * :set relativenumber
 
 " Comment out a range of lines (per-language settings)
 autocmd FileType tex    map - :s/^/\%/<CR>:nohlsearch<CR>

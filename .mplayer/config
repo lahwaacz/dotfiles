@@ -1,4 +1,4 @@
-# Write your default config options here!
+quiet=1
 
 ao=pulse
 vo=xv
