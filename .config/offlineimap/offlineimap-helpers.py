@@ -22,6 +22,8 @@ mapping_gmail = {
     '[Gmail]/Spam'         : 'spam',
     'arch'                 : 'arch',
     'aur-general'          : 'aur-general',
+    'arch-general'         : 'arch-general',
+    'arch-wiki'            : 'arch-wiki',
 }
 
 mapping_fjfi = {
@@ -31,6 +33,11 @@ mapping_fjfi = {
     'Deleted Items'        : 'trash',
     'Junk E-Mail'          : 'spam',
 }
+
+
+# values from mapping_* dicts with high priority
+prio_queue_gmail = ['INBOX', 'arch', 'arch-wiki', 'arch-general', 'aur-general']
+prio_queue_fjfi = ['INBOX']
 
 
 def nt_remote(mapping):
@@ -57,4 +64,18 @@ def exclude(mapping):
         if folder in mapping.keys():
             return True
         return False
+    return inner
+
+
+# compare by position in queue (mapping_*.values())
+def fd_priority(prio_queue):
+    def inner(x, y):
+        if x in prio_queue and y in prio_queue:
+            return cmp(prio_queue.index(x), prio_queue.index(y))
+        elif x in prio_queue:
+            return -1
+        elif y in prio_queue:
+            return 1
+        else:
+            return 0
     return inner

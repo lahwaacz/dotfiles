@@ -152,7 +152,7 @@ macro index Z   "<shell-escape>/usr/bin/offlineimap -q -o -u TTYUI<enter>" "sync
 
 # --- sidebar
 set sidebar_visible     = yes                                    # set sidebar visible
-set sidebar_width       = 20                                     # width of sidebar in chars
+set sidebar_width       = 24                                     # width of sidebar in chars
 set sidebar_format      = "%B%?F? [%F]?%* %?N?%N/?%4S"           # format string for sidebar
 set sidebar_sort        = yes
 

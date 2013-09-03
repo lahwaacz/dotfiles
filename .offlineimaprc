@@ -45,6 +45,7 @@ holdconnectionopen = yes
 keepalive = 60
 nametrans = nt_remote(mapping_gmail)
 folderfilter = exclude(mapping_gmail)
+foldersort = fd_priority(prio_queue_gmail)
 
 
 [Account FJFI]
@@ -75,3 +76,4 @@ holdconnectionopen = yes
 keepalive = 60
 nametrans = nt_remote(mapping_fjfi)
 folderfilter = exclude(mapping_fjfi)
+foldersort = fd_priority(prio_queue_fjfi)
