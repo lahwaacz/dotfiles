@@ -22,3 +22,7 @@
 [alias]
     last = show --stat HEAD
     countcommits = shortlog -sn --no-merges
+
+# for gist.vim
+[github]
+    user = lahwaacz
