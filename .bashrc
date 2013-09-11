@@ -28,6 +28,7 @@ bash_prompt() {
     local green="\033[01;32m"
     local yellow="\033[01;33m"
     local blue="\033[01;34m"
+    local magenta="\033[01;35m"
 
     # red for root, green for others
     local host_color=$(if [[ $UID == 0 ]]; then echo "$red"; else echo "$green"; fi)
@@ -38,9 +39,16 @@ bash_prompt() {
     # blue for writable directories, yellow for non-writable directories
     local dir="\$(if [[ -w \$PWD ]]; then echo \"\[$blue\]\"; else echo \"\[$yellow\]\"; fi)\w"
 
+    # git branch
+    local git="\$(if [[ -d \$PWD/.git ]]; then echo \"\[$magenta\]\$(__git_ps1)\"; fi)"
+    GIT_PS1_SHOWDIRTYSTATE=1
+    GIT_PS1_SHOWSTASHSTATE=1
+    GIT_PS1_SHOWUPSTREAM="auto"
+
     # put it all together
-    PS1="$ret \[$host_color\]\u@\h\[$color_reset\]:$dir\[$color_reset\]\$ "
+    PS1="$ret \[$host_color\]\u@\h\[$color_reset\]:$dir$git\[$color_reset\]\$ "
 }
+source /usr/share/git/completion/git-prompt.sh
 bash_prompt
 
 # set history variables 
@@ -48,60 +56,28 @@ unset HISTFILESIZE
 HISTSIZE=100000
 HISTCONTROL=ignoredups:ignorespace
 # share history across all terminals
-PROMPT_COMMAND="history -a; history -c; history -r"
+#PROMPT_COMMAND="history -a; history -c; history -r"
+PROMPT_COMMAND="history -a"
 #export HISTSIZE PROMPT_COMMAND
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[[ -x /usr/bin/lesspipe ]] && eval "$(SHELL=/bin/sh lesspipe)"
 
 #if [[ "$TERM" =~ ".*256color.*" && -f ~/.dircolors.256colors ]]; then
 if [[ "$TERM" != "linux" && -f ~/.dircolors.256colors ]]; then
     eval $(dircolors ~/.dircolors.256colors)
-elif [ -f ~/.dircolors ]; then
+elif [[ -f ~/.dircolors ]]; then
     eval $(dircolors ~/.dircolors)
 fi
 
-# load bash-completion
-[ -r /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion
+## source useful files
+[[ -r /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
+[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
+[[ -f ~/.bash_functions ]] && source ~/.bash_functions
 
-## Aliases
-# enable color support of ls and also add handy aliases
-if [ -x /bin/dircolors ]; then
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+## gpg-agent sockets (not in ~/.profile so that it is sourced by interactive non-login shells)
+if [[ -f /run/user/1000/gpg-agent-info ]]; then
+    source /run/user/1000/gpg-agent-info
+    export GPG_AGENT_INFO
+    export SSH_AUTH_SOCK
 fi
-
-# some more ls aliases
-alias ll='ls -alFh'
-alias la='ls -A'
-alias l='ls -CF'
-
-# source aliases from file
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-# useful functions
-man() {
-    env \
-        LESS_TERMCAP_mb=$(printf "\e[1;37m") \
-        LESS_TERMCAP_md=$(printf "\e[1;37m") \
-        LESS_TERMCAP_me=$(printf "\e[0m") \
-        LESS_TERMCAP_se=$(printf "\e[0m") \
-        LESS_TERMCAP_so=$(printf "\e[1;47;30m") \
-        LESS_TERMCAP_ue=$(printf "\e[0m") \
-        LESS_TERMCAP_us=$(printf "\e[0;36m") \
-            man "$@"
-}
-
-orphans() {
-    if [[ ! -n $(pacman -Qdtq) ]]; then
-        echo "no orphans to remove"
-    else
-        sudo pacman -Rnsc $(pacman -Qdtq)
-    fi
-}
-
-export EDITOR=vim
