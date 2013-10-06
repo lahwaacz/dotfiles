@@ -1,0 +1,9 @@
+[Unit]
+Description=Dropbox Timer
+
+[Timer]
+OnActiveSec=5min
+Unit=dropbox.service
+
+[Install]
+WantedBy=timers.target

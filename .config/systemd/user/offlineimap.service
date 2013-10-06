@@ -9,6 +9,7 @@ Type=simple
 ExecStart=/usr/bin/offlineimap -u Quiet
 KillSignal=SIGUSR2
 Restart=always
+TimeoutStopSec=10
 
 Nice=15
 IOSchedulingClass=2
@@ -18,6 +19,8 @@ IOSchedulingPriority=7
 EnvironmentFile=/run/user/1000/gpg-agent-info
 # display for pinentry
 Environment=DISPLAY=:0
+# necessary since v207
+Environment=PATH=/home/lahwaacz/bin:/home/lahwaacz/Scripts:/usr/bin
 
 [Install]
 WantedBy=console.target
