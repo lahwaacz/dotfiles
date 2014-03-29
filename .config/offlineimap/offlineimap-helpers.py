@@ -1,4 +1,5 @@
 import os
+import sys
 import subprocess
 
 """ Use gpg to decrypt password.
@@ -10,21 +11,22 @@ def mailpasswd(path):
     except subprocess.CalledProcessError:
         return ""
 
+# get password either from gpg file (when run from shell) or from stdin (when run from imapfilter)
+def get_passwd_check_ppid(path):
+    # get parent process cmdline
+    f = open("/proc/%s/cmdline" % os.getppid(), "r")
+    cmdline = f.read()
+    f.close()
+
+    # check if run from imapfilter
+    if "imapfilter" in cmdline:
+        return raw_input()
+    else:
+        return mailpasswd(path)
+
 
 # mapping for nametrans
 # dictionary of strings {<remote>: <local>, ...} shape, where <remote> is mapped to <local>
-
-mapping_gmail = {
-    'INBOX'                : 'INBOX',
-    '[Gmail]/Drafts'       : 'drafts',
-    '[Gmail]/Sent Mail'    : 'sent',
-    '[Gmail]/Bin'          : 'trash',
-    '[Gmail]/Spam'         : 'spam',
-    'arch'                 : 'arch',
-    'aur-general'          : 'aur-general',
-    'arch-general'         : 'arch-general',
-    'arch-wiki'            : 'arch-wiki',
-}
 
 mapping_fjfi = {
     'INBOX'                : 'INBOX',
@@ -34,10 +36,31 @@ mapping_fjfi = {
     'Junk E-Mail'          : 'spam',
 }
 
+mapping_gmail = {
+    'INBOX'                : 'INBOX',
+    '[Gmail]/Drafts'       : 'drafts',
+    '[Gmail]/Sent Mail'    : 'sent',
+    '[Gmail]/Bin'          : 'trash',
+    '[Gmail]/Spam'         : 'spam',
+}
+
+mapping_gmx = {
+    'INBOX'                : 'INBOX',
+    'Drafts'               : 'drafts',
+    'Sent'                 : 'sent',
+    'Spam'                 : 'spam',
+    'Trash'                : 'trash',
+    'arch'                 : 'arch',
+    'aur-general'          : 'aur-general',
+    'arch-general'         : 'arch-general',
+    'arch-wiki'            : 'arch-wiki',
+}
+
 
 # values from mapping_* dicts with high priority
-prio_queue_gmail = ['INBOX', 'arch', 'arch-wiki', 'arch-general', 'aur-general']
 prio_queue_fjfi = ['INBOX']
+prio_queue_gmail = ['INBOX']
+prio_queue_gmx = ['INBOX', 'arch', 'arch-wiki', 'arch-general', 'aur-general']
 
 
 def nt_remote(mapping):

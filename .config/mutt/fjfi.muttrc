@@ -16,7 +16,7 @@ macro index D "<save-message>+FJFI/trash<enter>"    "move message to the trash"
 macro index S "<save-message>+FJFI/spam<enter>"     "mark message as spam"
 
 # --- smtp server
-set my_fjfi_password   = `gpg --quiet --batch --use-agent --decrypt --output - ~/.mutt/password-fjfi.gpg`
+set my_fjfi_password   = `gpg --quiet --batch --use-agent --decrypt --output - ~/.config/mutt/password-fjfi.gpg`
 set smtp_url            = "smtp://klinkjak:$my_fjfi_password@smtp.fjfi.cvut.cz:587/"
 set ssl_force_tls       = yes
 set ssl_starttls        = yes

@@ -1,19 +1,19 @@
 # vim:fenc=utf-8:nu:ai:si:et:ts=2:sw=2:ft=muttrc
 
 # --- directories and commands
-set alias_file          = ~/.mutt/alias                          # alias file
-set header_cache        = ~/.mutt/cache/headers                  # where to store headers 
-#set message_cachedir    = ~/.mutt/cache/bodies                   # where to store bodies
-set certificate_file    = ~/.mutt/certificates                   # where to store certs
-set mailcap_path        = ~/.mutt/mailcap                        # entries for filetypes
-set tmpdir              = ~/.mutt/temp                           # where to keep temp files
+set alias_file          = ~/.config/mutt/alias                   # alias file
+set header_cache        = ~/.config/mutt/cache/headers           # where to store headers 
+#set message_cachedir    = ~/.config/mutt/cache/bodies            # where to store bodies
+set certificate_file    = ~/.config/mutt/certificates            # where to store certs
+set mailcap_path        = ~/.config/mutt/mailcap                 # entries for filetypes
+set tmpdir              = ~/.config/mutt/temp                    # where to keep temp files
 set editor              = "/usr/bin/vim -c 'set tw=80 ft=mail' -c 'set wrap' -c 'set nocp'"
 set ispell              = "/usr/bin/aspell -e -c"                # use aspell as ispell
 
 # --- main options
 set mbox_type           = Maildir                                # mailbox type
 set folder              = ~/Maildir                              # mailbox location
-set spoolfile           = "+Gmail/INBOX"                         # default inbox
+set spoolfile           = "+gmx/INBOX"                           # default inbox
 set timeout             = 3                                      # idle time before scanning
 set mail_check          = 0                                      # minimum time between scans
 set sort_alias          = alias                                  # sort alias file by alias
@@ -83,13 +83,14 @@ hdr_order from: to: cc: date: subject:                           # and in this o
 
 # --- sourced bits
 source $alias_file                                               # required for functionality
-source ~/.mutt/mailboxes                                         # mailboxes exported by offlineimap
-source ~/.mutt/colors.muttrc                                     # source colors file
-source ~/.mutt/gpg.rc                                            # use GPG
+source ~/.config/mutt/mailboxes                                  # mailboxes exported by offlineimap
+source ~/.config/mutt/colors.muttrc                              # source colors file
+source ~/.config/mutt/gpg.rc                                     # use GPG
 
 # --- account specific sources
-folder-hook Gmail/* source ~/.mutt/gmail.muttrc 
-folder-hook FJFI/* source ~/.mutt/fjfi.muttrc 
+folder-hook FJFI/* source ~/.config/mutt/fjfi.muttrc 
+folder-hook Gmail/* source ~/.config/mutt/gmail.muttrc 
+folder-hook gmx/* source ~/.config/mutt/gmx.muttrc 
 
 # --- mailing lists
 lists arch-announce@archlinux.org                                # Arch announcements
@@ -127,7 +128,7 @@ macro index B   "<limit>~b "                                   "search message b
 
 macro index,pager <F1> "<shell-escape>less /usr/share/doc/mutt/manual.txt<enter>" "Show Mutt documentation"
 macro index,pager <F2> ":toggle help<enter>:set ?help<enter>"  "toggle help status line"
-macro index,pager <F5> ":source ~/.mutt/muttrc\n"              "Reload the muttrc"
+macro index,pager <F5> ":source ~/.config/mutt/muttrc\n"              "Reload the muttrc"
 
 macro compose \Cg    "Fgpg --clearsign\ny"
 macro compose \Cp    "Fgpg --clearsign\ny^T^Uapplication/pgp; format=text; x-action=sign\n"
@@ -137,8 +138,8 @@ macro compose Y pfy  "send mail without pgp"
 set query_command       = "~/Scripts/abook-autoexport --mutt-query '%s' 2>/dev/null"
 bind editor \t complete-query   # tab completion for contacts
 # sync abook and alias
-macro index A      "!~/Scripts/abook-autoexport\n:source ~/.mutt/alias\n"          "Start abook"
-macro index \Ca    "|~/Scripts/abook-autoexport --add-email-quiet\n:source ~/.mutt/alias\n" "Create new alias from the actual message"
+macro index A      "!~/Scripts/abook-autoexport\n:source ~/.config/mutt/alias\n"          "Start abook"
+macro index \Ca    "|~/Scripts/abook-autoexport --add-email-quiet\n:source ~/.config/mutt/alias\n" "Create new alias from the actual message"
 
 # --- misc
 #set print_command       = /usr/bin/enscript                      # print with enscript
@@ -148,12 +149,12 @@ set send_charset="us-ascii:utf-8"                                # charset prior
 set auto_tag                                                     # apply functions in index menu only to tagged messages (if any)
 
 # quick-sync ~/Mail immediately with offlineimap
-macro index Z   "<shell-escape>/usr/bin/offlineimap -q -o -u TTYUI<enter>" "sync IMAP"
+macro index Z   "<shell-escape>offlineimap -q -o<enter>" "sync IMAP"
 
 # --- sidebar
 set sidebar_visible     = yes                                    # set sidebar visible
 set sidebar_width       = 24                                     # width of sidebar in chars
-set sidebar_format      = "%B%?F? [%F]?%* %?N?%N/?%4S"           # format string for sidebar
+#set sidebar_format      = "%B%?F? [%F]?%* %?N?%N/?%4S"           # format string for sidebar
 set sidebar_sort        = yes
 
 bind index,pager \CP sidebar-prev                                # Ctrl-n to select next folder
