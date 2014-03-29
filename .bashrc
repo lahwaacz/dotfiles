@@ -13,7 +13,7 @@ shopt -s histappend         # do not overwrite history
 shopt -s dotglob            # include dotfiles in pathname expansion
 shopt -s expand_aliases     # expand aliases
 shopt -s extglob            # enable extended pattern-matching features
-shopt -s globstar           # recursive globbing…
+shopt -s globstar           # recursive globbing
 shopt -s progcomp           # programmable completion
 shopt -s hostcomplete       # attempt hostname expansion when @ is at the beginning of a word
 shopt -s nocaseglob         # pathname expansion will be treated as case-insensitive
@@ -39,14 +39,13 @@ bash_prompt() {
     # blue for writable directories, yellow for non-writable directories
     local dir="\$(if [[ -w \$PWD ]]; then echo \"\[$blue\]\"; else echo \"\[$yellow\]\"; fi)\w"
 
-    # git branch
-    local git="\$(if [[ -d \$PWD/.git ]]; then echo \"\[$magenta\]\$(__git_ps1)\"; fi)"
+    # configuration for __git_ps1 function
     GIT_PS1_SHOWDIRTYSTATE=1
     GIT_PS1_SHOWSTASHSTATE=1
     GIT_PS1_SHOWUPSTREAM="auto"
 
     # put it all together
-    PS1="$ret \[$host_color\]\u@\h\[$color_reset\]:$dir$git\[$color_reset\]\$ "
+    PS1="$ret \[$host_color\]\u@\h\[$color_reset\]:$dir\[$magenta\]\$(__git_ps1)\[$color_reset\]\$ "
 }
 source /usr/share/git/completion/git-prompt.sh
 bash_prompt

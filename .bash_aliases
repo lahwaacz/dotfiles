@@ -14,7 +14,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 alias mv='mv -i'
-alias cp='cp -i --preserve=all'
+alias cp='cp -i --preserve=all --reflink=auto'
 
 alias rm='rm -i'
 
@@ -36,11 +36,11 @@ alias powerdown='sudo powerdown'
 alias powernow='sudo powernow'
 alias powerup='sudo powerup'
 
-alias qpdfview='qpdfview --unique'
 alias cal='cal -m'
 alias less='less -j4aRi'
 alias dirs='dirs -v'
 
+alias mplayer=mpv
 alias youtube-dl='youtube-dl -c -o "%(title)s.%(ext)s"'
 alias quvi-dl='quvi -f best --exec "curl %u > ~/stuff/$(echo %t.%e | sed "s/\//\ /)""'
 
