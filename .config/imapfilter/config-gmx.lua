@@ -98,7 +98,7 @@ function filter_gmx()
 
     -- 'arch' mailbox
     messages = account_gmx['INBOX']
-    results = messages:contain_from('aur-notify@archlinux.org') + 
+    results = messages:contain_from('notify@aur.archlinux.org') + 
               messages:contain_from('nobody@archlinux.org') + 
               messages:contain_from('bugs@archlinux.org')
     results:move_messages(account_gmx['arch'])
