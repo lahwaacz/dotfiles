@@ -2,12 +2,11 @@
 
 # --- directories and commands
 set alias_file          = ~/.config/mutt/alias                   # alias file
-set header_cache        = ~/.config/mutt/cache/headers           # where to store headers 
-#set message_cachedir    = ~/.config/mutt/cache/bodies            # where to store bodies
+set header_cache        = ~/.cache/mutt/headers-cache            # where to store headers 
 set certificate_file    = ~/.config/mutt/certificates            # where to store certs
 set mailcap_path        = ~/.config/mutt/mailcap                 # entries for filetypes
-set tmpdir              = ~/.config/mutt/temp                    # where to keep temp files
-set editor              = "/usr/bin/vim -c 'set tw=80 ft=mail' -c 'set wrap' -c 'set nocp'"
+set tmpdir              = ~/.cache/mutt/temp                     # where to keep temp files
+set editor              = "/usr/bin/vim -c 'set tw=80 ft=mail' -c 'set wrap' -c 'set nocp' -c 'set spell'"
 set ispell              = "/usr/bin/aspell -e -c"                # use aspell as ispell
 
 # --- main options

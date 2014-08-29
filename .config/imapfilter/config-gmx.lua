@@ -103,6 +103,14 @@ function filter_gmx()
               messages:contain_from('bugs@archlinux.org')
     results:move_messages(account_gmx['arch'])
 
+    -- 'mw' mailbox
+    messages = account_gmx['INBOX']
+    results = messages:contain_from('mediawiki-l-owner@lists.wikimedia.org') + 
+              messages:contain_from('mediawiki-l-request@lists.wikimedia.org') +
+              messages:contain_to('mediawiki-l@lists.wikimedia.org') +
+              messages:contain_cc('mediawiki-l@lists.wikimedia.org')
+    results:move_messages(account_gmx['mw'])
+
     -- ArchWiki: Lahwaacz.bot edits
     messages = account_gmx['arch-wiki']:is_unseen()
     results = messages:contain_subject('changed by Lahwaacz.bot')

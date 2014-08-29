@@ -54,6 +54,7 @@ mapping_gmx = {
     'aur-general'          : 'aur-general',
     'arch-general'         : 'arch-general',
     'arch-wiki'            : 'arch-wiki',
+    'mw'                   : 'mw',
 }
 
 

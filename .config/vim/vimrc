@@ -1,7 +1,3 @@
-syntax on
-filetype plugin on
-filetype indent on
-
 set nocompatible
 set ttyfast
 
@@ -51,6 +47,19 @@ set viminfo='20,<1000,s10,h             " large registers (for copying between s
 
 set guifont=Monospace\ 9                " font in gvim
 
+" Environment
+"set directory=$XDG_CACHE_HOME/vim,~/,/tmp
+"set backupdir=$XDG_CACHE_HOME/vim,~/,/tmp
+set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
+set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
+
+filetype plugin on                      " load file type plugins
+filetype indent on                      " load file type based indentation
+" syntax highlighting only when not in vimdiff
+if !&diff
+    syntax on
+endif
+
 
 " colorscheme
 if &t_Co < 256
@@ -81,10 +90,6 @@ MapToggle <F6> paste
 MapToggle <F7> hlsearch
 MapToggle <F8> wrap
 
-" Map keys to navigate tabs
-map <C-h> :tabprevious<CR>
-map <C-l> :tabnext<CR>
-
 " Map F1 to Esc instead of the stupid help crap
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
@@ -106,6 +111,16 @@ map <C-m> :w<CR>:make<CR>
 " Comment out a range of lines (default settings)
 map - :s/^/\#/<CR>:nohlsearch<CR>
 
+" Tab navigation
+nnoremap <C-h> :tabprevious<CR>
+nnoremap <C-l> :tabnext<CR>
+nnoremap <C-p> :tabprevious<CR>
+nnoremap <C-n> :tabnext<CR>
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+nnoremap <silent> <C-S-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+nnoremap <silent> <C-S-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
+
 
 " automatic absolute/relative numbers toggling
 "set relativenumber
@@ -117,6 +132,8 @@ autocmd FileType tex    map - :s/^/\%/<CR>:nohlsearch<CR>
 autocmd FileType vim    map - :s/^/\"/<CR>:nohlsearch<CR>
 autocmd FileType c,cpp  map - :s/^/\/\//<CR>:nohlsearch<CR>
 autocmd FileType lua    map - :s/^/--/<CR>:nohlsearch<CR>
+autocmd FileType javascript map - :s/^/\/\//<CR>:nohlsearch<CR>
+autocmd FileType haskell map - :s/^/--/<CR>:nohlsearch<CR>
 
 " Clear all comment markers (one rule for all languages)
 map _ :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR>:nohlsearch<CR>
@@ -136,3 +153,9 @@ autocmd FileType tex set textwidth=110
 " Highlight first column after 'textwidth'
 autocmd FileType tex set colorcolumn=+1
 autocmd FileType tex highlight ColorColumn ctermbg=darkgrey guibg=lightgrey
+
+" spell checking
+set spelllang=en_gb                                     " real English spelling
+set dictionary+=/usr/share/dict/words                   " use standard dictionary
+set spellfile=$XDG_CONFIG_HOME/vim/spell/en.utf-8.add   " my whitelist
+autocmd BufRead *.tex,*.markdown,*.md,*.txt,*.wiki,*.mediawiki set spell

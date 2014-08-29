@@ -1,0 +1,19 @@
+[default]
+
+quiet
+
+ao=pulse
+#vo=vdpau
+vo=xv
+
+# load all subs containing movie name
+sub-auto=fuzzy
+
+# sub font size. The unit is the size in scaled pixels at a window height of 720
+#sub-text-font-size=45
+
+# try to guess subtitle encoding, fall back to UTF-8
+sub-codepage=enca
+
+alang=jpn,eng,en
+slang=eng,en

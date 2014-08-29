@@ -1,0 +1,26 @@
+" vim: ft=vim
+
+set nocompatible
+set ttyfast
+set encoding=utf-8                      " use utf-8 everywhere
+set clipboard=unnamedplus,autoselect    " use + register (X Window clipboard) as unnamed register"
+set viminfo='20,<1000,s10,h             " large registers (for copying between sessions)
+
+" Environment
+"set directory=$XDG_CACHE_HOME/vim,~/,/tmp
+"set backupdir=$XDG_CACHE_HOME/vim,~/,/tmp
+set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
+set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
+
+" colorscheme
+if &t_Co < 256
+    colorscheme desert                  " colorscheme for the 8 color linux term
+else
+    let g:solarized_termcolors=256
+    if has('gui_running')
+        set background=light
+    else
+        set background=dark
+    endif
+    colorscheme solarized
+endif

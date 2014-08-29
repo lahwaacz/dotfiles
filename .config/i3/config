@@ -33,8 +33,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # launchers
-bindsym $mod+d exec dmenu_launch
-bindsym $mod+b exec interrobang
+bindsym $mod+d exec interrobang
 
 # change focus
 bindsym $mod+h focus left
@@ -182,6 +181,30 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# mpd mode
+mode "mpd" {
+    bindsym i       exec --no-startup-id notify-send -a mpd "Now playing" "$(mpc current -f '[[%artist% - ]%title%]|[%file%]')"
+    bindsym greater exec --no-startup-id mpc -q next
+    bindsym less    exec --no-startup-id mpc -q prev
+    bindsym space   exec --no-startup-id mpc -q toggle
+    bindsym e       exec --no-startup-id notify-send -a mpd "$(mpc repeat)"
+    bindsym r       exec --no-startup-id notify-send -a mpd "$(mpc random)"
+    bindsym s       exec --no-startup-id notify-send -a mpd "$(mpc single)"
+    bindsym c       exec --no-startup-id notify-send -a mpd "$(mpc consume)"
+    bindsym u       exec --no-startup-id mpc -q update
+    bindsym Left    exec --no-startup-id mpc -q seek -00:00:10
+    bindsym Right   exec --no-startup-id mpc -q seek +00:00:10
+    bindsym Up      exec --no-startup-id mpc -q seek +00:01:00
+    bindsym Down    exec --no-startup-id mpc -q seek -00:01:00
+    bindsym minus   exec --no-startup-id mpc -q volume -5
+    bindsym plus    exec --no-startup-id mpc -q volume +5
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+m mode "mpd"
+
 # multimedia keys
 bindsym XF86AudioRaiseVolume  exec notify-volume.sh up
 bindsym XF86AudioLowerVolume  exec notify-volume.sh down
@@ -224,19 +247,23 @@ workspace_auto_back_and_forth yes
 # assign windows to workspaces
 assign [instance="dwb"] 1
 assign [instance="chromium"] 1
-assign [instance="qpdfview"] 1
+assign [instance="firefox"] 1
+assign [class="TinyTerm" instance="pms"] 9
 assign [instance="qstardict"] 10
-assign [instance="Pidgin"] 11
+assign [instance="qpdfview"] 11
 assign [class="TinyTerm" instance="journalctl"] 15
 assign [class="qemu-system-i386"] 22
 
 # per-window settings
+for_window [instance="vdpau"] floating enable
 for_window [instance="xv"] floating enable
+for_window [instance="vimprobable"] focus child, layout tabbed, focus
+for_window [instance="chromium"] layout tabbed
+for_window [instance="firefox"] layout tabbed
 
 # autostart applications
-exec setxkbmap cz
 exec_always initscreen.sh
 exec count-unread-mails.sh
+exec tinyterm -n pms -e "pms"
 exec qstardict
-#exec pidgin
 exec tinyterm -n journalctl -k -e "journalctl -f -n 100"
