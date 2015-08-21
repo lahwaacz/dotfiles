@@ -1,6 +1,8 @@
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+# vim: ft=i3
 
 set $mod Mod1
 
@@ -22,6 +24,9 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session)
 bindsym $mod+Shift+r restart
 
+# xrandr wrapper to init multi-monitor settings
+bindsym $mod+Shift+s exec initscreen.sh
+
 # exit i3
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+e exec i3-msg exit
@@ -33,7 +38,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # launchers
-bindsym $mod+d exec interrobang
+bindsym $mod+d exec /home/lahwaacz/bin/interrobang
 
 # change focus
 bindsym $mod+h focus left
@@ -145,17 +150,17 @@ workspace 8 output HDMI-0
 workspace 9 output HDMI-0
 workspace 10 output HDMI-0
 workspace 11 output HDMI-0
-workspace 12 output HDMI-0
+workspace 12 output LVDS-0
 workspace 13 output HDMI-0
 workspace 14 output HDMI-0
-workspace 15 output LVDS
-workspace 16 output LVDS
-workspace 17 output LVDS
-workspace 18 output LVDS
-workspace 19 output LVDS
-workspace 20 output LVDS
-workspace 21 output LVDS
-workspace 22 output LVDS
+workspace 15 output LVDS-0
+workspace 16 output LVDS-0
+workspace 17 output LVDS-0
+workspace 18 output LVDS-0
+workspace 19 output LVDS-0
+workspace 20 output LVDS-0
+workspace 21 output LVDS-0
+workspace 22 output LVDS-0
 
 bindsym $mod+i workspace next_on_output
 bindsym $mod+u workspace prev_on_output
@@ -219,8 +224,8 @@ bindsym $mod+Ctrl+Up          exec mpc -q stop
 bindsym $mod+Ctrl+Left        exec mpc -q prev
 bindsym $mod+Ctrl+Right       exec mpc -q next
 
-bindsym XF86MonBrightnessUp   exec notify-brightness.sh
-bindsym XF86MonBrightnessDown exec notify-brightness.sh
+bindsym XF86MonBrightnessUp   exec light -s acpi_video0 -rA 1 && notify-brightness.sh
+bindsym XF86MonBrightnessDown exec light -s acpi_video0 -rU 1 && notify-brightness.sh
 
 bindsym XF86ScreenSaver       exec sxlock
 bindsym XF86WWW               exec toggle-touchpad.sh
@@ -230,6 +235,7 @@ bindsym Print                 exec screenshot.sh full
 # finds out, if available)
 bar {
     status_command i3status -c ~/.config/i3/i3status.conf
+#    status_command ~/Bbox/pg/cpp/wmfs-statusbar/bin/wmfs-statusbar
     mode dock
     position top
     tray_output primary
@@ -244,26 +250,33 @@ bar {
 new_window 1pixel
 workspace_auto_back_and_forth yes
 
+# do not move cursor to window center when a window on different output is focused
+mouse_warping none
+
 # assign windows to workspaces
-assign [instance="dwb"] 1
-assign [instance="chromium"] 1
-assign [instance="firefox"] 1
+assign [instance="dwb"] 11
+assign [class="(?i)firefox"] 11
 assign [class="TinyTerm" instance="pms"] 9
 assign [instance="qstardict"] 10
-assign [instance="qpdfview"] 11
+assign [instance="qpdfview"] 12
 assign [class="TinyTerm" instance="journalctl"] 15
 assign [class="qemu-system-i386"] 22
 
 # per-window settings
-for_window [instance="vdpau"] floating enable
-for_window [instance="xv"] floating enable
+for_window [class="mpv"] floating enable
 for_window [instance="vimprobable"] focus child, layout tabbed, focus
-for_window [instance="chromium"] layout tabbed
-for_window [instance="firefox"] layout tabbed
+for_window [class="(?i)firefox"] layout tabbed
+# handle floating dialogs properly
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable  # Firefox preferences
 
 # autostart applications
 exec_always initscreen.sh
 exec count-unread-mails.sh
-exec tinyterm -n pms -e "pms"
-exec qstardict
 exec tinyterm -n journalctl -k -e "journalctl -f -n 100"
+#exec tinyterm -n pms -e "pms"
+exec qpdfview
+exec qstardict
+exec unclutter
+exec compton -b
