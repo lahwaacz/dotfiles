@@ -1,0 +1,12 @@
+[general]
+default = archwiki
+mouse = True
+hide_references = False
+
+[keymap]
+e = edit
+u = pageup
+d = pagedown
+
+[archwiki]
+url = https://wiki.archlinux.org/api.php

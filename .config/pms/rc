@@ -1,0 +1,4 @@
+set sort=track disc album artist
+set ignorecase
+set columns=artist disc trackshort title album length
+color fields.disc gray

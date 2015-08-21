@@ -1,0 +1,53 @@
+
+## | InterobangRC
+## |
+## | Lines starting with a # are ignored as comments, but this file is
+## | not processed by a shell interpreter.
+
+
+## BASIC CONFIGURATION
+
+set font      = -*-profont-*-*-*-*-12-*-*-*-*-*-*-*
+#set font      = fixed
+#set font      = -*-terminus-bold-r-normal--*-160-*-*-c-*-*-*
+#set geometry  = top
+#set geometry  = 1366x17+0+312
+set geometry  = 0x17
+set colors	  = #FFFFFF #303030 #FFFFFF #303030 #FFFFFF #3465A4
+set border    = 0px
+set bangchar  = !
+set run_hook  = %s
+#set run_hook  = %s || (notify-send "Error: command not found";interrobang)
+set autocomp  = 1
+set list      = true
+set last      = true
+set margin    = -80
+#set shell     = /bin/sh
+#set flags     = -c
+
+
+## BANGS
+
+bang term     = tinyterm -e %s
+bang web      = firefox %s
+bang ddg      = firefox %s
+bang pdf      = qpdfview --unique %s
+bang man      = tinyterm -e man %s
+bang o        = xdg-open %s
+bang bbs      = firefox https://duckduckgo.com/?q=%s%%20site%%3Abbs.archlinux.org
+bang wiki     = firefox https://wiki.archlinux.org/index.php/Special:Search?search=%s\&fulltext=Search
+#bang ddg      = firefox https://duckduckgo.com/?q=%s
+#bang calc     = echo "interrobang ignored \"%s\""
+#bang ?        = echo "interrobang ignored \"%s\""
+
+
+## COMPLETITONS
+
+tab default   = percontation "%s" %s | sort -u
+tab calc      = str="%s%s"; echo "!calc $(echo ${str#\!calc} | bc -l)"
+tab ?         = ignore="%s%s"; awk '/^bang/ {print "!"$2" ";}' ~/.config/interrobang/config
+
+# disable completions for "search" bangs
+tab ddg       = false
+tab wiki      = false
+tab bbs       = false
