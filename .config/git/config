@@ -9,11 +9,15 @@
     status = auto
     grep = auto
 
-[push]
-    default = simple
-
 [log]
     decorate = full
+
+[diff]
+    # also detect copies
+    renames = copies
+
+[push]
+    default = simple
 
 [merge]
     tool = vimdiff
@@ -23,6 +27,15 @@
     last = show --stat HEAD
     countcommits = shortlog -sn --no-merges
 
+[help]
+    # execute corrected commands immediately
+    autocorrect = -1
+
 # for gist.vim
 [github]
     user = lahwaacz
+
+# http://stackoverflow.com/questions/7542543/use-gits-word-diff-for-latex-files
+[diff "latex"]
+    wordRegex = "\\\\[a-zA-Z]+|[{}]|\\\\.|[^\\{}[:space:]]+"
+    command = ~/bin/diff-words.sh
