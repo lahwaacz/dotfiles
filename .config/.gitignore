@@ -21,7 +21,6 @@
 /sqlitebrowser
 /syncthing
 /Trolltech.conf
-/user-dirs.dirs
 
 # non-GUI programs ignored for the same reason
 /htop
