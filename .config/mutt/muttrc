@@ -6,13 +6,13 @@ set header_cache        = ~/.cache/mutt/headers-cache            # where to stor
 set certificate_file    = ~/.config/mutt/certificates            # where to store certs
 set mailcap_path        = ~/.config/mutt/mailcap                 # entries for filetypes
 set tmpdir              = ~/.cache/mutt/temp                     # where to keep temp files
-set editor              = "/usr/bin/vim -c 'set tw=80 ft=mail' -c 'set wrap' -c 'set nocp' -c 'set spell'"
+set editor              = "/usr/bin/vim -c 'set tw=80 ft=mail' -c 'set wrap' -c 'set spell'"
 set ispell              = "/usr/bin/aspell -e -c"                # use aspell as ispell
 
 # --- main options
 set mbox_type           = Maildir                                # mailbox type
 set folder              = ~/Maildir                              # mailbox location
-set spoolfile           = "+gmx/INBOX"                           # default inbox
+set spoolfile           = "+FJFI/INBOX"                          # default inbox
 set timeout             = 3                                      # idle time before scanning
 set mail_check          = 0                                      # minimum time between scans
 set sort_alias          = alias                                  # sort alias file by alias
@@ -90,13 +90,6 @@ source ~/.config/mutt/gpg.rc                                     # use GPG
 folder-hook FJFI/* source ~/.config/mutt/fjfi.muttrc 
 folder-hook Gmail/* source ~/.config/mutt/gmail.muttrc 
 folder-hook gmx/* source ~/.config/mutt/gmx.muttrc 
-
-# --- mailing lists
-lists arch-announce@archlinux.org                                # Arch announcements
-subscribe arch-announce@archlinux.org
-
-lists aur-general@archlinux.org                                  # AUR general
-subscribe aur-general@archlinux.org
 
 # --- bindings
 bind pager q            exit

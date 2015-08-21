@@ -1,9 +1,10 @@
 # vim: ft=dosini
 
 [general]
-metadata = ~/.config/offlineimap
+metadata = ~/Maildir/.offlineimap-metadata
 pythonfile = ~/.config/offlineimap/offlineimap-helpers.py
-accounts = gmx, FJFI, Gmail
+#accounts = gmx, FJFI
+accounts = FJFI
 #maxsyncaccounts = 2
 fsync = False
 ui = basic
@@ -15,38 +16,6 @@ ui = basic
 #peritem = "+%(accountname)s/%(foldername)s"
 #sep = " "
 #footer = "\n"
-
-
-[Account Gmail]
-localrepository = Gmail-local
-remoterepository = Gmail-remote
-status_backend = sqlite
-# Minutes between syncs
-#autorefresh = 5
-# Number of quick-syncs between autorefreshes. Quick-syncs do not update if the
-# only changes were to IMAP flags
-#quick = 10
-# count new emails of all accounts (for display in statusbar)
-postsynchook = count-unread-mails.sh
-# run imapfilter
-#presynchook = imapfilter -c ~/.config/imapfilter/config-gmail.lua
-
-[Repository Gmail-local]
-type = Maildir
-localfolders = ~/Maildir/Gmail
-nametrans = nt_local(mapping_gmail)
-
-[Repository Gmail-remote]
-type = Gmail
-remoteuser = kuba.klinkovsky@gmail.com
-remotepasseval = mailpasswd("~/.config/mutt/password-gmail.gpg")
-ssl = yes
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-holdconnectionopen = yes
-keepalive = 60
-nametrans = nt_remote(mapping_gmail)
-folderfilter = exclude(mapping_gmail)
-foldersort = fd_priority(prio_queue_gmail)
 
 
 [Account FJFI]

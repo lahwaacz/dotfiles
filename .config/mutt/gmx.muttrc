@@ -20,3 +20,10 @@ set my_gmx_password   = `gpg --quiet --batch --use-agent --decrypt --output - ~/
 set smtp_url            = "smtp://j.l.k@gmx.com:$my_gmx_password@smtp.gmx.com:587/"
 set ssl_force_tls       = yes
 set ssl_starttls        = yes
+
+# --- gpg
+set pgp_use_gpg_agent = yes 
+set pgp_autosign = yes
+set pgp_sign_as = BCF056C5
+set pgp_timeout = 1800
+set pgp_replyencrypt = yes

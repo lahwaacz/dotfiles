@@ -29,7 +29,9 @@ end
 
 options.timeout = 30
 options.subscribe = true
-options.info = true                 -- print summary of each action while processing mailboxes
+options.info = true         -- print summary of each action while processing mailboxes
+options.reenter = false     -- enter_idle() should not reenter IDLE mode when the connection is lost, see https://github.com/lefcha/imapfilter/issues/73
+options.keepalive = 5       -- time in minutes before terminating and re-issuing the IDLE command
 
 
 -----------------
@@ -99,16 +101,23 @@ function filter_gmx()
     -- 'arch' mailbox
     messages = account_gmx['INBOX']
     results = messages:contain_from('notify@aur.archlinux.org') + 
-              messages:contain_from('nobody@archlinux.org') + 
+              messages:contain_to('notify@aur.archlinux.org') + 
+              messages:contain_from('noreply@archlinux.org') + 
               messages:contain_from('bugs@archlinux.org')
     results:move_messages(account_gmx['arch'])
+
+    -- 'github' mailbox
+    messages = account_gmx['INBOX']
+    results = messages:contain_from('notifications@github.com')
+    results:move_messages(account_gmx['github'])
 
     -- 'mw' mailbox
     messages = account_gmx['INBOX']
     results = messages:contain_from('mediawiki-l-owner@lists.wikimedia.org') + 
               messages:contain_from('mediawiki-l-request@lists.wikimedia.org') +
               messages:contain_to('mediawiki-l@lists.wikimedia.org') +
-              messages:contain_cc('mediawiki-l@lists.wikimedia.org')
+              messages:contain_cc('mediawiki-l@lists.wikimedia.org') +
+              messages:contain_to('mediawiki-announce@lists.wikimedia.org')
     results:move_messages(account_gmx['mw'])
 
     -- ArchWiki: Lahwaacz.bot edits
@@ -138,6 +147,6 @@ while 1 do
     -- enter idle loop if supported (wait for messages)
     if not account_gmx['INBOX']:enter_idle() then
         print('enter_idle() not supported, going to sleep...')
-        posix.sleep(300)
+        sleep(300)
     end
 end

@@ -7,7 +7,7 @@ import subprocess
 def mailpasswd(path):
     cmd = "gpg --quiet --batch --use-agent --decrypt --output - " + os.path.expanduser(path)
     try:
-        return subprocess.check_output(cmd, shell=True).strip()
+        return subprocess.check_output(cmd, shell=True).strip("\n")
     except subprocess.CalledProcessError:
         return ""
 
@@ -54,6 +54,7 @@ mapping_gmx = {
     'aur-general'          : 'aur-general',
     'arch-general'         : 'arch-general',
     'arch-wiki'            : 'arch-wiki',
+    'github'               : 'github',
     'mw'                   : 'mw',
 }
 

@@ -20,3 +20,10 @@ set my_fjfi_password   = `gpg --quiet --batch --use-agent --decrypt --output - ~
 set smtp_url            = "smtp://klinkjak:$my_fjfi_password@smtp.fjfi.cvut.cz:587/"
 set ssl_force_tls       = yes
 set ssl_starttls        = yes
+
+# --- gpg
+set pgp_use_gpg_agent = yes 
+set pgp_autosign = no
+set pgp_sign_as =
+set pgp_timeout = 1800
+set pgp_replyencrypt = no
