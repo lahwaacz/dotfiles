@@ -1,12 +1,8 @@
 # vim: ft=sh
 
-# enable color support of ls and also add handy aliases
-if [ -x /bin/dircolors ]; then
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+# enable color support
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
 
 # some more ls aliases
 alias ll='ls -alFh'
@@ -24,7 +20,8 @@ alias gvim='gvim -p'
 
 alias du='du -h'
 alias df='df -h'
-alias free='free -m'
+alias dh='df -h -x tmpfs -x devtmpfs'
+alias free='free -h'
 alias top='top -d 01.00'
 alias ps='ps aux'
 alias mt='findmnt -rnuc -o SOURCE,TARGET,FSTYPE,OPTIONS | sort | column -t'
@@ -52,3 +49,8 @@ alias poweroff='systemctl poweroff'
 alias reboot='systemctl reboot'
 alias suspend='systemctl suspend'
 alias hibernate='systemctl hibernate'
+
+alias syu='sudo pacman -Syu'
+alias suy='syu'
+
+alias subdl='/usr/bin/subdl -i --lang=eng,cze'

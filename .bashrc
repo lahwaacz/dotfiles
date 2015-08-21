@@ -30,8 +30,12 @@ bash_prompt() {
     local blue="\033[01;34m"
     local magenta="\033[01;35m"
 
-    # red for root, green for others
-    local host_color=$(if [[ $UID == 0 ]]; then echo "$red"; else echo "$green"; fi)
+    # green is the default prompt color
+    local host_color="$green"
+    # red for root
+    [[ $UID == 0 ]] && host_color="$red"
+    # cyan for SSH sessions
+    [[ -n "$SSH_CONNECTION" ]] && host_color="$cyan"
 
     # colorized return value of last command
     local ret="\$(if [[ \$? == 0 ]]; then echo \"\[$green\]\$?\"; else echo \"\[$red\]\$?\"; fi)"
@@ -47,7 +51,13 @@ bash_prompt() {
     # put it all together
     PS1="$ret \[$host_color\]\u@\h\[$color_reset\]:$dir\[$magenta\]\$(__git_ps1)\[$color_reset\]\$ "
 }
-source /usr/share/git/completion/git-prompt.sh
+# Arch
+if [[ -r /usr/share/git/completion/git-prompt.sh ]]; then
+    source /usr/share/git/completion/git-prompt.sh
+# Ubuntu
+elif [[ -r /etc/bash_completion.d/git-prompt ]]; then
+    source /etc/bash_completion.d/git-prompt
+fi
 bash_prompt
 
 # set history variables 
@@ -56,27 +66,22 @@ HISTSIZE=100000
 HISTCONTROL=ignoredups:ignorespace
 # share history across all terminals
 #PROMPT_COMMAND="history -a; history -c; history -r"
-PROMPT_COMMAND="history -a"
+#PROMPT_COMMAND="history -a"
+# export $PWD in window title
+PROMPT_COMMAND='history -a; echo -ne "\033]0;$PWD\007"'
 #export HISTSIZE PROMPT_COMMAND
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [[ -x /usr/bin/lesspipe ]] && eval "$(SHELL=/bin/sh lesspipe)"
 
 #if [[ "$TERM" =~ ".*256color.*" && -f ~/.dircolors.256colors ]]; then
-if [[ "$TERM" != "linux" && -f ~/.dircolors.256colors ]]; then
-    eval $(dircolors ~/.dircolors.256colors)
-elif [[ -f ~/.dircolors ]]; then
-    eval $(dircolors ~/.dircolors)
+if [[ "$TERM" != "linux" && -f "$XDG_CONFIG_HOME/dircolors.256color" ]]; then
+    eval $(dircolors "$XDG_CONFIG_HOME/dircolors.256color")
+elif [[ -f "$XDG_CONFIG_HOME/dircolors" ]]; then
+    eval $(dircolors "$XDG_CONFIG_HOME/dircolors")
 fi
 
 ## source useful files
 [[ -r /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
 [[ -f ~/.bash_functions ]] && source ~/.bash_functions
-
-## gpg-agent sockets (not in ~/.profile so that it is sourced by interactive non-login shells)
-if [[ -f /run/user/1000/gpg-agent-info ]]; then
-    source /run/user/1000/gpg-agent-info
-    export GPG_AGENT_INFO
-    export SSH_AUTH_SOCK
-fi

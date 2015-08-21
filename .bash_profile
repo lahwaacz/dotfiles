@@ -1,2 +1,2 @@
-# source bashrc in non-interactive bash
+# source bashrc in interactive login shells (SSH)
 [[ -f ~/.bashrc ]] && source ~/.bashrc

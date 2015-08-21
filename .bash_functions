@@ -65,10 +65,10 @@ complete -o default -F _n n
 
 ## frequently used pacman commands
 function orphans() {
-    if [[ ! -n $(pacman -Qdt) ]]; then 
+    if [[ ! -n $(pacman -Qdtt) ]]; then 
         echo "no orphans to remove"
     else 
-        sudo pacman -Rnsc $(pacman -Qdtq)
+        sudo pacman -Rnsc $(pacman -Qdttq)
     fi
 }
 
@@ -83,11 +83,20 @@ function cd() {
         if [[ "$1" == "-" ]]; then
             builtin pushd
         elif [[ -f "$1" ]]; then
-            builtin pushd $(dirname "$1")
+            # auxiliary variable is necessary to handle spaces in the path
+            local dir
+            dir=$(dirname "$1")
+            builtin pushd "$dir"
         else
             builtin pushd "$1"
         fi
     else
         echo "cd: Too many arguments"
     fi
+}
+
+
+## easy cloning from AUR4
+function aurclone() {
+    git clone ssh://aur/"$1".git
 }
