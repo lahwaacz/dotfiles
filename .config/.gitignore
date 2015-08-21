@@ -1,0 +1,62 @@
+# GUI programs (mostly saved state, recently used files and binary cache anyway)
+/gaupol
+/gimp
+/gnuplot
+/gpicview
+/gtk-2.0/gtkfilechooser.ini
+/inkscape
+/kcachegrind*
+/libreoffice
+/mozilla
+/MusicBrainz
+/ParaView
+/puddletag
+/qpdfview
+/qupzilla
+/qstardict
+/QtProject.conf
+/Scan Tailor
+/spacefm
+/SpeedCrunch
+/sqlitebrowser
+/syncthing
+/Trolltech.conf
+/user-dirs.dirs
+
+# non-GUI programs ignored for the same reason
+/htop
+/ipython
+/pulse/*
+!/pulse/*.conf
+!/pulse/*.pa
+
+# personal
+/gnupg/*
+!/gnupg/*.conf
+/mpd/playlists
+/mpv/watch_later
+/mutt/alias
+/mutt/mailboxes
+/newsbeuter
+
+# vim dictionaries
+/vim/spell/*.add
+/vim/spell/*.spl
+# TODO: make them submodules
+/vim/bundle
+
+# encrypted files
+*.gpg
+
+# certificates
+*.pem
+certificates
+
+# binary (definitely not created by me...)
+*.dat
+*.db
+*.ldb
+
+# backups (not me...)
+*.bak
+*.old

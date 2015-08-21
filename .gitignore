@@ -1,0 +1,14 @@
+# start with ignoring everything in $HOME
+/*
+
+# selectively add dotfiles
+!.gitignore
+!/.config
+!/.bash*
+/.bash_history*
+!/.latexmkrc
+!/.pentadactylrc
+!/.profile
+!/.tmux.conf
+!/.toprc
+!/.xinitrc
