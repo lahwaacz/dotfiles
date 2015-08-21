@@ -60,9 +60,9 @@ load-module module-detect
 .endif
 
 ### Load several protocols
-.ifexists module-esound-protocol-unix.so
-load-module module-esound-protocol-unix
-.endif
+#.ifexists module-esound-protocol-unix.so
+#load-module module-esound-protocol-unix
+#.endif
 load-module module-native-protocol-unix
 
 ### Network access (may be configured with paprefs, so leave this commented

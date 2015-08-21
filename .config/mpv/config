@@ -3,8 +3,9 @@
 quiet
 
 ao=pulse
-#vo=vdpau
-vo=xv
+#vo=xv
+vo=vdpau
+hwdec=vdpau
 
 # load all subs containing movie name
 sub-auto=fuzzy
