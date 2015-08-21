@@ -6,6 +6,8 @@ set show-all-if-unmodified on
 
 # character denoting file's type appended to filename (like ls -F)
 set visible-stats on
+# display possible completions using different colors to indicate their file type
+set colored-stats on
 
 # case-insensitive completion
 set completion-ignore-case on
