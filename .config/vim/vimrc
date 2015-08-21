@@ -1,13 +1,16 @@
 set nocompatible
 set ttyfast
 
-" Tabs, Spaces and Indentation
+" Tabs, spaces, indentation, wrapping
 set expandtab                           " use spaces for tabs
 set tabstop=4                           " number of spaces to use for tabs
 set shiftwidth=4                        " number of spaces to autoindent
 set softtabstop=4                       " number of spaces for a tab
 set autoindent                          " set autoindenting on
 set smartindent                         " automatically insert another level of indent when needed
+set breakindent                         " autoindent wrapped lines, see https://retracile.net/wiki/VimBreakIndent
+autocmd FileType python,c,cpp setlocal breakindentopt=shift:4    " shift wrapped lines another 4 chars
+set linebreak                           " break at character in 'breakat' rather than at the last character that fits on the screen
 set backspace=indent,eol,start          " more flexible backspace
 retab                                   " spaces instead of tabs
 
@@ -34,9 +37,12 @@ set number                              " show numbers
 set showcmd                             " shows the command in the last line of the screen
 set autoread                            " read files when they've been changed outside of Vim
 set showmatch                           " matching brackets & the like
+set tabpagemax=25                       " max number of tabs that can be opened with '-p' option
+set fillchars="fold:\ "                 " fill fold lines with spaces instead of dashes
 
 set history=500                         " number of command lines stored in the history tables
 set undolevels=500                      " number of levels of undo
+set sessionoptions-=options             " don't store any options and mappings (global and local values)
 
 set splitright                          " open new vertical split windows to the right of the current one, not the left
 set splitbelow                          " same as above - opens new windows below, not above
@@ -51,7 +57,11 @@ set guifont=Monospace\ 9                " font in gvim
 "set directory=$XDG_CACHE_HOME/vim,~/,/tmp
 "set backupdir=$XDG_CACHE_HOME/vim,~/,/tmp
 set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
-set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
+set runtimepath=$XDG_CONFIG_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$XDG_CONFIG_HOME/vim/after
+
+" Load pathogen.vim (manage runtime path)
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
 
 filetype plugin on                      " load file type plugins
 filetype indent on                      " load file type based indentation
@@ -99,17 +109,13 @@ vnoremap <F1> <ESC>
 :noremap <silent> <Space> :silent noh<Bar>echo<CR>
 
 " Make a curly brace automatically insert an indented line
-inoremap {<CR> {<CR>}<Esc>O<BS><Tab>
+"inoremap {<CR> {<CR>}<Esc>O<BS><Tab>
 
 " Make jj exit insert mode (since it's almost never typed normally)
-imap jj <Esc>:w<CR>
-imap kk <Esc>:w<CR>
-
-" map Ctrl+m to :make
-map <C-m> :w<CR>:make<CR>
-
-" Comment out a range of lines (default settings)
-map - :s/^/\#/<CR>:nohlsearch<CR>
+"imap jj <Esc>:w<CR>
+"imap kk <Esc>:w<CR>
+imap jj <Esc>
+imap kk <Esc>
 
 " Tab navigation
 nnoremap <C-h> :tabprevious<CR>
@@ -127,16 +133,15 @@ nnoremap <silent> <C-S-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 "autocmd InsertEnter * :set number
 "autocmd InsertLeave * :set relativenumber
 
-" Comment out a range of lines (per-language settings)
-autocmd FileType tex    map - :s/^/\%/<CR>:nohlsearch<CR>
-autocmd FileType vim    map - :s/^/\"/<CR>:nohlsearch<CR>
-autocmd FileType c,cpp  map - :s/^/\/\//<CR>:nohlsearch<CR>
-autocmd FileType lua    map - :s/^/--/<CR>:nohlsearch<CR>
-autocmd FileType javascript map - :s/^/\/\//<CR>:nohlsearch<CR>
-autocmd FileType haskell map - :s/^/--/<CR>:nohlsearch<CR>
+" Don't screw up folds when inserting text that might affect them, until
+" leaving insert mode. Foldmethod is local to the window. Protect against
+" screwing up folding when switching between windows.
+" ref: http://vim.wikia.com/wiki/Keep_folds_closed_while_inserting_text
+autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
-" Clear all comment markers (one rule for all languages)
-map _ :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR>:nohlsearch<CR>
+" force wrapping of long lines in diff mode
+autocmd FilterWritePre * if &diff | setlocal wrap< | endif
 
 " Removes trailing whitespace
 function TrimWhiteSpace()
@@ -144,18 +149,95 @@ function TrimWhiteSpace()
 endfunction
 map <F2> :call TrimWhiteSpace()<CR>
 
-" I use custom Makefile for LaTeX (and gnuplot)
-autocmd FileType tex,gnuplot    set makeprg=make\ -j2\ pdf\ nocolor=1
-
-" Automatic hard-wrapping for *.tex files
-autocmd FileType tex set textwidth=110
-
-" Highlight first column after 'textwidth'
-autocmd FileType tex set colorcolumn=+1
-autocmd FileType tex highlight ColorColumn ctermbg=darkgrey guibg=lightgrey
+" LaTeX configuration
+let g:tex_flavor = "latex"              " treat all *.tex files as LaTeX by default
+let g:tex_comment_nospell = 1           " disable spell checking in comments
+let g:tex_fast = "bMpr"                 " selectively enable region-based syntax highlighting, see :h tex_fast
+let g:tex_no_error = 1                  " disable lexical error checking
+let g:tex_subscripts = "[]"             " disable syntax-based concealment of subscripts
+let g:tex_superscripts = "[]"           " disable syntax-based concealment of superscripts
+let g:tex_isk = '48-57,a-z,A-Z,192-255,:,_' " TODO: testing workaround for vimtex issue #167
 
 " spell checking
-set spelllang=en_gb                                     " real English spelling
+set spelllang=en_gb,cs                                  " real English spelling
 set dictionary+=/usr/share/dict/words                   " use standard dictionary
 set spellfile=$XDG_CONFIG_HOME/vim/spell/en.utf-8.add   " my whitelist
-autocmd BufRead *.tex,*.markdown,*.md,*.txt,*.wiki,*.mediawiki set spell
+autocmd FileType tex,text,markdown,mediawiki,rst setlocal spell
+autocmd FileType help setlocal nospell    " help pages are first recognized as 'text' and then set to 'help'
+
+
+" YouCompleteMe config, see https://github.com/Valloric/YouCompleteMe#options
+"let g:ycm_min_num_of_chars_for_completion = 99          " turn off identifier completer
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_filetype_whitelist = { 'python': 1, 'c': 1, 'cpp': 1 }
+
+
+" Syntax based folding for C-family languages
+autocmd FileType c,cpp setlocal foldmethod=syntax
+" open all folds by default in tex files
+autocmd FileType tex normal zR
+
+
+" vim-latex config
+let g:vimtex_fold_preamble = 0                  " disable folds in preamble
+let g:vimtex_fold_envs = 0                      " disable folds for environments
+let g:vimtex_indent_enabled = 0                 " disable indentation function
+"let g:vimtex_view_method = 'mupdf'
+let g:vimtex_view_method = 'general'
+let g:vimtex_view_general_viewer = 'qpdfview'
+let g:vimtex_view_general_options = '--unique @pdf\#src:@tex:@line:@col'
+let g:vimtex_view_general_options_latexmk = '--unique'
+"let g:vimtex_view_general_viewer = 'zathura'
+"let g:vimtex_view_general_options = '--synctex-forward @line:@col:@tex @pdf -x "@vim --servername @servername --remote +\%{line} \%{input}"'
+"let g:vimtex_view_general_options_latexmk = '-x "@vim --servername @servername --remote +\%{line} \%{input}" \%S'
+let g:vimtex_latexmk_continuous = 1             " run latexmk in continuous mode
+let g:vimtex_latexmk_build_dir = './out/'       " output directory
+"let g:vimtex_latexmk_enabled = 0
+let g:vimtex_latexmk_background = 1
+nnoremap <localleader>lm :VimtexCompileSS<cr>
+let g:vimtex_quickfix_ignored_warnings = [
+    \ 'Package hyperref Warning: Draft mode on.',
+    \ 'LaTeX Warning: Marginpar',
+    \ 'Underfull',
+    \ 'Overfull',
+    \ 'LaTeX Warning: Command \\@parboxrestore  has changed.',
+    \ 'PDF inclusion: multiple pdfs with page group included in a single page',
+    \ ]
+
+" latex completion
+let g:vimtex_complete_recursive_bib = 1         " needed to search .bib files recursively, even in files included with \input
+let g:ycm_filetype_whitelist.tex = 1
+let g:ycm_semantic_triggers = { 'tex': ['re!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*'] }
+" FIXME: global variable specific to filetype, really?!?
+autocmd FileType tex let g:ycm_min_num_of_chars_for_completion = 99
+
+" nested highlighting with the minted package
+let g:vimtex_syntax_minted = [
+    \ {
+    \   'lang' : 'cpp',
+    \ }
+    \ ]
+
+" alternative to rubber: http://stackoverflow.com/questions/1240037/recommended-build-system-for-latex/1394702#1394702
+"autocmd FileType tex set makeprg=rubber-info\ main.log
+"autocmd FileType tex set errorformat=%f:%l:\ %m
+
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_mode_map = {
+    \ "mode": "passive",
+    \ }
+"    \ "active_filetypes": ["python"],
+let g:syntastic_python_checkers = ["pylint"]
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 2               " localion list behaviour: 0 - don't open nor close automatically, 1 - open and close, 2 - close but don't open
+" TODO: don't run when vim is about to quit (:q), run checkers in background
+
+
+" textwidth
+autocmd FileType gitcommit setlocal textwidth=72
+autocmd FileType rst setlocal textwidth=80
