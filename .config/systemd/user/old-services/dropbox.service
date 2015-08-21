@@ -10,8 +10,9 @@ KillSignal=SIGINT
 Restart=always
 
 Nice=15
-IOSchedulingClass=2
-IOSchedulingPriority=7
+IOSchedulingClass=idle
+#IOSchedulingClass=2
+#IOSchedulingPriority=7
 
 [Install]
 WantedBy=graphical.target

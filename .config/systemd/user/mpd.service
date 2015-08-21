@@ -1,11 +1,12 @@
 [Unit]
 Description=Music Player Daemon
 After=sound.target
-Wants=mpd-notify.service
+#Wants=mpd-notify.service
+#Before=mpd-notify.service
 
 [Service]
 UMask=0077
-ExecStart=/usr/bin/mpd --no-daemon %h/.config/mpd/mpd.conf
+ExecStart=/usr/bin/mpd --no-daemon
 
 [Install]
 WantedBy=console.target

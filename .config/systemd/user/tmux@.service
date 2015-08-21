@@ -1,0 +1,10 @@
+[Unit]
+Description=Detached tmux session named '%I'
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/tmux new-session -s "%I" -d
+#ExecStop=/usr/bin/tmux kill-session -t "%I"
+
+[Install]
+WantedBy=multi-user.target
