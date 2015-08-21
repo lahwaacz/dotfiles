@@ -198,18 +198,3 @@ timeout = 20
 ## This notification will not be displayed
 #    summary = "foobar"
 #    format = ""
-
-[signed_on]
-appname = Pidgin
-summary = "*signed on*"
-urgency = low
-
-[signed_off]
-appname = Pidgin
-summary = *signed off*
-urgency = low
-
-[says]
-appname = Pidgin
-summary = *says*
-urgency = critical

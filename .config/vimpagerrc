@@ -6,6 +6,12 @@ set encoding=utf-8                      " use utf-8 everywhere
 set clipboard=unnamedplus,autoselect    " use + register (X Window clipboard) as unnamed register"
 set viminfo='20,<1000,s10,h             " large registers (for copying between sessions)
 
+" Searching
+set hlsearch                            " highlight search terms
+set incsearch                           " show search matches as you type
+set ignorecase                          " ignore case when searching
+set smartcase                           " make searches case sensitive only if they contain uppercase stuff
+
 " Environment
 "set directory=$XDG_CACHE_HOME/vim,~/,/tmp
 "set backupdir=$XDG_CACHE_HOME/vim,~/,/tmp
@@ -24,3 +30,8 @@ else
     endif
     colorscheme solarized
 endif
+
+" passthrough mode outputs text shorter than terminal height directly into the terminal without opening vim
+let vimpager_passthrough = 0
+
+let vimpager_disable_ansiesc = 1
