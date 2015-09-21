@@ -13,6 +13,7 @@ export LD_LIBRARY_PATH="$HOME/local/lib:$LD_LIBRARY_PATH"
 export TERMINAL=tinyterm
 export BROWSER=firefox
 export EDITOR=vim
+export DIFFPROG=vimdiff
 #export PAGER="less -j4aRi"
 export PAGER=vimpager
 export SUDO_ASKPASS="/usr/lib/ssh/gnome-ssh-askpass2"
@@ -52,9 +53,6 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"   # ~/.python_history 
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export ASPCACHE="$XDG_CACHE_HOME/asp"
-
-# socket paths - temporary fix until systemd sets this automatically (or until this is the default path for dbus)
-export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/dbus/user_bus_socket
 
 # autostart systemd default session on tty1
 #if [[ "$(tty)" == '/dev/tty1' ]]; then
