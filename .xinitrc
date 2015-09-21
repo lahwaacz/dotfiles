@@ -8,7 +8,7 @@
 #fi
 
 # source infinality settings
-[[ -x /etc/X11/xinit/xinitrc.d/infinality-settings ]] && source /etc/X11/xinit/xinitrc.d/infinality-settings
+[[ -f /etc/X11/xinit/xinitrc.d/infinality-settings.sh ]] && source /etc/X11/xinit/xinitrc.d/infinality-settings.sh
 
 # turn on numlock
 [[ -x /usr/bin/numlockx ]] && numlockx on
