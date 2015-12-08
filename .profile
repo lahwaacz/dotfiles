@@ -3,11 +3,13 @@ umask 0022
 
 ## set up session environment
 # export other directories to PATH
-PATH=$HOME/bin:$HOME/Scripts:$PATH
+PATH=$HOME/bin:$PATH:$HOME/Scripts
 
 # TNL
 export PATH="$HOME/local/bin:$PATH"
 export LD_LIBRARY_PATH="$HOME/local/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="$HOME/local/share/pkgconfig:$PKG_CONFIG_PATH"
+export PYTHONPATH="$PYTHONPATH:$HOME/local/lib/python3.5"
 
 # default applications
 export TERMINAL=tinyterm
