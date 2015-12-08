@@ -48,8 +48,15 @@ bash_prompt() {
     GIT_PS1_SHOWSTASHSTATE=1
     GIT_PS1_SHOWUPSTREAM="auto"
 
-    # put it all together
-    PS1="$ret \[$host_color\]\u@\h\[$color_reset\]:$dir\[$magenta\]\$(__git_ps1)\[$color_reset\]\$ "
+    # check if we're on local filesystem
+    local local_fs=$(df --output=fstype . | tail -n +2)
+
+    if [[ "$local_fs" == "fuse.sshfs" ]]; then
+        # skip git prompt on remote paths
+        PS1="$ret \[$host_color\]\u@\h\[$color_reset\]:$dir\[$color_reset\]\$ "
+    else
+        PS1="$ret \[$host_color\]\u@\h\[$color_reset\]:$dir\[$magenta\]\$(__git_ps1)\[$color_reset\]\$ "
+    fi
 }
 # Arch
 if [[ -r /usr/share/git/completion/git-prompt.sh ]]; then
