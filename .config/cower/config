@@ -22,7 +22,7 @@ Color = auto
 
 # Absolute path to download and extract to. Parameter and tilde expansions are
 # honored here.
-TargetDir = ~/build/aur/
+#TargetDir = ~/build/aur/
 
 # Max number of threads cower will use. This is synonymous with the max number
 # of concurrent connections that will be opened to the AUR.

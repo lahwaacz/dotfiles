@@ -37,3 +37,6 @@
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# AUR4 packages
+/*.pkg.tar.*
