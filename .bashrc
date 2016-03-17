@@ -48,15 +48,10 @@ bash_prompt() {
     GIT_PS1_SHOWSTASHSTATE=1
     GIT_PS1_SHOWUPSTREAM="auto"
 
-    # check if we're on local filesystem
-    local local_fs=$(df --output=fstype . | tail -n +2)
+    # check if we're on local filesystem and skip git prompt on remote paths
+    local git="\$(if [[ \"\$(df --output=fstype . | tail -n +2)\" != \"fuse.sshfs\" ]]; then __git_ps1; fi)"
 
-    if [[ "$local_fs" == "fuse.sshfs" ]]; then
-        # skip git prompt on remote paths
-        PS1="$ret \[$host_color\]\u@\h\[$color_reset\]:$dir\[$color_reset\]\$ "
-    else
-        PS1="$ret \[$host_color\]\u@\h\[$color_reset\]:$dir\[$magenta\]\$(__git_ps1)\[$color_reset\]\$ "
-    fi
+    PS1="$ret \[$host_color\]\u@\h\[$color_reset\]:$dir\[$magenta\]$git\[$color_reset\]\$ "
 }
 # Arch
 if [[ -r /usr/share/git/completion/git-prompt.sh ]]; then
@@ -92,3 +87,6 @@ fi
 [[ -r /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
 [[ -f ~/.bash_functions ]] && source ~/.bash_functions
+
+# SSH agent
+export SSH_AUTH_SOCK="$GNUPGHOME/S.gpg-agent.ssh"

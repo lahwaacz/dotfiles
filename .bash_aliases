@@ -41,7 +41,6 @@ alias dirs='dirs -v'
 
 alias mplayer=mpv
 alias youtube-dl='youtube-dl -c -o "%(title)s.%(ext)s"'
-alias quvi-dl='quvi -f best --exec "curl %u > ~/stuff/$(echo %t.%e | sed "s/\//\ /)""'
 
 alias quickbrowse="curl -G -d 'mimetype=text/plain'"
 

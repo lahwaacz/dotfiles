@@ -13,7 +13,7 @@ export PYTHONPATH="$PYTHONPATH:$HOME/local/lib/python3.5"
 
 # default applications
 export TERMINAL=tinyterm
-export BROWSER=firefox
+export BROWSER=qutebrowser
 export EDITOR=vim
 export DIFFPROG=vimdiff
 #export PAGER="less -j4aRi"
@@ -23,7 +23,7 @@ export SUDO_ASKPASS="/usr/lib/ssh/gnome-ssh-askpass2"
 export LIBVA_DRIVER_NAME=vdpau  # video acceleration
 export SYSTEMD_LESS=FRXMK   # omit 'S' to disable "chopping" long lines
 export CCACHE_PATH="/usr/bin"   # tell ccache to only use compilers here
-export SPICE_NOGRAB=1   # disable keyboard grabbing for spicec
+export QUOTING_STYLE=literal    # http://unix.stackexchange.com/questions/258679/why-is-ls-suddenly-surrounding-items-with-spaces-in-single-quotes
 
 # setup default dirs
 [ "$XDG_CACHE_HOME" ] || export XDG_CACHE_HOME="$HOME/.cache"
