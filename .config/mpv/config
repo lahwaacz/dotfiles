@@ -18,3 +18,6 @@ sub-codepage=enca
 
 alang=jpn,eng,en
 slang=eng,en
+
+# youtube-dl settings
+ytdl-format=bestvideo[width<=?1920]+bestaudio/best
