@@ -260,8 +260,6 @@ workspace_auto_back_and_forth yes
 mouse_warping none
 
 # assign windows to workspaces
-assign [instance="dwb"] 11
-assign [class="(?i)firefox"] 11
 assign [class="TinyTerm" instance="pms"] 9
 assign [instance="qstardict"] 10
 assign [instance="qpdfview"] 12
@@ -270,8 +268,6 @@ assign [class="qemu-system-i386"] 22
 
 # per-window settings
 for_window [class="mpv"] floating enable
-for_window [instance="vimprobable"] focus child, layout tabbed, focus
-for_window [class="(?i)firefox"] layout tabbed
 # handle floating dialogs properly
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable

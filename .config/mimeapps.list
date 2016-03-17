@@ -1,0 +1,29 @@
+[Default Applications]
+image/bmp=gpicview.desktop;
+image/gif=gpicview.desktop;
+image/jpeg=gpicview.desktop;
+image/jpg=gpicview.desktop;
+image/png=gpicview.desktop;
+image/svg+xml=gpicview.desktop;
+image/svg-xml=gpicview.desktop;
+image/tiff=gpicview.desktop;
+image/vnd.djvu=qpdfview.desktop;
+image/x-bmp=gpicview.desktop;
+image/x-eps=evince.desktop;
+image/x-pcx=gpicview.desktop;
+image/x-portable-bitmap=gpicview.desktop;
+image/x-portable-greymap=gpicview.desktop;
+image/x-portable-pixmap=gpicview.desktop;
+image/x-targa=gpicview.desktop;
+image/x-tga=gpicview.desktop;
+text/plain=gvim.desktop;
+x-scheme-handler/ftp=qutebrowser.desktop;
+x-scheme-handler/http=qutebrowser.desktop
+x-scheme-handler/https=qutebrowser.desktop;
+
+[Added Associations]
+application/pdf=qpdfview.desktop;
+text/htm=qutebrowser.desktop;
+text/html=qutebrowser.desktop;
+video/mp4=mplayer.desktop;
+application/xml=gvim.desktop;
