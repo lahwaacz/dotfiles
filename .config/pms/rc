@@ -1,6 +1,0 @@
-set sort=track disc album artist
-set ignorecase
-set columns=artist disc trackshort title album length
-color fields.disc gray
-
-set topbar=\n%volume%%% Mode: %muteshort%%consumeshort%%repeatshort%%randomshort%%singleshort%%ifcursong% %playstate% %time_elapsed% / %time_remaining%%endif%\tRemaining: %livequeuesize%\tFull playlist: %listsize%\n%ifcursong%%artist% - %title% on %album% from %date%%else%Not playing anything%endif%
