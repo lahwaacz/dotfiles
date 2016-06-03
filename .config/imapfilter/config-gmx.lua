@@ -90,7 +90,9 @@ function filter_gmx()
     -- 'arch-general' mailbox
     messages = account_gmx['INBOX']
     results = messages:contain_to('arch-general@archlinux.org') +
-              messages:contain_cc('arch-general@archlinux.org')
+              messages:contain_cc('arch-general@archlinux.org') +
+              messages:contain_to('arch-general@lists.archlinux.org') +
+              messages:contain_cc('arch-general@lists.archlinux.org')
     results:move_messages(account_gmx['arch-general'])
 
     -- 'arch-wiki' mailbox
