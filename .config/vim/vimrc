@@ -125,7 +125,7 @@ nnoremap <C-n> :tabnext<CR>
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <silent> <C-S-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> <C-S-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
+nnoremap <silent> <C-S-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
 
 " automatic absolute/relative numbers toggling
@@ -174,14 +174,25 @@ let g:ycm_filetype_whitelist = { 'python': 1, 'c': 1, 'cpp': 1 }
 
 " Syntax based folding for C-family languages
 autocmd FileType c,cpp setlocal foldmethod=syntax
+autocmd FileType c,cpp setlocal foldnestmax=2
 " open all folds by default in tex files
 autocmd FileType tex normal zR
+
+
+" syntax highlighting for Python: https://github.com/hdima/python-syntax
+let python_highlight_all = 1
+
+
+" overrides for TNL
+autocmd BufNewFile,BufRead /home/lahwaacz/Bbox/pg/cuda/tnl/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
+autocmd BufNewFile,BufRead /home/lahwaacz/Bbox/pg/cuda/tnl-experimental/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
 
 
 " vim-latex config
 let g:vimtex_fold_preamble = 0                  " disable folds in preamble
 let g:vimtex_fold_envs = 0                      " disable folds for environments
 let g:vimtex_indent_enabled = 0                 " disable indentation function
+let g:vimtex_imaps_enabled = 0
 "let g:vimtex_view_method = 'mupdf'
 let g:vimtex_view_method = 'general'
 let g:vimtex_view_general_viewer = 'qpdfview'
@@ -202,6 +213,8 @@ let g:vimtex_quickfix_ignored_warnings = [
     \ 'Overfull',
     \ 'LaTeX Warning: Command \\@parboxrestore  has changed.',
     \ 'PDF inclusion: multiple pdfs with page group included in a single page',
+    \ 'Token not allowed in a PDF string (Unicode)',
+    \ "Using preliminary 'polyglossia' interface",
     \ ]
 
 " latex completion
