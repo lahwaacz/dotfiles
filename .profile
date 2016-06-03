@@ -16,14 +16,15 @@ export TERMINAL=tinyterm
 export BROWSER=qutebrowser
 export EDITOR=vim
 export DIFFPROG=vimdiff
-#export PAGER="less -j4aRi"
-export PAGER=vimpager
+export PAGER="less -j4aRi"
+export MANPAGER=vimpager
 export SUDO_ASKPASS="/usr/lib/ssh/gnome-ssh-askpass2"
 
 export LIBVA_DRIVER_NAME=vdpau  # video acceleration
 export SYSTEMD_LESS=FRXMK   # omit 'S' to disable "chopping" long lines
 export CCACHE_PATH="/usr/bin"   # tell ccache to only use compilers here
 export QUOTING_STYLE=literal    # http://unix.stackexchange.com/questions/258679/why-is-ls-suddenly-surrounding-items-with-spaces-in-single-quotes
+export RANGER_LOAD_DEFAULT_RC=FALSE
 
 # setup default dirs
 [ "$XDG_CACHE_HOME" ] || export XDG_CACHE_HOME="$HOME/.cache"
@@ -44,6 +45,7 @@ export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
 export INPUTRC="$XDG_CONFIG_HOME/inputrc"
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 export ASPROOT="$XDG_CONFIG_HOME/asp"
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 
 # hacks to respect XDG_CACHE_HOME
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
@@ -55,6 +57,9 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"   # ~/.python_history 
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export ASPCACHE="$XDG_CACHE_HOME/asp"
+
+# SSH agent
+export SSH_AUTH_SOCK="$GNUPGHOME/S.gpg-agent.ssh"
 
 # autostart systemd default session on tty1
 #if [[ "$(tty)" == '/dev/tty1' ]]; then
