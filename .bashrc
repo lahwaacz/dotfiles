@@ -87,6 +87,3 @@ fi
 [[ -r /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
 [[ -f ~/.bash_functions ]] && source ~/.bash_functions
-
-# SSH agent
-export SSH_AUTH_SOCK="$GNUPGHOME/S.gpg-agent.ssh"

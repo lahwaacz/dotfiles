@@ -16,12 +16,12 @@ export TERMINAL=tinyterm
 export BROWSER=qutebrowser
 export EDITOR=vim
 export DIFFPROG=vimdiff
-export PAGER="less -j4aRi"
+export PAGER="less -FRXMKij4"
 export MANPAGER=vimpager
 export SUDO_ASKPASS="/usr/lib/ssh/gnome-ssh-askpass2"
 
 export LIBVA_DRIVER_NAME=vdpau  # video acceleration
-export SYSTEMD_LESS=FRXMK   # omit 'S' to disable "chopping" long lines
+export SYSTEMD_LESS=FRXMKij4   # omit 'S' to disable "chopping" long lines
 export CCACHE_PATH="/usr/bin"   # tell ccache to only use compilers here
 export QUOTING_STYLE=literal    # http://unix.stackexchange.com/questions/258679/why-is-ls-suddenly-surrounding-items-with-spaces-in-single-quotes
 export RANGER_LOAD_DEFAULT_RC=FALSE
