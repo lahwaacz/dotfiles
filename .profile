@@ -70,5 +70,5 @@ export SSH_AUTH_SOCK="$GNUPGHOME/S.gpg-agent.ssh"
 
 # autostart X session on tty1
 if [[ "$(tty)" == '/dev/tty1' ]]; then
-    exec xinit -- /usr/bin/Xorg :0 -nolisten tcp -noreset vt1
+    exec xinit -- :0
 fi
