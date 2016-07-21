@@ -24,16 +24,16 @@
 # base03, bg, black, any of the non brights
 
 # basic colors ---------------------------------------------------------
-color normal        color244        color234        
-color error         color160        color234        
-color tilde         color235        color234        
-color message       color37         color234        
-color markers       color160        color252        
-color attachment    color252        color234        
-color search        color207        color234        
-#color status        J_black         J_status        
-color status        color245        color235        
-color indicator     color234        color136        
+color normal        color244        color234
+color error         color160        color234
+color tilde         color235        color234
+color message       color37         color234
+color markers       color160        color252
+color attachment    color252        color234
+color search        color207        color234
+#color status        J_black         J_status
+color status        color245        color235
+color indicator     color234        color136
 color tree          color136        color234                                    # arrow in threads
 
 # basic monocolor screen
@@ -88,7 +88,7 @@ color index         color136        color160        "~v~(~D)"                   
 # message headers ------------------------------------------------------
 
 #color header        color244        color234        "^"
-color hdrdefault    color244        color234        
+color hdrdefault    color244        color234
 color header        color207        color234        "^from:"
 color header        color64         color234        "^to:"
 color header        color136        color234        "^cc:"
@@ -97,16 +97,16 @@ color header        color37         color234        "^subject:"
 
 # body -----------------------------------------------------------------
 
-color quoted        color33         color234        
-color quoted1       color37         color234        
-color quoted2       color136        color234        
-color quoted3       color160        color234        
-color quoted4       color166        color234        
+color quoted        color33         color234
+color quoted1       color37         color234
+color quoted2       color136        color234
+color quoted3       color160        color234
+color quoted4       color166        color234
 
-color signature     color240        color234        
-color bold          color235        color234        
-color underline     color235        color234        
-color normal        color244        color234        
+color signature     color240        color234
+color bold          color235        color234
+color underline     color235        color234
+color normal        color244        color234
 #
 color body          color248        color234        "[;:][-o][)/(|]"    # emoticons
 color body          color248        color234        "[;:][)(|]"         # emoticons
@@ -152,3 +152,11 @@ color body          color160        color234        "([a-z][a-z0-9+-]*://(((([a-
 #folder-hook gmail/inbox        "color status        J_black         color136        "
 #folder-hook gmail/important    "color status        J_black         color136        "
 
+
+
+# sidebar
+color sidebar_indicator     color234        color136
+color sidebar_highlight     color234        color130
+color sidebar_new           color33         color234
+color sidebar_flagged       color37         color234
+color sidebar_divider       color244        color234
