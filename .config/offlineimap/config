@@ -23,10 +23,10 @@ localrepository = FJFI-local
 remoterepository = FJFI-remote
 status_backend = sqlite
 # Minutes between syncs
-#autorefresh = 5
+autorefresh = 5
 # Number of quick-syncs between autorefreshes. Quick-syncs do not update if the
 # only changes were to IMAP flags
-#quick = 10
+quick = 10
 # count new emails of all accounts (for display in statusbar)
 postsynchook = count-unread-mails.sh
 

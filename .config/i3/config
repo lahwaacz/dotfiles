@@ -18,6 +18,7 @@ font pango:monospace 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+floating_maximum_size 1366 x 748
 
 # reload configuration file
 bindsym $mod+Shift+c reload
@@ -263,8 +264,8 @@ mouse_warping none
 assign [class="TinyTerm" instance="pms"] 9
 assign [instance="qstardict"] 10
 assign [instance="qpdfview"] 12
-assign [class="TinyTerm" instance="journalctl"] 15
-assign [class="qemu-system-i386"] 22
+assign [class="qemu-system-i386"] 19
+assign [class="TinyTerm" instance="journalctl"] 22
 
 # per-window settings
 for_window [class="mpv"] floating enable

@@ -18,12 +18,12 @@ image/x-targa=gpicview.desktop;
 image/x-tga=gpicview.desktop;
 text/plain=gvim.desktop;
 x-scheme-handler/ftp=qutebrowser.desktop;
-x-scheme-handler/http=qutebrowser.desktop
+x-scheme-handler/http=qutebrowser.desktop;
 x-scheme-handler/https=qutebrowser.desktop;
 
 [Added Associations]
 application/pdf=qpdfview.desktop;
+application/xml=gvim.desktop;
 text/htm=qutebrowser.desktop;
 text/html=qutebrowser.desktop;
 video/mp4=mplayer.desktop;
-application/xml=gvim.desktop;

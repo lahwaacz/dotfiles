@@ -14,11 +14,11 @@ fi
 [[ -x /usr/bin/numlockx ]] && numlockx on
 
 # configure touchpad
-# TODO: move to /etc/X11/xorg.conf.d/ ?
-synclient HorizTwoFingerScroll=1 &
+# TODO: move to /etc/X11/xorg.conf.d/ (or at least use xinput)
+#synclient HorizTwoFingerScroll=1 &
 
 # disable touchpad when mouse detected
-[[ $(ls /dev/input | grep mouse | wc -l) -gt 1 ]] && synclient TouchpadOff=1
+[[ $(ls /dev/input | grep mouse | wc -l) -gt 1 ]] && xinput disable "SynPS/2 Synaptics TouchPad"
 
 # turn off bell
 xset -b
@@ -28,12 +28,5 @@ xset r rate 500 35
 
 # disable screensaver
 xset s 0 0
-
-# PulseAudio
-#[[ -z $(pgrep -xU $UID pulseaudio) ]] && pulseaudio --start
-#
-# apps
-#[[ -z $(pgrep -xU $UID mpd) ]] && mpd ~/.config/mpd/mpd.conf
-#[[ -z $(pgrep -xU $UID mpd-notify) ]] && mpd-notify &
 
 exec i3
