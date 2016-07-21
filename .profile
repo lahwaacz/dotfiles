@@ -58,8 +58,8 @@ export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export ASPCACHE="$XDG_CACHE_HOME/asp"
 
-# SSH agent
-export SSH_AUTH_SOCK="$GNUPGHOME/S.gpg-agent.ssh"
+# SSH agent (the subdirectory is basically a hashed $GNUPGHOME)
+export SSH_AUTH_SOCK="/run/user/$UID/gnupg/d.psnu7wjt3mmen6bbh74u4e4t/S.gpg-agent.ssh"
 
 # autostart systemd default session on tty1
 #if [[ "$(tty)" == '/dev/tty1' ]]; then

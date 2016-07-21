@@ -4,6 +4,7 @@ Description=gpg-agent daemon
 [Service]
 UMask=0077
 Type=forking
+ExecStartPre=/usr/bin/gpgconf --create-socketdir
 ExecStart=/usr/bin/gpg-agent --daemon --quiet
 Restart=always
 TimeoutSec=5
