@@ -69,7 +69,7 @@ set mime_forward                                                 # forward attac
 set mime_forward_rest                                            # include attachments
 set forward_format      = "Fwd: %s"                              # format for subject when forwarding
 set forward_decode                                               # decode when forwarding
-set attribution         = "On %d, %n wrote:"                     # set the attribution
+set attribution         = "On %d (UTC%{%Z}), %n wrote:"          # attribution line (string preceding quoted replies)
 set reply_to                                                     # reply to Reply to: field
 set reverse_name                                                 # reply as whomever it was to
 set include                                                      # include message in replies

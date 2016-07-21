@@ -12,6 +12,8 @@ set from      = "klinkjak@fjfi.cvut.cz"
 set record    = "+FJFI/sent"
 set postponed = "+FJFI/drafts"
 
+set attribution         = "On %d, %n wrote:"
+
 macro index D "<save-message>+FJFI/trash<enter>"    "move message to the trash"
 macro index S "<save-message>+FJFI/spam<enter>"     "mark message as spam"
 

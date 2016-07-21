@@ -15,6 +15,8 @@ set postponed = "+gmx/drafts"
 macro index D "<save-message>+gmx/trash<enter>"   "move message to the trash"
 macro index S "<save-message>+gmx/spam<enter>"    "mark message as spam"
 
+set attribution         = "On %d (UTC%{%Z}), %n wrote:"          # attribution line (string preceding quoted replies)
+
 # --- smtp server
 set my_gmx_password   = `gpg --quiet --batch --use-agent --decrypt --output - ~/.config/mutt/password-gmx.gpg`
 set smtp_url            = "smtp://j.l.k@gmx.com:$my_gmx_password@smtp.gmx.com:587/"
