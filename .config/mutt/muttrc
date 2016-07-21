@@ -144,10 +144,14 @@ set auto_tag                                                     # apply functio
 macro index Z   "<shell-escape>offlineimap -q -o<enter>" "sync IMAP"
 
 # --- sidebar
+# documentation: http://www.neomutt.org/feature/sidebar/
 set sidebar_visible     = yes                                    # set sidebar visible
 set sidebar_width       = 24                                     # width of sidebar in chars
-#set sidebar_format      = "%B%?F? [%F]?%* %?N?%N/?%4S"           # format string for sidebar
+set sidebar_format      = "%B%?F? [%F]?%* %?N?%N/?%S"            # format string for sidebar
+set mail_check_stats
+set mail_check_stats_interval = 1
 
 bind index,pager \CP sidebar-prev                                # Ctrl-n to select next folder
 bind index,pager \CN sidebar-next                                # Ctrl-p to select previous folder
 bind index,pager \CO sidebar-open                                # Ctrl-o to open selected folder
+bind index,pager \CB sidebar-toggle-visible                      # Ctrl-b to toggle visibility of the sidebar
