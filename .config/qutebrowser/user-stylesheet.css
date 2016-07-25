@@ -1,30 +1,5 @@
 ::-webkit-scrollbar { width: 0px; height: 0px; }
 
-/* editfont on ArchWiki (or any MediaWiki) */
-#wpTextbox1 {
-    font-family: monospace;
-    font-size: 13px;
-}
-
-/* hide rollback links in Special:RecentChanges and contribution lists */
-div.mw-changeslist span.mw-rollback-link,
-ul.mw-contributions-list span.mw-rollback-link
-{
-    display: none;
-}
-
-/* hide the stupid legend in Special:RecentChanges */
-div.mw-changeslist-legend {
-    display: none;
-}
-
-/* don't even show auto-hide notifications */
-/* TODO: wrong class or overridden by javascript */
-div.mw-notification-autohide div.postedit-confirmation-saved {
-    display: none;
-}
-
-
 /* ad blocking */
 div#ad-wrapper  /* csfd.cz */
 {
