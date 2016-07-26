@@ -26,17 +26,7 @@ alias top='top -d 01.00'
 alias ps='ps aux'
 alias mt='findmnt -rnuc -o SOURCE,TARGET,FSTYPE,OPTIONS | sort | column -t'
 
-alias rsp='ssh root@10.0.0.1 -t /root/tmux-startup.sh'
-
-alias g++='g++ -Wall'
-alias make='make -j2'
-
-alias powerdown='sudo powerdown'
-alias powernow='sudo powernow'
-alias powerup='sudo powerup'
-
 alias cal='cal -m'
-alias less='less -j4aRi'
 alias dirs='dirs -v'
 
 alias mplayer=mpv
