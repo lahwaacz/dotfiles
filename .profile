@@ -56,18 +56,11 @@ export LESSHISTFILE="$XDG_CACHE_HOME/less_history"
 export MYSQL_HISTFILE="$XDG_CACHE_HOME/mysql_history"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"   # ~/.python_history is overridden there
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
-export export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export ASPCACHE="$XDG_CACHE_HOME/asp"
 
 # SSH agent (the subdirectory is basically a hashed $GNUPGHOME)
 export SSH_AUTH_SOCK="/run/user/$UID/gnupg/d.psnu7wjt3mmen6bbh74u4e4t/S.gpg-agent.ssh"
-
-# autostart systemd default session on tty1
-#if [[ "$(tty)" == '/dev/tty1' ]]; then
-#    if [[ -z $(pgrep -U $UID systemd) ]]; then
-#        exec /usr/lib/systemd/systemd --user
-#    fi
-#fi
 
 # autostart X session on tty1
 if [[ "$(tty)" == '/dev/tty1' ]]; then
