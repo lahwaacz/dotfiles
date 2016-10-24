@@ -6,10 +6,9 @@ umask 0022
 PATH=$HOME/bin:$PATH:$HOME/Scripts
 
 # TNL
-export PATH="$HOME/local/bin:$PATH"
-export LD_LIBRARY_PATH="$HOME/local/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="$HOME/local/share/pkgconfig:$PKG_CONFIG_PATH"
-export PYTHONPATH="$PYTHONPATH:$HOME/local/lib/python3.5"
+export PATH="$HOME/.local/bin:$PATH"
+export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="$HOME/.local/share/pkgconfig:$PKG_CONFIG_PATH"
 
 # default applications
 export TERMINAL=tinyterm
@@ -63,6 +62,6 @@ export ASPCACHE="$XDG_CACHE_HOME/asp"
 export SSH_AUTH_SOCK="/run/user/$UID/gnupg/d.psnu7wjt3mmen6bbh74u4e4t/S.gpg-agent.ssh"
 
 # autostart X session on tty1
-if [[ "$(tty)" == '/dev/tty1' ]]; then
+if [[ "$(tty)" == "/dev/tty1" ]]; then
     exec xinit -- :0
 fi
