@@ -37,9 +37,11 @@ nametrans = nt_local(mapping_fjfi)
 
 [Repository FJFI-remote]
 type = IMAP
-remotehost = imap.fjfi.cvut.cz
+;remotehost = imap.fjfi.cvut.cz
+remotehost = mail.fjfi.cvut.cz
 remoteuser = klinkjak
 remotepasseval = mailpasswd("~/.config/mutt/password-fjfi.gpg")
+remoteport = 993
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 holdconnectionopen = yes

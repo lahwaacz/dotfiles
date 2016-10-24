@@ -97,7 +97,8 @@ function filter_gmx()
 
     -- 'arch-wiki' mailbox
     messages = account_gmx['INBOX']
-    results = messages:contain_from('webmaster@archlinux.org')
+    results = messages:contain_from('webmaster@archlinux.org') -
+              messages:contain_subject('ArchWiki email from user')
     results:move_messages(account_gmx['arch-wiki'])
 
     -- 'arch' mailbox
