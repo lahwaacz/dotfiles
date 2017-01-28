@@ -24,7 +24,7 @@ export SYSTEMD_LESS=FRXMKij4   # omit 'S' to disable "chopping" long lines
 export CCACHE_PATH="/usr/bin"   # tell ccache to only use compilers here
 export QUOTING_STYLE=literal    # http://unix.stackexchange.com/questions/258679/why-is-ls-suddenly-surrounding-items-with-spaces-in-single-quotes
 export RANGER_LOAD_DEFAULT_RC=FALSE
-export MAKEFLAGS=-j2
+export MAKEFLAGS=-j$(grep "core id" /proc/cpuinfo | sort -u | wc -l)
 
 # setup default dirs
 [ "$XDG_CACHE_HOME" ] || export XDG_CACHE_HOME="$HOME/.cache"

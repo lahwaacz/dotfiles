@@ -47,7 +47,11 @@ alias h=' h'
 
 ## simple notes taking utility
 function n() {
-    ${EDITOR:-vim} $HOME/.notes/"$*"
+    local dir="$HOME/.notes/"
+    local files=( "$@" )
+    # prepend $dir to each file
+    files=( "${files[@]/#/$dir}" )
+    ${EDITOR:-vim} -p "${files[@]}"
 }
 
 function nls() {
@@ -79,19 +83,26 @@ function orphans() {
 function cd() {
     if [[ $# -eq 0 ]]; then
         builtin pushd "$HOME"
-    elif [[ $# -eq 1 ]]; then
-        if [[ "$1" == "-" ]]; then
-            builtin pushd
-        elif [[ -f "$1" ]]; then
-            # auxiliary variable is necessary to handle spaces in the path
-            local dir
-            dir=$(dirname "$1")
-            builtin pushd "$dir"
-        else
-            builtin pushd "$1"
-        fi
     else
-        echo "cd: Too many arguments"
+        # remove '--' from the parameters
+        if [[ "$1" == "--" ]]; then
+            set -- "${@:2:$#}"
+        fi
+
+        if [[ $# -eq 1 ]]; then
+            if [[ "$1" == "-" ]]; then
+                builtin pushd
+            elif [[ -f "$1" ]]; then
+                # auxiliary variable is necessary to handle spaces in the path
+                local dir
+                dir=$(dirname "$1")
+                builtin pushd -- "$dir"
+            else
+                builtin pushd -- "$1"
+            fi
+        else
+            echo "cd: Too many arguments"
+        fi
     fi
 }
 

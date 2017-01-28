@@ -22,11 +22,11 @@ alias du='du -h'
 alias df='df -h'
 alias dh='df -h -x tmpfs -x devtmpfs'
 alias free='free -h'
-alias top='top -d 01.00'
+alias top='top -cd 01.00'
 alias ps='ps aux'
 alias mt='findmnt -rnuc -o SOURCE,TARGET,FSTYPE,OPTIONS | sort | column -t'
 
-alias cal='cal -m'
+alias cal='cal -m -3'
 alias dirs='dirs -v'
 
 alias mplayer=mpv
