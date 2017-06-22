@@ -2,6 +2,10 @@
     name = Jakub Klinkovský
     email = j.l.k@gmx.com
 
+[merge]
+    tool = vimdiff
+    log = true
+
 [color]
     branch = auto
     diff = auto
@@ -19,13 +23,10 @@
 [push]
     default = simple
 
-[merge]
-    tool = vimdiff
-    log = true
-
 [alias]
     last = show --stat HEAD
     countcommits = shortlog -sn --no-merges
+    stashreset = "!git stash save && git fetch && git reset --hard FETCH_HEAD && git stash pop"
 
 [help]
     # execute corrected commands immediately
