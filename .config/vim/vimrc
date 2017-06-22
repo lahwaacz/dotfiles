@@ -12,7 +12,7 @@ set breakindent                         " autoindent wrapped lines, see https://
 autocmd FileType python,c,cpp setlocal breakindentopt=shift:4    " shift wrapped lines another 4 chars
 set linebreak                           " break at character in 'breakat' rather than at the last character that fits on the screen
 set backspace=indent,eol,start          " more flexible backspace
-retab                                   " spaces instead of tabs
+"retab                                   " spaces instead of tabs
 
 " Backup
 set nobackup                            " don't backup files
