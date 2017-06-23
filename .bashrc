@@ -29,11 +29,15 @@ bash_prompt() {
     local yellow="\033[01;33m"
     local blue="\033[01;34m"
     local magenta="\033[01;35m"
+    local cyan="\033[01;36m"
 
-    # green is the default prompt color
-    local host_color="$green"
+    # green for user
+    local user_color="$green"
     # red for root
-    [[ $UID == 0 ]] && host_color="$red"
+    [[ $UID == 0 ]] && user_color="$red"
+
+    # green for local session
+    local host_color="$green"
     # cyan for SSH sessions
     [[ -n "$SSH_CONNECTION" ]] && host_color="$cyan"
 
@@ -51,7 +55,7 @@ bash_prompt() {
     # check if we're on local filesystem and skip git prompt on remote paths
     local git="\$(if [[ \"\$(df --output=fstype . | tail -n +2)\" != \"fuse.sshfs\" ]]; then __git_ps1; fi)"
 
-    PS1="$ret \[$host_color\]\u@\h\[$color_reset\]:$dir\[$magenta\]$git\[$color_reset\]\$ "
+    PS1="$ret \[$user_color\]\u\[$host_color\]@\h\[$color_reset\]:$dir\[$magenta\]$git\[$color_reset\]\$ "
 }
 # Arch
 if [[ -r /usr/share/git/completion/git-prompt.sh ]]; then
@@ -90,5 +94,7 @@ fi
 
 ## set up SSH agent to use gpg-agent -- needed to show the right pinentry when the user switches between console and X
 ## (static socket path is set from ~/.profile)
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye >/dev/null
+if [[ $UID != 0 ]]; then
+    export GPG_TTY=$(tty)
+    gpg-connect-agent updatestartuptty /bye >/dev/null
+fi
