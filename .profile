@@ -57,14 +57,6 @@ export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export ASPCACHE="$XDG_CACHE_HOME/asp"
 
-# GnupG -- Changing this would require calling `gpgconf --create-socketdir` before gpg-agent
-# and configuring the right path for about 5 systemd sockets. This is too much work, let's
-# do it with symlink ~/.gnupg -> ~/.config/gnupg
-#export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
-#export SSH_AUTH_SOCK="/run/user/$UID/gnupg/d.psnu7wjt3mmen6bbh74u4e4t/S.gpg-agent.ssh"
-# set the right path to be used by the SSH agent
-export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-
 # autostart X session on tty1
 if [[ "$(tty)" == "/dev/tty1" ]]; then
     exec xinit -- :0
