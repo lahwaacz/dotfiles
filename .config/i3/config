@@ -40,7 +40,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # launchers
-bindsym $mod+d exec /home/lahwaacz/bin/interrobang
+bindsym $mod+d exec interrobang
 
 # change focus
 bindsym $mod+h focus left

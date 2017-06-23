@@ -7,8 +7,8 @@
 
 ## BASIC CONFIGURATION
 
-set font      = -*-profont-*-*-*-*-12-*-*-*-*-*-*-*
-#set font      = fixed
+#set font      = -*-profont-*-*-*-*-12-*-*-*-*-*-*-*
+set font      = fixed
 #set font      = -*-terminus-bold-r-normal--*-160-*-*-c-*-*-*
 #set geometry  = top
 #set geometry  = 1366x17+0+312
@@ -29,14 +29,14 @@ set margin    = -80
 ## BANGS
 
 bang term     = tinyterm -e %s
-bang web      = firefox %s
-bang ddg      = firefox %s
+bang web      = qutebrowser %s
+bang ddg      = qutebrowser %s
 bang pdf      = qpdfview --unique %s
 bang man      = tinyterm -e man %s
 bang o        = xdg-open %s
-bang bbs      = firefox https://duckduckgo.com/?q=%s%%20site%%3Abbs.archlinux.org
-bang wiki     = firefox https://wiki.archlinux.org/index.php/Special:Search?search=%s\&fulltext=Search
-#bang ddg      = firefox https://duckduckgo.com/?q=%s
+bang bbs      = qutebrowser https://duckduckgo.com/?q=%s%%20site%%3Abbs.archlinux.org
+bang wiki     = qutebrowser https://wiki.archlinux.org/index.php/Special:Search?search=%s\&fulltext=Search
+#bang ddg      = qutebrowser https://duckduckgo.com/?q=%s
 #bang calc     = echo "interrobang ignored \"%s\""
 #bang ?        = echo "interrobang ignored \"%s\""
 
