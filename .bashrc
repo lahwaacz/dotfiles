@@ -87,3 +87,8 @@ fi
 [[ -r /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
 [[ -f ~/.bash_functions ]] && source ~/.bash_functions
+
+## set up SSH agent to use gpg-agent -- needed to show the right pinentry when the user switches between console and X
+## (static socket path is set from ~/.profile)
+export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye >/dev/null
