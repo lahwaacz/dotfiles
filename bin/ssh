@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [[ -S "$SSH_AUTH_SOCK" ]] && [[ $UID != 0 ]] && [[ "$GPG_TTY" != "" ]]; then
+    # Don't export $GPG_TTY here! In case of git, ssh is not attached to a tty.
+    # The correct GPG_TTY is inherited from the parent process.
+    #export GPG_TTY=$(tty)
+    gpg-connect-agent updatestartuptty /bye >/dev/null
+fi
+
+exec /usr/bin/ssh "$@"
