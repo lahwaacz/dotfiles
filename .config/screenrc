@@ -1,0 +1,11 @@
+# disable welcome message
+startup_message off
+
+# override value of $TERM
+term xterm-256color
+
+# disable visual bell
+vbell off
+
+# enable alternative screen (used by e.g. text editors and pagers)
+altscreen on
