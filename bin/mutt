@@ -1,0 +1,16 @@
+#! /bin/bash
+
+# reset new mails counter (shown in bar)
+echo 0 > /dev/shm/new-mails-count
+
+# cd into fixed path (for saving attachments)
+cd ~/stuff
+
+# run mutt
+/usr/bin/mutt -n -F ~/.config/mutt/muttrc "$@"
+
+# count unread mails
+count-unread-mails.sh
+
+# try to sync flags
+ping -c 1 webmail.fjfi.cvut.cz > /dev/null && offlineimap -q -o

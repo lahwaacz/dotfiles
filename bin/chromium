@@ -1,0 +1,7 @@
+#! /usr/bin/bash
+
+exec /usr/bin/chromium --incognito \
+    --disable-reading-from-canvas \
+    "$@"
+#    --enable-strict-mixed-content-checking \
+#    --disable-remote-fonts \

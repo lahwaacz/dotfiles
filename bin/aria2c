@@ -1,0 +1,4 @@
+#! /usr/bin/bash
+
+# hack to use XDG config path
+exec /usr/bin/aria2c --conf-path=$HOME/.config/aria2/aria2.conf "$@"
