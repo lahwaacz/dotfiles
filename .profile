@@ -45,6 +45,7 @@ export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
 export INPUTRC="$XDG_CONFIG_HOME/inputrc"
 export ASPROOT="$XDG_CONFIG_HOME/asp"
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+export UNISON="$XDG_DATA_HOME/unison"
 
 # hacks to respect XDG_CACHE_HOME
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
