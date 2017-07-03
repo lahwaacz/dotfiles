@@ -6,7 +6,7 @@ set header_cache        = ~/.cache/mutt/headers-cache            # where to stor
 set certificate_file    = ~/.config/mutt/certificates            # where to store certs
 set mailcap_path        = ~/.config/mutt/mailcap                 # entries for filetypes
 set tmpdir              = ~/.cache/mutt/temp                     # where to keep temp files
-set editor              = "/usr/bin/vim -c 'set tw=80 ft=mail' -c 'set wrap' -c 'set spell'"
+set editor              = "/usr/bin/vim -c 'set tw=76 ft=mail' -c 'set wrap' -c 'set spell'"
 set ispell              = "/usr/bin/aspell -e -c"                # use aspell as ispell
 
 # --- main options

@@ -21,7 +21,6 @@ ui = basic
 [Account FJFI]
 localrepository = FJFI-local
 remoterepository = FJFI-remote
-status_backend = sqlite
 # Minutes between syncs
 autorefresh = 5
 # Number of quick-syncs between autorefreshes. Quick-syncs do not update if the
@@ -54,7 +53,6 @@ foldersort = fd_priority(prio_queue_fjfi)
 [Account gmx]
 localrepository = gmx-local
 remoterepository = gmx-remote
-status_backend = sqlite
 # count new emails of all accounts (for display in statusbar)
 postsynchook = count-unread-mails.sh
 
