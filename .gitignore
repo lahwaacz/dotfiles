@@ -6,8 +6,8 @@
 !/.config
 !/.bash*
 /.bash_history*
+!/bin
 !/.latexmkrc
-!/.pentadactylrc
 !/.profile
 !/.tmux.conf
 !/.toprc
