@@ -9,3 +9,6 @@ vbell off
 
 # enable alternative screen (used by e.g. text editors and pagers)
 altscreen on
+
+# bigger scrollback
+defscrollback 10000
