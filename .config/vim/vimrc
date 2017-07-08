@@ -184,8 +184,8 @@ let python_highlight_all = 1
 
 
 " overrides for TNL
-autocmd BufNewFile,BufRead /home/lahwaacz/Bbox/pg/cuda/tnl/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
-autocmd BufNewFile,BufRead /home/lahwaacz/Bbox/pg/cuda/tnl-experimental/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
+autocmd BufNewFile,BufRead */.local/include/tnl-0.1/TNL/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
+autocmd BufNewFile,BufRead */Bbox/pg/cuda/tnl/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
 
 
 " vim-latex config
