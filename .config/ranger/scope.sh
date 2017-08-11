@@ -60,6 +60,9 @@ if [ "$preview_images" = "True" ]; then
         # Image preview for video, disabled by default.:
         ###video/*)
         ###    ffmpegthumbnailer -i "$path" -o "$cached" -s 0 && exit 6 || exit 1;;
+        # PDF preview
+        application/pdf)
+            pdftoppm -jpeg -singlefile "$path" "${cached//.jpg}" && exit 6;;
     esac
 fi
 
@@ -97,6 +100,10 @@ case "$extension" in
     vtk)
         exit 1
         ;;
+    # disable highlighting of subtitles
+    srt|sub)
+        exit 2
+        ;;
 esac
 
 case "$mimetype" in
@@ -109,7 +116,10 @@ case "$mimetype" in
             pygmentize_format=terminal
             highlight_format=ansi
         fi
-        try safepipe highlight --out-format=${highlight_format} "$path" && { dump | trim; exit 5; }
+        # themes directory: /usr/share/highlight/themes/
+        # acceptable themes: solarized-light, solarized-dark, orion, rdark
+        # TODO: make my own solarized-like theme
+        try safepipe highlight -s rdark --out-format=${highlight_format} "$path" && { dump | trim; exit 5; }
         try safepipe pygmentize -f ${pygmentize_format} "$path" && { dump | trim; exit 5; }
         exit 2;;
     # Ascii-previews of images:
