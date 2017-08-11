@@ -26,6 +26,11 @@ set ssl_starttls        = yes
 # --- gpg
 set pgp_use_gpg_agent = yes 
 set pgp_autosign = yes
-set pgp_sign_as = BCF056C5
+# the '!' at the end forces gpg to use this key, not its subkeys
+set pgp_sign_as = BCF056C5!
 set pgp_timeout = 1800
 set pgp_replyencrypt = yes
+
+# --- workaround for the default %L format messing up with mailing lists
+folder-hook   .*[sS]ent.* 'set index_format="%3C %S %D | %-26.26t %-50.100s %> %c"'
+folder-hook ! .*[sS]ent.* 'set index_format="%3C %S %D | %-26.26n %-50.100s %> %c"'
