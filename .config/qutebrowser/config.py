@@ -62,6 +62,13 @@ c.fonts.web.family.fixed = "monospace"
 
 
 
+c.aliases = {
+    "set": "set -t",
+    # TODO: add "bind": "bind -t" after https://github.com/qutebrowser/qutebrowser/issues/2988 is implemented
+}
+
+
+
 # my bindings
 c.bindings.commands = {
     "caret": c.bindings.default["caret"],
