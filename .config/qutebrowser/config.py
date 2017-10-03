@@ -158,7 +158,7 @@ c.bindings.commands = {
         "yp": "yank pretty-url",
         "yt": "yank title",
         "yy": "yank",
-        "yank selection": "<ctrl+c>",
+        "<ctrl+c>": "yank selection",
     },
     "passthrough": {
         "<Escape>": "leave-mode",
