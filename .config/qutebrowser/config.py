@@ -39,6 +39,8 @@ c.tabs.show = "multiple"
 c.tabs.padding["bottom"] = 1
 c.tabs.title.format = "{perc}{index}: {title}"
 
+c.spellcheck.languages = ["en-GB", "en-US", "cs-CZ"]
+
 c.url.start_pages = ["https://start.duckduckgo.com"]
 c.url.searchengines = {
     "DEFAULT":  "https://duckduckgo.com/?q={}",
@@ -138,9 +140,9 @@ c.bindings.commands = {
         "m": "quickmark-save",
         "M": "bookmark-add",
         "o": "set-cmd-text -s :open",
-        "O": "set-cmd-text -s :open {url}",
+        "O": "set-cmd-text :open {url}",
         "t": "set-cmd-text -s :open -t",
-        "T": "set-cmd-text -s :open -t {url}",
+        "T": "set-cmd-text :open -t {url}",
         "pP": "open -- {primary}",
         "pp": "open -- {clipboard}",
         "PP": "open -t -- {primary}",
