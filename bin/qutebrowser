@@ -6,7 +6,6 @@
 #   --blink-settings: https://cs.chromium.org/chromium/src/third_party/WebKit/Source/core/frame/Settings.json5
 
 exec /usr/bin/qutebrowser \
-    --backend webengine \
     --qt-flag disable-reading-from-canvas \
     --qt-flag enable-strict-mixed-content-checking \
     "$@"
