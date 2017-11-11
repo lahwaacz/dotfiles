@@ -10,6 +10,16 @@ c.content.geolocation = False
 c.content.plugins = False
 c.content.pdfjs = True
 
+# available qt-flags:
+#   Qt: http://doc.qt.io/qt-5/qapplication.html#QApplication
+#   Chromium: https://cs.chromium.org/chromium/src/content/public/common/content_switches.cc
+#   --blink-settings: https://cs.chromium.org/chromium/src/third_party/WebKit/Source/core/frame/Settings.json5
+c.qt.args = [
+    "disable-reading-from-canvas",
+    "enable-strict-mixed-content-checking",
+#    "disable-remote-fonts",
+]
+
 c.downloads.location.directory = "~/stuff/"
 c.downloads.location.prompt = False
 c.downloads.location.remember = False
