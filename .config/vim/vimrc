@@ -234,6 +234,7 @@ let g:vimtex_syntax_minted = [
 " alternative to rubber: http://stackoverflow.com/questions/1240037/recommended-build-system-for-latex/1394702#1394702
 "autocmd FileType tex set makeprg=rubber-info\ main.log
 "autocmd FileType tex set errorformat=%f:%l:\ %m
+autocmd FileType tex map <C-m> :make<CR>
 
 
 " syntastic
