@@ -38,6 +38,6 @@
     user = lahwaacz
 
 # http://stackoverflow.com/questions/7542543/use-gits-word-diff-for-latex-files
-[diff "latex"]
-    wordRegex = "\\\\[a-zA-Z]+|[{}]|\\\\.|[^\\{}[:space:]]+"
-    command = ~/bin/diff-words.sh
+#[diff "latex"]
+#    wordRegex = "\\\\[a-zA-Z]+|[{}]|\\\\.|[^\\{}[:space:]]+"
+#    command = ~/bin/diff-words.sh
