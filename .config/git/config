@@ -26,7 +26,8 @@
 [alias]
     last = show --stat HEAD
     countcommits = shortlog -sn --no-merges
-    stashreset = "!git stash save && git fetch && git reset --hard FETCH_HEAD && git stash pop"
+    stash-pop-if-not-empty = "![[ $(git stash list | wc -l) -gt 0 ]] && git stash pop || true"
+    stashreset = "!git stash save && git fetch && git reset --hard FETCH_HEAD && git stash-pop-if-not-empty"
     amend = commit --amend
 
 [help]
