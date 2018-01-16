@@ -3,12 +3,11 @@ c.auto_save.session = True
 
 c.content.print_element_backgrounds = False
 c.content.user_stylesheets = ["user-stylesheet.css"]
-c.content.dns_prefetch = False
 c.content.cache.size = 52428800
 c.content.webgl = False
 c.content.geolocation = False
 c.content.plugins = False
-c.content.pdfjs = True
+#c.content.pdfjs = True  # not available with webengine
 
 # available qt-flags:
 #   Qt: http://doc.qt.io/qt-5/qapplication.html#QApplication
@@ -32,7 +31,6 @@ c.completion.timestamp_format = "%Y-%m-%d %H:%M:%S"
 c.hints.mode = "number"
 c.hints.scatter = False
 c.hints.auto_follow_timeout = 500  # milliseconds
-c.hints.find_implementation = "javascript"
 
 c.input.forward_unbound_keys = "none"
 c.input.partial_timeout = 1000
