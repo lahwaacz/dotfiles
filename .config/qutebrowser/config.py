@@ -67,6 +67,15 @@ c.url.searchengines = {
 c.colors.statusbar.url.success.http.fg = "lime"
 c.colors.statusbar.url.success.https.fg = "lime"
 
+c.fonts.completion.entry = "8pt monospace"
+c.fonts.downloads = "8pt monospace"
+c.fonts.hints = "bold 8pt monospace"
+c.fonts.keyhint = "8pt monospace"
+c.fonts.messages.error = "8pt monospace"
+c.fonts.messages.info = "8pt monospace"
+c.fonts.messages.warning = "8pt monospace"
+c.fonts.statusbar = "9pt monospace"
+c.fonts.tabs = "8pt monospace"
 c.fonts.monospace = "monospace"
 c.fonts.web.family.fixed = "monospace"
 
