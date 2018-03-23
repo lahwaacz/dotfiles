@@ -91,18 +91,16 @@ c.aliases = {
 # when the defaults were not unset yet
 if c.bindings.default:
 
-    # my bindings
-    c.bindings.commands = {
-        "caret": c.bindings.default["caret"],
-        "command": c.bindings.default["command"],
-        "hint": c.bindings.default["hint"],
-        "prompt": c.bindings.default["prompt"],
-        "insert": {
+    # copy defaults
+    c.bindings.commands = c.bindings.default
+
+    # overwrite with my bindings for some modes
+    c.bindings.commands["insert"] = {
             "<Ctrl-I>": "open-editor",
             "<Escape>": "leave-mode",
             "<Shift-Ins>": "insert-text {primary}",
-        },
-        "normal": {
+        }
+    c.bindings.commands["normal"] = {
             "<Escape>": "clear-keychain ;; search ;; fullscreen --leave",
             "<Return>": "follow-selected",
             "<back>": "back",
@@ -185,14 +183,13 @@ if c.bindings.default:
             "yt": "yank title",
             "yy": "yank",
             "<ctrl+c>": "yank selection",
-        },
-        "passthrough": {
+        }
+    c.bindings.commands["passthrough"] = {
             "<Escape>": "leave-mode",
-        },
-        "register": {
+        }
+    c.bindings.commands["register"] = {
             "<Escape>": "leave-mode",
-        },
-    }
+        }
 
     # ignore all defaults
     c.bindings.default = {}
