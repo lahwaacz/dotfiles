@@ -186,6 +186,7 @@ let python_highlight_all = 1
 " overrides for TNL
 autocmd BufNewFile,BufRead */.local/include/TNL/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
 autocmd BufNewFile,BufRead */Bbox/pg/cuda/tnl/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
+autocmd BufNewFile,BufRead */Bbox/pg/cuda/tnl_builds/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
 autocmd BufNewFile,BufRead */Bbox/pg/cuda/tnl-lbm/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
 autocmd BufNewFile,BufRead */Bbox/pg/cuda/lbm/* setlocal noexpandtab
 
