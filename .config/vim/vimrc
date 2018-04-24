@@ -13,6 +13,8 @@ autocmd FileType python,c,cpp setlocal breakindentopt=shift:4    " shift wrapped
 set linebreak                           " break at character in 'breakat' rather than at the last character that fits on the screen
 set backspace=indent,eol,start          " more flexible backspace
 "retab                                   " spaces instead of tabs
+set list                                " apply highlighting as per listchars
+set listchars=tab:␉·,trail:␠,nbsp:⎵     " highlighting of special white-space characters
 
 " Backup
 set nobackup                            " don't backup files
