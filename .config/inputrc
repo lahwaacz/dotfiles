@@ -15,6 +15,10 @@ set completion-ignore-case on
 
 # for vi mode
 set editing-mode vi
+set show-mode-in-prompt on
+set vi-ins-mode-string ""
+set vi-cmd-mode-string "(cmd)"
+
 $if mode=vi
 
 set keymap vi-command
