@@ -29,7 +29,6 @@ alias mt='findmnt -rnuc -o SOURCE,TARGET,FSTYPE,OPTIONS | sort | column -t'
 alias cal='cal -m'
 alias dirs='dirs -v'
 
-alias mplayer=mpv
 alias youtube-dl='youtube-dl -c -o "%(title)s.%(ext)s"'
 
 alias quickbrowse="curl -G -d 'mimetype=text/plain'"
