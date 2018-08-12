@@ -111,3 +111,15 @@ function cd() {
 function aurclone() {
     git clone ssh://aur/"$1".git
 }
+
+
+## path synchronization for ranger
+# (reference: /usr/share/doc/ranger/examples/bash_automatic_cd.sh)
+function ranger {
+    tempfile="$(mktemp -t ranger-cd.XXXXXX)"
+    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+    if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
+        cd -- "$(cat "$tempfile")"
+    fi
+    rm -f -- "$tempfile"
+}
