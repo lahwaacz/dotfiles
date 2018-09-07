@@ -74,6 +74,12 @@ function filter_fjfi()
     -- Get the status of a mailbox
     account_fjfi.INBOX:check_status()
 
+    -- spam
+    unseen = account_fjfi['INBOX']:is_unseen()
+    results = unseen:contain_subject('***SPAM***')
+    results:add_flags({ '\\Seen' })
+    results:move_messages(account_fjfi['Junk E-Mail'])
+
     -- '_CINECA 2018' mailbox
     messages = account_fjfi['INBOX']
     results = messages:contain_subject('cineca') +
@@ -91,6 +97,9 @@ function filter_fjfi()
     -- print info about matched messages
 --    print_matched(results)
 end
+
+filter_fjfi()
+pipe_to('offlineimap -oq -a FJFI -u basic', password_fjfi)
 
 while 1 do
     -- first check if there are new messages
