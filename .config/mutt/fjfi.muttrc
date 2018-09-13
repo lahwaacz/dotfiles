@@ -9,8 +9,11 @@
 
 set from      = "klinkjak@fjfi.cvut.cz"
 #set mbox      = "+FJFI/archive"
-set record    = "+FJFI/sent"
 set postponed = "+FJFI/drafts"
+#set record    = "+FJFI/sent"
+#set record    = "+FJFI/INBOX"
+# record sent messages in the current folder: https://bbs.archlinux.org/viewtopic.php?pid=1349259#p1349259
+folder-hook FJFI/* 'set record="^"'
 
 set attribution         = "On %d, %n wrote:"
 

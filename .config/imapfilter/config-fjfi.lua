@@ -64,6 +64,8 @@ account_fjfi = IMAP {
 -- create mailbox
 --account_fjfi:create_mailbox('_CINECA 2018')
 --account_fjfi:create_mailbox('_UPC')
+--account_fjfi:create_mailbox('_LBM')
+--account_fjfi:create_mailbox('_TNL')
 
 
 ---------------
@@ -73,6 +75,11 @@ account_fjfi = IMAP {
 function filter_fjfi()
     -- Get the status of a mailbox
     account_fjfi.INBOX:check_status()
+
+    -- move sent messages to inbox
+    results = account_fjfi['Sent Items']:select_all() +
+              account_fjfi['Outbox']:select_all()
+    results:move_messages(account_fjfi['INBOX'])
 
     -- spam
     unseen = account_fjfi['INBOX']:is_unseen()
