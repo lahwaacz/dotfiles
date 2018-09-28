@@ -62,10 +62,11 @@ account_fjfi = IMAP {
 
 
 -- create mailbox
---account_fjfi:create_mailbox('_CINECA 2018')
---account_fjfi:create_mailbox('_UPC')
+--account_fjfi:create_mailbox('_KOTEL')
 --account_fjfi:create_mailbox('_LBM')
 --account_fjfi:create_mailbox('_TNL')
+--account_fjfi:create_mailbox('_CINECA 2018')
+--account_fjfi:create_mailbox('_UPC')
 
 
 ---------------
