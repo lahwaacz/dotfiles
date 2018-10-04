@@ -30,6 +30,7 @@ def get_passwd_check_ppid(path):
 
 mapping_fjfi = {
     'INBOX'                : 'INBOX',
+    '_TEACHING'            : 'teaching',
     '_KOTEL'               : 'KOTEL',
     '_LBM'                 : 'LBM',
     '_TNL'                 : 'TNL',
