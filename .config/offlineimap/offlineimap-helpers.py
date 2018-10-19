@@ -35,6 +35,7 @@ mapping_fjfi = {
     '_LBM'                 : 'LBM',
     '_TNL'                 : 'TNL',
     '_CINECA 2018'         : 'CINECA 2018',
+    '_IT4I'                : 'IT4I',
     '_UPC'                 : 'UPC',
     'Drafts'               : 'drafts',
     'Deleted Items'        : 'trash',

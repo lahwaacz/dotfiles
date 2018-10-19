@@ -67,6 +67,7 @@ account_fjfi = IMAP {
 --account_fjfi:create_mailbox('_LBM')
 --account_fjfi:create_mailbox('_TNL')
 --account_fjfi:create_mailbox('_CINECA 2018')
+--account_fjfi:create_mailbox('_IT4I')
 --account_fjfi:create_mailbox('_UPC')
 
 
@@ -97,6 +98,12 @@ function filter_fjfi()
               messages:contain_from('@list.cineca.it') +
               messages:contain_from('@hpc-europa.org')
     results:move_messages(account_fjfi['_CINECA 2018'])
+
+    -- '_IT4I' mailbox
+    messages = account_fjfi['INBOX']
+    results = messages:contain_subject('IT4I') +
+              messages:contain_from('@it4i.cz')
+    results:move_messages(account_fjfi['_IT4I'])
 
     -- '_UPC' mailbox
     messages = account_fjfi['INBOX']
