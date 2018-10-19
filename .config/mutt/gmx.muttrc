@@ -31,6 +31,9 @@ set pgp_sign_as = BCF056C5!
 set pgp_timeout = 1800
 set pgp_replyencrypt = yes
 
+# -- S/MIME
+set smime_is_default = no
+
 # --- workaround for the default %L format messing up with mailing lists
 folder-hook   .*[sS]ent.* 'set index_format="%3C %S %D | %-26.26t %-50.100s %> %c"'
 folder-hook ! .*[sS]ent.* 'set index_format="%3C %S %D | %-26.26n %-50.100s %> %c"'

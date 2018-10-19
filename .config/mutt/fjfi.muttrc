@@ -32,3 +32,8 @@ set pgp_autosign = no
 set pgp_sign_as =
 set pgp_timeout = 1800
 set pgp_replyencrypt = no
+
+# --- S/MIME
+set smime_is_default = yes
+set smime_default_key = "504de54c.0"
+#set crypt_autosign = yes
