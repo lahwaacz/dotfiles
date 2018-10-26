@@ -135,7 +135,7 @@ macro index A      "!~/Scripts/abook-autoexport\n:source ~/.config/mutt/alias\n"
 macro index \Ca    "|~/Scripts/abook-autoexport --add-email-quiet\n:source ~/.config/mutt/alias\n" "Create new alias from the actual message"
 
 # -- mailing lists
-lists *@lists.archlinux.org
+lists ".*@lists\.archlinux\.org"
 subscribe arch-wiki-admins@lists.archlinux.org
 
 # --- misc
