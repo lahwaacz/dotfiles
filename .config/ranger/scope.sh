@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 # ranger supports enhanced previews.  If the option "use_preview_script"
 # is set to True and this file exists, this script will be called and its
 # output is displayed in ranger.  ANSI color codes are supported.
@@ -46,8 +46,13 @@ trim() { head -n "$maxln"; }
 # wraps highlight to treat exit code 141 (killed by SIGPIPE) as success
 safepipe() { "$@"; test $? = 0 -o $? = 141; }
 
+# Skip previews on dirs mounted through sshfs
+if [[ "$path" == "$HOME/mnt/"* ]]; then
+    exit 1
+fi
+
 # Image previews, if enabled in ranger.
-if [ "$preview_images" = "True" ]; then
+if [[ "$preview_images" = "True" ]]; then
     case "$mimetype" in
         # Image previews for SVG files, disabled by default.
         ###image/svg+xml)
