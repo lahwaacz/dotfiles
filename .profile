@@ -16,7 +16,7 @@ export BROWSER=qutebrowser
 export EDITOR=vim
 export DIFFPROG=vimdiff
 export PAGER="less -FRXMKij4"
-export MANPAGER=vimpager
+[[ $(command -v vimpager) ]] && export MANPAGER=vimpager
 export SUDO_ASKPASS="/usr/lib/ssh/gnome-ssh-askpass2"
 
 export LIBVA_DRIVER_NAME=vdpau  # video acceleration
