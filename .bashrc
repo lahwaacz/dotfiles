@@ -63,6 +63,9 @@ if [[ -r /usr/share/git/completion/git-prompt.sh ]]; then
 # Debian, Ubuntu
 elif [[ -r /etc/bash_completion.d/git-prompt ]]; then
     source /etc/bash_completion.d/git-prompt
+# others
+elif [[ -r "$HOME/bin/git-prompt.sh" ]]; then
+    source "$HOME/bin/git-prompt.sh"
 fi
 bash_prompt
 
