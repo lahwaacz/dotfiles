@@ -1,6 +1,3 @@
-# source bashrc in interactive login shells (SSH)
-[[ -f ~/.bashrc ]] && source ~/.bashrc
-
 #umask 0077
 umask 0022
 
@@ -66,6 +63,9 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"   # ~/.python_history 
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export ASPCACHE="$XDG_CACHE_HOME/asp"
+
+# source bashrc in interactive login shells (SSH)
+[[ -f ~/.bashrc ]] && source ~/.bashrc
 
 # autostart X session on tty1
 if [[ "$(tty)" == "/dev/tty1" ]]; then
