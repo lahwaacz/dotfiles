@@ -42,3 +42,8 @@ alias syu='sudo pacman -Syu'
 alias suy='syu'
 
 alias subdl='/usr/bin/subdl -i --lang=eng,cze'
+
+# re-apply alias from /etc/profile.d/openfoam-6.sh
+if [[ "$FOAM_INST_DIR" != "" ]]; then
+    alias ofoam="source ${FOAM_INST_DIR}/OpenFOAM-6/etc/bashrc"
+fi
