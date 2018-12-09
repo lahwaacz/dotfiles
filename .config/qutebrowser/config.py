@@ -1,3 +1,5 @@
+c.editor.command = ["tinyterm", "-e", "bash -c 'vim -f \"{file}\" -c \"normal {line}G{column0}l\"'"]
+
 c.auto_save.interval = 15000  # milliseconds
 c.auto_save.session = True
 
