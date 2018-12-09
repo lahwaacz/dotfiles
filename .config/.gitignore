@@ -42,8 +42,6 @@
 # vim dictionaries
 /vim/spell/*.add
 /vim/spell/*.spl
-# TODO: make them submodules
-/vim/bundle
 
 # encrypted files
 *.gpg
