@@ -283,6 +283,7 @@ for_window [instance="ParaView"] floating enable
 
 # per-window settings
 for_window [class="mpv"] floating enable
+for_window [class="lxqt-openssh-askpass"] floating enable
 # handle floating dialogs properly
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable

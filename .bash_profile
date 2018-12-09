@@ -17,7 +17,7 @@ export EDITOR=vim
 export DIFFPROG=vimdiff
 export PAGER="less -FRXMKij4"
 [[ $(command -v vimpager) ]] && export MANPAGER=vimpager
-export SUDO_ASKPASS="/usr/lib/ssh/gnome-ssh-askpass2"
+[[ $(command -v lxqt-openssh-askpass) ]] && export SUDO_ASKPASS=$(command -v "lxqt-openssh-askpass")
 
 export LIBVA_DRIVER_NAME=vdpau  # video acceleration
 export SYSTEMD_LESS=FRXMKij4   # omit 'S' to disable "chopping" long lines
