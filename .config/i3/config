@@ -278,8 +278,8 @@ assign [class="qemu-system-i386"] 19
 assign [class="TinyTerm" instance="journalctl"] 22
 
 # move windows popping up from scripts into their own workspace
-assign [instance="ParaView"] paraview_workspace
-for_window [instance="ParaView"] floating enable
+assign [title="^ParaView$"] paraview_workspace
+for_window [title="^ParaView$"] floating enable
 
 # per-window settings
 for_window [class="mpv"] floating enable
