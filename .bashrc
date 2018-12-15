@@ -47,13 +47,17 @@ bash_prompt() {
     # blue for writable directories, yellow for non-writable directories
     local dir="\$(if [[ -w \$PWD ]]; then echo \"\[$blue\]\"; else echo \"\[$yellow\]\"; fi)\w"
 
-    # configuration for __git_ps1 function
-    GIT_PS1_SHOWDIRTYSTATE=1
-    GIT_PS1_SHOWSTASHSTATE=1
-    GIT_PS1_SHOWUPSTREAM="auto"
+    if [[ $(type -t "__git_ps1") == "function" ]]; then
+        # configuration for __git_ps1 function
+        GIT_PS1_SHOWDIRTYSTATE=1
+        GIT_PS1_SHOWSTASHSTATE=1
+        GIT_PS1_SHOWUPSTREAM="auto"
 
-    # check if we're on local filesystem and skip git prompt on remote paths
-    local git="\$(if [[ \"\$(df --output=fstype . | tail -n +2)\" != \"fuse.sshfs\" ]]; then __git_ps1; fi)"
+        # check if we're on local filesystem and skip git prompt on remote paths
+        local git="\$(if [[ \"\$(df --output=fstype . | tail -n +2)\" != \"fuse.sshfs\" ]]; then __git_ps1; fi)"
+    else
+        local git=""
+    fi
 
     PS1="$ret \[$user_color\]\u\[$host_color\]@\h\[$color_reset\]:$dir\[$magenta\]$git\[$color_reset\]\$ "
 }
