@@ -61,6 +61,10 @@ set guifont=Monospace\ 9                " font in gvim
 set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
 set runtimepath=$XDG_CONFIG_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$XDG_CONFIG_HOME/vim/after
 
+if !isdirectory($XDG_CACHE_HOME . "/vim")
+    call mkdir($XDG_CACHE_HOME . "/vim", "p")
+endif
+
 " Load pathogen.vim (manage runtime path)
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
