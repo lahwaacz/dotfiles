@@ -8,8 +8,10 @@ set shiftwidth=4                        " number of spaces to autoindent
 set softtabstop=4                       " number of spaces for a tab
 set autoindent                          " set autoindenting on
 set smartindent                         " automatically insert another level of indent when needed
-set breakindent                         " autoindent wrapped lines, see https://retracile.net/wiki/VimBreakIndent
-autocmd FileType python,c,cpp setlocal breakindentopt=shift:4    " shift wrapped lines another 4 chars
+if has('breakindent')                   " not available before 7.4.338, see https://retracile.net/blog/2014/07/18/18.00
+    set breakindent                     " autoindent wrapped lines, see https://retracile.net/wiki/VimBreakIndent
+    autocmd FileType python,c,cpp setlocal breakindentopt=shift:4    " shift wrapped lines another 4 chars
+endif
 set linebreak                           " break at character in 'breakat' rather than at the last character that fits on the screen
 set backspace=indent,eol,start          " more flexible backspace
 "retab                                   " spaces instead of tabs
