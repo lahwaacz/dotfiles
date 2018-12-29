@@ -234,8 +234,8 @@ bindsym $mod+Ctrl+Up          exec mpc -q stop
 bindsym $mod+Ctrl+Left        exec mpc -q prev
 bindsym $mod+Ctrl+Right       exec mpc -q next
 
-bindsym XF86MonBrightnessUp   exec light -s acpi_video0 -rA 1 && notify-brightness.sh
-bindsym XF86MonBrightnessDown exec light -s acpi_video0 -rU 1 && notify-brightness.sh
+bindsym XF86MonBrightnessUp   exec light -s sysfs/backlight/acpi_video0 -rA 1 && notify-brightness.sh
+bindsym XF86MonBrightnessDown exec light -s sysfs/backlight/acpi_video0 -rU 1 && notify-brightness.sh
 
 bindsym XF86ScreenSaver       exec sxlock
 bindsym XF86WWW               exec toggle-touchpad.sh
