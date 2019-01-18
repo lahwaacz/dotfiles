@@ -68,6 +68,6 @@ export ASPCACHE="$XDG_CACHE_HOME/asp"
 [[ -f ~/.bashrc ]] && source ~/.bashrc
 
 # autostart X session on tty1
-if [[ "$(tty)" == "/dev/tty1" ]]; then
+if [[ "$(tty)" == "/dev/tty1" ]] && [[ $(command -v xinit) ]]; then
     exec xinit -- :0
 fi
