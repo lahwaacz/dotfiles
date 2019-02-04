@@ -123,3 +123,17 @@ function ranger {
     fi
     rm -f -- "$tempfile"
 }
+
+
+## system upgrade
+function syu {
+    sudo pacman -Syu $@
+    local ret=$?
+    if [[ $ret -ne 0 ]]; then
+        return $ret
+    fi
+    if [[ $(command -v rebuild-notify) ]] && [[ $(command -v expac) ]]; then
+        rebuild-notify
+    fi
+}
+alias suy='syu'

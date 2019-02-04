@@ -38,9 +38,6 @@ alias reboot='systemctl reboot'
 alias suspend='systemctl suspend'
 alias hibernate='systemctl hibernate'
 
-alias syu='sudo pacman -Syu'
-alias suy='syu'
-
 alias subdl='/usr/bin/subdl -i --lang=eng,cze'
 
 # re-apply alias from /etc/profile.d/openfoam-6.sh
