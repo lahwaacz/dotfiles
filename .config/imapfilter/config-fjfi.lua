@@ -66,7 +66,7 @@ account_fjfi = IMAP {
 --account_fjfi:create_mailbox('_KOTEL')
 --account_fjfi:create_mailbox('_LBM')
 --account_fjfi:create_mailbox('_TNL')
---account_fjfi:create_mailbox('_CINECA 2018')
+--account_fjfi:create_mailbox('_HPC-Europa')
 --account_fjfi:create_mailbox('_IT4I')
 --account_fjfi:create_mailbox('_UPC')
 
@@ -90,14 +90,14 @@ function filter_fjfi()
     results:add_flags({ '\\Seen' })
     results:move_messages(account_fjfi['Junk E-Mail'])
 
-    -- '_CINECA 2018' mailbox
+    -- '_HPC-Europa' mailbox
     messages = account_fjfi['INBOX']
     results = messages:contain_subject('cineca') +
               messages:contain_subject('hpc-europa3') +
               messages:contain_from('@cineca.it') +
               messages:contain_from('@list.cineca.it') +
               messages:contain_from('@hpc-europa.org')
-    results:move_messages(account_fjfi['_CINECA 2018'])
+    results:move_messages(account_fjfi['_HPC-Europa'])
 
     -- '_IT4I' mailbox
     messages = account_fjfi['INBOX']

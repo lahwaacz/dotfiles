@@ -34,7 +34,7 @@ mapping_fjfi = {
     '_KOTEL'               : 'KOTEL',
     '_LBM'                 : 'LBM',
     '_TNL'                 : 'TNL',
-    '_CINECA 2018'         : 'CINECA 2018',
+    '_HPC-Europa'          : 'HPC-Europa',
     '_IT4I'                : 'IT4I',
     '_UPC'                 : 'UPC',
     'Drafts'               : 'drafts',
