@@ -3,13 +3,6 @@
 # turn on numlock
 [[ -x /usr/bin/numlockx ]] && numlockx on
 
-# configure touchpad
-# TODO: move to /etc/X11/xorg.conf.d/ (or at least use xinput)
-#synclient HorizTwoFingerScroll=1 &
-
-# disable touchpad when mouse detected
-[[ $(ls /dev/input | grep mouse | wc -l) -gt 1 ]] && xinput disable "SynPS/2 Synaptics TouchPad"
-
 # turn off bell
 xset -b
 
