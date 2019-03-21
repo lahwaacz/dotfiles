@@ -71,7 +71,7 @@ complete -o default -F _n n
 function orphans() {
     if [[ ! -n $(pacman -Qdtt) ]]; then 
         echo "no orphans to remove"
-    else 
+    else
         sudo pacman -Rnsc $(pacman -Qdttq)
     fi
 }
@@ -104,12 +104,6 @@ function cd() {
             echo "cd: Too many arguments"
         fi
     fi
-}
-
-
-## easy cloning from AUR4
-function aurclone() {
-    git clone ssh://aur/"$1".git
 }
 
 
