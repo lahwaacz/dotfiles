@@ -11,7 +11,7 @@ export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
 export PKG_CONFIG_PATH="$HOME/.local/share/pkgconfig:$PKG_CONFIG_PATH"
 
 # default applications
-export TERMINAL=tinyterm
+export TERMINAL=termite
 export BROWSER=qutebrowser
 export EDITOR=vim
 export DIFFPROG=vimdiff
@@ -69,5 +69,12 @@ export ASPCACHE="$XDG_CACHE_HOME/asp"
 
 # autostart X session on tty1
 if [[ "$(tty)" == "/dev/tty1" ]] && [[ $(command -v xinit) ]]; then
-    exec xinit -- :0
+    if [[ $(command -v sway) ]]; then
+        #export QT_QPA_PLATFORM=wayland-egl   # EGL seems to always try to use the nvidia GPU
+        export QT_QPA_PLATFORM=wayland
+        export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+        exec sway
+    elif [[ $(command -v xinit) ]]; then
+        exec xinit -- :0
+    fi
 fi
