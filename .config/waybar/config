@@ -1,0 +1,115 @@
+// Waybar configuration: https://github.com/Alexays/Waybar/wiki/Configuration
+// Font Awesome cheatsheet: https://origin.fontawesome.com/cheatsheet
+{
+    "layer": "bottom",
+    "position": "top",
+    "height": 18, // Waybar height
+    // "width": 1366, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-center": [],
+    "modules-right": ["tray", "idle_inhibitor", "custom/mail", "network", "memory", "cpu", "custom/gpu", "temperature", "battery", "pulseaudio", "clock"],
+    "sway/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": false,
+        "format": "{name}"
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/window": {
+        "tooltip": false
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            //"activated": "",
+            //"deactivated": ""
+            "activated": "DPMS inhibited"
+        },
+        "interval": 1,
+        "tooltip": false
+    },
+    "custom/mail": {
+        "format": " {}",
+        "exec": "cat /dev/shm/new-mails-count",
+        "interval": "once",
+        "signal": 8,
+        "return-type": "json",
+        "tooltip": false,
+        "on-click": "count-unread-mails.sh"
+    },
+    "network": {
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "interval": 5,
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+        "format-disconnected": "⚠ Disconnected",
+        "on-click": "wpa-cute",
+        "tooltip": false
+    },
+    "custom/gpu": {
+        "format": "{}",
+        "exec": "get-nvidia-status",
+        "interval": 60,
+        "return-type": "json",
+        "tooltip": false
+    },
+    "memory": {
+        "format": " {}%",
+        "interval": 1,
+        "tooltip": false
+    },
+    "cpu": {
+        "format": " {usage:2d}%",
+        "interval": 1,
+        "tooltip": false
+    },
+    "temperature": {
+        "interval": 1,
+        "thermal-zone": 8,   // TODO: check this: /sys/class/thermal/thermal_zone8/type should always be x86_pkg_temp
+        "critical-threshold": 70,
+        "format": " {temperatureC}°C",
+        "format-critical": " {temperatureC}°C"
+    },
+    "battery": {
+        "bat": "BAT0",
+        "interval": 15,
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 10
+        },
+        "format": "{icon} {capacity}%",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip": false
+    },
+    "pulseaudio": {
+        //"scroll-step": 1,
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        //"on-click": "pavucontrol"
+        "tooltip": false
+    },
+    "clock": {
+        "interval": 1,
+        "format": "{:%a, %d %b %Y %H:%M:%S}",
+        "tooltip": false
+    }
+}
