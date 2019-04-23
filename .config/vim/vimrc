@@ -52,7 +52,7 @@ set splitright                          " open new vertical split windows to the
 set splitbelow                          " same as above - opens new windows below, not above
 set wildignorecase                      " ignore case when completing file names and directories
 set wildmenu                            " enable enhanced command-line completion
-set wildmode=longest,list:full          " file and directory matching mode
+set wildmode=longest,list,full          " file and directory matching mode
 set nrformats=hex                       " allow incrementing and decrementing numbers that start with 0 using <c-a> and <c-x>
 set clipboard=unnamedplus,autoselect    " use + register (X Window clipboard) as unnamed register"
 set viminfo='20,<1000,s10,h             " large registers (for copying between sessions)
