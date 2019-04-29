@@ -69,6 +69,7 @@ account_fjfi = IMAP {
 --account_fjfi:create_mailbox('_HPC-Europa')
 --account_fjfi:create_mailbox('_IT4I')
 --account_fjfi:create_mailbox('_UPC')
+--account_fjfi:create_mailbox('_latency_test')
 
 
 ---------------
@@ -109,6 +110,12 @@ function filter_fjfi()
     messages = account_fjfi['INBOX']
     results = messages:contain_from('@upc.cz')
     results:move_messages(account_fjfi['_UPC'])
+
+    -- '_latency_test' mailbox
+    messages = account_fjfi['INBOX']
+    results = messages:contain_subject('[latency test]')
+    results:add_flags({ '\\Seen' })
+    results:move_messages(account_fjfi['_latency_test'])
 
     -- print info about matched messages
 --    print_matched(results)

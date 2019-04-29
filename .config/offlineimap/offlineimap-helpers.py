@@ -37,6 +37,7 @@ mapping_fjfi = {
     '_HPC-Europa'          : 'HPC-Europa',
     '_IT4I'                : 'IT4I',
     '_UPC'                 : 'UPC',
+    '_latency_test'        : 'latency_test',
     'Drafts'               : 'drafts',
     'Deleted Items'        : 'trash',
     'Junk E-Mail'          : 'spam',
