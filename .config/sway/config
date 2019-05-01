@@ -296,7 +296,7 @@ bindsym $mod+Ctrl+Right       exec mpc -q next
 bindsym XF86MonBrightnessUp   exec light -A 10 && notify-brightness.sh
 bindsym XF86MonBrightnessDown exec light -U 10 && notify-brightness.sh
 
-bindsym XF86ScreenSaver       exec sxlock
+#bindsym XF86ScreenSaver       exec sxlock
 bindsym Print                 exec screenshot.sh full
 bindsym $mod+Print            exec screenshot.sh select
 
