@@ -82,7 +82,7 @@ hdr_order from: to: cc: date: subject:                           # and in this o
 
 # --- sourced bits
 source $alias_file                                               # required for functionality
-source ~/.config/mutt/mailboxes                                  # mailboxes exported by offlineimap
+source ~/.config/mutt/mailboxes                                  # mailboxes in the Maildir
 source ~/.config/mutt/colors.muttrc                              # source colors file
 source ~/.config/mutt/gpg.rc                                     # use GPG
 source ~/.config/mutt/smime.rc                                   # use S/MIME
@@ -145,8 +145,8 @@ set sleep_time=0
 set send_charset="us-ascii:utf-8"                                # charset priority
 set auto_tag                                                     # apply functions in index menu only to tagged messages (if any)
 
-# quick-sync ~/Mail immediately with offlineimap
-macro index Z   "<shell-escape>offlineimap -q -o<enter>" "sync IMAP"
+# quick-sync ~/Maildir immediately
+macro index Z   "<shell-escape>fetchmail<enter>" "fetch new mail"
 
 # --- sidebar
 # documentation: http://www.neomutt.org/feature/sidebar/

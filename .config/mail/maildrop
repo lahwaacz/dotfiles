@@ -1,0 +1,65 @@
+#! /usr/bin/env python3
+
+# Documentation:
+# - https://docs.python.org/3.7/library/mailbox.html#mailbox.Maildir
+# - https://docs.python.org/3.7/library/mailbox.html#mailbox.MaildirMessage
+
+import os
+import sys
+import mailbox
+
+MAILDIR = os.path.expanduser("~/Maildir/FJFI")
+CREATE = False
+#MAILDIR = os.path.expanduser("~/stuff/Maildir-test")
+#CREATE = True
+
+if CREATE is True:
+    os.makedirs(MAILDIR, exist_ok=True)
+
+def get_mboxes():
+    mboxes = []
+    if not os.path.isdir(MAILDIR):
+        return mboxes
+    for d in os.listdir(MAILDIR):
+        if os.path.isdir(os.path.join(MAILDIR, d)):
+            mboxes.append(d)
+    return mboxes
+
+mboxes = get_mboxes()
+
+def procmail(message):
+    # spam
+    if "***SPAM***" in message["Subject"]:
+        message.set_flags("S")  # mark as seen
+        message.set_subdir("cur")  # skip new subdir
+        return "spam"
+
+    # HPC-Europa
+    if "cineca" in message["Subject"] or "hpc-europa3" in message["Subject"]:
+        return "HPC-Europa"
+    if "@cineca.it" in message["From"] or "@list.cineca.it" in message["From"] or "@hpc-europa.org" in message["From"]:
+        return "HPC-Europa"
+
+    # IT4I
+    if "IT4I" in message["Subject"] or "@it4i.cz" in message["From"]:
+        return "IT4I"
+
+    # UPC
+    if "@upc.cz" in message["From"]:
+        return "UPC"
+
+    # latency_test
+    if message["Subject"] == "[latency test]":
+        message.set_flags("S")  # mark as seen
+        message.set_subdir("cur")  # skip new subdir
+        return "latency_test"
+
+    return "INBOX"
+
+msg = sys.stdin.read()
+message = mailbox.MaildirMessage(msg)
+mbox = procmail(message)
+if CREATE is False and mbox not in mboxes:
+    raise ValueError("procmail returned an invalid mailbox")
+mb = mailbox.Maildir(os.path.join(MAILDIR, mbox), create=CREATE)
+mb.add(message)

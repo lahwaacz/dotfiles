@@ -1,0 +1,10 @@
+require [ "fileinto" ];
+
+if header :contains ["subject"] ["[latency test]"]
+{
+    fileinto "latency_test";
+}
+else
+{
+    fileinto "INBOX";
+}

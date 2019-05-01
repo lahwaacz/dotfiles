@@ -1,0 +1,36 @@
+# Documentation: https://mailutils.org/manual/mailutils.html
+
+mailbox {
+  mailbox-pattern "maildir:///home/${user}/stuff/maidag_test";
+  mailbox-type maildir;
+#  folder "maildir:///home/${user}/stuff/maidag_test";
+}
+
+mailer {
+  url "maildir:///home/${user}/stuff/maidag_test";
+}
+
+stderr true;
+debug 9;
+
+maidag {
+    language "sieve";
+    script "~/.config/mail/maidag_sieve_filter.sv";
+    #sieve-filter "~/.config/mail/maidag_sieve_filter";
+}
+
+#sieve {
+#  # Clear library search path.
+#  clear-library-path <arg: directory list>;
+#  # Clear include search path.
+#  clear-include-path <arg: directory list>;
+#  # Add directories to the library search path.  Argument is a colon-separated
+#  # list of directories.
+#  library-path <arg: directory list>;
+#  # Add directories to the beginning of the library search path.  Argument is a
+#  # colon-separated list of directories.
+#  library-path-prefix <arg: directory list>;
+#  # Add directories to the include search path.  Argument is a colon-separated
+#  # list of directories.
+#  include-path <arg: directory list>;
+#};
