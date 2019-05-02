@@ -56,8 +56,11 @@ def procmail(message):
 
     return "INBOX"
 
-msg = sys.stdin.read()
-message = mailbox.MaildirMessage(msg)
+# Passing a binary file to MaildirMessage let's it detect the correct encoding as
+# specified in the Content-Type message header. sys.stdin.buffer is a binary
+# buffer underlying sys.stdin which is textual.
+message = mailbox.MaildirMessage(sys.stdin.buffer)
+
 mbox = procmail(message)
 if CREATE is False and mbox not in mboxes:
     raise ValueError("procmail returned an invalid mailbox")
