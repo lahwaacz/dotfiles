@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# HACK: we need to run fdm from $HOME and hardcode the path to the password file as
+# relative, because %h is not expanded (see https://github.com/nicm/fdm/issues/64 )
+cd "$HOME"
+exec /usr/bin/fdm "$@"
