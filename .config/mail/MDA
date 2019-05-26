@@ -29,6 +29,34 @@ def get_mboxes():
 
 mboxes = get_mboxes()
 
+def get_mbox_by_message_id(msg_id):
+    since = datetime.datetime.utcnow() - datetime.timedelta(days=30)
+    cmd = ["find", MAILDIR,
+            # skip INBOX which is the default anyway
+            "-path", os.path.join(MAILDIR, "INBOX"), "-prune", "-o",
+            # skip files older than 30 days to keep it fast
+            "-newermt", since.strftime("%Y-%m-%d"),
+            # skip directories in the output
+            "-type", "f",
+            # filter by the In-Reply-To header
+            "-exec", "grep", "-El", "^Message-ID: " + msg_id + "$", "{}", "+",
+        ]
+    r = subprocess.run(cmd, capture_output=True, check=False, text=True)
+    if r.stderr:
+        print("Command's stderr:\n{}".format(r.stderr), file=sys.stderr)
+        r.check_returncode()
+
+    # extract the mbox from the printed paths
+    for fname in r.stdout.splitlines():
+        if not fname:
+            continue
+        fname = os.path.relpath(fname, start=MAILDIR)
+        mbox = fname.split("/")[0]
+        if mbox in mboxes:
+            return mbox
+
+    return None
+
 def procmail(message):
     # spam
     if "***SPAM***" in message["Subject"]:
@@ -58,29 +86,14 @@ def procmail(message):
 
     # autodetect mailbox based on the In-Reply-To: header
     if "In-Reply-To" in message:
-        since = datetime.datetime.utcnow() - datetime.timedelta(days=30)
-        cmd = ["find", MAILDIR,
-                # skip INBOX which is the default anyway
-                "-path", os.path.join(MAILDIR, "INBOX"), "-prune", "-o",
-                # skip files older than 30 days to keep it fast
-                "-newermt", since.strftime("%Y-%m-%d"),
-                # skip directories in the output
-                "-type", "f",
-                # filter by the In-Reply-To header
-                "-exec", "grep", "-El", "^Message-ID: " + message["In-Reply-To"] + "$", "{}", "+",
-            ]
-        r = subprocess.run(cmd, capture_output=True, check=False, text=True)
-        if r.stderr:
-            print("Command's stderr:\n{}".format(r.stderr), file=sys.stderr)
-            r.check_returncode()
-
-        # extract the mbox from the printed paths
-        for fname in r.stdout.splitlines():
-            if not fname:
-                continue
-            fname = os.path.relpath(fname, start=MAILDIR)
-            mbox = fname.split("/")[0]
-            if mbox in mboxes:
+        mbox = get_mbox_by_message_id(message["In-Reply-To"])
+        if mbox:
+            return mbox
+    # the References: header should contain all previous messages in the thread
+    if "References" in message:
+        for msg_id in message["References"].split():
+            mbox = get_mbox_by_message_id(msg_id)
+            if mbox:
                 return mbox
 
     return "INBOX"
