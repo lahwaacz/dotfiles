@@ -58,6 +58,10 @@ def get_mbox_by_message_id(msg_id):
     return None
 
 def procmail(message):
+    # message was not decoded correctly, nothing we can do about it...
+    if not isinstance(message["Subject"], str):
+        return "INBOX"
+
     # spam
     if "***SPAM***" in message["Subject"]:
         message.set_flags("S")  # mark as seen
