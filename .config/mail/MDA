@@ -44,7 +44,9 @@ def get_mbox_by_message_id(msg_id):
     r = subprocess.run(cmd, capture_output=True, check=False, text=True)
     if r.stderr:
         print("Command's stderr:\n{}".format(r.stderr), file=sys.stderr)
-        r.check_returncode()
+        # raising an exception would lead to some unprocessed messages
+#        r.check_returncode()
+        return None
 
     # extract the mbox from the printed paths
     for fname in r.stdout.splitlines():
