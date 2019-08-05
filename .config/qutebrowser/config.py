@@ -1,7 +1,8 @@
-c.editor.command = ["tinyterm", "-e", "bash -c 'vim -f \"{file}\" -c \"normal {line}G{column0}l\"'"]
+c.editor.command = ["termite", "-e", "bash -c 'vim -f \"{file}\" -c \"normal {line}G{column0}l\"'"]
 
 c.auto_save.interval = 15000  # milliseconds
 c.auto_save.session = True
+c.session.lazy_restore = True
 
 c.content.print_element_backgrounds = False
 c.content.user_stylesheets = ["user-stylesheet.css"]
@@ -47,7 +48,7 @@ c.new_instance_open_target_window = "last-focused"
 c.tabs.background = True
 c.tabs.show = "multiple"
 c.tabs.padding["bottom"] = 1
-c.tabs.title.format = "{perc}{index}: {title}"
+c.tabs.title.format = "{perc}{index}: {current_title}"
 
 c.spellcheck.languages = ["en-GB", "en-US", "cs-CZ"]
 
