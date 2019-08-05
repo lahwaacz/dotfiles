@@ -1,7 +1,0 @@
-[Unit]
-Description=Backup kmlinux files
-
-[Service]
-Type=oneshot
-ExecStart=/home/lahwaacz/Scripts/backup-wordpress-kmlinux.sh -q
-UMask=0077
