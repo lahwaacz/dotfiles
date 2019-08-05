@@ -70,9 +70,12 @@ export ASPCACHE="$XDG_CACHE_HOME/asp"
 # autostart X session on tty1
 if [[ "$(tty)" == "/dev/tty1" ]] && [[ $(command -v xinit) ]]; then
     if [[ $(command -v sway) ]]; then
+        # disable nvidia GPU first, otherwise sway would just load the nvidia module
+        sudo nvidia-switch off
         #export QT_QPA_PLATFORM=wayland-egl   # EGL seems to always try to use the nvidia GPU
         export QT_QPA_PLATFORM=wayland
         export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+        systemctl --user import-environment QT_QPA_PLATFORM QT_WAYLAND_DISABLE_WINDOWDECORATION
         exec sway
     elif [[ $(command -v xinit) ]]; then
         exec xinit -- :0

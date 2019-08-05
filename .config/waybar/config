@@ -25,6 +25,7 @@
         "spacing": 10
     },
     "idle_inhibitor": {
+        //"format": "{status}",
         "format": "{icon}",
         "format-icons": {
             //"activated": "",

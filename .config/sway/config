@@ -90,86 +90,86 @@ bindsym $mod+p focus parent
 # focus the child container
 bindsym $mod+c focus child
 
-# switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+plus workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+ecaron workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+scaron workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+ccaron workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+rcaron workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+zcaron workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+yacute workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+aacute workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+iacute workspace 9
-bindsym $mod+0 workspace 10
-bindsym $mod+eacute workspace 10
-bindsym $mod+F1 workspace 11
-bindsym $mod+F2 workspace 12
-bindsym $mod+F3 workspace 13
-bindsym $mod+F4 workspace 14
-bindsym $mod+F5 workspace 15
-bindsym $mod+F6 workspace 16
-bindsym $mod+F7 workspace 17
-bindsym $mod+F8 workspace 18
-bindsym $mod+F9 workspace 19
-bindsym $mod+F10 workspace 20
-bindsym $mod+F11 workspace 21
-bindsym $mod+F12 workspace 22
+bindsym --to-code {
+    # switch to workspace
+    $mod+plus workspace 1
+    $mod+ecaron workspace 2
+    $mod+scaron workspace 3
+    $mod+ccaron workspace 4
+    $mod+rcaron workspace 5
+    $mod+zcaron workspace 6
+    $mod+yacute workspace 7
+    $mod+aacute workspace 8
+    $mod+iacute workspace 9
+    $mod+eacute workspace 10
+#    $mod+1 workspace 1
+#    $mod+2 workspace 2
+#    $mod+3 workspace 3
+#    $mod+4 workspace 4
+#    $mod+5 workspace 5
+#    $mod+6 workspace 6
+#    $mod+7 workspace 7
+#    $mod+8 workspace 8
+#    $mod+9 workspace 9
+#    $mod+0 workspace 10
+    $mod+F1 workspace 11
+    $mod+F2 workspace 12
+    $mod+F3 workspace 13
+    $mod+F4 workspace 14
+    $mod+F5 workspace 15
+    $mod+F6 workspace 16
+    $mod+F7 workspace 17
+    $mod+F8 workspace 18
+    $mod+F9 workspace 19
+    $mod+F10 workspace 20
+    $mod+F11 workspace 21
+    $mod+F12 workspace 22
 
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+plus move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+ecaron move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+scaron move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+ccaron move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+rcaron move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+zcaron move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+yacute move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+aacute move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+iacute move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
-bindsym $mod+Shift+eacute move container to workspace 10
-bindsym $mod+Shift+F1 move container to workspace 11
-bindsym $mod+Shift+F2 move container to workspace 12
-bindsym $mod+Shift+F3 move container to workspace 13
-bindsym $mod+Shift+F4 move container to workspace 14
-bindsym $mod+Shift+F5 move container to workspace 15
-bindsym $mod+Shift+F6 move container to workspace 16
-bindsym $mod+Shift+F7 move container to workspace 17
-bindsym $mod+Shift+F8 move container to workspace 18
-bindsym $mod+Shift+F9 move container to workspace 19
-bindsym $mod+Shift+F10 move container to workspace 20
-bindsym $mod+Shift+F11 move container to workspace 21
-bindsym $mod+Shift+F12 move container to workspace 22
+    # move focused container to workspace
+    $mod+Shift+plus move container to workspace 1
+    $mod+Shift+ecaron move container to workspace 2
+    $mod+Shift+scaron move container to workspace 3
+    $mod+Shift+ccaron move container to workspace 4
+    $mod+Shift+rcaron move container to workspace 5
+    $mod+Shift+zcaron move container to workspace 6
+    $mod+Shift+yacute move container to workspace 7
+    $mod+Shift+aacute move container to workspace 8
+    $mod+Shift+iacute move container to workspace 9
+    $mod+Shift+eacute move container to workspace 10
+#    $mod+Shift+1 move container to workspace 1
+#    $mod+Shift+2 move container to workspace 2
+#    $mod+Shift+3 move container to workspace 3
+#    $mod+Shift+4 move container to workspace 4
+#    $mod+Shift+5 move container to workspace 5
+#    $mod+Shift+6 move container to workspace 6
+#    $mod+Shift+7 move container to workspace 7
+#    $mod+Shift+8 move container to workspace 8
+#    $mod+Shift+9 move container to workspace 9
+#    $mod+Shift+0 move container to workspace 10
+    $mod+Shift+F1 move container to workspace 11
+    $mod+Shift+F2 move container to workspace 12
+    $mod+Shift+F3 move container to workspace 13
+    $mod+Shift+F4 move container to workspace 14
+    $mod+Shift+F5 move container to workspace 15
+    $mod+Shift+F6 move container to workspace 16
+    $mod+Shift+F7 move container to workspace 17
+    $mod+Shift+F8 move container to workspace 18
+    $mod+Shift+F9 move container to workspace 19
+    $mod+Shift+F10 move container to workspace 20
+    $mod+Shift+F11 move container to workspace 21
+    $mod+Shift+F12 move container to workspace 22
+}
 
 # configure inputs
-#1:1:AT_Translated_Set_2_keyboard
-#1267:12508:ELAN1401:00_04F3:30DC_Keyboard
-#3064:4136:Fujitsu_Fujitsu_Keyboard
-input * {
-    xkb_layout cz
+input type:keyboard {
+    xkb_layout "cz,us"
+    xkb_options "grp:alt_caps_toggle"
     xkb_numlock enabled
     repeat_delay 500
     repeat_rate 35
 }
 
-input 1267:12508:ELAN1401:00_04F3:30DC_Touchpad {
+input type:touchpad {
     # disable while typing
     dwt enabled
     events disabled_on_external_mouse
@@ -296,7 +296,7 @@ bindsym $mod+Ctrl+Right       exec mpc -q next
 bindsym XF86MonBrightnessUp   exec light -A 10 && notify-brightness.sh
 bindsym XF86MonBrightnessDown exec light -U 10 && notify-brightness.sh
 
-#bindsym XF86ScreenSaver       exec sxlock
+bindsym XF86ScreenSaver       exec swaylock
 bindsym Print                 exec screenshot.sh full
 bindsym $mod+Print            exec screenshot.sh select
 
@@ -333,6 +333,7 @@ for_window [class="lxqt-openssh-askpass"] floating enable
 # handle floating dialogs properly
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+for_window [instance="chromium"] inhibit_idle fullscreen
 
 # statusbar
 bar {
