@@ -70,6 +70,17 @@ def procmail(message):
         message.set_subdir("cur")  # skip new subdir
         return "spam"
 
+    # GitLab notifications
+    if "gitlab@mmg-gitlab.fjfi.cvut.cz" in message["From"]:
+#        if "Jakub Klinkovský pushed to branch" in message:
+        if "X-GitLab-Author" in message and message["X-GitLab-Author"] == "klinkovsky":
+            message.set_flags("S")  # mark as seen
+            message.set_subdir("cur")  # skip new subdir
+            return "trash"
+#        if "[tnl/tnl-dev]" in message["Subject"]:
+        if "X-GitLab-Project" in message and "tnl" in message["X-GitLab-Project"]:
+            return "TNL"
+
     # HPC-Europa
     if "cineca" in message["Subject"] or "hpc-europa3" in message["Subject"]:
         return "HPC-Europa"
