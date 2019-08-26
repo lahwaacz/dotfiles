@@ -53,6 +53,7 @@ set splitbelow                          " same as above - opens new windows belo
 set wildignorecase                      " ignore case when completing file names and directories
 set wildmenu                            " enable enhanced command-line completion
 set wildmode=longest,list,full          " file and directory matching mode
+set notitle                             " don't set xterm window title
 set nrformats=hex                       " allow incrementing and decrementing numbers that start with 0 using <c-a> and <c-x>
 set clipboard=unnamedplus,autoselect    " use + register (X Window clipboard) as unnamed register"
 set viminfo='20,<1000,s10,h             " large registers (for copying between sessions)
@@ -196,7 +197,7 @@ let python_highlight_all = 1
 " overrides for TNL
 autocmd BufNewFile,BufRead */.local/include/TNL/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
 autocmd BufNewFile,BufRead */Bbox/pg/cuda/tnl/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
-autocmd BufNewFile,BufRead */Bbox/pg/cuda/tnl_builds/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
+autocmd BufNewFile,BufRead */Bbox/pg/cuda/tnl_worktrees/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
 autocmd BufNewFile,BufRead */Bbox/pg/cuda/tnl-lbm/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
 autocmd BufNewFile,BufRead */Bbox/pg/cuda/lbm/* setlocal noexpandtab
 
@@ -233,7 +234,10 @@ let g:vimtex_quickfix_ignored_warnings = [
 " latex completion
 let g:vimtex_complete_recursive_bib = 1         " needed to search .bib files recursively, even in files included with \input
 let g:ycm_filetype_whitelist.tex = 1
-let g:ycm_semantic_triggers = { 'tex': ['re!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*'] }
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 " FIXME: global variable specific to filetype, really?!?
 autocmd FileType tex let g:ycm_min_num_of_chars_for_completion = 99
 
