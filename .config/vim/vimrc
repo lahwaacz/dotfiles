@@ -16,7 +16,8 @@ set linebreak                           " break at character in 'breakat' rather
 set backspace=indent,eol,start          " more flexible backspace
 "retab                                   " spaces instead of tabs
 set list                                " apply highlighting as per listchars
-set listchars=tab:␉·,trail:␠,nbsp:⎵     " highlighting of special white-space characters
+"set listchars=tab:␉·,trail:␠,nbsp:⎵     " highlighting of special white-space characters
+set listchars=tab:»·,trail:·            " highlighting of special white-space characters
 
 " Backup
 set nobackup                            " don't backup files
