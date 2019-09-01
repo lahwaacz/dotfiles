@@ -88,12 +88,13 @@ if &t_Co < 256
     colorscheme desert                  " colorscheme for the 8 color linux term
 else
     let g:solarized_termcolors=256
-    if has('gui_running')
+    if strftime('%H') >= 7 && strftime('%H') < 19
         set background=light
+        colorscheme github
     else
         set background=dark
+        colorscheme solarized
     endif
-    colorscheme solarized
 endif
 
 

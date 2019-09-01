@@ -25,3 +25,6 @@
 [submodule ".config/vim/bundle/vimtex"]
 	path = .config/vim/bundle/vimtex
 	url = https://github.com/lervag/vimtex.git
+[submodule ".config/vim/bundle/vim-colors-github"]
+	path = .config/vim/bundle/vim-colors-github
+	url = https://github.com/cormacrelf/vim-colors-github.git
