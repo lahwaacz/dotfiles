@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# update the TTY for use by pinentry invoked by ssh -- needed when the user
+# switches between Xorg and non-Xorg (console, ssh) sessions
 if [[ -S "$SSH_AUTH_SOCK" ]] && [[ $UID != 0 ]] && [[ "$GPG_TTY" != "" ]]; then
     # Don't export $GPG_TTY here! In case of git, ssh is not attached to a tty.
     # The correct GPG_TTY is inherited from the parent process.
