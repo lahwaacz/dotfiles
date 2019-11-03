@@ -2,7 +2,7 @@
 
 # --- directories and commands
 set alias_file          = ~/.config/mutt/alias                   # alias file
-set header_cache        = ~/.cache/mutt/headers-cache            # where to store headers 
+set header_cache        = ~/.cache/mutt/headers-cache            # where to store headers
 set certificate_file    = ~/.config/mutt/certificates            # where to store certs
 set mailcap_path        = ~/.config/mutt/mailcap                 # entries for filetypes
 set tmpdir              = ~/.cache/mutt/temp                     # where to keep temp files
@@ -28,17 +28,17 @@ set thorough_search                                              # strip headers
 #unset help
 
 # --- index options
-set sort                = threads                                # like gmail 
+set sort                = threads                                # like gmail
 set sort_aux            = reverse-last-date-received             # like gmail
-set uncollapse_jump                                              # don't collapse on an unread message 
+set uncollapse_jump                                              # don't collapse on an unread message
 set sort_re                                                      # thread based on regex
 set reply_regexp        = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 
 # --- pager options
-set pager_index_lines   = 10                                     # number of index lines to show 
+set pager_index_lines   = 10                                     # number of index lines to show
 set pager_context       = 5                                      # number of context lines to show
 set pager_stop                                                   # don't go to next message automatically
-set menu_scroll                                                  # scroll in menus 
+set menu_scroll                                                  # scroll in menus
 set smart_wrap                                                   # don't split words
 set tilde                                                        # show tildes like in vim
 unset markers                                                    # no ugly plus signs
@@ -82,15 +82,14 @@ hdr_order from: to: cc: date: subject:                           # and in this o
 
 # --- sourced bits
 source $alias_file                                               # required for functionality
-source ~/.config/mutt/mailboxes                                  # mailboxes in the Maildir
+source ~/Maildir/mutt.mailboxes                                  # mailboxes in the Maildir
 source ~/.config/mutt/colors.muttrc                              # source colors file
 source ~/.config/mutt/gpg.rc                                     # use GPG
 source ~/.config/mutt/smime.rc                                   # use S/MIME
 
 # --- account specific sources
-folder-hook FJFI/* source ~/.config/mutt/fjfi.muttrc 
-folder-hook Gmail/* source ~/.config/mutt/gmail.muttrc 
-folder-hook gmx/* source ~/.config/mutt/gmx.muttrc 
+folder-hook FJFI/* source ~/.config/mutt/fjfi.muttrc
+folder-hook GMX/* source ~/.config/mutt/gmx.muttrc
 
 # --- bindings
 bind pager q            exit
@@ -116,7 +115,7 @@ bind attach <return>    view-mailcap
 
 # --- macros
 macro index \Cr "<tag-prefix><clear-flag>N"                    "mark tagged messages as read"
-macro index \Cs "<pipe-message>cat > ~/"                       "save message as" 
+macro index \Cs "<pipe-message>cat > ~/"                       "save message as"
 macro index B   "<limit>~b "                                   "search message bodies"
 
 macro index,pager <F1> "<shell-escape>less /usr/share/doc/mutt/manual.txt<enter>" "Show Mutt documentation"
