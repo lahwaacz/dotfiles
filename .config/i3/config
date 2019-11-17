@@ -40,7 +40,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # launchers
-bindsym $mod+d exec interrobang
+bindsym $mod+d exec bemenu-run -p "Run: "
 
 # change focus
 bindsym $mod+h focus left
@@ -234,11 +234,10 @@ bindsym $mod+Ctrl+Up          exec mpc -q stop
 bindsym $mod+Ctrl+Left        exec mpc -q prev
 bindsym $mod+Ctrl+Right       exec mpc -q next
 
-bindsym XF86MonBrightnessUp   exec light -s sysfs/backlight/acpi_video0 -rA 1 && notify-brightness.sh
-bindsym XF86MonBrightnessDown exec light -s sysfs/backlight/acpi_video0 -rU 1 && notify-brightness.sh
+bindsym XF86MonBrightnessUp   exec light -A 10 && notify-brightness.sh
+bindsym XF86MonBrightnessDown exec light -U 10 && notify-brightness.sh
 
 bindsym XF86ScreenSaver       exec sxlock
-bindsym XF86WWW               exec toggle-touchpad.sh
 bindsym Print                 exec screenshot.sh full
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -271,11 +270,10 @@ focus_on_window_activation urgent
 mouse_warping none
 
 # assign windows to workspaces
-assign [class="TinyTerm" instance="pms"] 9
 assign [instance="qstardict"] 10
 assign [instance="qpdfview"] 12
 assign [class="qemu-system-i386"] 19
-assign [class="TinyTerm" instance="journalctl"] 22
+assign [class="Termite" title="journalctl"] 22
 
 # move windows popping up from scripts into their own workspace
 assign [title="^ParaView$"] paraview_workspace
@@ -292,9 +290,8 @@ for_window [window_role="Preferences"] floating enable  # Firefox preferences
 # autostart applications
 exec_always initscreen.sh
 exec count-unread-mails.sh
-exec tinyterm -n journalctl -k -e "journalctl -f -n 100"
-#exec tinyterm -n pms -e "pms"
+exec termite -t journalctl -e "journalctl -f -n 100"
 exec qpdfview
 exec qstardict
 exec unclutter
-exec compton -b
+exec picom -b
