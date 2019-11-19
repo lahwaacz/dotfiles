@@ -293,8 +293,8 @@ bindsym $mod+Ctrl+Up          exec mpc -q stop
 bindsym $mod+Ctrl+Left        exec mpc -q prev
 bindsym $mod+Ctrl+Right       exec mpc -q next
 
-bindsym XF86MonBrightnessUp   exec light -A 10 && notify-brightness.sh
-bindsym XF86MonBrightnessDown exec light -U 10 && notify-brightness.sh
+bindsym XF86MonBrightnessUp   exec sudo light -A 10 && notify-brightness.sh
+bindsym XF86MonBrightnessDown exec sudo light -U 10 && notify-brightness.sh
 
 bindsym XF86ScreenSaver       exec swaylock
 bindsym Print                 exec screenshot.sh full

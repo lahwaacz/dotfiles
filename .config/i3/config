@@ -40,7 +40,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # launchers
-bindsym $mod+d exec bemenu-run -p "Run: "
+bindsym $mod+d exec bemenu-run -ip "Run: " --fn "monospace bold 13px" --tf "#1793d0" --hf "#1793d0"
 
 # change focus
 bindsym $mod+h focus left
