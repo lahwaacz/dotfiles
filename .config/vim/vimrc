@@ -88,13 +88,13 @@ if &t_Co < 256
     colorscheme desert                  " colorscheme for the 8 color linux term
 else
     let g:solarized_termcolors=256
-    if strftime('%H') >= 7 && strftime('%H') < 19
-        set background=light
-        colorscheme github
-    else
+"    if strftime('%H') >= 7 && strftime('%H') < 19
+"        set background=light
+"        colorscheme github
+"    else
         set background=dark
         colorscheme solarized
-    endif
+"    endif
 endif
 
 
@@ -201,6 +201,7 @@ autocmd BufNewFile,BufRead */.local/include/TNL/* setlocal tabstop=3 shiftwidth=
 autocmd BufNewFile,BufRead */Bbox/pg/cuda/tnl/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
 autocmd BufNewFile,BufRead */Bbox/pg/cuda/tnl_worktrees/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
 autocmd BufNewFile,BufRead */Bbox/pg/cuda/tnl-lbm/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
+autocmd BufNewFile,BufRead */Bbox/pg/cuda/tnl-benchmark-mesh/* setlocal tabstop=3 shiftwidth=3 softtabstop=3
 autocmd BufNewFile,BufRead */Bbox/pg/cuda/lbm/* setlocal noexpandtab
 
 
