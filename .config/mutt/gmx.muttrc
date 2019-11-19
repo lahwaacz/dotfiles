@@ -9,9 +9,9 @@
 
 unalternates *
 set from      = "j.l.k@gmx.com"
-#set mbox      = "+gmx/archive"
-set record    = "+gmx/sent"
-set postponed = "+gmx/drafts"
+#set mbox      = "+GMX/archive"
+set record    = "+GMX/sent"
+set postponed = "+GMX/drafts"
 
 macro index D "<save-message>+gmx/trash<enter>"   "move message to the trash"
 macro index S "<save-message>+gmx/spam<enter>"    "mark message as spam"
