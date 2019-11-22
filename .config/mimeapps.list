@@ -17,6 +17,7 @@ image/x-portable-pixmap=sxiv.desktop;
 image/x-targa=sxiv.desktop;
 image/x-tga=sxiv.desktop;
 text/plain=gvim.desktop;
+application/pdf=qpdfview.desktop;
 x-scheme-handler/ftp=qutebrowser.desktop;
 x-scheme-handler/http=qutebrowser.desktop;
 x-scheme-handler/https=qutebrowser.desktop;
