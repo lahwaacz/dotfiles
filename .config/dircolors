@@ -304,6 +304,7 @@ EXEC 01;32  # Unix
 .z      31
 .Z      31
 .zip    31
+.zst    31
 
 ## Unimportant files
 .log    01;30
