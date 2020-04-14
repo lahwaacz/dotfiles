@@ -79,8 +79,28 @@ c.fonts.messages.info = "9pt monospace"
 c.fonts.messages.warning = "9pt monospace"
 c.fonts.statusbar = "9pt monospace"
 c.fonts.tabs = "8pt monospace"
-c.fonts.monospace = "monospace"
 c.fonts.web.family.fixed = "monospace"
+
+# per-site whitelist for javascript
+c.content.javascript.enabled = False
+import os.path
+jswhitelist_path = os.path.join(os.path.dirname(__file__), "javascript_whitelist.txt")
+if os.path.isfile(jswhitelist_path):
+    with open(jswhitelist_path, "r") as f:
+        for line in f.readlines():
+            pattern = line.split("#", maxsplit=1)[0]
+            pattern = pattern.strip()
+            if pattern:
+                with config.pattern(pattern) as p:
+                    p.content.javascript.enabled = True
+
+# skip certain URLs in the history completion
+# documentation for URL match patterns: https://developer.chrome.com/apps/match_patterns
+c.completion.web_history.exclude = [
+    "https://wiki.archlinux.org/index.php?title=*",
+    "https://wiki.archlinux.org/index.php?diff=*",
+    "https://wiki.archlinux.org/index.php?oldid=*",
+]
 
 
 
