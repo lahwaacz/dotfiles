@@ -18,7 +18,7 @@ font pango:monospace 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-floating_maximum_size 1366 x 748
+floating_maximum_size 1680 x 1050
 
 # reload configuration file
 bindsym $mod+Shift+c reload
@@ -273,6 +273,7 @@ mouse_warping none
 assign [instance="qstardict"] 10
 assign [instance="qpdfview"] 12
 assign [class="qemu-system-i386"] 19
+assign [instance="keepassxc"] 21
 assign [class="Termite" title="journalctl"] 22
 
 # move windows popping up from scripts into their own workspace
@@ -293,5 +294,6 @@ exec count-unread-mails.sh
 exec termite -t journalctl -e "journalctl -f -n 100"
 exec qpdfview
 exec qstardict
+exec keepassxc
 exec unclutter
 exec picom -b
