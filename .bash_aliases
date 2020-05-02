@@ -3,6 +3,7 @@
 # enable color support
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias ip='ip --color=auto'
 
 # some more ls aliases
 alias ll='ls -alFh'
