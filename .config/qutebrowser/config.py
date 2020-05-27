@@ -84,7 +84,7 @@ c.fonts.web.family.fixed = "monospace"
 # per-site whitelist for javascript
 c.content.javascript.enabled = False
 import os.path
-jswhitelist_path = os.path.join(os.path.dirname(__file__), "javascript_whitelist.txt")
+jswhitelist_path = os.path.expanduser("~/Bbox/qutebrowser_javascript_whitelist.txt")
 if os.path.isfile(jswhitelist_path):
     with open(jswhitelist_path, "r") as f:
         for line in f.readlines():
