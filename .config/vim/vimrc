@@ -183,6 +183,8 @@ autocmd FileType help setlocal nospell    " help pages are first recognized as '
 "let g:ycm_min_num_of_chars_for_completion = 99          " turn off identifier completer
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_filetype_whitelist = { 'python': 1, 'c': 1, 'cpp': 1 }
+" disable documentation popups https://github.com/ycm-core/YouCompleteMe#the-gycm_auto_hover-option
+let g:ycm_auto_hover = ""
 
 
 " Syntax based folding for C-family languages
