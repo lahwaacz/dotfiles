@@ -78,7 +78,8 @@ c.fonts.messages.error = "9pt monospace"
 c.fonts.messages.info = "9pt monospace"
 c.fonts.messages.warning = "9pt monospace"
 c.fonts.statusbar = "9pt monospace"
-c.fonts.tabs = "8pt monospace"
+c.fonts.tabs.selected = "8pt monospace"
+c.fonts.tabs.unselected = "8pt monospace"
 c.fonts.web.family.fixed = "monospace"
 
 # per-site whitelist for javascript
