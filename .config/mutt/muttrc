@@ -136,6 +136,7 @@ macro index \Ca    "|~/Scripts/abook-autoexport --add-email-quiet\n:source ~/.co
 # -- mailing lists
 lists ".*@lists\.archlinux\.org"
 subscribe arch-wiki-admins@lists.archlinux.org
+subscribe staff@lists.archlinux.org
 
 # --- misc
 #set print_command       = /usr/bin/enscript                      # print with enscript
