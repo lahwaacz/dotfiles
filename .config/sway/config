@@ -163,7 +163,7 @@ bindsym --to-code {
 # configure inputs
 input type:keyboard {
     xkb_layout "cz,us"
-    xkb_options "grp:alt_caps_toggle"
+    xkb_options "grp:alt_caps_toggle,compose:lwin"
     xkb_numlock enabled
     repeat_delay 500
     repeat_rate 35
