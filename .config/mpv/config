@@ -6,16 +6,25 @@ ao=pulse
 vo=gpu
 hwdec=auto
 
+# audio normalization using EBU R128
+# https://wiki.archlinux.org/index.php/Mpv#Volume_normalization
+# https://superuser.com/a/323127
+af=loudnorm=I=-20
+
 # load all subs containing movie name
 sub-auto=fuzzy
 
 # sub font size. The unit is the size in scaled pixels at a window height of 720
 #sub-text-font-size=45
 
-# try to guess subtitle encoding, fall back to UTF-8
-sub-codepage=enca
+# sub vertical position (in % of screen height)
+#sub-pos=10
 
-alang=jpn,eng,en
+# try to guess subtitle encoding, fall back to UTF-8
+# (enca was deprecated and removed, auto-detection should be done by default)
+#sub-codepage=enca
+
+alang=jpn,ger,eng,en
 slang=eng,en
 
 # youtube-dl settings
