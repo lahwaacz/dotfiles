@@ -135,6 +135,11 @@ macro index \Ca    "|~/Scripts/abook-autoexport --add-email-quiet\n:source ~/.co
 
 # -- mailing lists
 lists ".*@lists\.archlinux\.org"
+subscribe arch-announce@lists.archlinux.org
+subscribe arch-events@lists.archlinux.org
+subscribe arch-dev-public@lists.archlinux.org
+subscribe arch-devops@lists.archlinux.org
+subscribe arch-projects@lists.archlinux.org
 subscribe arch-wiki-admins@lists.archlinux.org
 subscribe staff@lists.archlinux.org
 
