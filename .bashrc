@@ -16,7 +16,8 @@ shopt -s extglob            # enable extended pattern-matching features
 shopt -s globstar           # recursive globbing
 shopt -s progcomp           # programmable completion
 shopt -s hostcomplete       # attempt hostname expansion when @ is at the beginning of a word
-shopt -s nocaseglob         # pathname expansion will be treated as case-insensitive
+# nocaseglob breaks pacman completion: https://bugs.archlinux.org/task/67808
+#shopt -s nocaseglob         # pathname expansion will be treated as case-insensitive
 
 set bell-style visual       # visual bell
 
@@ -83,9 +84,6 @@ HISTCONTROL=ignoredups:ignorespace
 # export $PWD in window title
 PROMPT_COMMAND='history -a; echo -ne "\033]0;$PWD\007"'
 #export HISTSIZE PROMPT_COMMAND
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[[ -x /usr/bin/lesspipe ]] && eval "$(SHELL=/bin/sh lesspipe)"
 
 #if [[ "$TERM" =~ ".*256color.*" && -f ~/.dircolors.256colors ]]; then
 if [[ "$TERM" != "linux" && -f "$XDG_CONFIG_HOME/dircolors.256color" ]]; then
