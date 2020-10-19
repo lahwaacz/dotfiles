@@ -63,6 +63,7 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"   # ~/.python_history 
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export ASPCACHE="$XDG_CACHE_HOME/asp"
+export ANSIBLE_LOCAL_TEMP="$XDG_CACHE_HOME/ansible/tmp"
 
 # source bashrc in interactive login shells (SSH)
 [[ -f ~/.bashrc ]] && source ~/.bashrc
