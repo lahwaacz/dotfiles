@@ -126,8 +126,8 @@ function syu {
     if [[ $ret -ne 0 ]]; then
         return $ret
     fi
-    if [[ -e /usr/share/archlinux/contrib/admin/checkservices ]]; then
-        sudo /usr/share/archlinux/contrib/admin/checkservices
+    if [[ $(command -v checkservices) ]]; then
+        sudo checkservices
     fi
     if [[ $(command -v rebuild-notify) ]] && [[ $(command -v expac) ]]; then
         rebuild-notify
