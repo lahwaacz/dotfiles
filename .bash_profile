@@ -8,6 +8,10 @@ PATH=$HOME/bin:$PATH:$HOME/Scripts
 # TNL
 export PATH="$HOME/.local/bin:$PATH"
 export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
+# compilers (-L and -I)
+export LIBRARY_PATH="$HOME/.local/lib:$LIBRARY_PATH"
+export CPATH="$HOME/.local/include:$CPATH"
+
 export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig:$HOME/.local/share/pkgconfig:$PKG_CONFIG_PATH"
 
 # default applications
@@ -25,7 +29,7 @@ export CCACHE_PATH="/usr/bin"   # tell ccache to only use compilers here
 export QUOTING_STYLE=literal    # http://unix.stackexchange.com/questions/258679/why-is-ls-suddenly-surrounding-items-with-spaces-in-single-quotes
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
-# count physical cores on my laptop, all corse elsewhere
+# count physical cores on my laptop, all cores elsewhere
 if [[ "$HOSTNAME" == "jlknb" ]]; then
     export MAKEFLAGS=-j$(grep "core id" /proc/cpuinfo | sort -u | wc -l)
 else
