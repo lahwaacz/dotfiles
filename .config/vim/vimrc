@@ -188,6 +188,13 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_filetype_whitelist = { 'python': 1, 'c': 1, 'cpp': 1 }
 " disable documentation popups https://github.com/ycm-core/YouCompleteMe#the-gycm_auto_hover-option
 let g:ycm_auto_hover = ""
+let g:ycm_filter_diagnostics = {
+  \ "cpp": {
+  \      "regex": [ "Maximum number of diagnostics exceeded",
+  \                 "Using decl '.+' is unused",
+  \      ],
+  \    }
+  \ }
 
 
 " Syntax based folding for C-family languages
