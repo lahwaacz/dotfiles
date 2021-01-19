@@ -45,3 +45,9 @@ alias subdl='/usr/bin/subdl -i --lang=eng,cze'
 if [[ "$FOAM_INST_DIR" != "" ]]; then
     alias ofoam="source ${FOAM_INST_DIR}/OpenFOAM-6/etc/bashrc"
 fi
+
+# slurm
+if [[ $(command -v sinfo) ]]; then
+    alias sinfo='sinfo -l'
+    alias squeue='squeue -o"%.8i %.9P %.8j %.8u %.8T %.11M %.11l %.5D %.4C %.7m %.8Q %R"'
+fi
