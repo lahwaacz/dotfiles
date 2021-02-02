@@ -1,3 +1,5 @@
+config.load_autoconfig(False)
+
 c.editor.command = ["termite", "-e", "bash -c 'vim -f \"{file}\" -c \"normal {line}G{column0}l\"'"]
 
 c.auto_save.interval = 15000  # milliseconds
@@ -37,6 +39,10 @@ c.hints.auto_follow_timeout = 500  # milliseconds
 
 c.input.forward_unbound_keys = "none"
 c.input.partial_timeout = 1000
+c.input.insert_mode.auto_enter = True
+c.input.insert_mode.auto_leave = True
+c.input.insert_mode.auto_load = True
+c.input.insert_mode.leave_on_load = True
 c.input.insert_mode.plugins = True
 c.input.links_included_in_focus_chain = False
 
@@ -57,6 +63,7 @@ c.url.searchengines = {
     "DEFAULT":  "https://duckduckgo.com/?q={}",
     "ddg":      "https://duckduckgo.com/?q={}",
     "wiki":     "https://wiki.archlinux.org/index.php?title=Special:Search&search={}&go=Go",
+    "man":      "https://man.archlinux.org/search?q={}&go=Go",
     "archpkgs": "https://archlinux.org/packages/?q={}",
     "aur":      "https://aur.archlinux.org/packages/?O=0&K={}",
     "bbs":      "https://bbs.archlinux.org/search.php?keywords={}&action=search",
@@ -120,13 +127,13 @@ if c.bindings.default:
 
     # overwrite with my bindings for some modes
     c.bindings.commands["insert"] = {
-            "<Ctrl-I>": "open-editor",
-            "<Escape>": "leave-mode",
+            "<Ctrl-I>": "edit-text",
+            "<Escape>": "mode-leave",
             "<Shift-Ins>": "insert-text {primary}",
         }
     c.bindings.commands["normal"] = {
             "<Escape>": "clear-keychain ;; search ;; fullscreen --leave",
-            "<Return>": "follow-selected",
+            "<Return>": "selection-follow",
             "<back>": "back",
             "<forward>": "forward",
             "=": "zoom",
@@ -169,10 +176,10 @@ if c.bindings.default:
             "<Ctrl-U>": "scroll-page 0 -0.5",
             "d": "tab-close",
             "u": "undo",
-            "v": "enter-mode caret",
-            "i": "enter-mode insert",
-            "q": "record-macro",
-            "@": "run-macro",
+            "v": "mode-enter caret",
+            "i": "mode-enter insert",
+            "q": "macro-record",
+            "@": "macro-run",
             "r": "reload",
             "R": "reload -f",
             "H": "back",
@@ -209,10 +216,10 @@ if c.bindings.default:
             "<ctrl+c>": "yank selection",
         }
     c.bindings.commands["passthrough"] = {
-            "<Escape>": "leave-mode",
+            "<Escape>": "mode-leave",
         }
     c.bindings.commands["register"] = {
-            "<Escape>": "leave-mode",
+            "<Escape>": "mode-leave",
         }
 
     # ignore all defaults
