@@ -13,6 +13,20 @@ c.content.webgl = False
 c.content.geolocation = False
 c.content.plugins = False
 #c.content.pdfjs = True  # not available with webengine
+c.content.blocking.adblock.lists = [
+    "https://easylist.to/easylist/easylist.txt",
+    "https://easylist.to/easylist/easyprivacy.txt",
+    # uBlock - built-in filters - https://github.com/uBlockOrigin/uAssets/tree/master/filters
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt",
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt",
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt",
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt",
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt",
+    # uBlock - Online Malicious URL Blocklist
+    "https://curben.gitlab.io/malware-filter/urlhaus-filter.txt",
+    # uBlock - CZE, SVK: EasyList Czech and Slovak
+    "https://raw.githubusercontent.com/tomasko126/easylistczechandslovak/master/filters.txt",
+]
 
 # available qt-flags:
 #   Qt: http://doc.qt.io/qt-5/qapplication.html#QApplication
