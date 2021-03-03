@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+
+# Called by sxiv(1) whenever an image gets loaded.
+# The output is displayed in sxiv's status bar.
+# Arguments:
+#   $1: path to image file
+#   $2: image width
+#   $3: image height
+
+import sys
+import os.path
+
+path = sys.argv[1]
+width = sys.argv[2]
+height = sys.argv[3]
+
+# get the full path
+path = os.path.realpath(path)
+
+# left-elide to a maximum width
+max_length = 80
+path = (path[::-1][:max_length] + ("..." if len(path) > max_length else ""))[::-1]
+
+print(path)
