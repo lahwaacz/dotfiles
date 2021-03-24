@@ -52,6 +52,7 @@ if [[ $(command -v sinfo) ]]; then
     alias squeue='squeue -o"%.8i %.9P %.8j %.8u %.8T %.11M %.11l %.5D %.4C %.7m %.8Q %R"'
     alias sprio='sprio -o"%.15i %9r %.8u %.10Y %.10S %.10A %.10B %.10F %.10J %.10P %.10Q %.11N %.32T"'
     alias sacct='sacct --format="JobID,JobName,Partition,User,End,State,ExitCode,AllocNodes,AllocCPUS,ReqMem"'
+    alias sshare='sshare --all'
 fi
 
 if [[ $(command -v joshuto) ]]; then
