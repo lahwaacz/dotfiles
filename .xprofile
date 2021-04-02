@@ -11,3 +11,6 @@ xset r rate 500 35
 
 # disable screensaver
 xset s 0 0
+
+# restore DPMS settings (due to SDDM)
+xset dpms 600 600 600
