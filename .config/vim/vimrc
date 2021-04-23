@@ -192,6 +192,8 @@ let g:ycm_filter_diagnostics = {
   \ "cpp": {
   \      "regex": [ "Maximum number of diagnostics exceeded",
   \                 "Using decl '.+' is unused",
+  \                 "Unused function '.+'",
+  \                 "Function '.+' is not needed and will not be emitted",
   \      ],
   \    }
   \ }
