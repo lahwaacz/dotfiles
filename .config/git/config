@@ -27,6 +27,10 @@
 [pull]
     rebase = true
 
+[fetch]
+    prune = true
+    pruneTags = true
+
 [alias]
     last = show --stat HEAD
     countcommits = shortlog -sn --no-merges
@@ -47,6 +51,7 @@
 #[diff "latex"]
 #    wordRegex = "\\\\[a-zA-Z]+|[{}]|\\\\.|[^\\{}[:space:]]+"
 #    command = ~/bin/diff-words.sh
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
