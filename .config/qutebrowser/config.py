@@ -119,9 +119,7 @@ if os.path.isfile(jswhitelist_path):
 # skip certain URLs in the history completion
 # documentation for URL match patterns: https://developer.chrome.com/apps/match_patterns
 c.completion.web_history.exclude = [
-    "https://wiki.archlinux.org/index.php?title=*",
-    "https://wiki.archlinux.org/index.php?diff=*",
-    "https://wiki.archlinux.org/index.php?oldid=*",
+    "https://wiki.archlinux.org/index.php?*",
 ]
 
 
