@@ -22,8 +22,6 @@ c.content.blocking.adblock.lists = [
     "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt",
     "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt",
     "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt",
-    # uBlock - Online Malicious URL Blocklist
-    "https://curben.gitlab.io/malware-filter/urlhaus-filter.txt",
     # uBlock - CZE, SVK: EasyList Czech and Slovak
     "https://raw.githubusercontent.com/tomasko126/easylistczechandslovak/master/filters.txt",
 ]
