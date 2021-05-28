@@ -1,7 +1,10 @@
 #! /bin/bash
 
+#check_domain=geraldine.fjfi.cvut.cz
+check_domain=ping.archlinux.org
+
 # sync
-ping -c 1 geraldine.fjfi.cvut.cz > /dev/null && fetchmail
+ping -c 1 "$check_domain" > /dev/null && fetchmail
 
 # cd into fixed path (for saving attachments)
 cd ~/stuff
@@ -10,4 +13,4 @@ cd ~/stuff
 /usr/bin/mutt -n -F ~/.config/mutt/muttrc "$@"
 
 # sync
-ping -c 1 geraldine.fjfi.cvut.cz > /dev/null && fetchmail
+ping -c 1 "$check_domain" > /dev/null && fetchmail
