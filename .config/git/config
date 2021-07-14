@@ -16,6 +16,8 @@
 
 [log]
     decorate = full
+    # Continue listing the history of a file beyond renames (works only for a single file).
+    follow = true
 
 [diff]
     # also detect copies
@@ -29,7 +31,6 @@
 
 [fetch]
     prune = true
-    pruneTags = true
 
 [alias]
     last = show --stat HEAD
