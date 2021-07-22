@@ -15,7 +15,7 @@ export CPATH="$HOME/.local/include:$CPATH"
 export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig:$HOME/.local/share/pkgconfig:$PKG_CONFIG_PATH"
 
 # default applications
-export TERMINAL=termite
+export TERMINAL=alacritty
 export BROWSER=qutebrowser
 export EDITOR=vim
 export DIFFPROG=vimdiff
