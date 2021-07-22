@@ -236,8 +236,7 @@ mouse:
 # and pipe it to other applications.
 hints:
   # Keys used for the hint labels.
-#  alphabet: "jfkdlsůahgurieowpq"
-  alphabet: "123456789"
+  alphabet: "jfkdlsůahgurieowpq"
 
   # List with all available hints
   #
