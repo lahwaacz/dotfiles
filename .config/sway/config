@@ -322,7 +322,7 @@ assign [app_id="qstardict"] 10
 assign [app_id="qutebrowser"] 11
 assign [app_id="qpdfview"] 12
 assign [app_id="keepassxc"] 21
-assign [app_id="termite::journalctl"] 22
+assign [app_id="alacritty::journalctl"] 22
 
 # move windows popping up from scripts into their own workspace
 assign [title="^ParaView$"] paraview_workspace
@@ -351,8 +351,9 @@ exec swayidle -w \
 # autostart applications
 #exec_always initscreen.sh
 exec count-unread-mails.sh
-exec termite --name "termite::journalctl" --hold -e "journalctl -f -n 100"
+exec alacritty --class "alacritty::journalctl" --hold --command journalctl -f -n 100
 exec qpdfview
 exec qstardict
 exec keepassxc
 exec mako
+exec gammastep
