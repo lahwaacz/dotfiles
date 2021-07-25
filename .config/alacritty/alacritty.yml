@@ -1,3 +1,12 @@
+# Any items in the `env` entry below will be added as
+# environment variables. Some entries may override variables
+# set by alacritty itself.
+env:
+  # override $TERM, vim does not work correctly with TERM=alacritty
+  # e.g. https://github.com/alacritty/alacritty/issues/5363
+  # also the :autoread feature does not work (no window focus event?)
+  TERM: xterm-256color
+
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
