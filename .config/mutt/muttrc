@@ -90,6 +90,7 @@ source ~/.config/mutt/smime.rc                                   # use S/MIME
 # --- account specific sources
 folder-hook FJFI/* source ~/.config/mutt/fjfi.muttrc
 folder-hook GMX/* source ~/.config/mutt/gmx.muttrc
+folder-hook Arch/* source ~/.config/mutt/arch.muttrc
 
 # --- bindings
 bind pager q            exit

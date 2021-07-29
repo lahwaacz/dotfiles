@@ -1,28 +1,28 @@
 # vim:fenc=utf-8:nu:ai:si:et:ts=2:sw=2:ft=muttrc
 
 #########################
-# gmx specific options
+# Arch specific options
 #########################
 
 #color status     brightwhite   green
 #color indicator  brightwhite   green        
 
 unalternates *
-set from      = "j.l.k@gmx.com"
-#set mbox      = "+GMX/archive"
-set record    = "+GMX/sent"
-set postponed = "+GMX/drafts"
+set from      = "lahwaacz@archlinux.org"
+#set mbox      = "+Arch/archive"
+set record    = "+Arch/sent"
+set postponed = "+Arch/drafts"
 
-macro index D "<save-message>+GMX/trash<enter>"   "move message to the trash"
-macro index S "<save-message>+GMX/spam<enter>"    "mark message as spam"
+macro index D "<save-message>+Arch/trash<enter>"   "move message to the trash"
+macro index S "<save-message>+Arch/spam<enter>"    "mark message as spam"
 
 set attribution         = "On %d (UTC%{%Z}), %n wrote:"          # attribution line (string preceding quoted replies)
 
 # --- smtp server
-set my_gmx_password   = `gpg --quiet --batch --use-agent --decrypt --output - ~/Maildir/password-gmx.gpg`
-set smtp_url            = "smtp://j.l.k@gmx.com:$my_gmx_password@smtp.gmx.com:587/"
+set my_arch_password   = `gpg --quiet --batch --use-agent --decrypt --output - ~/Maildir/password-arch.gpg`
+set smtp_url            = "smtps://lahwaacz:$my_arch_password@mail.archlinux.org:465/"
 set ssl_force_tls       = yes
-set ssl_starttls        = yes
+#set ssl_starttls        = yes
 
 # --- gpg
 set pgp_use_gpg_agent = yes 
