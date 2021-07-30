@@ -49,7 +49,10 @@ alternative_order text/plain text/enriched text/html             # save html for
 
 # --- formats
 set date_format         = "%d.%m.%y at %k:%M"
-set index_format        = "%3C %S %D | %-26.26L %-50.100s %> %c"
+#set index_format        = "%3C %S %D | %-26.26L %-50.100s %> %c"
+# workaround for the default %L format messing up with mailing lists
+folder-hook   .*[sS]ent.* 'set index_format="%3C %S %D | %-26.26t %-50.100s %> %c"'
+folder-hook ! .*[sS]ent.* 'set index_format="%3C %S %D | %-26.26n %-50.100s %> %c"'
 set pager_format        = "Reading message %C of %m %> %lL [%P]" # pager statusbar
 set folder_format       = "%2C %t %N %8s %d %f"                  # mailbox list view
 set status_format       = " %?M?%M/?%m total: %?n?%n new, ?%?u?%u unread, ?%?p?%p drafts, ?%?t?%t +tagged, ?%?d?%d deleted, ?[%f %l]  %?b?%b unread messages. ?%>  %V   sort by: %s/%S  (%P)"
