@@ -1,6 +1,6 @@
 config.load_autoconfig(False)
 
-c.editor.command = ["termite", "-e", "bash -c 'vim -f \"{file}\" -c \"normal {line}G{column0}l\"'"]
+c.editor.command = ["alacritty", "--command", "bash", "-c", "vim -f \"{file}\" -c \"normal {line}G{column0}l\""]
 
 c.auto_save.interval = 15000  # milliseconds
 c.auto_save.session = True
@@ -35,6 +35,10 @@ c.qt.args = [
     "enable-strict-mixed-content-checking",
 #    "disable-remote-fonts",
 ]
+
+# workaround for high-memory usage
+# https://github.com/qutebrowser/qutebrowser/issues/1476#issuecomment-889859126
+c.qt.force_software_rendering = "qt-quick"
 
 c.downloads.location.directory = "~/stuff/"
 c.downloads.location.prompt = False
