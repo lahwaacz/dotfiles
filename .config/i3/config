@@ -274,7 +274,7 @@ assign [instance="qstardict"] 10
 assign [instance="qpdfview"] 12
 assign [class="qemu-system-i386"] 19
 assign [instance="keepassxc"] 21
-assign [class="Termite" title="journalctl"] 22
+assign [instance="alacritty::journalctl"] 22
 
 # move windows popping up from scripts into their own workspace
 assign [title="^ParaView$"] paraview_workspace
@@ -294,7 +294,7 @@ for_window [title="Microsoft Teams Notification"] floating enable
 # autostart applications
 exec_always initscreen.sh
 exec count-unread-mails.sh
-exec termite -t journalctl -e "journalctl -f -n 100"
+exec alacritty --class "alacritty::journalctl" --hold --command journalctl -f -n 100
 exec qpdfview
 exec qstardict
 exec keepassxc
