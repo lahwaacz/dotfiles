@@ -300,6 +300,15 @@ hints:
        key: X
        mods: Control|Shift
 
+   - regex: "\\[\\[[\\w :;/\\-_(),.?!\"']+\\]\\]"
+     command:
+       program: python
+       args: ['-c', 'import sys, subprocess; page = sys.argv[1].lstrip("[").rstrip("]"); url = f"https://wiki.archlinux.org/title/{page}"; subprocess.run(["xdg-open", url])']
+     post_processing: false
+     mouse:
+       enabled: true
+       mods: None
+
 # Key bindings
 #
 # Key bindings are specified as a list of objects. For example, this is the
