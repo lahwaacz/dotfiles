@@ -300,7 +300,7 @@ hints:
        key: X
        mods: Control|Shift
 
-   - regex: "\\[\\[[\\w :;/\\-_(),.?!\"']+\\]\\]"
+   - regex: "\\[\\[[\\w :;/\\-_(),.?!\"'#]+\\]\\]"
      command:
        program: python
        args: ['-c', 'import sys, subprocess; page = sys.argv[1].lstrip("[").rstrip("]"); url = f"https://wiki.archlinux.org/title/{page}"; subprocess.run(["xdg-open", url])']
