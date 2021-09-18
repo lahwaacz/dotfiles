@@ -102,7 +102,7 @@ case "$extension" in
         try elinks -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
         ;; # fall back to highlight/cat if the text browsers fail
     # disable preview of VTK files
-    vtk|vtu)
+    vtk|vtu|vti)
         exit 1
         ;;
     # disable highlighting of subtitles
