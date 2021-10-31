@@ -40,6 +40,7 @@ fi
 [ "$XDG_CACHE_HOME" ] || export XDG_CACHE_HOME="$HOME/.cache"
 [ "$XDG_CONFIG_HOME" ] || export XDG_CONFIG_HOME="$HOME/.config"
 [ "$XDG_DATA_HOME" ] || export XDG_DATA_HOME="$HOME/.local/share"
+[ "$XDG_STATE_HOME" ] || export XDG_STATE_HOME="$HOME/.local/state"
 
 # see https://github.com/grawity/dotfiles/blob/master/.dotfiles.notes
 
@@ -61,13 +62,16 @@ export UNISON="$XDG_DATA_HOME/unison"
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 export DISTCC_DIR="$XDG_CACHE_HOME/distcc"
 export PYLINTHOME="$XDG_CACHE_HOME/pylint"
-export LESSHISTFILE="$XDG_CACHE_HOME/less_history"
-export MYSQL_HISTFILE="$XDG_CACHE_HOME/mysql_history"
-export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"   # ~/.python_history is overridden there
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export ASPCACHE="$XDG_CACHE_HOME/asp"
 export ANSIBLE_LOCAL_TEMP="$XDG_CACHE_HOME/ansible/tmp"
+
+# hacks to respect XDG_STATE_HOME
+export LESSHISTFILE="$XDG_STATE_HOME/less_history"
+export MYSQL_HISTFILE="$XDG_STATE_HOME/mysql_history"
+export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"   # ~/.python_history is overridden there
 
 # source bashrc in interactive login shells (SSH)
 [[ -f ~/.bashrc ]] && source ~/.bashrc
