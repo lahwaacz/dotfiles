@@ -85,6 +85,10 @@ execute pathogen#infect()
 
 filetype plugin on                      " load file type plugins
 filetype indent on                      " load file type based indentation
+" disable file type based indentation for cmake files  https://superuser.com/a/865581
+autocmd FileType cmake let b:did_indent = 1
+autocmd FileType cmake setlocal indentexpr=
+
 " syntax highlighting only when not in vimdiff
 if !&diff
     syntax on
@@ -205,6 +209,7 @@ let g:ycm_filter_diagnostics = {
   \      ],
   \    }
   \ }
+nnoremap <C-f> :YcmCompleter FixIt<CR>
 
 
 " Syntax based folding for C-family languages
