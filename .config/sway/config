@@ -335,6 +335,8 @@ for_window [class="lxqt-openssh-askpass"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [instance="chromium"] inhibit_idle fullscreen
+for_window [app_id="quasselclient" title="Authentication Required"] floating enable
+for_window [app_id="pinentry.*"] floating enable
 
 # statusbar
 bar {
@@ -357,3 +359,6 @@ exec qstardict
 exec keepassxc
 exec mako
 exec gammastep
+
+# include config snippets
+include /etc/sway/config.d/*
