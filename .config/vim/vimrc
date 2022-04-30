@@ -258,7 +258,8 @@ let g:ycm_filetype_whitelist.tex = 1
 if !exists('g:ycm_semantic_triggers')
     let g:ycm_semantic_triggers = {}
 endif
-let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+" FIXME: this causes a deadlocks somewhere...
+"let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 " FIXME: global variable specific to filetype, really?!?
 autocmd FileType tex let g:ycm_min_num_of_chars_for_completion = 99
 
