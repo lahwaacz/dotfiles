@@ -26,11 +26,15 @@ c.content.blocking.adblock.lists = [
     "https://raw.githubusercontent.com/tomasko126/easylistczechandslovak/master/filters.txt",
 ]
 
+# disable 3rdparty cookies
+c.content.cookies.accept = "no-3rdparty"
+
 # available qt-flags:
 #   Qt: http://doc.qt.io/qt-5/qapplication.html#QApplication
 #   Chromium: https://cs.chromium.org/chromium/src/content/public/common/content_switches.cc
 #   --blink-settings: https://cs.chromium.org/chromium/src/third_party/WebKit/Source/core/frame/Settings.json5
 c.qt.args = [
+    # NOTE: login to gitlab.com requires reading from canvas
     "disable-reading-from-canvas",
     "enable-strict-mixed-content-checking",
 #    "disable-remote-fonts",
