@@ -1,7 +1,8 @@
 [user]
     name = Jakub Klinkovský
     email = j.l.k@gmx.com
-    signingkey = C889BD52BCF056C5
+    # NOTE: the "!" at the end forces git to use the specific key and not a subkey
+    signingkey = C889BD52BCF056C5!
 
 [merge]
     tool = vimdiff
