@@ -1,0 +1,218 @@
+# Documentation: https://pkg.go.dev/github.com/gokcehan/lf#section-documentation
+# Tips and tricks: https://github.com/gokcehan/lf/wiki/Tips
+
+# warn about nested instances
+%[ $LF_LEVEL -ne 1 ] && lf -remote "send $id echoerr WARNING: You are in a nested lf instance!"
+
+# interpreter for shell commands
+set shell bash
+
+# set '-eu' options for shell commands
+# These options are used to have safer shell commands. Option '-e' is used to
+# exit on error and option '-u' is used to give error for unset variables.
+# Option '-f' disables pathname expansion which can be useful when $f, $fs, and
+# $fx variables contain names with '*' or '?' characters. However, this option
+# is used selectively within individual commands as it can be limiting at
+# times.
+set shellopts '-eu'
+
+# set internal field separator (IFS) to "\n" for shell commands
+# This is useful to automatically split file names in $fs and $fx properly
+# since default file separator used in these variables (i.e. 'filesep' option)
+# is newline. You need to consider the values of these options and create your
+# commands accordingly.
+set ifs "\n"
+
+# leave some space at the top and the bottom of the screen
+set scrolloff 10
+
+# show current directory in the terminal window title
+cmd on-cd &{{
+    # '&' commands run silently in background (which is what we want here),
+    # but are not connected to stdout.
+    # To make sure our escape sequence still reaches stdout we pipe it to /dev/tty
+    printf "\033]0;$PWD\007" > /dev/tty
+}}
+# also run at startup
+on-cd
+
+# create an empty file
+cmd touch %{{
+    set -f
+    # combine all arguments with a space into a single name
+    IFS=" " name="$*"
+    touch -- "$name"
+    lf -remote "send $id select ${name@Q}"
+}}
+
+# create an empty directory
+cmd mkdir %{{
+    set -f
+    # combine all arguments with a space into a single name
+    IFS=" " name="$*"
+    mkdir -- "$name"
+    lf -remote "send $id select ${name@Q}"
+}}
+
+# change file mode bits
+cmd chmod %{{
+    set -f
+    for f in $fx; do
+        chmod $1 -- "$f"
+    done
+    # reloaing once not refreshing file information at the bottom
+    # https://github.com/gokcehan/lf/issues/831
+    lf -remote "send $id reload"
+    lf -remote "send $id reload"
+}}
+
+# clear tag
+cmd tag-clear :tag; tag-toggle
+
+# override the default 'paste' command with the following using mv and cp
+# (lf does not preserve file attributes and modification timestamps and it does
+# not support CoW)
+# inspired by https://github.com/gokcehan/lf/wiki/Tips#use-copy-on-write-when-possible
+cmd paste &{{
+    set -f
+    set -- $(cat ~/.local/share/lf/files)
+    mode="$1"
+    shift
+
+    if [ -z "$@" ]; then
+        lf -remote "send $id echoerr Nothing to paste"
+        exit 0
+    fi
+
+    if [ $mode = 'copy' ]; then
+        # Handle same names in dst
+        for i in "$@"; do
+            name="${i##*/}"
+            original="$name"
+
+            count=0
+            while [ -w "$PWD/$name" ]; do
+                count=$((count+1))
+                name="$original.~$count~"
+            done
+
+            set +e
+            cp_out="$(cp --no-clobber --archive --reflink=auto -- "$i" "$PWD/$name" 2>&1)"
+            set -e
+
+            if [ ! -z "$cp_out" ]; then
+                lf -remote "send $id echoerr $cp_out"
+                exit 0
+            fi
+        done
+
+        # Or just skip a file when names are the same.
+        # (A LOT faster if you e.g. pasting selection of 10k files)
+        # cp -rn --reflink=always -- "$@" .
+
+    elif [ $mode = 'move' ]; then
+        set +e
+        mv_out="$(mv --no-clobber -- "$@" . 2>&1)"
+        set -e
+        if [ ! -z "$mv_out" ]; then
+            lf -remote "send $id echoerr $mv_out"
+            exit 0
+        fi
+    fi
+
+    lf -remote "send clear"
+    lf -remote "send load"
+
+    green=$'\u001b[32m'
+    reset=$'\u001b[0m'
+    if [ $mode = 'copy' ]; then
+        lf -remote "send $id echo ${green}Copied!${reset}"
+    elif [ $mode = 'move' ]; then
+        lf -remote "send $id echo ${green}Moved!${reset}"
+    fi
+}}
+
+# compress current file or selected files with tar and gunzip
+cmd tar ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    tar czf $1.tar.gz $1
+    rm -rf $1
+}}
+
+# compress current file or selected files with zip
+cmd zip ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    zip -r $1.zip $1
+    rm -rf $1
+}}
+
+# custom bindings
+map R reload
+map S $$SHELL
+map w  # unmap
+map u  # unmap
+map uv unselect
+map ut tag-clear
+map d  # unmap
+map dd cut
+map dD delete
+map y  # unmap
+map yy copy
+map c  # unmap
+map uy clear
+map ud clear
+map p  # unmap
+map pp paste
+# map pl paste-symlink-absolute  # TODO
+# map pL paste-symlink-relative  # TODO
+# map phl paste-hardlink  # TODO
+# map pht paste-hardlinked-subtree  # TODO
+map = push :chmod<space>
+map m mark-load
+map M mark-save
+map um mark-remove
+
+map gh cd ~
+map ge cd /etc
+map gu cd /usr
+map gd cd /dev
+map go cd /opt
+map gv cd /var
+map gm cd /media
+map gM cd /mnt
+map gs cd /srv
+map gr cd /
+map g/ cd /
+
+# extract the current file with the `x` script
+map x !x "$f"
+
+# custom opener using $EDITOR for all text files
+# This command is called when current file is not a directory. You may want to
+# use either file extensions and/or mime types here. Below uses an editor for
+# text files and a file opener for the rest.
+cmd open ${{
+    test -L "$f" && f="$(readlink -f "$f")"
+    case $(file --mime-type "$f" -b) in
+        text/* | inode/x-empty)
+            $EDITOR -- "$f"
+            ;;
+        *)
+            setsid -f $OPENER "$f" > /dev/null 2> /dev/null
+            ;;
+    esac
+}}
+
+# open the selected files or the current file in vim (cannot use $EDITOR due to -p)
+map e $vim -p -- $fx
+
+# configure the previewer script
+set previewer ~/.config/lf/previewer.sh
+map i $LESSOPEN='| ~/.config/lf/previewer.sh %s' less -R -- $f
+
+# open the selected files or the current file in less ($PAGER does not work when it contains options)
+#map i $less -- $fx

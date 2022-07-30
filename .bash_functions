@@ -107,11 +107,11 @@ function cd() {
 }
 
 
-## path synchronization for ranger
-# (reference: /usr/share/doc/ranger/examples/bash_automatic_cd.sh)
-function ranger {
-    tempfile="$(mktemp -t ranger-cd.XXXXXX)"
-    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+## path synchronization for lf
+# (reference: https://github.com/gokcehan/lf/blob/master/etc/lfcd.sh)
+function lf {
+    tempfile="$(mktemp -t lf-cd.XXXXXX)"
+    /usr/bin/lf -last-dir-path="$tempfile" "${@:-$(pwd)}"
     if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
         cd -- "$(cat "$tempfile")"
     fi
