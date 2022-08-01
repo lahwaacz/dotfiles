@@ -26,6 +26,9 @@ set ifs "\n"
 # leave some space at the top and the bottom of the screen
 set scrolloff 10
 
+# the interval in seconds for periodic checks of directory updates
+set period 60
+
 # show current directory in the terminal window title
 cmd on-cd &{{
     # '&' commands run silently in background (which is what we want here),
@@ -69,68 +72,10 @@ cmd chmod %{{
 # clear tag
 cmd tag-clear :tag; tag-toggle
 
-# override the default 'paste' command with the following using mv and cp
+# override the default 'paste' command with the 'lf-paste' script (uses cp-p: cp/mv with progress)
 # (lf does not preserve file attributes and modification timestamps and it does
 # not support CoW)
-# inspired by https://github.com/gokcehan/lf/wiki/Tips#use-copy-on-write-when-possible
-cmd paste &{{
-    set -f
-    set -- $(cat ~/.local/share/lf/files)
-    mode="$1"
-    shift
-
-    if [ -z "$@" ]; then
-        lf -remote "send $id echoerr Nothing to paste"
-        exit 0
-    fi
-
-    if [ $mode = 'copy' ]; then
-        # Handle same names in dst
-        for i in "$@"; do
-            name="${i##*/}"
-            original="$name"
-
-            count=0
-            while [ -w "$PWD/$name" ]; do
-                count=$((count+1))
-                name="$original.~$count~"
-            done
-
-            set +e
-            cp_out="$(cp --no-clobber --archive --reflink=auto -- "$i" "$PWD/$name" 2>&1)"
-            set -e
-
-            if [ ! -z "$cp_out" ]; then
-                lf -remote "send $id echoerr $cp_out"
-                exit 0
-            fi
-        done
-
-        # Or just skip a file when names are the same.
-        # (A LOT faster if you e.g. pasting selection of 10k files)
-        # cp -rn --reflink=always -- "$@" .
-
-    elif [ $mode = 'move' ]; then
-        set +e
-        mv_out="$(mv --no-clobber -- "$@" . 2>&1)"
-        set -e
-        if [ ! -z "$mv_out" ]; then
-            lf -remote "send $id echoerr $mv_out"
-            exit 0
-        fi
-    fi
-
-    lf -remote "send clear"
-    lf -remote "send load"
-
-    green=$'\u001b[32m'
-    reset=$'\u001b[0m'
-    if [ $mode = 'copy' ]; then
-        lf -remote "send $id echo ${green}Copied!${reset}"
-    elif [ $mode = 'move' ]; then
-        lf -remote "send $id echo ${green}Moved!${reset}"
-    fi
-}}
+cmd paste &lf-paste $id
 
 # compress current file or selected files with tar and gunzip
 cmd tar ${{
@@ -191,13 +136,16 @@ map g/ cd /
 # extract the current file with the `x` script
 map x !x "$f"
 
-# custom opener using $EDITOR for all text files
+# override the default open command
 # This command is called when current file is not a directory. You may want to
 # use either file extensions and/or mime types here. Below uses an editor for
 # text files and a file opener for the rest.
 cmd open ${{
     test -L "$f" && f="$(readlink -f "$f")"
     case $(file --mime-type "$f" -b) in
+        image/*)
+            lf -remote "send $id openimages"
+            ;;
         text/* | inode/x-empty)
             $EDITOR -- "$f"
             ;;
@@ -207,12 +155,35 @@ cmd open ${{
     esac
 }}
 
+# open the current image (and all images in the same directory) with sxiv,
+# then read all marked files from sxiv and select them in lf
+cmd openimages &{{
+    test -L "$f" && f="$(readlink -f "$f")"
+    dir="$(dirname "$f")"
+    # list of the images to view
+    images="$(find -L "$dir" -maxdepth 1 -type f -regextype posix-extended -iregex '.*\.(jpe?g|png|gif|svg|webp|tiff|heif|avif|ico|bmp)$' -print | sort -fV)"
+    # index of the selected image
+    index="$(grep -nF -- "$f" <<< "$images" | cut -f1 -d: || echo "")"
+
+    if [[ -n "$index" ]]; then
+        # pass it to sxiv
+        sxiv -aiop -n "$index" 2>/dev/null <<< "$images" |
+        (lf -remote "send $id unselect"
+        while read -r file; do
+            lf -remote "send $id select \"$file\""
+            lf -remote "send toggle \"$file\""
+        done)
+    else
+        # fallback in case the file did not have a valid extension
+        sxiv -aiop 2>/dev/null <<< "$f"
+    fi
+}}
+
 # open the selected files or the current file in vim (cannot use $EDITOR due to -p)
 map e $vim -p -- $fx
 
 # configure the previewer script
 set previewer ~/.config/lf/previewer.sh
-map i $LESSOPEN='| ~/.config/lf/previewer.sh %s' less -R -- $f
 
-# open the selected files or the current file in less ($PAGER does not work when it contains options)
-#map i $less -- $fx
+# open the selected files or the current file in bat
+map i $bat -- $fx
