@@ -55,7 +55,7 @@ folder-hook   .*[sS]ent.* 'set index_format="%3C %S %D | %-26.26t %-50.100s %> %
 folder-hook ! .*[sS]ent.* 'set index_format="%3C %S %D | %-26.26n %-50.100s %> %c"'
 set pager_format        = "Reading message %C of %m %> %lL [%P]" # pager statusbar
 set folder_format       = "%2C %t %N %8s %d %f"                  # mailbox list view
-set status_format       = " %?M?%M/?%m total: %?n?%n new, ?%?u?%u unread, ?%?p?%p drafts, ?%?t?%t +tagged, ?%?d?%d deleted, ?[%f %l]  %?b?%b unread messages. ?%>  %V   sort by: %s/%S  (%P)"
+set status_format       = " %?M?%M/?%m total: %?n?%n new, ?%?u?%u unread, ?%?p?%p drafts, ?%?t?%t +tagged, ?%?d?%d deleted, ?[%f %l]  %?b?%b mailboxes with new messages. ?%>  %V   sort by: %s/%S  (%P)"
 set alias_format        = "%4n %t %-20a  %r"
 
 # --- composing mail
@@ -159,9 +159,10 @@ macro index Z   "<shell-escape>fetchmail<enter>" "fetch new mail"
 
 # --- sidebar
 # documentation: http://www.neomutt.org/feature/sidebar/
-set sidebar_visible     = yes                                    # set sidebar visible
-set sidebar_width       = 24                                     # width of sidebar in chars
-set sidebar_format      = "%B%?F? [%F]?%* %?N?%N/?%S"            # format string for sidebar
+set sidebar_visible      = yes                                   # set sidebar visible
+set sidebar_width        = 24                                    # width of sidebar in chars
+set sidebar_format       = "%B%?F? [%F]?%* %?N?%N/?%S"           # format string for sidebar
+set sidebar_divider_char = "|"                                   # characters to be drawn between the sidebar and other panels
 set mail_check_stats
 set mail_check_stats_interval = 1
 

@@ -1,0 +1,9 @@
+# avoid warnings due to duplicate binding, see
+# https://neomutt.org/guide/configuration.html#6-2-%C2%A0warnings-about-duplicated-bindings
+unbind pager g
+unbind index g
+
+source ~/.config/mutt/muttrc
+
+# neomutt-specific variables
+color sidebar_unread        color33         color234

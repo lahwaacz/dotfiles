@@ -9,8 +9,12 @@ ping -c 1 "$check_domain" > /dev/null && fetchmail
 # cd into fixed path (for saving attachments)
 cd ~/stuff
 
-# run mutt
-/usr/bin/mutt -n -F ~/.config/mutt/muttrc "$@"
+# run neomutt or mutt
+if [[ -e /usr/bin/neomutt ]]; then
+    /usr/bin/neomutt -n "$@"
+else
+    /usr/bin/mutt -n -F ~/.config/mutt/muttrc "$@"
+fi
 
 # sync
 ping -c 1 "$check_domain" > /dev/null && fetchmail
