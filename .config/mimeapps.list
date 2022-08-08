@@ -18,9 +18,9 @@ image/x-targa=sxiv.desktop;
 image/x-tga=sxiv.desktop;
 text/plain=gvim.desktop;
 application/pdf=qpdfview.desktop;
-x-scheme-handler/ftp=org.qutebrowser.qutebrowser.desktop;
 x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop;
 x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop;
+x-scheme-handler/ftp=org.qutebrowser.qutebrowser.desktop;
 
 [Added Associations]
 application/pdf=qpdfview.desktop;
@@ -28,3 +28,5 @@ application/xml=gvim.desktop;
 text/htm=org.qutebrowser.qutebrowser.desktop;
 text/html=org.qutebrowser.qutebrowser.desktop;
 video/mp4=mpv.desktop;
+video/x-matroska=mpv.desktop;
+
