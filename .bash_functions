@@ -111,7 +111,7 @@ function cd() {
 # (reference: https://github.com/gokcehan/lf/blob/master/etc/lfcd.sh)
 function lf {
     tempfile="$(mktemp -t lf-cd.XXXXXX)"
-    /usr/bin/lf -last-dir-path="$tempfile" "${@:-$(pwd)}"
+    command lf -last-dir-path="$tempfile" "${@:-$(pwd)}"
     if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
         cd -- "$(cat "$tempfile")"
     fi
