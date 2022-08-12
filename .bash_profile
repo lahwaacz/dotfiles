@@ -57,6 +57,7 @@ export INPUTRC="$XDG_CONFIG_HOME/inputrc"
 export ASPROOT="$XDG_CONFIG_HOME/asp"
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export UNISON="$XDG_DATA_HOME/unison"
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 
 # hacks to respect XDG_CACHE_HOME
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
