@@ -19,7 +19,7 @@ macro index S "<save-message>+GMX/spam<enter>"    "mark message as spam"
 set attribution         = "On %d (UTC%{%Z}), %n wrote:"          # attribution line (string preceding quoted replies)
 
 # --- smtp server
-set my_gmx_password   = `gpg --quiet --batch --use-agent --decrypt --output - ~/Maildir/password-gmx.gpg`
+set my_gmx_password   = `gpg --quiet --batch --use-agent --decrypt --output - ~/Maildir/passwords.gpg | awk -v key="GMX" '$1==key {print $2}'`
 set smtp_url            = "smtp://j.l.k@gmx.com:$my_gmx_password@smtp.gmx.com:587/"
 set ssl_force_tls       = yes
 set ssl_starttls        = yes

@@ -19,7 +19,7 @@ macro index S "<save-message>+Arch/spam<enter>"    "mark message as spam"
 set attribution         = "On %d (UTC%{%Z}), %n wrote:"          # attribution line (string preceding quoted replies)
 
 # --- smtp server
-set my_arch_password   = `gpg --quiet --batch --use-agent --decrypt --output - ~/Maildir/password-arch.gpg`
+set my_arch_password   = `gpg --quiet --batch --use-agent --decrypt --output - ~/Maildir/passwords.gpg | awk -v key="Arch" '$1==key {print $2}'`
 set smtp_url            = "smtps://lahwaacz:$my_arch_password@mail.archlinux.org:465/"
 set ssl_force_tls       = yes
 #set ssl_starttls        = yes
