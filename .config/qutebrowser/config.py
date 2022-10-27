@@ -35,7 +35,7 @@ c.content.cookies.accept = "no-3rdparty"
 #   --blink-settings: https://cs.chromium.org/chromium/src/third_party/WebKit/Source/core/frame/Settings.json5
 c.qt.args = [
     # NOTE: login to gitlab.com requires reading from canvas
-    "disable-reading-from-canvas",
+#    "disable-reading-from-canvas",
     "enable-strict-mixed-content-checking",
 #    "disable-remote-fonts",
 ]
