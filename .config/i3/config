@@ -40,7 +40,7 @@ bindsym $mod+Return exec sway-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # launchers
-bindsym $mod+d exec bemenu-run -ip "Run: " --fn "monospace bold 13px" --tf "#1793d0" --hf "#1793d0"
+bindsym $mod+d exec bemenu-run -ip "Run: " --line-height 18 --fn "monospace bold 13" --tf "#1793d0" --hf "#1793d0"
 
 # change focus
 bindsym $mod+h focus left
