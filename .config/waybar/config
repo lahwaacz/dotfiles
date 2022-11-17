@@ -31,7 +31,8 @@
         "format-icons": {
             //"activated": "",
             //"deactivated": ""
-            "activated": "DPMS inhibited"
+            "activated": "DPMS inhibited",
+            "deactivated": "inhibit DPMS"
         },
         "interval": 1,
         "tooltip": false

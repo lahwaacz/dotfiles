@@ -6,6 +6,19 @@
     min-height: 0;
 }
 
+button {
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+/* adjust hover effect on buttons, see also
+ * https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: none;
+    text-shadow: inherit;
+}
+
 window {
     background-color: #222;
     border-bottom: 2px solid #222;
@@ -13,8 +26,6 @@ window {
 }
 
 #workspaces button {
-    border: none;
-    border-radius: 0;
     border-top: 1px solid #222;
     border-bottom: 2px solid #222;
     padding: 0 3px;
@@ -49,17 +60,20 @@ window {
     margin-left: 20px;
 }
 
-#tray, #idle_inhibitor.activated, #custom-mail, #network, #memory, #cpu, #custom-gpu:not(.suspended), #temperature, #battery, #pulseaudio, #clock {
+#tray, #idle_inhibitor, #custom-mail, #network, #memory, #cpu, #custom-gpu:not(.suspended), #temperature, #battery, #pulseaudio, #clock {
     padding: 0 5px;
 }
 
-#idle_inhibitor.activated, #custom-mail, #network, #memory, #cpu, #custom-gpu:not(.suspended), #temperature, #battery, #pulseaudio, #clock {
+#idle_inhibitor, #custom-mail, #network, #memory, #cpu, #custom-gpu:not(.suspended), #temperature, #battery, #pulseaudio, #clock {
     border-left: 2px solid #888;
     border-color: #444;
 }
 
-#idle_inhibitor.activated {
+#idle_inhibitor {
     color: #888;
+}
+#idle_inhibitor.activated {
+    color: #ddd;
 }
 
 #custom-mail {
