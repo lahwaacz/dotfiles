@@ -143,7 +143,7 @@ map x !x "$f"
 cmd open ${{
     test -L "$f" && f="$(readlink -f "$f")"
     case $(file --mime-type "$f" -b) in
-        image/vnd.djvu)
+        image/vnd.djvu | text/html)
             # if the file is not on a local filesystem, open it from $HOME
             df -l "$f" >/dev/null 2>/dev/null || cd "$HOME"
             setsid -f $OPENER "$f" > /dev/null 2> /dev/null
