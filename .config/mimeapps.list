@@ -4,6 +4,7 @@ image/gif=sxiv.desktop;
 image/jpeg=sxiv.desktop;
 image/jpg=sxiv.desktop;
 image/png=sxiv.desktop;
+image/webp=sxiv.desktop;
 image/svg+xml=sxiv.desktop;
 image/svg-xml=sxiv.desktop;
 image/tiff=sxiv.desktop;
@@ -16,17 +17,18 @@ image/x-portable-greymap=sxiv.desktop;
 image/x-portable-pixmap=sxiv.desktop;
 image/x-targa=sxiv.desktop;
 image/x-tga=sxiv.desktop;
-text/plain=gvim.desktop;
 application/pdf=qpdfview.desktop;
+text/plain=gvim.desktop;
+application/xml=gvim.desktop;
+text/htm=org.qutebrowser.qutebrowser.desktop;
+text/html=org.qutebrowser.qutebrowser.desktop;
 x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop;
 x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop;
 x-scheme-handler/ftp=org.qutebrowser.qutebrowser.desktop;
 
 [Added Associations]
-application/pdf=qpdfview.desktop;
-application/xml=gvim.desktop;
-text/htm=org.qutebrowser.qutebrowser.desktop;
-text/html=org.qutebrowser.qutebrowser.desktop;
+audio/mpeg=mpv.desktop;
 video/mp4=mpv.desktop;
 video/x-matroska=mpv.desktop;
+video/x-msvideo=mpv.desktop;
 
