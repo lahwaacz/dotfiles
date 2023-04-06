@@ -110,3 +110,9 @@ if [[ -S "$SSH_AUTH_SOCK" ]] && [[ $UID != 0 ]]; then
     export GPG_TTY=$(tty)
     gpg-connect-agent updatestartuptty /bye >/dev/null
 fi
+
+
+# FIXME: i3 interferes with the inheritance of bash functions defined by lmod
+if [[ "$DESKTOP_SESSION" =~ "i3" ]] && [[ -f /etc/profile.d/modules.sh ]]; then
+    source /etc/profile.d/modules.sh
+fi

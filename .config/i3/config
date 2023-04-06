@@ -14,11 +14,11 @@ set $mod Mod1
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
 #font pango:DejaVu Sans Mono 10
-font pango:monospace 8
+font pango:monospace 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-floating_maximum_size 1680 x 1050
+floating_modifier Shift+$mod
+floating_maximum_size 1920 x 1080
 
 # reload configuration file
 bindsym $mod+Shift+c reload
@@ -243,7 +243,7 @@ bindsym Print                 exec screenshot.sh full
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    font -*-profont-*-*-*-*-12-*-*-*-*-*-*-*
+#    font -*-profont-*-*-*-*-12-*-*-*-*-*-*-*
     status_command i3status -c ~/.config/i3/i3status.conf
 #    status_command ~/Bbox/pg/cpp/wmfs-statusbar/bin/wmfs-statusbar
     mode dock

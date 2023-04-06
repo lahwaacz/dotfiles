@@ -14,3 +14,5 @@ xset s 0 0
 
 # restore DPMS settings (due to SDDM)
 xset dpms 600 600 600
+
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
