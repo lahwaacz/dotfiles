@@ -7,14 +7,10 @@
 set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below. ISO 10646 = Unicode
-#font -*-profont-*-*-*-*-12-*-*-*-*-*-*-*
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, if you need a lot of unicode glyphs or
-# right-to-left text rendering, you should instead use pango for rendering and
-# chose a FreeType font, such as:
+# is used in the bar {} block below.
 #font pango:DejaVu Sans Mono 10
-font pango:monospace 10
+#font pango:monospace 10
+font pango:Inconsolata ExtraBold 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier Shift+$mod
@@ -240,12 +236,9 @@ bindsym XF86MonBrightnessDown exec light -U 10 && notify-brightness.sh
 bindsym XF86ScreenSaver       exec sxlock
 bindsym Print                 exec screenshot.sh full
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Start i3bar to display a bar with workspaces and system status
 bar {
-#    font -*-profont-*-*-*-*-12-*-*-*-*-*-*-*
-    status_command i3status -c ~/.config/i3/i3status.conf
-#    status_command ~/Bbox/pg/cpp/wmfs-statusbar/bin/wmfs-statusbar
+    status_command i3status-rs
     mode dock
     position top
     tray_output primary
@@ -301,3 +294,5 @@ exec qstardict
 exec keepassxc
 exec unclutter
 exec picom -b
+exec gammastep
+exec xss-lock sxlock
