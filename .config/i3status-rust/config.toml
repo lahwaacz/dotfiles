@@ -55,7 +55,7 @@ idle_fg = "#1793d0"  # blue
 [[block]]
 block = "net"
 device = "wlan0"
-format = " $icon ($signal_strength at $ssid, $bitrate) $ip "
+format = " $icon ($signal_strength at $ssid, $bitrate) {$ip|} "
 missing_format = " $icon down "
 [block.theme_overrides]
 idle_fg = "#1793d0"  # blue
@@ -63,8 +63,7 @@ idle_fg = "#1793d0"  # blue
 [[block]]
 block = "net"
 device = "eth0"
-format = " $icon $ip "
-missing_format = " $icon down "
+format = " $icon {$ip|down} "
 [block.theme_overrides]
 idle_fg = "#1793d0"  # blue
 
