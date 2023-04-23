@@ -45,14 +45,6 @@ interval = 10
 threshold_critical = 1
 
 [[block]]
-block = "bluetooth"
-mac = "3C:58:C2:D8:44:FA"
-disconnected_format = ""
-format = " $icon "
-[block.theme_overrides]
-idle_fg = "#1793d0"  # blue
-
-[[block]]
 block = "net"
 device = "wlan0"
 format = " $icon ($signal_strength at $ssid, $bitrate) {$ip|} "
@@ -94,6 +86,7 @@ missing_format = ""
 [[block]]
 block = "sound"
 show_volume_when_muted = false
+format = " $icon{ $volume.eng(w:2)|} "
 headphones_indicator = true
 [[block.click]]
 button = "left"
