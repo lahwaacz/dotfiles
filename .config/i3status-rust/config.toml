@@ -20,6 +20,7 @@ separator_fg = "#888888"  # gray
 
 [[block]]
 block = "maildir"
+format = " $icon $status.eng(w:1) "
 inboxes = [
     "~/Maildir/FJFI/archive",
     "~/Maildir/FJFI/drafts",
