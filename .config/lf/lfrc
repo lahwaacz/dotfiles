@@ -196,3 +196,6 @@ set previewer ~/.config/lf/previewer.sh
 
 # open the selected files or the current file in bat
 map i $bat -- $fx
+
+# disable cursor underline in the preview pane
+set cursorpreviewfmt ""
