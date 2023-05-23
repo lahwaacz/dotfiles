@@ -1,7 +1,0 @@
-layer=overlay
-default-timeout=5000
-background-color=#333333dd
-text-color=#dddddd
-border-color=#222222dd
-border-size=2
-padding=8
