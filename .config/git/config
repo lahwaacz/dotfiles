@@ -26,6 +26,7 @@
 
 [push]
     default = simple
+    autoSetupRemote = true
 
 [pull]
     rebase = true
@@ -40,6 +41,7 @@
     stashreset = "!git stash save && git fetch && git reset --hard FETCH_HEAD && git stash-pop-if-not-empty"
     amend = commit --amend
     tags = tag -n99
+    ll = log --oneline --graph --all --decorate
 
 [help]
     # execute corrected commands immediately
@@ -59,3 +61,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[init]
+	defaultBranch = main
