@@ -56,8 +56,8 @@ export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
 export INPUTRC="$XDG_CONFIG_HOME/inputrc"
 export ASPROOT="$XDG_CONFIG_HOME/asp"
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
-export UNISON="$XDG_DATA_HOME/unison"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
+export ANSIBLE_CONFIG="${XDG_CONFIG_HOME}/ansible.cfg"
 
 # hacks to respect XDG_CACHE_HOME
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
@@ -67,12 +67,15 @@ export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export ASPCACHE="$XDG_CACHE_HOME/asp"
 export ANSIBLE_LOCAL_TEMP="$XDG_CACHE_HOME/ansible/tmp"
+export ANSIBLE_GALAXY_CACHE_DIR="${XDG_CACHE_HOME}/ansible/galaxy_cache"
 
 # hacks to respect XDG_STATE_HOME
 export LESSHISTFILE="$XDG_STATE_HOME/less_history"
 export MYSQL_HISTFILE="$XDG_STATE_HOME/mysql_history"
 export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"   # ~/.python_history is overridden there
+
+export UNISON="$XDG_DATA_HOME/unison"
 
 export TEXMFHOME=$XDG_DATA_HOME/texmf
 export TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var
