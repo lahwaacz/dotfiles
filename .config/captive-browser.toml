@@ -7,7 +7,7 @@
 # normal window in it, settings will be preserved.
 browser = """
     chromium \
-    --user-data-dir="$HOME/.local/share/captive-browser" \
+    --user-data-dir="/tmp/captive-browser-$USER" \
     --proxy-server="socks5://$PROXY" \
     --host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE localhost" \
     --no-first-run --no-default-browser-check \
@@ -24,7 +24,11 @@ browser = """
 #  $ go get github.com/FiloSottile/captive-browser/cmd/systemd-networkd-dns
 #
 #dhcp-dns = "$(go env GOPATH)/bin/systemd-networkd-dns wlan0"
-dhcp-dns = "ip route | grep default | awk '{ print $3 }'"
+#dhcp-dns = "ip route | grep default | awk '{ print $3 }'"
+# this command selects the *first* DNS server in the networkctl output
+#dhcp-dns = "networkctl status | grep DNS | awk '{print $2}'"
+# this command selects the *last* DNS server in the networkctl output
+dhcp-dns = "networkctl status --json=short | jq -r '.Interfaces | map(select(.DNS) | .DNS) | .[] | map(.Address) | map(join(\".\")) | .[]' | tail -n1"
 
 # socks5-addr is the listen address for the SOCKS5 proxy server.
 socks5-addr = "localhost:1666"
