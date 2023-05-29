@@ -49,6 +49,7 @@ threshold_critical = 1
 block = "net"
 device = "wlan0"
 format = " $icon ($signal_strength at $ssid, $bitrate) {$ip|} "
+inactive_format = ""
 missing_format = ""
 [block.theme_overrides]
 idle_fg = "#1793d0"  # blue
