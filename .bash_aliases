@@ -21,7 +21,6 @@ alias gvim='gvim -p'
 
 alias du='du -h'
 alias df='df -h'
-alias dh='df -h -x tmpfs -x devtmpfs'
 alias free='free -h'
 alias top='top -cd 01.00'
 alias ps='ps aux'
@@ -29,10 +28,6 @@ alias mt='findmnt -rnuc -o SOURCE,TARGET,FSTYPE,OPTIONS | sort | column -t'
 
 alias cal='cal -m'
 alias dirs='dirs -v'
-
-alias youtube-dl='youtube-dl -c -o "%(title)s.%(ext)s"'
-
-alias quickbrowse="curl -G -d 'mimetype=text/plain'"
 
 alias poweroff='systemctl poweroff'
 alias reboot='systemctl reboot'
@@ -53,8 +48,4 @@ if [[ $(command -v sinfo) ]]; then
     alias sprio='sprio -o"%.15i %9r %.8u %.10Y %.10S %.10A %.10B %.10F %.10J %.10P %.10Q %.11N %.32T"'
     alias sacct='sacct --format="JobID,JobName,Partition,User,End,State,ExitCode,AllocNodes,AllocCPUS,ReqMem"'
     alias sshare='sshare --all'
-fi
-
-if [[ $(command -v joshuto) ]]; then
-    alias joshuto='joshuto --lastdir "$XDG_RUNTIME_DIR/joshuto-lastdir"; cd "$(cat "$XDG_RUNTIME_DIR/joshuto-lastdir")"'
 fi
