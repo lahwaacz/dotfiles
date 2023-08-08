@@ -11,6 +11,10 @@ hwdec=auto
 # https://superuser.com/a/323127
 af=loudnorm=I=-20
 
+# subtitles formatting
+#sub-back-color="#222222"
+#sub-bold=yes
+
 # load all subs containing movie name
 sub-auto=fuzzy
 
