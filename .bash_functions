@@ -129,8 +129,5 @@ function syu {
     if [[ $(command -v checkservices) ]]; then
         sudo checkservices
     fi
-    if [[ $(command -v rebuild-notify) ]] && [[ $(command -v expac) ]]; then
-        rebuild-notify
-    fi
 }
 alias suy='syu'

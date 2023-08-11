@@ -8,9 +8,10 @@ PATH=$HOME/bin:$PATH:$HOME/Scripts
 # TNL
 export PATH="$HOME/.local/bin:$PATH"
 export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
-# compilers (-L and -I)
+# compilers (-L and -isystem)
 export LIBRARY_PATH="$HOME/.local/lib:$LIBRARY_PATH"
-export CPATH="$HOME/.local/include:$CPATH"
+export C_INCLUDE_PATH="$HOME/.local/include"
+export CPLUS_INCLUDE_PATH="$HOME/.local/include"
 
 export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig:$HOME/.local/share/pkgconfig:$PKG_CONFIG_PATH"
 
