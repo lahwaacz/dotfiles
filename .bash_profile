@@ -26,16 +26,10 @@ export PAGER="less -FRXMKij4"
 
 export LIBVA_DRIVER_NAME=vdpau  # video acceleration
 export SYSTEMD_LESS=FRXMKij4   # omit 'S' to disable "chopping" long lines
-export CCACHE_PATH="/usr/bin"   # tell ccache to only use compilers here
 export QUOTING_STYLE=literal    # http://unix.stackexchange.com/questions/258679/why-is-ls-suddenly-surrounding-items-with-spaces-in-single-quotes
-export RANGER_LOAD_DEFAULT_RC=FALSE
 
-# count physical cores on my laptop, all cores elsewhere
-if [[ "$HOSTNAME" == "jlknb" ]]; then
-    export MAKEFLAGS=-j$(grep "core id" /proc/cpuinfo | sort -u | wc -l)
-else
-    export MAKEFLAGS=-j$(grep "processor" /proc/cpuinfo | sort -u | wc -l)
-fi
+#export MAKEFLAGS=-j$(grep "core id" /proc/cpuinfo | sort -u | wc -l)  # counts physical cores
+export MAKEFLAGS=-j$(grep "processor" /proc/cpuinfo | sort -u | wc -l)  # counts all cores
 
 # setup default dirs
 [ "$XDG_CACHE_HOME" ] || export XDG_CACHE_HOME="$HOME/.cache"
@@ -47,26 +41,18 @@ fi
 
 # hacks to respect XDG_CONFIG_HOME
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
-export VIMPAGER_RC="$XDG_CONFIG_HOME/vimpagerrc"
-export IMAPFILTER_HOME="$XDG_CONFIG_HOME/imapfilter"
-export MPV_HOME="$XDG_CONFIG_HOME/mpv"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"   # for GTK styles in Qt
 export GIMP2_DIRECTORY="$XDG_CONFIG_HOME/gimp"
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
 export INPUTRC="$XDG_CONFIG_HOME/inputrc"
-export ASPROOT="$XDG_CONFIG_HOME/asp"
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 export ANSIBLE_CONFIG="${XDG_CONFIG_HOME}/ansible.cfg"
 
 # hacks to respect XDG_CACHE_HOME
-export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
-export DISTCC_DIR="$XDG_CACHE_HOME/distcc"
-export PYLINTHOME="$XDG_CACHE_HOME/pylint"
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
-export ASPCACHE="$XDG_CACHE_HOME/asp"
 export ANSIBLE_LOCAL_TEMP="$XDG_CACHE_HOME/ansible/tmp"
 export ANSIBLE_GALAXY_CACHE_DIR="${XDG_CACHE_HOME}/ansible/galaxy_cache"
 

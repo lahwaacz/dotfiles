@@ -74,16 +74,17 @@ elif [[ -r "$HOME/bin/git-prompt.sh" ]]; then
 fi
 bash_prompt
 
+# export $PWD in window title
+PROMPT_COMMAND=('echo -ne "\033]0;$PWD\007"')
+
 # set history variables 
 unset HISTFILESIZE
 HISTSIZE=100000
 HISTCONTROL=ignoredups:ignorespace
 # share history across all terminals
-#PROMPT_COMMAND="history -a; history -c; history -r"
-#PROMPT_COMMAND="history -a"
-# export $PWD in window title
-PROMPT_COMMAND='history -a; echo -ne "\033]0;$PWD\007"'
-#export HISTSIZE PROMPT_COMMAND
+#PROMPT_COMMAND+=("history -a; history -c; history -r")
+# update the $HISTFILE immediately after it is executed
+PROMPT_COMMAND+=('history -a')
 
 #if [[ "$TERM" =~ ".*256color.*" && -f ~/.dircolors.256colors ]]; then
 if [[ "$TERM" != "linux" && -f "$XDG_CONFIG_HOME/dircolors.256color" ]]; then

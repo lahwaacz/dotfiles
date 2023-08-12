@@ -29,17 +29,9 @@ alias mt='findmnt -rnuc -o SOURCE,TARGET,FSTYPE,OPTIONS | sort | column -t'
 alias cal='cal -m'
 alias dirs='dirs -v'
 
-alias poweroff='systemctl poweroff'
-alias reboot='systemctl reboot'
 alias suspend='systemctl suspend'
-alias hibernate='systemctl hibernate'
 
 alias subdl='/usr/bin/subdl -i --lang=eng,cze'
-
-# re-apply alias from /etc/profile.d/openfoam-6.sh
-if [[ "$FOAM_INST_DIR" != "" ]]; then
-    alias ofoam="source ${FOAM_INST_DIR}/OpenFOAM-6/etc/bashrc"
-fi
 
 # slurm
 if [[ $(command -v sinfo) ]]; then
