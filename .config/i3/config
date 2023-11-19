@@ -267,7 +267,7 @@ mouse_warping none
 assign [instance="qstardict"] 10
 assign [instance="qpdfview"] 12
 assign [class="qemu-system-i386"] 19
-assign [instance="keepassxc"] 21
+assign [instance="keepassxc" window_type="normal"] 21
 assign [instance="alacritty::journalctl"] 22
 
 # move windows popping up from scripts into their own workspace
