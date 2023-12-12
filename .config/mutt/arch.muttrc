@@ -30,7 +30,7 @@ unset smtp_authenticators
 set pgp_use_gpg_agent = yes 
 set pgp_autosign = yes
 # the '!' at the end forces gpg to use this key, not its subkeys
-set pgp_sign_as = BCF056C5!
+set pgp_sign_as = 109415E692007609CA7EBFE4001CF4810BE8D911!
 set pgp_timeout = 1800
 set pgp_replyencrypt = yes
 
