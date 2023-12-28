@@ -1,0 +1,122 @@
+# Reference: https://alacritty.org/config-alacritty.html
+
+# Live config reload (changes require restart)
+live_config_reload = true
+
+# Any items in the `env` entry below will be added as
+# environment variables. Some entries may override variables
+# set by alacritty itself.
+[env]
+# override $TERM, vim does not work correctly with TERM=alacritty
+# e.g. https://github.com/alacritty/alacritty/issues/5363
+# also the :autoread feature does not work (no window focus event?)
+TERM = "xterm-256color"
+
+[scrolling]
+# Maximum number of lines in the scrollback buffer.
+# Specifying '0' will disable scrolling.
+history = 10000
+# Scrolling distance multiplier.
+#multiplier = 3
+
+[font]
+size = 9
+
+# Offset is the extra space around each character. `offset.y` can be thought
+# of as modifying the line spacing, and `offset.x` as modifying the letter
+# spacing.
+[font.offset]
+x = 0
+y = 2
+
+[colors]
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors = true
+
+[colors.primary]
+background = "#000000"
+foreground = "#bebebe"
+# The dimmed foreground color is calculated automatically if it is not
+# present. If the bright foreground color is not set, or
+# `draw_bold_text_with_bright_colors` is `false`, the normal foreground
+# color will be used.
+#dim_foreground: '#828482'
+bright_foreground = "#ffffff"
+
+# Colors which should be used to draw the selection area.
+#
+# Allowed values are CellForeground/CellBackground, which reference the
+# affected cell, or hexadecimal colors like #ff00ff.
+[colors.selection]
+background = "#2f2f2f"
+text = "CellForeground"
+
+[colors.normal]
+black = "#000000"
+blue = "#2346ae"
+cyan = "#58c6ed"
+green = "#00a000"
+magenta = "#aa00aa"
+red = "#b22222"
+white = "#e5e5e5"
+yellow = "#cdcd00"
+
+[colors.bright]
+black = "#4d4d4d"
+blue = "#2b65ec"
+cyan = "#00dfff"
+green = "#32cd32"
+magenta = "#c154c1"
+red = "#ed2939"
+white = "#ffffff"
+yellow = "#ffff00"
+
+[mouse]
+# If this is `true`, the cursor is temporarily hidden when typing.
+hide_when_typing = true
+
+[hints]
+# Keys used for the hint labels.
+alphabet = "jklfdsůahgurieowpq"
+
+[[hints.enabled]]
+command = "xdg-open"
+post_processing = true
+regex = "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+
+[hints.enabled.binding]
+key = "U"
+mods = "Control|Shift"
+
+[hints.enabled.mouse]
+enabled = true
+mods = "None"
+
+# special matching for ArchWiki diff URLs - highlights exactly 2 links in
+# the notification emails, so the inapt bottom-to-top assignment of hints
+# can be lived with...
+# https://github.com/alacritty/alacritty/issues/5354
+[[hints.enabled]]
+command = "xdg-open"
+post_processing = true
+regex = "https://wiki.archlinux.org/index.php\\?[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+diff=[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+
+[hints.enabled.binding]
+key = "X"
+mods = "Control|Shift"
+
+[hints.enabled.mouse]
+enabled = true
+mods = "None"
+
+[[hints.enabled]]
+post_processing = false
+regex = '''\[\[[\w :;/\-_(),.?!"'#]+\]\]'''
+
+[hints.enabled.command]
+args = ["-c", "import sys, subprocess; page = sys.argv[1].lstrip(\"[\").rstrip(\"]\"); url = f\"https://wiki.archlinux.org/title/{page}\"; subprocess.run([\"xdg-open\", url])"]
+program = "python"
+
+[hints.enabled.mouse]
+enabled = true
+mods = "None"
