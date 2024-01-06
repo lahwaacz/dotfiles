@@ -98,13 +98,9 @@ fi
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
 [[ -f ~/.bash_functions ]] && source ~/.bash_functions
 
-# GnupG -- Changing the home directory would require calling `gpgconf --create-socketdir`
-# before gpg-agent and configuring the right path for about 5 systemd sockets. This is
-# too much work, let's do it with symlink ~/.gnupg -> ~/.config/gnupg
-#export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
-#export SSH_AUTH_SOCK="/run/user/$UID/gnupg/d.psnu7wjt3mmen6bbh74u4e4t/S.gpg-agent.ssh"
-# set the right path to be used by the SSH agent
-export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+# set the right path to be used by the SSH agent, but do not override the existing value
+# (e.g. set by SSH when agent forwarding is enabled)
+export SSH_AUTH_SOCK="${SSH_AUTH_SOCK:-/run/user/$UID/gnupg/S.gpg-agent.ssh}"
 # set up SSH agent to use gpg-agent -- needed to show the right pinentry when the
 # user switches between console and X
 if [[ -S "$SSH_AUTH_SOCK" ]] && [[ $UID != 0 ]]; then
