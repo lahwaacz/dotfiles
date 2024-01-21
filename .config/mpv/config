@@ -2,7 +2,7 @@
 
 quiet
 
-ao=pulse
+ao=pipewire
 vo=gpu
 hwdec=auto
 
@@ -31,5 +31,4 @@ sub-auto=fuzzy
 alang=jpn,ger,eng,en
 slang=eng,en
 
-# youtube-dl settings
 ytdl-format=bestvideo[width<=?1920]+bestaudio/best
