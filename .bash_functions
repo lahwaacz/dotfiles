@@ -9,7 +9,7 @@ alias h=' h'
 
 ## simple notes taking utility
 function n() {
-    local dir="$HOME/Bbox/Notes/"
+    local dir="$HOME/Documents/notes/"
     local files=( "$@" )
     # prepend $dir to each file
     files=( "${files[@]/#/$dir}" )
@@ -17,14 +17,14 @@ function n() {
 }
 
 function nls() {
-    find $HOME/Bbox/Notes/ -print0 | sort -z | xargs -0 ls -d --color=always | sed "1n; s|$HOME/Bbox/Notes/|    ./|g; s|\./.*/[^$]|    ./|g; s|\./||g"
+    find $HOME/Documents/notes/ -print0 | sort -z | xargs -0 ls -d --color=always | sed "1n; s|$HOME/Documents/notes/|    ./|g; s|\./.*/[^$]|    ./|g; s|\./||g"
     # sed: skip first line; replace top-level directory with './'; replace '\./.*/[^$]' with '    ./'; delete all occurences of '\./'
 }
 
 # TAB completion for notes
 function _n() {
-    local files=($HOME/Bbox/Notes/**/"$2"*)
-    [[ -e ${files[0]} ]] && COMPREPLY=( "${files[@]##~/Bbox/Notes/}" )
+    local files=($HOME/Documents/notes/**/"$2"*)
+    [[ -e ${files[0]} ]] && COMPREPLY=( "${files[@]##~/Documents/notes/}" )
 }
 complete -o default -F _n n
 
