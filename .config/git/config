@@ -4,9 +4,8 @@
     # NOTE: the "!" at the end forces git to use the specific key and not a subkey
     signingkey = C889BD52BCF056C5!
 
-[merge]
-    tool = vimdiff
-    log = true
+[init]
+    defaultBranch = main
 
 [color]
     branch = auto
@@ -15,15 +14,19 @@
     status = auto
     grep = auto
 
+[diff]
+    # also detect copies
+    renames = copies
+
+[merge]
+    tool = vimdiff
+    log = true
+
 [log]
     decorate = full
     showSignature = true
     # Continue listing the history of a file beyond renames (works only for a single file).
     follow = true
-
-[diff]
-    # also detect copies
-    renames = copies
 
 [push]
     default = simple
@@ -48,22 +51,16 @@
     # execute corrected commands immediately
     autocorrect = -1
 
-# for gist.vim
-[github]
-    user = lahwaacz
-
 # http://stackoverflow.com/questions/7542543/use-gits-word-diff-for-latex-files
 #[diff "latex"]
 #    wordRegex = "\\\\[a-zA-Z]+|[{}]|\\\\.|[^\\{}[:space:]]+"
 #    command = ~/bin/diff-words.sh
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-[init]
-	defaultBranch = main
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 
 [includeIf "hasconfig:remote.*.url:**/*archlinux.org*/**"]
     path = ~/.config/git/config.archlinux
