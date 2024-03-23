@@ -17,6 +17,7 @@
 
 [log]
     decorate = full
+    showSignature = true
     # Continue listing the history of a file beyond renames (works only for a single file).
     follow = true
 
@@ -63,3 +64,8 @@
 	required = true
 [init]
 	defaultBranch = main
+
+[includeIf "hasconfig:remote.*.url:**/*archlinux.org*/**"]
+    path = ~/.config/git/config.archlinux
+[includeIf "hasconfig:remote.*.url:**/*cvut.cz:*/**"]
+    path = ~/.config/git/config.cvut
