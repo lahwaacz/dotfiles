@@ -85,15 +85,10 @@ hdr_order from: to: cc: date: subject:                           # and in this o
 
 # --- sourced bits
 source $alias_file                                               # required for functionality
-source ~/Maildir/mutt.mailboxes                                  # mailboxes in the Maildir
+source ~/Maildir/muttrc                                          # account specific configuration
 source ~/.config/mutt/colors.muttrc                              # source colors file
 source ~/.config/mutt/gpg.rc                                     # use GPG
 source ~/.config/mutt/smime.rc                                   # use S/MIME
-
-# --- account specific sources
-folder-hook FJFI/* source ~/.config/mutt/fjfi.muttrc
-folder-hook GMX/* source ~/.config/mutt/gmx.muttrc
-folder-hook Arch/* source ~/.config/mutt/arch.muttrc
 
 # --- bindings
 bind pager q            exit
@@ -136,18 +131,6 @@ bind editor \t complete-query   # tab completion for contacts
 # sync abook and alias
 macro index A      "!~/Scripts/abook-autoexport\n:source ~/.config/mutt/alias\n"          "Start abook"
 macro index \Ca    "|~/Scripts/abook-autoexport --add-email-quiet\n:source ~/.config/mutt/alias\n" "Create new alias from the actual message"
-
-# -- mailing lists
-lists ".*@lists\.archlinux\.org"
-subscribe aur-general@lists.archlinux.org
-subscribe arch-announce@lists.archlinux.org
-subscribe arch-events@lists.archlinux.org
-subscribe arch-dev-public@lists.archlinux.org
-subscribe arch-devops@lists.archlinux.org
-subscribe arch-projects@lists.archlinux.org
-subscribe arch-wiki-admins@lists.archlinux.org
-subscribe arch-tu@lists.archlinux.org
-subscribe staff@lists.archlinux.org
 
 # --- misc
 #set print_command       = /usr/bin/enscript                      # print with enscript
