@@ -304,4 +304,4 @@ exec keepassxc
 exec unclutter
 exec picom -b
 exec gammastep
-exec xss-lock sxlock
+exec xss-lock --transfer-sleep-lock -- lock-session
