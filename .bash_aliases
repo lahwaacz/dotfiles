@@ -16,8 +16,8 @@ alias cp='cp -i --preserve=all --reflink=auto'
 alias rm='rm -i'
 
 alias vi='vim'
-alias vim='vim -p'
-alias gvim='gvim -p'
+alias vim='nvim -p'
+alias vimdiff='nvim -d'
 
 alias du='du -h'
 alias df='df -h'
