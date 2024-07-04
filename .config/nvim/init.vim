@@ -65,16 +65,25 @@ set guifont=Monospace\ 9                " font in gvim
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
+" Load vim-plug plugins
+" Note: some useful commands to manage the pugins:
+" :PlugInstall to install the plugins
+" :PlugUpdate to install or update the plugins
+" :PlugDiff to review the changes from the last update
+" :PlugClean to remove plugins no longer in the list
+call plug#begin()
+    " https://github.com/ellisonleao/gruvbox.nvim
+    Plug 'ellisonleao/gruvbox.nvim'
+    " https://github.com/rebelot/kanagawa.nvim
+    Plug 'rebelot/kanagawa.nvim'
+call plug#end()
+
+syntax on                               " syntax highlighting
 filetype plugin on                      " load file type plugins
 filetype indent on                      " load file type based indentation
 " disable file type based indentation for cmake files  https://superuser.com/a/865581
 autocmd FileType cmake let b:did_indent = 1
 autocmd FileType cmake setlocal indentexpr=
-
-" syntax highlighting only when not in vimdiff
-if !&diff
-    syntax on
-endif
 
 
 " colorscheme
@@ -82,7 +91,8 @@ if &t_Co < 256
     " colorscheme for the 8 color linux term
     colorscheme vim
 else
-    colorscheme tokyonight-night
+    set background=dark
+    colorscheme kanagawa
 endif
 
 
