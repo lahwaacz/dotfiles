@@ -4,12 +4,6 @@
 [submodule ".config/vim/bundle/gundo.vim"]
 	path = .config/vim/bundle/gundo.vim
 	url = https://github.com/sjl/gundo.vim.git
-[submodule ".config/vim/bundle/i3-vim-syntax"]
-	path = .config/vim/bundle/i3-vim-syntax
-	url = https://github.com/PotatoesMaster/i3-vim-syntax.git
-[submodule ".config/vim/bundle/python-syntax"]
-	path = .config/vim/bundle/python-syntax
-	url = https://github.com/hdima/python-syntax.git
 [submodule ".config/vim/bundle/toggle_comment"]
 	path = .config/vim/bundle/toggle_comment
 	url = https://github.com/lahwaacz/toggle_comment.git
@@ -22,12 +16,3 @@
 [submodule ".config/vim/bundle/vim-unimpaired"]
 	path = .config/vim/bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
-[submodule ".config/vim/bundle/vimtex"]
-	path = .config/vim/bundle/vimtex
-	url = https://github.com/lervag/vimtex.git
-[submodule ".config/vim/bundle/vim-colors-github"]
-	path = .config/vim/bundle/vim-colors-github
-	url = https://github.com/cormacrelf/vim-colors-github.git
-[submodule ".config/vim/bundle/editorconfig-vim"]
-	path = .config/vim/bundle/editorconfig-vim
-	url = https://github.com/editorconfig/editorconfig-vim.git
