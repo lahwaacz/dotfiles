@@ -78,19 +78,12 @@ endif
 
 
 " colorscheme
-"if &t_Co < 256
-"    colorscheme desert                  " colorscheme for the 8 color linux term
-"else
-"    let g:solarized_termcolors=256
-"    if strftime('%H') >= 7 && strftime('%H') < 19
-"        set background=light
-"        colorscheme github
-"    else
-"        set background=dark
-"        colorscheme solarized
-"    endif
-"endif
-colorscheme vim
+if &t_Co < 256
+    " colorscheme for the 8 color linux term
+    colorscheme vim
+else
+    colorscheme tokyonight-night
+endif
 
 
 " Map keys to toggle functions
