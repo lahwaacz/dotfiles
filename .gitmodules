@@ -1,18 +1,18 @@
 [submodule ".config/vim/bundle/gnupg.vim"]
-	path = .config/vim/bundle/gnupg.vim
+	path = .config/nvim/bundle/gnupg.vim
 	url = https://github.com/vim-scripts/gnupg.vim.git
 [submodule ".config/vim/bundle/gundo.vim"]
-	path = .config/vim/bundle/gundo.vim
+	path = .config/nvim/bundle/gundo.vim
 	url = https://github.com/sjl/gundo.vim.git
 [submodule ".config/vim/bundle/toggle_comment"]
-	path = .config/vim/bundle/toggle_comment
+	path = .config/nvim/bundle/toggle_comment
 	url = https://github.com/lahwaacz/toggle_comment.git
 [submodule ".config/vim/bundle/vim-asymptote"]
-	path = .config/vim/bundle/vim-asymptote
+	path = .config/nvim/bundle/vim-asymptote
 	url = https://github.com/hura/vim-asymptote.git
 [submodule ".config/vim/bundle/vim-pathogen"]
-	path = .config/vim/bundle/vim-pathogen
+	path = .config/nvim/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
 [submodule ".config/vim/bundle/vim-unimpaired"]
-	path = .config/vim/bundle/vim-unimpaired
+	path = .config/nvim/bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git

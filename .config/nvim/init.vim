@@ -56,28 +56,10 @@ set wildmenu                            " enable enhanced command-line completio
 set wildmode=longest,list,full          " file and directory matching mode
 set notitle                             " don't set xterm window title
 set nrformats=hex                       " allow incrementing and decrementing numbers that start with 0 using <c-a> and <c-x>
-set clipboard=unnamedplus,autoselect    " use + register (X Window clipboard) as unnamed register"
+set clipboard+=unnamedplus              " use + register (X Window clipboard) as unnamed register"
 set viminfo='100,<1000,s10,h            " large registers (for copying between sessions)
 
 set guifont=Monospace\ 9                " font in gvim
-
-" Environment
-set runtimepath^=$XDG_CONFIG_HOME/vim
-set runtimepath+=$XDG_DATA_HOME/vim
-set runtimepath+=$XDG_CONFIG_HOME/vim/after
-
-set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
-set packpath+=$XDG_CONFIG_HOME/vim/after,$XDG_DATA_HOME/vim/after
-
-let g:netrw_home = $XDG_DATA_HOME."/vim"
-call mkdir($XDG_DATA_HOME."/vim/spell", 'p')
-set viewdir=$XDG_DATA_HOME/vim/view | call mkdir(&viewdir, 'p')
-
-set backupdir=$XDG_CACHE_HOME/vim/backup | call mkdir(&backupdir, 'p')
-set directory=$XDG_CACHE_HOME/vim/swap   | call mkdir(&directory, 'p')
-set undodir=$XDG_CACHE_HOME/vim/undo     | call mkdir(&undodir,   'p')
-
-if !has('nvim') | set viminfofile=$XDG_CACHE_HOME/vim/viminfo | endif
 
 " Load pathogen.vim (manage runtime path)
 runtime bundle/vim-pathogen/autoload/pathogen.vim
@@ -108,6 +90,7 @@ endif
 "        colorscheme solarized
 "    endif
 "endif
+colorscheme vim
 
 
 " Map keys to toggle functions
@@ -177,18 +160,9 @@ function TrimWhiteSpace()
 endfunction
 map <F2> :call TrimWhiteSpace()<CR>
 
-" LaTeX configuration
-let g:tex_flavor = "latex"              " treat all *.tex files as LaTeX by default
-let g:tex_comment_nospell = 1           " disable spell checking in comments
-let g:tex_fast = "bMpr"                 " selectively enable region-based syntax highlighting, see :h tex_fast
-let g:tex_no_error = 1                  " disable lexical error checking
-let g:tex_subscripts = "[]"             " disable syntax-based concealment of subscripts
-let g:tex_superscripts = "[]"           " disable syntax-based concealment of superscripts
-let g:tex_isk = '48-57,a-z,A-Z,192-255,:,_' " TODO: testing workaround for vimtex issue #167
-
 " spell checking
-set spelllang=en,cs                                  " real English spelling
-set spellfile=$XDG_DATA_HOME/vim/spell/custom.utf-8.add   " my whitelist
+set spelllang=en,cs
+set spellfile=$XDG_DATA_HOME/nvim/site/spell/custom.utf-8.add   " my whitelist
 autocmd FileType tex,text,markdown,mediawiki,rst setlocal spell
 autocmd FileType help setlocal nospell    " help pages are first recognized as 'text' and then set to 'help'
 

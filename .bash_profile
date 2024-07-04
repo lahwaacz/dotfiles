@@ -18,8 +18,8 @@ export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig:$HOME/.local/share/pkgconfig:
 # default applications
 export TERMINAL=alacritty
 export BROWSER=qutebrowser
-export EDITOR=vim
-export DIFFPROG=vimdiff
+export EDITOR=nvim
+export DIFFPROG="nvim -d"
 export PAGER="less -FRXMKij4"
 [[ $(command -v bat) ]] && [[ $(command -v batmanpager) ]] && export MANPAGER=batmanpager
 
@@ -39,7 +39,6 @@ export MAKEFLAGS=-j$(grep "processor" /proc/cpuinfo | sort -u | wc -l)  # counts
 # see https://github.com/grawity/dotfiles/blob/master/.dotfiles.notes
 
 # hacks to respect XDG_CONFIG_HOME
-export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"   # for GTK styles in Qt
 export GIMP2_DIRECTORY="$XDG_CONFIG_HOME/gimp"
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
