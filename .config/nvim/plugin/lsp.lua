@@ -1,4 +1,5 @@
 require'lspconfig'.bashls.setup{}
+require'lspconfig'.pkgbuild_language_server.setup{}
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.pylsp.setup{}
 require'lspconfig'.texlab.setup{}
