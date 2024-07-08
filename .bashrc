@@ -113,3 +113,9 @@ fi
 if [[ "$DESKTOP_SESSION" =~ "i3" ]] && [[ -f /etc/profile.d/modules.sh ]]; then
     source /etc/profile.d/modules.sh
 fi
+
+
+# don't use sudo in vscode (it has a key logger)
+if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+    alias sudo='echo "Dont use sudo in VSCode!!!"; false'
+fi
