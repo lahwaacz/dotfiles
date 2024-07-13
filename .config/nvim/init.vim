@@ -76,6 +76,10 @@ call plug#begin()
     Plug 'ellisonleao/gruvbox.nvim'
     " https://github.com/rebelot/kanagawa.nvim
     Plug 'rebelot/kanagawa.nvim'
+    " https://github.com/shaunsingh/solarized.nvim
+    Plug 'shaunsingh/solarized.nvim'
+    " https://github.com/craftzdog/solarized-osaka.nvim
+    Plug 'craftzdog/solarized-osaka.nvim'
 call plug#end()
 
 syntax on                               " syntax highlighting
@@ -92,7 +96,7 @@ if &t_Co < 256
     colorscheme vim
 else
     set background=dark
-    colorscheme kanagawa
+    colorscheme solarized-osaka
 endif
 
 
