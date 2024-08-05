@@ -59,6 +59,8 @@ set nrformats=hex                       " allow incrementing and decrementing nu
 set clipboard+=unnamedplus              " use + register (X Window clipboard) as unnamed register"
 set viminfo='100,<1000,s10,h            " large registers (for copying between sessions)
 
+if !exists('g:vscode')
+
 set guifont=Monospace\ 9                " font in gvim
 
 " Load pathogen.vim (manage runtime path)
@@ -182,3 +184,5 @@ autocmd FileType tex normal zR
 " textwidth
 autocmd FileType gitcommit setlocal textwidth=72
 autocmd FileType rst setlocal textwidth=80
+
+endif "!exists('g:vscode')
