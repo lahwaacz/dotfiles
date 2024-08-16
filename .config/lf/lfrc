@@ -189,7 +189,7 @@ cmd openimages &{{
 }}
 
 # open the selected files or the current file in vim (cannot use $EDITOR due to -p)
-map e $vim -p -- $fx
+map e $nvim -p -- $fx
 
 # configure the previewer script
 set previewer ~/.config/lf/previewer.sh
