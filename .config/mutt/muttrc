@@ -1,7 +1,6 @@
 # vim:fenc=utf-8:nu:ai:si:et:ts=2:sw=2:ft=muttrc
 
 # --- directories and commands
-set alias_file          = ~/.config/mutt/alias                   # alias file
 set header_cache        = ~/.cache/mutt/headers-cache            # where to store headers
 set certificate_file    = ~/.config/mutt/certificates            # where to store certs
 set mailcap_path        = ~/.config/mutt/mailcap                 # entries for filetypes
@@ -15,8 +14,6 @@ set folder              = ~/Maildir                              # mailbox locat
 set spoolfile           = "+FJFI/INBOX"                          # default inbox
 set timeout             = 3                                      # idle time before scanning
 set mail_check          = 0                                      # minimum time between scans
-set sort_alias          = alias                                  # sort alias file by alias
-set reverse_alias                                                # show names from alias file in index
 unset move                                                       # gmail does that
 set delete                                                       # don't ask, just do
 unset confirmappend                                              # don't ask, just do!
@@ -56,7 +53,6 @@ folder-hook ! .*[sS]ent.* 'set index_format="%3C %S %D | %-26.26n %-50.100s %> %
 set pager_format        = "Reading message %C of %m %> %lL [%P]" # pager statusbar
 set folder_format       = "%2C %t %N %8s %d %f"                  # mailbox list view
 set status_format       = " %?M?%M/?%m total: %?n?%n new, ?%?u?%u unread, ?%?p?%p drafts, ?%?t?%t +tagged, ?%?d?%d deleted, ?[%f %l]  %?b?%b mailboxes with new messages. ?%>  %V   sort by: %s/%S  (%P)"
-set alias_format        = "%4n %t %-20a  %r"
 
 # --- composing mail
 set realname            = "Jakub Klinkovský"                     # who am i?
@@ -84,7 +80,6 @@ unignore from: to: cc: date: subject:                            # show only the
 hdr_order from: to: cc: date: subject:                           # and in this order
 
 # --- sourced bits
-source $alias_file                                               # required for functionality
 source ~/Maildir/muttrc                                          # account specific configuration
 source ~/.config/mutt/colors.muttrc                              # source colors file
 source ~/.config/mutt/gpg.rc                                     # use GPG
@@ -125,12 +120,20 @@ macro compose \Cg    "Fgpg --clearsign\ny"
 macro compose \Cp    "Fgpg --clearsign\ny^T^Uapplication/pgp; format=text; x-action=sign\n"
 macro compose Y pfy  "send mail without pgp"
 
-# --- address book
-set query_command       = "~/Scripts/abook-autoexport --mutt-query '%s' 2>/dev/null"
-bind editor \t complete-query   # tab completion for contacts
-# sync abook and alias
-macro index A      "!~/Scripts/abook-autoexport\n:source ~/.config/mutt/alias\n"          "Start abook"
-macro index \Ca    "|~/Scripts/abook-autoexport --add-email-quiet\n:source ~/.config/mutt/alias\n" "Create new alias from the actual message"
+# --- address book - khard integration
+# reference: https://khard.readthedocs.io/en/latest/scripting.html#mutt
+set query_command = "echo %s | xargs khard email --parsable --"
+bind editor <Tab> complete-query
+bind editor ^T    complete
+# disable mutt's internal alias support
+set alias_file = /dev/null
+# add email addresses to khard’s address book
+macro index,pager A \
+  "<pipe-message>khard add-email<return>" \
+  "add the sender email address to khard"
+macro index,pager \Ca \
+  "<pipe-message>khard add-email --headers=from,cc --skip-already-added<return>" \
+  "add the sender and cc email addresses to khard"
 
 # --- misc
 #set print_command       = /usr/bin/enscript                      # print with enscript
