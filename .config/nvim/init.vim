@@ -178,8 +178,14 @@ autocmd FileType help setlocal nospell    " help pages are first recognized as '
 " Syntax based folding for C-family languages
 autocmd FileType c,cpp setlocal foldmethod=syntax
 autocmd FileType c,cpp setlocal foldnestmax=2
+
 " open all folds by default in tex files
 autocmd FileType tex normal zR
+
+" Syntax based folding for Markdown
+let g:markdown_folding = 1
+" open all folds by default in Markdown files
+autocmd FileType markdown normal zR
 
 " textwidth
 autocmd FileType gitcommit setlocal textwidth=72
