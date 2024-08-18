@@ -82,6 +82,9 @@ call plug#begin()
     Plug 'shaunsingh/solarized.nvim'
     " https://github.com/craftzdog/solarized-osaka.nvim
     Plug 'craftzdog/solarized-osaka.nvim'
+    " https://github.com/nvim-tree/nvim-tree.lua
+    Plug 'nvim-tree/nvim-tree.lua'
+    Plug 'nvim-tree/nvim-web-devicons'
 call plug#end()
 
 syntax on                               " syntax highlighting
