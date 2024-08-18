@@ -9,24 +9,12 @@ alias h=' h'
 
 ## simple notes taking utility
 function n() {
-    local dir="$HOME/Documents/notes/"
-    local files=( "$@" )
-    # prepend $dir to each file
-    files=( "${files[@]/#/$dir}" )
-    ${EDITOR:-vim} -p "${files[@]}"
+    local dir="$HOME/Documents/Notes/"
+    (
+        builtin cd "$dir"
+        nvim -c NvimTreeOpen todo.md
+    )
 }
-
-function nls() {
-    find $HOME/Documents/notes/ -print0 | sort -z | xargs -0 ls -d --color=always | sed "1n; s|$HOME/Documents/notes/|    ./|g; s|\./.*/[^$]|    ./|g; s|\./||g"
-    # sed: skip first line; replace top-level directory with './'; replace '\./.*/[^$]' with '    ./'; delete all occurences of '\./'
-}
-
-# TAB completion for notes
-function _n() {
-    local files=($HOME/Documents/notes/**/"$2"*)
-    [[ -e ${files[0]} ]] && COMPREPLY=( "${files[@]##~/Documents/notes/}" )
-}
-complete -o default -F _n n
 
 
 ## frequently used pacman commands
