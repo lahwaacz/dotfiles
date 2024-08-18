@@ -1,5 +1,8 @@
 -- Documentation: https://github.com/nvim-tree/nvim-tree.lua
 
+-- not in vscode...
+if not vim.g.vscode then
+
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -25,3 +28,5 @@ require("nvim-tree").setup({
     dotfiles = true,
   },
 })
+
+end
