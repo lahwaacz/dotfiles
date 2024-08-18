@@ -2,7 +2,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 #
-# vim: ft=i3
+# vim: ft=i3config
 
 set $mod Mod1
 
@@ -10,7 +10,7 @@ set $mod Mod1
 # is used in the bar {} block below.
 #font pango:DejaVu Sans Mono 10
 #font pango:monospace 10
-font pango:Inconsolata ExtraBold 10
+font pango:Hack 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier Shift+$mod
@@ -36,7 +36,8 @@ bindsym $mod+Return exec sway-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # launchers
-bindsym $mod+d exec bemenu-run -ip "Run: " --line-height 18 --fn "monospace bold 13" --tf "#1793d0" --hf "#1793d0"
+bindsym $mod+d exec bemenu-run -ip "Run: " --line-height 20 --fn "monospace bold" --tf "#1793d0" --hf "#1793d0"
+bindsym $mod+o exec rofimoji --prompt " " --action copy --selector bemenu --selector-args "--line-height 20 --tf #1793d0 --hf #1793d0 --list 10"
 
 # change focus
 bindsym $mod+h focus left

@@ -1,6 +1,6 @@
 # sway config file
 #
-# vim: ft=i3
+# vim: ft=i3config
 
 set $mod Mod1
 
@@ -12,7 +12,7 @@ set $mod Mod1
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
 #font pango:DejaVu Sans Mono 10
-font pango:Inconsolata 9
+font pango:Hack 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -34,7 +34,8 @@ bindsym $mod+Return exec sway-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # launchers
-bindsym $mod+d exec bemenu-run -ip "Run: " --line-height 18 --fn "monospace bold 13" --tf "#1793d0" --hf "#1793d0"
+bindsym $mod+d exec bemenu-run -ip "Run: " --line-height 20 --fn "monospace bold" --tf "#1793d0" --hf "#1793d0"
+bindsym $mod+o exec rofimoji --prompt " " --action copy --selector bemenu --selector-args "--line-height 20 --tf #1793d0 --hf #1793d0 --list 10"
 
 # change focus
 bindsym $mod+h focus left
@@ -195,7 +196,10 @@ bindsym --input-device=$MOUSE --whole-window button9 seat - cursor press button8
 
 # configure outputs
 output eDP-1 {
-    scale 1.75
+#    scale 1.75
+#    scale 1.655
+    scale 1.5
+
     background #000000 solid_color
 }
 output HDMI-A-1 {
@@ -357,7 +361,6 @@ exec alacritty --class "alacritty::journalctl" --hold --command journalctl -f -n
 exec qpdfview
 exec qstardict
 exec keepassxc
-exec mako
 exec gammastep
 
 # include config snippets
