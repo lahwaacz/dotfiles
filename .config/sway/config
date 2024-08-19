@@ -361,7 +361,7 @@ exec alacritty --class "alacritty::journalctl" --hold --command journalctl -f -n
 exec qpdfview
 exec qstardict
 exec keepassxc
-exec gammastep
+exec gammastep -m wayland
 
 # include config snippets
 include /etc/sway/config.d/*
