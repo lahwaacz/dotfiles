@@ -1,5 +1,8 @@
 -- Documentation: https://github.com/okuuva/auto-save.nvim
 
+-- not in vscode...
+if not vim.g.vscode then
+
 require("auto-save").setup {
     -- activate on startup
     enabled = true,
@@ -25,3 +28,5 @@ vim.api.nvim_create_autocmd('User', {
         end
     end,
 })
+
+end
