@@ -85,6 +85,8 @@ call plug#begin()
     " https://github.com/nvim-tree/nvim-tree.lua
     Plug 'nvim-tree/nvim-tree.lua'
     Plug 'nvim-tree/nvim-web-devicons'
+    " https://github.com/okuuva/auto-save.nvim
+    Plug 'okuuva/auto-save.nvim'
 call plug#end()
 
 syntax on                               " syntax highlighting
