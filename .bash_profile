@@ -47,6 +47,7 @@ export INPUTRC="$XDG_CONFIG_HOME/inputrc"
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 export ANSIBLE_CONFIG="${XDG_CONFIG_HOME}/ansible.cfg"
+export SCREENRC="$XDG_CONFIG_HOME"/screenrc
 
 # hacks to respect XDG_CACHE_HOME
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
@@ -59,6 +60,7 @@ export LESSHISTFILE="$XDG_STATE_HOME/less_history"
 export MYSQL_HISTFILE="$XDG_STATE_HOME/mysql_history"
 export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"   # ~/.python_history is overridden there
+export SCREENDIR="${XDG_RUNTIME_DIR}/screen"
 
 export UNISON="$XDG_DATA_HOME/unison"
 
