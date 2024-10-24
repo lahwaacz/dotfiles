@@ -42,7 +42,7 @@ c.qt.args = [
 
 # workaround for high-memory usage
 # https://github.com/qutebrowser/qutebrowser/issues/1476#issuecomment-889859126
-c.qt.force_software_rendering = "qt-quick"
+#c.qt.force_software_rendering = "qt-quick"
 
 c.downloads.location.directory = "~/stuff/"
 c.downloads.location.prompt = False
