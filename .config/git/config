@@ -19,7 +19,7 @@
     renames = copies
 
 [merge]
-    tool = vimdiff
+    tool = nvimdiff
     log = true
 
 [log]
