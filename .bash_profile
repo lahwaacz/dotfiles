@@ -60,7 +60,8 @@ export LESSHISTFILE="$XDG_STATE_HOME/less_history"
 export MYSQL_HISTFILE="$XDG_STATE_HOME/mysql_history"
 export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"   # ~/.python_history is overridden there
-export SCREENDIR="${XDG_RUNTIME_DIR}/screen"
+export SCREENDIR="$XDG_RUNTIME_DIR/screen"
+export W3M_DIR="$XDG_RUNTIME_DIR/w3m"
 
 export UNISON="$XDG_DATA_HOME/unison"
 
