@@ -9,7 +9,7 @@
     //"modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": [],
-    "modules-right": ["tray", "idle_inhibitor", "custom/mail", "network", "memory", "cpu", "custom/gpu", "temperature", "battery", "pulseaudio", "clock"],
+    "modules-right": ["idle_inhibitor", "custom/mail", "network", "memory", "cpu", "custom/gpu", "temperature", "battery", "pulseaudio", "clock", "tray"],
     "sway/workspaces": {
         "disable-scroll": false,
         "all-outputs": false,
@@ -20,10 +20,6 @@
     },
     "sway/window": {
         "tooltip": false
-    },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 2
     },
     "idle_inhibitor": {
         //"format": "{status}",
@@ -49,7 +45,8 @@
     "network": {
         // "interface": "wlp2s0", // (Optional) To force the use of this interface
         "interval": 5,
-        "format-wifi": " {essid} ({signalStrength}%)",
+        //"format-wifi": " {essid} ({signalStrength}%)",
+        "format-wifi": " {signalStrength}%",
         "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
         "format-disconnected": "⚠ Disconnected",
         "on-click": "wpa-cute",
@@ -74,7 +71,7 @@
     },
     "temperature": {
         "interval": 1,
-        "thermal-zone": 8,   // TODO: check this: /sys/class/thermal/thermal_zone8/type should always be x86_pkg_temp
+        "thermal-zone": 13,   // TODO: check this: /sys/class/thermal/thermal_zone12/type should always be x86_pkg_temp
         "critical-threshold": 70,
         "format": " {temperatureC}°C",
         "format-critical": " {temperatureC}°C"
@@ -112,7 +109,12 @@
     },
     "clock": {
         "interval": 1,
-        "format": "{:%a, %d %b %Y %H:%M:%S}",
+        //"format": "{:%a, %d %b %Y %H:%M:%S}",
+        "format": "{:%a, %d %b %Y %H:%M}",
         "tooltip": false
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 2
     }
 }
