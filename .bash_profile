@@ -23,7 +23,7 @@ export DIFFPROG="nvim -d"
 export PAGER="less -FRXMKij4"
 [[ $(command -v bat) ]] && [[ $(command -v batmanpager) ]] && export MANPAGER=batmanpager
 
-export LIBVA_DRIVER_NAME=vdpau  # video acceleration
+export LIBVA_DRIVER_NAME=iHD   # video acceleration
 export SYSTEMD_LESS=FRXMKij4   # omit 'S' to disable "chopping" long lines
 export QUOTING_STYLE=literal    # http://unix.stackexchange.com/questions/258679/why-is-ls-suddenly-surrounding-items-with-spaces-in-single-quotes
 
@@ -73,14 +73,12 @@ export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
 [[ -f ~/.bashrc ]] && source ~/.bashrc
 
 # autostart X session on tty1
-if [[ "$(tty)" == "/dev/tty1" ]] && [[ $(command -v xinit) ]]; then
+if [[ "$(tty)" == "/dev/tty1" ]]; then
     if [[ $(command -v sway) ]]; then
-        # disable nvidia GPU first, otherwise sway would just load the nvidia module
-        sudo nvidia-switch off
-        #export QT_QPA_PLATFORM=wayland-egl   # EGL seems to always try to use the nvidia GPU
         export QT_QPA_PLATFORM=wayland
         export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
         systemctl --user import-environment QT_QPA_PLATFORM QT_WAYLAND_DISABLE_WINDOWDECORATION
+        export XDG_CURRENT_DESKTOP=sway
         exec sway
     elif [[ $(command -v xinit) ]]; then
         exec xinit -- :0
