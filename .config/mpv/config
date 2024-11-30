@@ -18,15 +18,29 @@ af=loudnorm=I=-20
 # load all subs containing movie name
 sub-auto=fuzzy
 
+# apply filter removing subtitle additions for the deaf (SDH)
+sub-filter-sdh=yes
+sub-filter-sdh-harder=yes
+
+# filter some ads
+sub-filter-regex-append=opensubtitles\.org
+
 # sub font size. The unit is the size in scaled pixels at a window height of 720
 #sub-text-font-size=45
 
 # sub vertical position (in % of screen height)
 #sub-pos=10
 
+# black background behind subtitles (to hide forced subtitles)
+#sub-back-color=0.0/0.0/0.0
+#sub-shadow-offset=15
+
 # try to guess subtitle encoding, fall back to UTF-8
 # (enca was deprecated and removed, auto-detection should be done by default)
 #sub-codepage=enca
+
+# https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/autocrop.lua
+script-opts-append=autocrop-auto=no
 
 alang=jpn,ger,eng,en
 slang=eng,en
