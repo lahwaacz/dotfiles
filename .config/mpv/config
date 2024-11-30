@@ -2,6 +2,7 @@
 
 quiet
 
+profile=high-quality
 ao=pipewire
 vo=gpu
 hwdec=auto
