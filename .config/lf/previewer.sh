@@ -1,9 +1,11 @@
 #!/bin/bash
 
 # Meaningful aliases for arguments:
-path="$1"            # Full path of the selected file
-width="$2"           # Width of the preview pane (number of fitting characters)
-height="$3"          # Height of the preview pane (number of fitting characters)
+path="$1"       # Full path of the selected file
+width="$2"      # Width of the preview pane (number of fitting characters)
+height="$3"     # Height of the preview pane (number of fitting characters)
+x="$4"          # x position of the preview in terminal
+y="$5"          # y position of the preview in terminal
 
 # Find out something about the file:
 mimetype=$(file --mime-type -Lb "$path")
@@ -44,8 +46,15 @@ case "$extension" in
         ;;
     # PDF documents:
     pdf)
-        try pdftotext -l 10 -nopgbrk -q "$path" - && { dump | trim | fmt -s -w $width; exit 0; }
-        exit 0
+        if [[ "$TERM" == *"kitty"* ]]; then
+            CACHE="$XDG_CACHE_HOME/lf-pdf-preview"
+            pdftoppm -jpeg -f 1 -singlefile "$path" "$CACHE"
+            kitty +kitten icat --silent --stdin no --transfer-mode file --place "${width}x${height}@${x}x${y}" "$CACHE".jpg </dev/null >/dev/tty
+            exit 1
+        else
+            try pdftotext -l 10 -nopgbrk -q "$path" - && { dump | trim | fmt -s -w $width; exit 0; }
+            exit 0
+        fi
         ;;
     # ODT Files
     odt|ods|odp|sxw)
