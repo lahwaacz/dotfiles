@@ -1,4 +1,6 @@
-require'lspconfig'.bashls.setup{}
+require'lspconfig'.bashls.setup{
+    autostart = false,
+}
 require'lspconfig'.pkgbuild_language_server.setup{}
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.pylsp.setup{}
@@ -9,3 +11,19 @@ require'lspconfig'.html.setup{}
 require'lspconfig'.jsonls.setup{}
 require'lspconfig'.yamlls.setup{}
 require'lspconfig'.ansiblels.setup{}
+
+-- starh bashls for filetype=sh, but not filename=PKGBUILD
+vim.api.nvim_create_autocmd(
+    "FileType",
+    {
+        pattern = "sh",
+        callback = function()
+            if vim.fn.expand('%') ~= 'PKGBUILD' then
+                vim.lsp.start({
+                    name = 'bash-language-server',
+                    cmd = { 'bash-language-server', 'start' },
+                })
+            end
+        end
+    }
+)
