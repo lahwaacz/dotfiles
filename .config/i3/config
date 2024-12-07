@@ -265,7 +265,7 @@ focus_on_window_activation urgent
 mouse_warping none
 
 # assign windows to workspaces
-assign [instance="qstardict"] 10
+assign [instance="goldendict"] 10
 assign [instance="qpdfview"] 12
 assign [class="qemu-system-i386"] 19
 assign [instance="keepassxc" window_type="normal"] 21
@@ -300,7 +300,7 @@ exec_always initscreen.sh
 exec count-unread-mails.sh
 exec alacritty --class "alacritty::journalctl" --hold --command journalctl -f -n 100
 exec qpdfview
-exec qstardict
+exec goldendict
 exec keepassxc
 exec unclutter
 exec picom -b
