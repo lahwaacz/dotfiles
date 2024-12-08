@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd(
     {
         pattern = "sh",
         callback = function()
-            if vim.fn.expand('%') ~= 'PKGBUILD' then
+            if vim.fn.expand('%') ~= 'PKGBUILD' and not vim.fn.expand('%'):match('.*/PKGBUILD$') then
                 vim.lsp.start({
                     name = 'bash-language-server',
                     cmd = { 'bash-language-server', 'start' },
