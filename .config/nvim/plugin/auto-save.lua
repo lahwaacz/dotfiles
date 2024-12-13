@@ -6,12 +6,6 @@ if not vim.g.vscode then
 require("auto-save").setup {
     -- activate on startup
     enabled = true,
-    -- disable deprecated built-in execution message
-    -- https://github.com/okuuva/auto-save.nvim/pull/54
-    -- https://github.com/okuuva/auto-save.nvim/pull/56
-    execution_message = {
-        enabled = false,
-    },
     -- delay after which a pending save is executed
     debounce_delay = 5000,
 }
