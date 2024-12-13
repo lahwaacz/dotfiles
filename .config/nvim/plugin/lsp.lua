@@ -1,9 +1,13 @@
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 require'lspconfig'.bashls.setup{
     autostart = false,
 }
 require'lspconfig'.pkgbuild_language_server.setup{}
 require'lspconfig'.clangd.setup{}
-require'lspconfig'.pylsp.setup{}
+require'lspconfig'.pylsp.setup{
+    capabilities = capabilities,
+}
 require'lspconfig'.texlab.setup{}
 
 require'lspconfig'.cssls.setup{}
