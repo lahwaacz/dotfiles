@@ -82,6 +82,7 @@ cmp.setup({
 
 -- Disable buffer completion for "prose"-like file types.
 cmp.setup.filetype({
+    "gitcommit",
     "markdown",
     "mail",
     "text",
