@@ -1,3 +1,6 @@
+-- not in vscode...
+if not vim.g.vscode then
+
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require'lspconfig'.bashls.setup{
@@ -31,3 +34,5 @@ vim.api.nvim_create_autocmd(
         end
     }
 )
+
+end

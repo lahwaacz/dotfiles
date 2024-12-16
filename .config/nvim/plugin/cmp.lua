@@ -1,4 +1,7 @@
--- https://github.com/hrsh7th/nvim-cmp?tab=readme-ov-file#setup
+-- Documentation: https://github.com/hrsh7th/nvim-cmp?tab=readme-ov-file#setup
+
+-- not in vscode...
+if not vim.g.vscode then
 
 -- Set up nvim-cmp.
 local cmp = require'cmp'
@@ -129,3 +132,5 @@ cmp.setup.cmdline(':', {
 --require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
 --  capabilities = capabilities
 --}
+
+end
