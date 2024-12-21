@@ -322,10 +322,10 @@ mouse_warping none
 tiling_drag disable
 
 # assign windows to workspaces
-assign [app_id="goldendict"] 10
+assign [instance="goldendict"] 10
 assign [app_id="qutebrowser"] 11
 assign [app_id="qpdfview"] 12
-assign [app_id="keepassxc" window_type="normal"] 21
+assign [app_id="org.keepassxc.KeePassXC" title="(?<!Unlock Database) - KeePassXC"] 21
 assign [app_id="alacritty::journalctl"] 22
 
 # move windows popping up from scripts into their own workspace
