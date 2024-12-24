@@ -96,6 +96,8 @@ call plug#begin()
     " For vsnip users.
     Plug 'hrsh7th/cmp-vsnip'
     Plug 'hrsh7th/vim-vsnip'
+    " https://github.com/NMAC427/guess-indent.nvim
+    Plug 'NMAC427/guess-indent.nvim'
 call plug#end()
 
 syntax on                               " syntax highlighting
