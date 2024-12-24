@@ -79,6 +79,7 @@ if [[ "$(tty)" == "/dev/tty1" ]]; then
         export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
         systemctl --user import-environment QT_QPA_PLATFORM QT_WAYLAND_DISABLE_WINDOWDECORATION
         export XDG_CURRENT_DESKTOP=sway
+        export GOLDENDICT_FORCE_WAYLAND=1
         exec sway
     elif [[ $(command -v xinit) ]]; then
         exec xinit -- :0
