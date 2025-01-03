@@ -19,36 +19,9 @@ require'lspconfig'.texlab.setup{
 
 -- ruff does not have completion support
 require'lspconfig'.ruff.setup{}
--- https://github.com/pappasam/jedi-language-server#configuration
---require'lspconfig'.jedi_language_server.setup{
---    capabilities = capabilities,
---    init_options = {
---        jediSettings = {
---            autoImportModules = {"numpy", "pandas", "vtk"},
---        },
---    },
---}
--- pylsp just dispatches everything to plugins (jedi for completion and those
--- disabled below for diagnostics), but for some reason it actually works better
--- than jedi-language-server which can't load the vtk module
-require'lspconfig'.pylsp.setup{
+-- pyright does static type checking and completion
+require'lspconfig'.pyright.setup{
     capabilities = capabilities,
-    -- https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
-    settings = {
-        pylsp = {
-            plugins = {
-                -- disable all plugins which duplicate ruff functionality
-                autopep8 = { enabled = false },
-                flake8 = { enabled = false },
-                mccabe = { enabled = false },
-                pycodestyle = { enabled = false },
-                pydocstyle = { enabled = false },
-                pyflakes = { enabled = false },
-                pylint = { enabled = false },
-                yapf = { enabled = false },
-            }
-        }
-    }
 }
 
 require'lspconfig'.cssls.setup{}
