@@ -16,6 +16,9 @@ require'lspconfig'.clangd.setup{
 require'lspconfig'.texlab.setup{
     capabilities = capabilities,
 }
+require'lspconfig'.neocmake.setup {
+    capabilities = capabilities,
+}
 
 -- ruff does not have completion support
 require'lspconfig'.ruff.setup{}
