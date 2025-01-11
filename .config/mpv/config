@@ -12,10 +12,6 @@ hwdec=auto
 # https://superuser.com/a/323127
 af=loudnorm=I=-20
 
-# subtitles formatting
-#sub-back-color="#222222"
-#sub-bold=yes
-
 # load all subs containing movie name
 sub-auto=fuzzy
 
@@ -27,14 +23,17 @@ sub-filter-sdh-harder=yes
 sub-filter-regex-append=opensubtitles\.org
 
 # sub font size. The unit is the size in scaled pixels at a window height of 720
-#sub-text-font-size=45
+#sub-font-size=45
 
 # sub vertical position (in % of screen height)
 #sub-pos=10
 
 # black background behind subtitles (to hide forced subtitles)
-#sub-back-color=0.0/0.0/0.0
-#sub-shadow-offset=15
+#sub-border-style=outline-and-shadow
+##sub-border-style=opaque-box
+#sub-outline-color="#111111"
+#sub-outline-size=3
+#sub-ass=no  # do not render ASS subtitles natively
 
 # try to guess subtitle encoding, fall back to UTF-8
 # (enca was deprecated and removed, auto-detection should be done by default)
