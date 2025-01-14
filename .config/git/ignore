@@ -41,3 +41,5 @@ Thumbs.db
 # IDEs etc.
 .vscode/
 .ycm_extra_conf.py
+.mypy_cache/
+.ruff_cache/
