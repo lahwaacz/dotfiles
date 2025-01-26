@@ -22,25 +22,7 @@ separator_fg = "#888888"  # gray
 block = "maildir"
 format = " $icon $status.eng(w:1) "
 inboxes = [
-    "~/Maildir/FJFI/archive",
-    "~/Maildir/FJFI/drafts",
-    "~/Maildir/FJFI/hardware",
-    "~/Maildir/FJFI/HPC-Europa",
-    "~/Maildir/FJFI/IE_LTAUSA",
-    "~/Maildir/FJFI/INBOX",
-    "~/Maildir/FJFI/IT4I",
-    "~/Maildir/FJFI/KOTEL",
-    "~/Maildir/FJFI/KSI",
-    "~/Maildir/FJFI/LBM",
-    "~/Maildir/FJFI/personal",
-    "~/Maildir/FJFI/projects",
-    "~/Maildir/FJFI/sent",
-    "~/Maildir/FJFI/spam",
-    "~/Maildir/FJFI/supervision",
-    "~/Maildir/FJFI/teaching",
-    "~/Maildir/FJFI/TNL",
-    "~/Maildir/FJFI/trash",
-    "~/Maildir/FJFI/UPC",
+    "~/Maildir/FJFI/*",
 ]
 interval = 10
 threshold_critical = 1
