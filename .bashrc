@@ -65,6 +65,9 @@ bash_prompt() {
 # Arch
 if [[ -r /usr/share/git/completion/git-prompt.sh ]]; then
     source /usr/share/git/completion/git-prompt.sh
+# Rocky 8.X
+elif [[ -r /usr/share/git-core/contrib/completion/git-prompt.sh ]]; then
+    source /usr/share/git-core/contrib/completion/git-prompt.sh
 # Debian, Ubuntu
 elif [[ -r /etc/bash_completion.d/git-prompt ]]; then
     source /etc/bash_completion.d/git-prompt
