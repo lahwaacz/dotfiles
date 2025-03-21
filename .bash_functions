@@ -71,13 +71,20 @@ function lf {
 
 ## system upgrade
 function syu {
-    sudo pacman -Syu $@
+    sudo pacman -Syu "$@"
     local ret=$?
     if [[ $ret -ne 0 ]]; then
         return $ret
     fi
-    if [[ $(command -v checkservices) ]]; then
+    if command -v checkservices > /dev/null; then
+        echo "==> Running checkservices"
         sudo checkservices
+    fi
+    if command -v flatpak > /dev/null; then
+        echo "==> Running flatpak update"
+        flatpak update
+        echo "==> Running flatpak --user update"
+        flatpak --user update
     fi
 }
 alias suy='syu'
