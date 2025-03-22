@@ -234,7 +234,7 @@ bindsym $mod+Ctrl+Right       exec playerctl next
 bindsym XF86MonBrightnessUp   exec light -A 10 && notify-brightness.sh
 bindsym XF86MonBrightnessDown exec light -U 10 && notify-brightness.sh
 
-bindsym XF86ScreenSaver       exec sxlock
+bindsym XF86ScreenSaver       exec xss-lock --transfer-sleep-lock -- lock-session
 bindsym Print                 exec screenshot.sh full
 
 # Start i3bar to display a bar with workspaces and system status
