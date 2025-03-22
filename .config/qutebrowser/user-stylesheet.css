@@ -1,9 +1,0 @@
-/*
-::-webkit-scrollbar { width: 0px; height: 0px; }
-*/
-
-/* ad blocking */
-div#ad-wrapper  /* csfd.cz */
-{
-    display: none;
-}

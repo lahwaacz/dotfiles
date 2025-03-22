@@ -20,11 +20,11 @@ image/x-tga=sxiv.desktop;
 application/pdf=qpdfview.desktop;
 text/plain=gvim.desktop;
 application/xml=gvim.desktop;
-text/htm=org.qutebrowser.qutebrowser.desktop;
-text/html=org.qutebrowser.qutebrowser.desktop;
-x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop;
-x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop;
-x-scheme-handler/ftp=org.qutebrowser.qutebrowser.desktop;
+text/htm=io.gitlab.librewolf-community.desktop;
+text/html=io.gitlab.librewolf-community.desktop;
+x-scheme-handler/http=io.gitlab.librewolf-community.desktop;
+x-scheme-handler/https=io.gitlab.librewolf-community.desktop;
+x-scheme-handler/ftp=io.gitlab.librewolf-community.desktop;
 
 [Added Associations]
 audio/mpeg=mpv.desktop;

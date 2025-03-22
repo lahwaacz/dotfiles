@@ -1,1 +1,0 @@
-../../Bbox/application data/qutebrowser/javascript_whitelist.txt

@@ -17,7 +17,7 @@ export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig:$HOME/.local/share/pkgconfig:
 
 # default applications
 export TERMINAL=alacritty
-export BROWSER=qutebrowser
+export BROWSER=librewolf
 export EDITOR=nvim
 export DIFFPROG="nvim -d"
 export PAGER="less -FRXMKij4"
