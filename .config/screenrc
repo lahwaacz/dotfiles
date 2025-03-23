@@ -12,3 +12,14 @@ altscreen on
 
 # bigger scrollback
 defscrollback 10000
+
+# start window numbering at 1
+bind c screen 1
+bind ^c screen 1
+bind 0 select 10
+screen 1
+
+# informative statusbar
+truecolor on
+hardstatus off
+hardstatus alwayslastline '%{#ffffff} %{7}%?%-Lw%?%{1;0}%{1}(%{15}%n%f%t%?(%u)%?%{1;0}%{1})%{7}%?%+Lw%? %='
