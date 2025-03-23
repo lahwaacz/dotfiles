@@ -40,7 +40,6 @@ export MAKEFLAGS=-j$(grep "processor" /proc/cpuinfo | sort -u | wc -l)  # counts
 # see https://github.com/grawity/dotfiles/blob/master/.dotfiles.notes
 
 # hacks to respect XDG_CONFIG_HOME
-export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"   # for GTK styles in Qt
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
 export INPUTRC="$XDG_CONFIG_HOME/inputrc"
