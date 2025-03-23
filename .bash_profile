@@ -21,11 +21,12 @@ export BROWSER=librewolf
 export EDITOR=nvim
 export DIFFPROG="nvim -d"
 export PAGER="less -FRXMKij4"
-[[ $(command -v bat) ]] && [[ $(command -v batmanpager) ]] && export MANPAGER=batmanpager
-
-export LIBVA_DRIVER_NAME=iHD   # video acceleration
 export SYSTEMD_LESS=FRXMKij4   # omit 'S' to disable "chopping" long lines
 export QUOTING_STYLE=literal    # http://unix.stackexchange.com/questions/258679/why-is-ls-suddenly-surrounding-items-with-spaces-in-single-quotes
+[[ $(command -v bat) ]] && [[ $(command -v batmanpager) ]] && export MANPAGER=batmanpager
+
+# video acceleration
+export LIBVA_DRIVER_NAME=iHD
 
 #export MAKEFLAGS=-j$(grep "core id" /proc/cpuinfo | sort -u | wc -l)  # counts physical cores
 export MAKEFLAGS=-j$(grep "processor" /proc/cpuinfo | sort -u | wc -l)  # counts all cores
@@ -40,7 +41,6 @@ export MAKEFLAGS=-j$(grep "processor" /proc/cpuinfo | sort -u | wc -l)  # counts
 
 # hacks to respect XDG_CONFIG_HOME
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"   # for GTK styles in Qt
-export GIMP2_DIRECTORY="$XDG_CONFIG_HOME/gimp"
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
 export INPUTRC="$XDG_CONFIG_HOME/inputrc"
