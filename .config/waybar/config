@@ -3,13 +3,29 @@
 {
     "layer": "bottom",
     "position": "top",
-    "height": 18, // Waybar height
+    "height": 20, // Waybar height
     // "width": 1366, // Waybar width
     // Choose the order of the modules
-    //"modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
-    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode",
+        "sway/language"
+        //"sway/window"
+    ],
     "modules-center": [],
-    "modules-right": ["idle_inhibitor", "custom/mail", "network", "memory", "cpu", "custom/gpu", "temperature", "battery", "pulseaudio", "clock", "tray"],
+    "modules-right": [
+        "mpris",
+        "idle_inhibitor",
+        "network",
+        "memory",
+        "cpu",
+        "temperature",
+        "battery",
+        "pulseaudio",
+        "custom/notification",
+        "clock"
+        //"tray"
+    ],
     "sway/workspaces": {
         "disable-scroll": false,
         "all-outputs": false,
@@ -17,6 +33,9 @@
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/language": {
+        "format": " {short}"
     },
     "sway/window": {
         "tooltip": false
@@ -33,30 +52,14 @@
         "interval": 1,
         "tooltip": false
     },
-    "custom/mail": {
-        "format": " {}",
-        "exec": "cat /dev/shm/new-mails-count",
-        "interval": "once",
-        "signal": 8,
-        "return-type": "json",
-        "tooltip": false,
-        "on-click": "count-unread-mails.sh"
-    },
     "network": {
-        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "interface": "e*", // (Optional) To force the use of this interface
         "interval": 5,
         //"format-wifi": " {essid} ({signalStrength}%)",
         "format-wifi": " {signalStrength}%",
         "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
         "format-disconnected": "⚠ Disconnected",
         "on-click": "wpa-cute",
-        "tooltip": false
-    },
-    "custom/gpu": {
-        "format": "{}",
-        "exec": "get-nvidia-status",
-        "interval": 60,
-        "return-type": "json",
         "tooltip": false
     },
     "memory": {
@@ -71,8 +74,13 @@
     },
     "temperature": {
         "interval": 1,
-        "thermal-zone": 13,   // TODO: check this: /sys/class/thermal/thermal_zone12/type should always be x86_pkg_temp
-        "critical-threshold": 70,
+        // run the following command and select "Package id 0"
+        // for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+        //"hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input",
+        // stable path configuration based on https://github.com/Alexays/Waybar/issues/1943#issuecomment-1617301916
+        "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
+        "input-filename": "temp1_input",
+        "critical-threshold": 85,
         "format": " {temperatureC}°C",
         "format-critical": " {temperatureC}°C"
     },
@@ -104,17 +112,43 @@
             "car": "",
             "default": ["", ""]
         },
-        //"on-click": "pavucontrol"
+        "on-click": "pavucontrol",
         "tooltip": false
+    },
+    "mpris": {
+        "format": "{status_icon} {player}",
+        "status-icons": {
+            "playing": "▶",
+            "paused": "⏸",
+            "stopped": "⏹"
+        }
     },
     "clock": {
         "interval": 1,
-        //"format": "{:%a, %d %b %Y %H:%M:%S}",
         "format": "{:%a, %d %b %Y %H:%M}",
         "tooltip": false
     },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'>󰂛<sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'>󰂛<sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
     "tray": {
-        // "icon-size": 21,
         "spacing": 2
     }
 }
