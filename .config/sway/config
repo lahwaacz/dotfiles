@@ -1,6 +1,6 @@
 # sway config file
 #
-# vim: ft=i3config
+# vim: ft=swayconfig
 
 set $mod Mod1
 
@@ -18,6 +18,23 @@ font pango:Hack 9
 floating_modifier $mod
 floating_maximum_size 1680 x 1050
 
+# disable mouse dragging for tiled windows
+tiling_drag disable
+
+hide_edge_borders smart_no_gaps
+default_border pixel 1
+
+workspace_auto_back_and_forth yes
+# http://i3wm.org/docs/userguide.html#focus_on_window_activation
+#    smart (default): focus if on an active workspace, otherwise urgent
+#    urgent: always mark as urgent, but never forus
+#    focus: always focus and never mark as urgent
+#    none: neither focus, nor mark as urgent
+focus_on_window_activation urgent
+
+# do not move cursor to window center when a window on different output is focused
+mouse_warping none
+
 # reload configuration file
 bindsym $mod+Shift+c reload
 
@@ -32,10 +49,6 @@ bindsym $mod+Return exec sway-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
-
-# launchers
-bindsym $mod+d exec bemenu-run -ip "Run: " --line-height 20 --fn "monospace bold" --tf "#1793d0" --hf "#1793d0"
-bindsym $mod+o exec rofimoji --prompt " " --action copy --selector bemenu --selector-args "--line-height 20 --tf #1793d0 --hf #1793d0 --list 10"
 
 # change focus
 bindsym $mod+h focus left
@@ -62,7 +75,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+n split h
+#bindsym $mod+n split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -77,10 +90,6 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
-# toggle between hide state and show state
-bindsym $mod+b bar hidden_state hide
-bindsym $mod+Shift+b bar mode toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -195,16 +204,14 @@ bindsym --input-device=$MOUSE --whole-window button9 seat - cursor press button8
 #bindsym --input-device=$MOUSE --whole-window --release button9 seat - cursor release button8
 
 # configure outputs
+output * {
+    scale 1
+    background #000000 solid_color
+}
 output eDP-1 {
 #    scale 1.75
 #    scale 1.655
     scale 1.5
-
-    background #000000 solid_color
-}
-output HDMI-A-1 {
-    scale 1
-    background #000000 solid_color
 }
 
 # default assignment (when more outputs available)
@@ -280,8 +287,14 @@ mode "mpd" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+bindsym $mod+Shift+m mode "mpd"
 
-bindsym $mod+m mode "mpd"
+# launchers
+bindsym $mod+d exec bemenu-run -ip "Run: " --line-height 20 --fn "monospace bold" --tf "#1793d0" --hf "#1793d0"
+bindsym $mod+o exec rofimoji --prompt " " --action copy --selector bemenu --selector-args "--line-height 20 --tf #1793d0 --hf #1793d0 --list 10"
+
+# pickers
+bindsym $mod+Shift+p exec hyprpicker --autocopy --lowercase-hex
 
 # multimedia keys
 bindsym --locked XF86AudioRaiseVolume  exec notify-volume.sh up
@@ -297,33 +310,17 @@ bindsym --locked $mod+Ctrl+Up          exec playerctl stop
 bindsym --locked $mod+Ctrl+Left        exec playerctl previous
 bindsym --locked $mod+Ctrl+Right       exec playerctl next
 
+# TODO: light is dead
 bindsym XF86MonBrightnessUp   exec sudo light -A 10 && notify-brightness.sh
 bindsym XF86MonBrightnessDown exec sudo light -U 10 && notify-brightness.sh
 
-bindsym XF86ScreenSaver       exec swaylock
-bindsym Print                 exec screenshot.sh full
-bindsym $mod+Print            exec screenshot.sh select
-
-hide_edge_borders smart_no_gaps
-default_border pixel 1
-
-workspace_auto_back_and_forth yes
-# http://i3wm.org/docs/userguide.html#focus_on_window_activation
-#    smart (default): focus if on an active workspace, otherwise urgent
-#    urgent: always mark as urgent, but never forus
-#    focus: always focus and never mark as urgent
-#    none: neither focus, nor mark as urgent
-focus_on_window_activation urgent
-
-# do not move cursor to window center when a window on different output is focused
-mouse_warping none
-
-# disable mouse dragging for tiled windows
-tiling_drag disable
+bindsym XF86ScreenSaver       exec loginctl lock-session
+bindsym Print                 exec flameshot full
+bindsym $mod+Print            exec flameshot gui
 
 # assign windows to workspaces
 assign [app_id=".*goldendict"] 10
-assign [app_id="qutebrowser"] 11
+#assign [app_id="LibreWolf"] 11
 assign [app_id="qpdfview"] 12
 assign [app_id="org.keepassxc.KeePassXC" title="(?<!Unlock Database) - KeePassXC"] 21
 assign [app_id="alacritty::journalctl"] 22
@@ -336,11 +333,17 @@ for_window [title="^ParaView$"] floating enable
 for_window [app_id="mpv"] floating enable
 for_window [class="lxqt-openssh-askpass"] floating enable
 # handle floating dialogs properly
+for_window [window_role="About"] floating enable
+for_window [window_role="Organizer"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="page-info"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
-for_window [instance="chromium"] inhibit_idle fullscreen
-for_window [app_id="quasselclient" title="Authentication Required"] floating enable
-for_window [app_id="pinentry.*"] floating enable
+for_window [window_role="toolbox"] floating enable
+for_window [window_role="webconsole"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
 
 # statusbar
 bar {
@@ -348,15 +351,24 @@ bar {
 }
 
 # idle monitor
+# NOTE: the lowest timeout subcommand effectively changes DPMS timeout when swaylock is running
 exec swayidle -w \
      timeout 600 'swaylock -f' \
-     timeout 600 'swaymsg "output * dpms off"' \
-          resume 'swaymsg "output * dpms on"' \
-     before-sleep 'swaylock -f'
+     timeout 600 'swaymsg "output * power off"' \
+          resume 'swaymsg "output * power on"' \
+     timeout 60 'if pgrep -x swaylock; then swaymsg "output * power off"; fi' \
+         resume 'if pgrep -x swaylock; then swaymsg "output * power on"; fi' \
+     before-sleep 'playerctl pause; swaylock -f' \
+     lock 'swaylock -f'
+
+# notifications
+exec swaync
+bindsym $mod+n exec swaync-client -t -sw
+bindsym $mod+m exec swaync-client --toggle-dnd
+bindsym $mod+Shift+n exec swaync-client --close-all
 
 # autostart applications
 #exec_always initscreen.sh
-exec count-unread-mails.sh
 exec alacritty --class "alacritty::journalctl" --hold --command journalctl -f -n 100
 exec qpdfview
 exec goldendict
