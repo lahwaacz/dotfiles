@@ -219,8 +219,8 @@ output "Dell Inc. DELL U2723QE 285Z7H3" {
 output "Dell Inc. DELL P4317Q V7M4J63P00EL" {
     scale 2
     power off
-    # FIXME: hack for h/j/k/l going to the output even when it is disabled
-    position 0,2160
+    # disabled output loses its workspaces
+    disable
 }
 
 # default assignment (when more outputs available)
