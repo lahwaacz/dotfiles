@@ -1,3 +1,5 @@
+# shellcheck shell=bash
+
 # check for interactive
 [[ $- = *i* ]] || return
 
@@ -50,9 +52,9 @@ bash_prompt() {
 
     if [[ $(type -t "__git_ps1") == "function" ]]; then
         # configuration for __git_ps1 function
-        GIT_PS1_SHOWDIRTYSTATE=1
-        GIT_PS1_SHOWSTASHSTATE=1
-        GIT_PS1_SHOWUPSTREAM="auto"
+        export GIT_PS1_SHOWDIRTYSTATE=1
+        export GIT_PS1_SHOWSTASHSTATE=1
+        export GIT_PS1_SHOWUPSTREAM="auto"
 
         # check if we're on local filesystem and skip git prompt on remote paths
         local git="\$(if [[ \"\$(df --output=fstype . | tail -n +2)\" != \"fuse.sshfs\" ]]; then __git_ps1; fi)"
@@ -64,20 +66,25 @@ bash_prompt() {
 }
 # Arch
 if [[ -r /usr/share/git/completion/git-prompt.sh ]]; then
+    # shellcheck source=/dev/null
     source /usr/share/git/completion/git-prompt.sh
 # Rocky 8.X
 elif [[ -r /usr/share/git-core/contrib/completion/git-prompt.sh ]]; then
+    # shellcheck source=/dev/null
     source /usr/share/git-core/contrib/completion/git-prompt.sh
 # Debian, Ubuntu
 elif [[ -r /etc/bash_completion.d/git-prompt ]]; then
+    # shellcheck source=/dev/null
     source /etc/bash_completion.d/git-prompt
 # others
 elif [[ -r "$HOME/bin/git-prompt.sh" ]]; then
+    # shellcheck source=/dev/null
     source "$HOME/bin/git-prompt.sh"
 fi
 bash_prompt
 
 # export $PWD in window title
+# shellcheck disable=SC2016
 PROMPT_COMMAND=('echo -ne "\033]0;$PWD\007"')
 
 # set history variables 
@@ -91,14 +98,17 @@ PROMPT_COMMAND+=('history -a')
 
 #if [[ "$TERM" =~ ".*256color.*" && -f ~/.dircolors.256colors ]]; then
 if [[ "$TERM" != "linux" && -f "$XDG_CONFIG_HOME/dircolors.256color" ]]; then
-    eval $(dircolors "$XDG_CONFIG_HOME/dircolors.256color")
+    eval "$(dircolors "$XDG_CONFIG_HOME/dircolors.256color")"
 elif [[ -f "$XDG_CONFIG_HOME/dircolors" ]]; then
-    eval $(dircolors "$XDG_CONFIG_HOME/dircolors")
+    eval "$(dircolors "$XDG_CONFIG_HOME/dircolors")"
 fi
 
 ## source useful files
+# shellcheck source=/dev/null
 [[ -r /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
+# shellcheck source=/dev/null
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
+# shellcheck source=/dev/null
 [[ -f ~/.bash_functions ]] && source ~/.bash_functions
 
 # set the right path to be used by the SSH agent, but do not override the existing value
@@ -107,13 +117,15 @@ export SSH_AUTH_SOCK="${SSH_AUTH_SOCK:-/run/user/$UID/gnupg/S.gpg-agent.ssh}"
 # set up SSH agent to use gpg-agent -- needed to show the right pinentry when the
 # user switches between console and X
 if [[ -S "$SSH_AUTH_SOCK" ]] && [[ $UID != 0 ]]; then
-    export GPG_TTY=$(tty)
+    GPG_TTY="$(tty)"
+    export GPG_TTY
     gpg-connect-agent updatestartuptty /bye >/dev/null
 fi
 
 
 # FIXME: i3 interferes with the inheritance of bash functions defined by lmod
 if [[ "$DESKTOP_SESSION" =~ "i3" ]] && [[ -f /etc/profile.d/modules.sh ]]; then
+    # shellcheck source=/dev/null
     source /etc/profile.d/modules.sh
 fi
 

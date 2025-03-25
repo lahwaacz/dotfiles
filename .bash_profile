@@ -1,3 +1,5 @@
+# shellcheck shell=bash
+
 #umask 0077
 umask 0022
 
@@ -25,11 +27,19 @@ export SYSTEMD_LESS=FRXMKij4   # omit 'S' to disable "chopping" long lines
 export QUOTING_STYLE=literal    # http://unix.stackexchange.com/questions/258679/why-is-ls-suddenly-surrounding-items-with-spaces-in-single-quotes
 [[ $(command -v bat) ]] && [[ $(command -v batmanpager) ]] && export MANPAGER=batmanpager
 
-# video acceleration
-export LIBVA_DRIVER_NAME=iHD
+# detect the current DRM driver (grep based on https://unix.stackexchange.com/a/207175)
+driver=$(grep -oP 'DRIVER=\K\w+' /sys/class/drm/card1/device/uevent)
 
-#export MAKEFLAGS=-j$(grep "core id" /proc/cpuinfo | sort -u | wc -l)  # counts physical cores
-export MAKEFLAGS=-j$(grep "processor" /proc/cpuinfo | sort -u | wc -l)  # counts all cores
+# video acceleration
+if [[ "$driver" == "nvidia" ]]; then
+    export LIBVA_DRIVER_NAME=nvidia
+else
+    export LIBVA_DRIVER_NAME=iHD
+fi
+
+#MAKEFLAGS=-j$(grep "core id" /proc/cpuinfo | sort -u | wc -l)  # counts physical cores
+MAKEFLAGS=-j$(grep "processor" /proc/cpuinfo | sort -u | wc -l)  # counts all cores
+export MAKEFLAGS
 
 # setup default dirs
 [ "$XDG_CACHE_HOME" ] || export XDG_CACHE_HOME="$HOME/.cache"
@@ -69,18 +79,22 @@ export TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var
 export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
 
 # source bashrc in interactive login shells (SSH)
+# shellcheck source=/dev/null
 [[ -f ~/.bashrc ]] && source ~/.bashrc
 
-# autostart X session on tty1
-if [[ "$(tty)" == "/dev/tty1" ]]; then
+# autostart X or Wayland session on tty1, unless $XDG_CURRENT_DESKTOP is already set (e.g. SDDM sources this file before starting the session)
+if [[ "$(tty)" == "/dev/tty1" ]] && [[ -z "$XDG_CURRENT_DESKTOP" ]]; then
     if [[ $(command -v sway) ]]; then
         export QT_QPA_PLATFORM=wayland
         export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
         systemctl --user import-environment QT_QPA_PLATFORM QT_WAYLAND_DISABLE_WINDOWDECORATION
-        export XDG_CURRENT_DESKTOP=sway
         export GOLDENDICT_FORCE_WAYLAND=1
+        # sway does not set $XDG_CURRENT_DESKTOP
+        export XDG_CURRENT_DESKTOP=sway
         exec sway
     elif [[ $(command -v xinit) ]]; then
+        # i3 sets this, but exporting it manually makes the condition above work
+        export XDG_CURRENT_DESKTOP=i3
         exec xinit -- :0
     fi
 fi
