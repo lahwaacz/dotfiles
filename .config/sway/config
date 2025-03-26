@@ -319,9 +319,8 @@ bindsym --locked $mod+Ctrl+Up          exec playerctl stop
 bindsym --locked $mod+Ctrl+Left        exec playerctl previous
 bindsym --locked $mod+Ctrl+Right       exec playerctl next
 
-# TODO: light is dead
-bindsym XF86MonBrightnessUp   exec sudo light -A 10 && notify-brightness.sh
-bindsym XF86MonBrightnessDown exec sudo light -U 10 && notify-brightness.sh
+bindsym XF86MonBrightnessUp   exec brightnessctl set +10% && notify-brightness.sh
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%- && notify-brightness.sh
 
 bindsym XF86ScreenSaver       exec loginctl lock-session
 bindsym Print                 exec flameshot full
