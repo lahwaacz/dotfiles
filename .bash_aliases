@@ -29,8 +29,6 @@ alias mt='findmnt -rnuc -o SOURCE,TARGET,FSTYPE,OPTIONS | sort | column -t'
 alias cal='cal -m'
 alias dirs='dirs -v'
 
-alias suspend='systemctl suspend'
-
 alias subdl='/usr/bin/subdl -i --lang=eng,cze'
 
 # slurm
