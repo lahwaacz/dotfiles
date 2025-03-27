@@ -27,8 +27,13 @@ export SYSTEMD_LESS=FRXMKij4   # omit 'S' to disable "chopping" long lines
 export QUOTING_STYLE=literal    # http://unix.stackexchange.com/questions/258679/why-is-ls-suddenly-surrounding-items-with-spaces-in-single-quotes
 [[ $(command -v bat) ]] && [[ $(command -v batmanpager) ]] && export MANPAGER=batmanpager
 
-# detect the current DRM driver (grep based on https://unix.stackexchange.com/a/207175)
-driver=$(grep -oP 'DRIVER=\K\w+' /sys/class/drm/card1/device/uevent)
+# detect the current DRM driver
+if [[ -f /sys/class/drm/card1/device/uevent ]]; then
+    # based on https://unix.stackexchange.com/a/207175
+    driver=$(grep -oP 'DRIVER=\K\w+' /sys/class/drm/card1/device/uevent)
+else
+    driver=""
+fi
 
 # video acceleration
 if [[ "$driver" == "nvidia" ]]; then
