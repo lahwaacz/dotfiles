@@ -33,7 +33,6 @@ set smartcase                           " make searches case sensitive only if t
 " Encoding
 set encoding=utf-8                      " use utf-8 everywhere
 set fileencoding=utf-8                  " use utf-8 everywhere
-set termencoding=utf-8                  " use utf-8 everywhere
 
 " Various
 set ruler                               " show the cursor position
