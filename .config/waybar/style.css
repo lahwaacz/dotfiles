@@ -25,6 +25,14 @@ window {
     color: #ddd;
 }
 
+/* make tooltips non-transparent */
+tooltip {
+    background-color: #222;
+}
+tooltip label {
+    color: #ddd;
+}
+
 #workspaces button {
     border-top: 1px solid #222;
     border-bottom: 2px solid #222;
@@ -59,17 +67,28 @@ window {
     margin-left: 10px;
 }
 
+#privacy {
+    color: #ff613d;   /* bright orange */
+    margin-left: 10px;
+}
+
 /* title of the focused window */
 #window {
     color: #888;
     margin-left: 20px;
 }
 
-#tray, #idle_inhibitor, #custom-mail, #network, #memory, #cpu, #temperature, #battery, #pulseaudio, #mpris, #clock, #custom-notification {
+#custom-events {
+    margin: 0 10px;
+    padding: 0 5px;
+    color: #ddd;
+}
+
+#tray, #idle_inhibitor, #network, #memory, #cpu, #temperature, #battery, #pulseaudio, #mpris, #clock, #custom-notification {
     padding: 0 5px;
 }
 
-#idle_inhibitor, #custom-mail, #network, #memory, #cpu, #temperature, #battery, #pulseaudio, #mpris, #clock, #custom-notification {
+#idle_inhibitor, #network, #memory, #cpu, #temperature, #battery, #pulseaudio, #mpris, #clock, #custom-notification {
     border-left: 2px solid #888;
     border-color: #444;
 }
@@ -79,13 +98,6 @@ window {
 }
 #idle_inhibitor.activated {
     color: #ddd;
-}
-
-#custom-mail {
-    color: #888;
-}
-#custom-mail.nonzero {
-    color: #bc1e1e;   /* red */
 }
 
 #network {

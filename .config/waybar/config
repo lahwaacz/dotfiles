@@ -9,10 +9,13 @@
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
-        "sway/language"
-        //"sway/window"
+        "sway/language",
+        //"sway/window",
+        "privacy"
     ],
-    "modules-center": [],
+    "modules-center": [
+        "custom/events"
+    ],
     "modules-right": [
         "mpris",
         "idle_inhibitor",
@@ -39,6 +42,16 @@
     },
     "sway/window": {
         "tooltip": false
+    },
+    "custom/events": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 300,
+        "format-icons": {
+            "default": ""
+        },
+        "exec": "waybar-khal.py",
+        "return-type": "json"
     },
     "idle_inhibitor": {
         //"format": "{status}",
