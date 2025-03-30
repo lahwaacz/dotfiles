@@ -68,6 +68,8 @@ export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export ANSIBLE_LOCAL_TEMP="$XDG_CACHE_HOME/ansible/tmp"
 export ANSIBLE_GALAXY_CACHE_DIR="${XDG_CACHE_HOME}/ansible/galaxy_cache"
+export RUFF_CACHE_DIR="$XDG_CACHE_HOME/ruff"
+export MYPY_CACHE_DIR="$XDG_CACHE_HOME/mypy"
 
 # hacks to respect XDG_STATE_HOME
 export LESSHISTFILE="$XDG_STATE_HOME/less_history"
