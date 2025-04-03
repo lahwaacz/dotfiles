@@ -224,28 +224,29 @@ output "Dell Inc. DELL P4317Q V7M4J63P00EL" {
 }
 
 # default assignment (when more outputs available)
-workspace 1 output DP-1
-workspace 2 output DP-1
-workspace 3 output DP-1
-workspace 4 output DP-1
-workspace 5 output DP-1
-workspace 6 output DP-1
-workspace 7 output DP-1
-workspace 8 output DP-1
-workspace 9 output DP-1
-workspace 10 output DP-1
-workspace 11 output DP-1
-workspace 12 output DP-1
-workspace 13 output DP-1
-workspace 14 output DP-1
-workspace 15 output DP-1
-workspace 16 output DP-1
-workspace 17 output DP-1
-workspace 18 output DP-1
-workspace 19 output DP-2
-workspace 20 output DP-2
-workspace 21 output DP-1
-workspace 22 output DP-1
+workspace 1 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 2 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 3 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 4 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 5 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 6 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 7 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 8 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 9 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 10 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 11 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 12 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 13 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 14 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 15 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 16 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 17 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 18 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 19 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 20 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 21 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace 22 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
+workspace mirror output HDMI-A-1 DP-2 DP-1 eDP-1
 
 bindsym $mod+i workspace next_on_output
 bindsym $mod+u workspace prev_on_output
@@ -330,6 +331,7 @@ bindsym $mod+Print            exec flameshot gui
 assign [app_id=".*goldendict"] 10
 #assign [app_id="LibreWolf"] 11
 assign [app_id="qpdfview"] 12
+assign [app_id="at.yrlf.wl_mirror"] mirror
 assign [app_id="org.keepassxc.KeePassXC" title="(?<!Unlock Database) - KeePassXC"] 21
 assign [app_id="alacritty::journalctl"] 22
 
