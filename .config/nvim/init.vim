@@ -206,4 +206,7 @@ autocmd FileType markdown normal zR
 autocmd FileType gitcommit setlocal textwidth=72
 autocmd FileType rst setlocal textwidth=80
 
+" source configuration from lua files
+source ~/.config/nvim/diagnostics.lua
+
 endif "!exists('g:vscode')
