@@ -4,6 +4,7 @@ quiet
 
 profile=high-quality
 ao=pipewire
+gpu-context=wayland
 vo=gpu
 hwdec=auto
 
