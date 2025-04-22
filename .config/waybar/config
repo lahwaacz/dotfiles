@@ -94,8 +94,8 @@
         "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
         "input-filename": "temp1_input",
         "critical-threshold": 85,
-        "format": " {temperatureC}°C",
-        "format-critical": " {temperatureC}°C"
+        "format": " {temperatureC}°C",
+        "format-critical": " {temperatureC}°C"
     },
     "battery": {
         "bat": "BAT0",
