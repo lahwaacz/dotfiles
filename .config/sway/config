@@ -365,8 +365,8 @@ bar {
 # NOTE: the lowest timeout subcommand effectively changes DPMS timeout when swaylock is running
 exec swayidle -w \
      timeout 600 'swaylock -f' \
-     timeout 600 'swaymsg "output * power off"' \
-          resume 'swaymsg "output * power on"' \
+     timeout 600 'swaync-client --dnd-on; swaymsg "output * power off"' \
+          resume 'swaync-client --dnd-off; swaymsg "output * power on"' \
      timeout 60 'if pgrep -x swaylock; then swaymsg "output * power off"; fi' \
          resume 'if pgrep -x swaylock; then swaymsg "output * power on"; fi' \
      before-sleep 'playerctl pause; swaylock -f' \
