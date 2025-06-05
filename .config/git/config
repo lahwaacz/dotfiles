@@ -58,6 +58,10 @@
 [fetch]
     prune = true
 
+[rebase]
+    autosquash = true
+    autostash = true
+
 [alias]
     last = show --stat HEAD
     countcommits = shortlog -sn --no-merges
