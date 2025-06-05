@@ -1,10 +1,9 @@
 #! /bin/bash
 
-#check_domain=geraldine.fjfi.cvut.cz
 check_domain=ping.archlinux.org
 
 # sync
-ping -c 1 "$check_domain" > /dev/null && fetchmail
+ping -c 1 -w 1 "$check_domain" > /dev/null && fetchmail
 
 # cd into fixed path (for saving attachments)
 cd ~/stuff
@@ -17,4 +16,4 @@ else
 fi
 
 # sync
-ping -c 1 "$check_domain" > /dev/null && fetchmail
+ping -c 1 -w 1 "$check_domain" > /dev/null && fetchmail
