@@ -1,4 +1,0 @@
-[Unit]
-Description=Graphical target - graphical daemons, xinitrc stuff etc.
-After=xorg.target
-Requires=xorg.target
