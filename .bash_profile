@@ -93,8 +93,10 @@ export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
 if [[ "$(tty)" == "/dev/tty1" ]] && [[ -z "$XDG_CURRENT_DESKTOP" ]]; then
     if [[ $(command -v sway) ]]; then
         export QT_QPA_PLATFORM=wayland
+        # https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications#QGtk3Style
+        export QT_QPA_PLATFORMTHEME=gtk3
         export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-        systemctl --user import-environment QT_QPA_PLATFORM QT_WAYLAND_DISABLE_WINDOWDECORATION
+        systemctl --user import-environment QT_QPA_PLATFORM QT_QPA_PLATFORMTHEME QT_WAYLAND_DISABLE_WINDOWDECORATION
         export GOLDENDICT_FORCE_WAYLAND=1
         # sway does not set $XDG_CURRENT_DESKTOP
         export XDG_CURRENT_DESKTOP=sway
