@@ -67,4 +67,13 @@ require "lspconfig".efm.setup {
     }
 }
 
+-- configure gitlab-ci-ls
+-- https://github.com/alesbrelih/gitlab-ci-ls#integration-with-neovim
+vim.lsp.enable('gitlab_ci_ls')
+vim.filetype.add({
+  pattern = {
+    ['%.gitlab%-ci%.ya?ml'] = 'yaml.gitlab',
+  },
+})
+
 end
