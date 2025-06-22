@@ -1,9 +1,6 @@
 #! /bin/bash
 
-check_domain=ping.archlinux.org
-
-# sync
-ping -c 1 -w 1 "$check_domain" > /dev/null && fetchmail
+set -e
 
 # cd into fixed path (for saving attachments)
 cd ~/stuff
@@ -14,6 +11,3 @@ if [[ -e /usr/bin/neomutt ]]; then
 else
     /usr/bin/mutt -n -F ~/.config/mutt/muttrc "$@"
 fi
-
-# sync
-ping -c 1 -w 1 "$check_domain" > /dev/null && fetchmail
