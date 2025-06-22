@@ -1,6 +1,7 @@
 # vim:fenc=utf-8:nu:ai:si:et:ts=2:sw=2:ft=muttrc
 
 # --- directories and commands
+set message_cachedir    = ~/.cache/mutt/messages                 # where to store messages fetched from IMAP
 set header_cache        = ~/.cache/mutt/headers-cache            # where to store headers
 set certificate_file    = ~/.config/mutt/certificates            # where to store certs
 set mailcap_path        = ~/.config/mutt/mailcap                 # entries for filetypes
@@ -8,12 +9,20 @@ set tmpdir              = ~/.cache/mutt/temp                     # where to keep
 set editor              = "/usr/bin/nvim -c 'set tw=76 ft=mail' -c 'set wrap' -c 'set spell'"
 set ispell              = "/usr/bin/aspell -e -c"                # use aspell as ispell
 
-# --- main options
-set mbox_type           = Maildir                                # mailbox type
-set folder              = ~/Maildir                              # mailbox location
-set spoolfile           = "+FJFI/INBOX"                          # default inbox
-set timeout             = 3                                      # idle time before scanning
-set mail_check          = 0                                      # minimum time between scans
+# --- local Maildir options
+#set mbox_type           = Maildir                                # mailbox type
+#set folder              = ~/Maildir                              # mailbox location
+#set spoolfile           = "+INBOX"                               # default inbox
+#set timeout             = 3                                      # how long to wait for user input before processing other operations
+#set mail_check          = 0                                      # minimum time between scans
+
+# --- IMAP options
+set imap_keepalive      = 300
+unset imap_passive                                               # When set, mutt will not open new IMAP connections to check for new mail
+set timeout             = 3                                      # how long to wait for user input before processing other operations
+set mail_check          = 60                                     # how often to look for new mail (seconds)
+
+# --- behavior options
 unset move                                                       # gmail does that
 set delete                                                       # don't ask, just do
 unset confirmappend                                              # don't ask, just do!
