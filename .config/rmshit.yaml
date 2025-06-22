@@ -53,3 +53,4 @@
 - ~/.local/share/Trash/    # VSCode puts deleted files here
 - ~/.cache/thumbnails/
 - ~/.cache/clangd/
+- ~/.cache/aur-remotebuild/
