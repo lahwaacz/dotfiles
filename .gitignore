@@ -7,9 +7,4 @@
 !/.bash*
 /.bash_history*
 !/bin
-!/.latexmkrc
-!/.profile
-!/.tmux.conf
 !/.toprc
-!/.xinitrc
-!/.xserverrc

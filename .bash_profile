@@ -101,9 +101,5 @@ if [[ "$(tty)" == "/dev/tty1" ]] && [[ -z "$XDG_CURRENT_DESKTOP" ]]; then
         # sway does not set $XDG_CURRENT_DESKTOP
         export XDG_CURRENT_DESKTOP=sway
         exec sway
-    elif [[ $(command -v xinit) ]]; then
-        # i3 sets this, but exporting it manually makes the condition above work
-        export XDG_CURRENT_DESKTOP=i3
-        exec xinit -- :0
     fi
 fi

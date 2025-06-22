@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec /usr/bin/Xorg -nolisten tcp -noreset "$@" vt$XDG_VTNR
