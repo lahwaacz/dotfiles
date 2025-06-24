@@ -330,7 +330,7 @@ bindsym $mod+Print            exec flameshot gui
 # assign windows to workspaces
 assign [app_id=".*goldendict"] 10
 #assign [app_id="LibreWolf"] 11
-assign [app_id="qpdfview"] 12
+assign [app_id="qpdfview"] 14
 assign [app_id="at.yrlf.wl_mirror"] mirror
 assign [app_id="org.keepassxc.KeePassXC" title="(?<!Unlock Database) - KeePassXC"] 21
 assign [app_id="alacritty::journalctl"] 22
