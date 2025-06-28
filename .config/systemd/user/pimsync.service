@@ -1,0 +1,37 @@
+[Unit]
+Description=Synchronise calendars and contacts
+Documentation=man:pimsync
+# user units cannot be ordered after system units
+#Wants=network-online.target
+#After=network-online.target nss-lookup.target
+ConditionPathExists=/usr/bin/pimsync
+ConditionPathExists=%h/.config/pimsync/pimsync.conf
+ConditionPathExists=%h/.local/share/pimsync
+
+[Service]
+ExecStart=/usr/bin/pimsync daemon
+# TODO: this does not work, probably pimsync needs a file descriptor but $NOTIFY_SOCKET is a path
+#Type=notify
+#NotifyAccess=main
+#Environment=READY_FD=${NOTIFY_SOCKET}
+
+# Restarting policy
+Restart=always
+RestartSec=1m
+RestartMaxDelaySec=10m
+RestartSteps=9
+
+# Sandboxing
+PrivateDevices=true
+PrivateTmp=true
+# mount the entire file system hierarchy read-only
+ProtectSystem=strict
+# make home directory read-only
+# (ProtectHome is too strong, it makes home completely inaccessible and prevents even bind-mounts)
+ReadOnlyPaths=%h
+# make relevant paths writable
+ReadWritePaths=%h/.local/share/pimsync
+ReadWritePaths=%h/.local/share/khal
+
+[Install]
+WantedBy=default.target
