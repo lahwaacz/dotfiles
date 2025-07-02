@@ -152,7 +152,7 @@ set send_charset="us-ascii:utf-8"                                # charset prior
 set auto_tag                                                     # apply functions in index menu only to tagged messages (if any)
 
 # quick-sync ~/Maildir immediately
-macro index Z   "<shell-escape>fetchmail<enter>" "fetch new mail"
+#macro index Z   "<shell-escape>fetchmail<enter>" "fetch new mail"
 
 # --- sidebar
 # documentation: http://www.neomutt.org/feature/sidebar/
