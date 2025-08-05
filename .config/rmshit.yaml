@@ -53,4 +53,11 @@
 - ~/.local/share/Trash/    # VSCode puts deleted files here
 - ~/.cache/thumbnails/
 - ~/.cache/clangd/
+- ~/.cache/llvm-debuginfod/
+- ~/.cache/pip/
+- ~/.cache/black/
+- ~/.cache/ruff/
+- ~/.cache/mypy/
+- ~/.cache/jedi/
 - ~/.cache/aur-remotebuild/
+- ~/.cupy/
