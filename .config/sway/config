@@ -222,6 +222,9 @@ output "Dell Inc. DELL P4317Q V7M4J63P00EL" {
     # disabled output loses its workspaces
     disable
 }
+output "Dell Inc. DELL P2720D CPBZS03" {
+    scale 1.25
+}
 
 # default assignment (when more outputs available)
 workspace 1 output eDP-1 "Dell Inc. DELL U2723QE 285Z7H3"
