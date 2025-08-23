@@ -55,6 +55,7 @@
 - ~/.cache/clangd/
 - ~/.cache/llvm-debuginfod/
 - ~/.cache/pip/
+- ~/.cache/uv/
 - ~/.cache/black/
 - ~/.cache/ruff/
 - ~/.cache/mypy/
