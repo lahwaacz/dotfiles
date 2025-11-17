@@ -38,6 +38,11 @@
     # `-t difftastic` every time.
     tool = difftastic
 
+# https://mergiraf.org/usage.html#registration-as-a-git-merge-driver
+[merge "mergiraf"]
+    name = mergiraf
+    driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
+
 [merge]
     tool = nvimdiff
     log = true
@@ -74,11 +79,6 @@
 [help]
     # execute corrected commands immediately
     autocorrect = -1
-
-# http://stackoverflow.com/questions/7542543/use-gits-word-diff-for-latex-files
-#[diff "latex"]
-#    wordRegex = "\\\\[a-zA-Z]+|[{}]|\\\\.|[^\\{}[:space:]]+"
-#    command = ~/bin/diff-words.sh
 
 [filter "lfs"]
     clean = git-lfs clean -- %f
