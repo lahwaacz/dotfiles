@@ -7,32 +7,31 @@ vim.lsp.config("*", {
     capabilities = capabilities,
 })
 
-require'lspconfig'.bashls.setup{
-    autostart = false,
-}
-require'lspconfig'.pkgbuild_language_server.setup{}
-require'lspconfig'.clangd.setup{}
-require'lspconfig'.texlab.setup{}
-require'lspconfig'.neocmake.setup{}
+--vim.lsp.enable("bashls")
+vim.lsp.enable("pkgbuild_language_server")
+vim.lsp.enable("clangd")
+vim.lsp.enable("texlab")
+vim.lsp.enable("neocmake")
 
 -- ruff does not have completion support
-require'lspconfig'.ruff.setup{}
+vim.lsp.enable("ruff")
 -- pyright does static type checking and completion
-require'lspconfig'.pyright.setup{}
+vim.lsp.enable("pyright")
 
-require'lspconfig'.cssls.setup{}
-require'lspconfig'.html.setup{}
-require'lspconfig'.jsonls.setup{}
-require'lspconfig'.yamlls.setup{}
-require'lspconfig'.ansiblels.setup{}
-require'lspconfig'.typos_lsp.setup{}
-require'lspconfig'.vale_ls.setup{
+vim.lsp.enable("cssls")
+vim.lsp.enable("html")
+vim.lsp.enable("jsonls")
+vim.lsp.enable("yamlls")
+vim.lsp.enable("ansiblels")
+vim.lsp.enable("typos_lsp")
+vim.lsp.enable("vale_ls")
+vim.lsp.config("vale_ls", {
     settings = {
         root_markers = {".vale.ini"},
     },
     -- do not start the lsp if none of the root markers is found
     single_file_support = false,
-}
+})
 
 -- starh bashls for filetype=sh, but not filename=PKGBUILD
 vim.api.nvim_create_autocmd(
@@ -52,7 +51,8 @@ vim.api.nvim_create_autocmd(
 
 -- configure efmls for markdownlint-cli2
 -- based on https://github.com/mattn/efm-langserver?tab=readme-ov-file#configuration-for-neovim-builtin-lsp-with-nvim-lspconfig
-require "lspconfig".efm.setup {
+vim.lsp.enable("efm")
+vim.lsp.config("efm", {
     settings = {
         root_markers = {".git/"},
         languages = {
@@ -65,11 +65,11 @@ require "lspconfig".efm.setup {
             }
         }
     }
-}
+})
 
 -- configure gitlab-ci-ls
 -- https://github.com/alesbrelih/gitlab-ci-ls#integration-with-neovim
-vim.lsp.enable('gitlab_ci_ls')
+vim.lsp.enable("gitlab_ci_ls")
 vim.filetype.add({
   pattern = {
     ['%.gitlab%-ci%.ya?ml'] = 'yaml.gitlab',
