@@ -8,10 +8,11 @@ vim.lsp.config("*", {
 })
 
 --vim.lsp.enable("bashls")
-vim.lsp.enable("pkgbuild_language_server")
+vim.lsp.enable("termux_language_server")
 vim.lsp.enable("clangd")
 vim.lsp.enable("texlab")
 vim.lsp.enable("neocmake")
+vim.lsp.enable("just")
 
 -- ruff does not have completion support
 vim.lsp.enable("ruff")
@@ -23,8 +24,9 @@ vim.lsp.enable("html")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("yamlls")
 vim.lsp.enable("ansiblels")
+
 vim.lsp.enable("typos_lsp")
-vim.lsp.enable("vale_ls")
+--vim.lsp.enable("vale_ls")
 vim.lsp.config("vale_ls", {
     settings = {
         root_markers = {".vale.ini"},
