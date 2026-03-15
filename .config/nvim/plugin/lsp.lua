@@ -13,6 +13,7 @@ vim.lsp.enable("clangd")
 vim.lsp.enable("texlab")
 vim.lsp.enable("neocmake")
 vim.lsp.enable("just")
+vim.lsp.enable("systemd_lsp")
 
 -- ruff does not have completion support
 vim.lsp.enable("ruff")
