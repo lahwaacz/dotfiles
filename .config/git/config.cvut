@@ -1,3 +1,5 @@
+# vim: filetype=gitconfig
+
 [user]
     name = Jakub Klinkovský
     email = jakub.klinkovsky@fjfi.cvut.cz

@@ -88,10 +88,14 @@
 
 [includeIf "hasconfig:remote.*.url:**/*archlinux.org*/**"]
     path = ~/.config/git/config.archlinux
-[includeIf "hasconfig:remote.*.url:**/*cvut.cz:*/**"]
+[includeIf "hasconfig:remote.*.url:**/*cvut.cz*/**"]
     path = ~/.config/git/config.cvut
-[includeIf "hasconfig:remote.*.url:**/*github.com:*/**"]
+[includeIf "hasconfig:remote.*.url:**/*github.com*/**"]
     path = ~/.config/git/config.github
+[includeIf "hasconfig:remote.*.url:**/*gitlab.com*/**"]
+    path = ~/.config/git/config.gitlab.com
 
 [includeIf "gitdir:*/tnl-project/"]
+    path = ~/.config/git/config.cvut
+[includeIf "hasconfig:remote.*.url:**/*gitlab.com*/tnl-project/**"]
     path = ~/.config/git/config.cvut
