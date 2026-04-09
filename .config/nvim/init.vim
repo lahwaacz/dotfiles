@@ -210,3 +210,9 @@ autocmd FileType rst setlocal textwidth=80
 source ~/.config/nvim/diagnostics.lua
 
 endif "!exists('g:vscode')
+
+if exists('g:vscode')
+    " workaround for https://stackoverflow.com/a/78627671
+    " https://github.com/vscode-neovim/vscode-neovim/issues/2109#issuecomment-2171410407
+    set cmdheight=99
+end
