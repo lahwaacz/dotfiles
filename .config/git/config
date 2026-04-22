@@ -4,6 +4,10 @@
     # NOTE: the "!" at the end forces git to use the specific key and not a subkey
     signingkey = C889BD52BCF056C5!
 
+[credential]
+    helper = cache --timeout 43200  # 12 hours
+    helper = oauth -device
+
 [init]
     defaultBranch = main
 
