@@ -60,14 +60,14 @@ export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
 export INPUTRC="$XDG_CONFIG_HOME/inputrc"
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
-export ANSIBLE_CONFIG="${XDG_CONFIG_HOME}/ansible.cfg"
+export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible.cfg"
 export SCREENRC="$XDG_CONFIG_HOME"/screenrc
 
 # hacks to respect XDG_CACHE_HOME
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export ANSIBLE_LOCAL_TEMP="$XDG_CACHE_HOME/ansible/tmp"
-export ANSIBLE_GALAXY_CACHE_DIR="${XDG_CACHE_HOME}/ansible/galaxy_cache"
+export ANSIBLE_GALAXY_CACHE_DIR="$XDG_CACHE_HOME/ansible/galaxy_cache"
 export RUFF_CACHE_DIR="$XDG_CACHE_HOME/ruff"
 export MYPY_CACHE_DIR="$XDG_CACHE_HOME/mypy"
 
@@ -84,6 +84,8 @@ export UNISON="$XDG_DATA_HOME/unison"
 export TEXMFHOME=$XDG_DATA_HOME/texmf
 export TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var
 export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
+
+export HF_HUB_DISABLE_TELEMETRY=1
 
 # source bashrc in interactive login shells (SSH)
 # shellcheck source=/dev/null
