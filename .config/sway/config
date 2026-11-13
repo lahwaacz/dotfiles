@@ -335,7 +335,7 @@ assign [app_id=".*goldendict"] 10
 #assign [app_id="LibreWolf"] 11
 assign [app_id="qpdfview"] 14
 assign [app_id="at.yrlf.wl_mirror"] mirror
-assign [app_id="org.keepassxc.KeePassXC" title="(?<!Unlock Database) - KeePassXC"] 21
+assign [app_id="org.chipass.ChiPass" title="(?<!Unlock Database) - ChiPass"] 21
 assign [app_id="alacritty::journalctl"] 22
 
 # move windows popping up from scripts into their own workspace
@@ -357,7 +357,7 @@ for_window [window_role="toolbox"] floating enable
 for_window [window_role="webconsole"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
-for_window [app_id="org.keepassxc.KeePassXC" title="Access Request"] floating enable
+for_window [app_id="org.chipass.ChiPass" title="Access Request"] floating enable
 
 # statusbar
 bar {
@@ -386,7 +386,7 @@ bindsym $mod+Shift+n exec swaync-client --close-all
 exec alacritty --class "alacritty::journalctl" --hold --command journalctl -f -n 100
 exec qpdfview
 exec goldendict
-exec keepassxc
+exec ChiPass
 exec gammastep -m wayland
 
 # include config snippets
